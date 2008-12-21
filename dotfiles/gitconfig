@@ -1,0 +1,44 @@
+[user]
+	name = Damien Pollet
+	email = damien.pollet@inria.fr
+	
+[alias]
+	changes = diff --name-status -r
+	st = status
+	ci = commit
+	co = checkout
+	svnci = svn dcommit
+	svnup = svn rebase
+	tgz = !bash -c 'git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz' --
+	excludetex = !bash -c 'echo -e "${1:-*}.pdf\\\\n*.aux\\\\n*.bbl\\\\n*.blg\\\\n*.log\\\\n*.out" | tee -a .git/info/exclude' --
+
+[diff]
+	renames = true
+
+[core]
+	excludesfile = /Users/damien/.gitignore
+	pager = less -FRSX
+
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+	interactive = auto
+	ui = true
+	pager = true
+
+[color "branch"]
+	current = green reverse
+	local = green
+	remote = red bold
+
+[color "diff"]
+	meta = cyan
+	frag = blue
+	old = red bold
+	new = green bold
+
+[color "status"]
+	added = green bold
+	changed = yellow
+	untracked = magenta
