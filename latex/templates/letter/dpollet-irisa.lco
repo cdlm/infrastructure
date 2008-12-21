@@ -1,0 +1,16 @@
+\ProvidesFile{dpollet-irisa.lco}[2005/12/15 letter class option]
+
+\setkomavar{fromname}{Damien \textsc{Pollet}}
+
+\setkomavar{fromaddress}{%
+  IRISA, Campus Universitaire de Beaulieu \\
+  35042 Rennes cedex}
+\setkomavar{backaddress}{}
+
+\setkomavar{fromemail}{damien.pollet@irisa.fr}
+
+\setkomavar{place}{Rennes}
+% Local Variables:
+% coding: utf-8
+% mode: latex
+% End:

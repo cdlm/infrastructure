@@ -1,0 +1,55 @@
+\ProvidesFile{lstsmalltalk.sty}
+    [2006/02/13 0.1 listings Smalltalk definitions file]
+%
+\RequirePackage{listings}%
+\RequirePackage{graphicx}%
+\RequirePackage{stmaryrd}%
+%
+\lstdefinelanguage{Smalltalk}{
+  morekeywords={self,super,true,false,nil},
+  morestring=[d]',
+  morecomment=[s]{"}{"},
+  alsoletter={\#:},
+  literate=
+    {.}{{\bfseries .}}1
+    {;}{{\bfseries ;}}1
+    {[}{{\bfseries [}}1
+    {]}{{\bfseries ]}}1
+    {:}{{\bfseries :}}1
+%    {|}{{\ttfamily\textbar{}}}1
+    {\#}{{\ttfamily \#}}1
+    {\$}{{\ttfamily \$}}1
+    {:=}{{$\mathrel{\mathop:}=$\ }}2%$\shortleftarrow$\ }}2
+    {^}{{\raisebox{0.5ex}{$\wedge$}}}1%\raisebox{1.5ex}{\scalebox{1}[-1]{$\lightning$}}\,}}2%\textuparrow\ }}2
+    {>>}{{$\gg$\ }}2,
+  tabsize=4
+}[keywords,comments,strings]%
+\endinput
+%%%
+%%% And now for something completely different... Some stupid example,
+%%% to put in a file to test this language definition...
+%%%
+% \lstset{
+%   inputencoding=utf8,
+%   columns=fullflexible,
+%   basicstyle=\Large
+% }
+% 
+% \begin{lstlisting}[language=Smalltalk]
+% SomeClass >> testNumberOfRelationships
+%   "this is a test"
+%   | bazEntity |
+%   self assert: fooEntity numberOfOutgoingRelationships = 1.
+%   bazEntity := MyEntity named: #baz.
+%   MyRelationship from: fooEntity to: bazEntity.
+%   self assert: fooEntity numberOfOutgoingRelationships = 2.
+%   string := 'Hello, world!'
+%   aCollection do: [ each |
+%     | local |
+%     each someMessage ].
+%   ^ string
+% \end{lstlisting}
+%%%%%%%%
+% Local Variables:
+% coding: utf-8
+% End:

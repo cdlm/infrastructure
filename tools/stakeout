@@ -1,0 +1,65 @@
+#!/usr/bin/env ruby
+##
+# Automatic build
+
+require 'rubygems'
+
+# needs a hack so that require 'term-ansicolor' works with the gem:
+# cd $PREFIX/lib/ruby/gems/1.8/gems/term-ansicolor-1.0.2/lib
+# sudo ln -s term/ansicolor.rb term-ansicolor.rb
+gem 'term-ansicolor'
+require 'term/ansicolor'
+require 'io/wait'
+
+class String
+  include Term::ANSIColor
+end
+LABEL = "[stakeout]".bold.yellow
+
+if ARGV.size < 2
+  puts "Usage:".bold + " stakeout.rb <command> [files to watch]+".cyan
+  exit 1
+end
+
+trap("INT") do
+  puts "#{LABEL} terminated."
+  exit
+end
+
+command = ARGV.shift
+files = {}
+runs = 0
+
+ARGV.each do |arg|
+  Dir[arg].each { |file|
+    files[file] = File.mtime(file)
+  }
+end
+
+loop do
+  
+  sleep 3
+  reason = ""
+  
+  changed_file, last_changed = files.find { |file, last_changed|
+    File.mtime(file) > last_changed
+  }
+  if changed_file
+    files[changed_file] = File.mtime(changed_file)
+    reason << " #{changed_file} changed,"
+  end
+  
+  kbd_typed = $stdin.ready?
+  $stdin.sysread(kbd_typed) if kbd_typed
+  if kbd_typed
+    reason << " user request,"
+  end
+
+  if changed_file or kbd_typed
+    puts "#{LABEL}#{reason} running #{command.cyan}"
+    system(command)
+    runs += 1
+    puts "#{LABEL} done (#{runs})"
+  end
+  
+end

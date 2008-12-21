@@ -1,0 +1,37 @@
+require 'rake'
+
+TEXMAIN = 'document'
+
+task :default => [ :article ]
+
+desc "Build the presentation version (#{TEXMAIN}.slides.pdf)"
+task :slides => [ "#{TEXMAIN}.slides.pdf" ]
+
+desc "Build the article version (#{TEXMAIN}.article.pdf)"
+task :article => [ "#{TEXMAIN}.article.pdf" ]
+
+desc "Run xpdf on #{TEXMAIN}.article.pdf"
+task :view => [ :article ] do
+  sh "xpdf -z page #{TEXMAIN}.article.pdf > /dev/null 2>&1"
+end
+
+desc "Start automagic recompilation"
+task :stakeout do
+  sh "stakeout rake #{TEXMAIN}.tex"
+end
+
+file "#{TEXMAIN}.article.tex" => [ "#{TEXMAIN}.tex" ] do |t| sh "touch #{t.name}" end
+file "#{TEXMAIN}.slides.tex"  => [ "#{TEXMAIN}.tex" ] do |t| sh "touch #{t.name}" end
+
+rule '.pdf' => [
+  proc { |tn| tn.sub(/.pdf$/, '.tex') }
+] do |t|
+  sh "pdflatex #{t.source}"
+end
+
+desc "Remove byproduct files"
+task :clean do
+  Dir.glob("#{TEXMAIN}{,.article,.slides}.{aux,log,toc,nav,out,snm}").each do |f|
+    File.delete(f)
+  end
+end

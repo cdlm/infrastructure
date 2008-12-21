@@ -1,0 +1,42 @@
+require 'rake'
+
+TEXMAIN = 'document'
+VARIANTS = [ 'document' ] # could be a hash main => [variants]
+MAINDEPS = [ 'layout.lco', 'dpollet-irisa.lco', 'dpollet-perso.lco' ]
+
+def doc(variant) "#{variant}.pdf" end
+def src(variant) "#{variant}.tex" end
+
+task :default => VARIANTS.collect { |v| doc(v) }
+
+desc "Start automagic recompilation"
+task :stakeout do
+  sh "stakeout rake #{src(TEXMAIN)} #{MAINDEPS.join(' ')}"
+end
+
+VARIANTS.each do |v|
+  desc "Run xpdf on #{doc(v)}"
+  task :"view-#{v}" => [ doc(v) ] do
+    sh "xpdf -z page #{doc(v)} > /dev/null 2>&1"
+  end
+
+  desc "Compile variant '#{v}'"
+  task "#{doc(v)}" => [ src(TEXMAIN) ] + MAINDEPS do
+    sh "pdflatex --file-line-error-style --jobname #{v} #{TEXMAIN}"
+  end
+end
+
+rule '.pdf' => [
+  proc { |tn| tn.sub(/.pdf$/, '.tex') }
+] do |t|
+  sh "pdflatex --file-line-error-style #{t.source}"
+end
+
+desc "Remove byproduct files"
+task :clean do
+  VARIANTS.each do |v|
+    Dir.glob("#{v}.{aux,log,toc}").each do |f|
+      File.delete(f)
+    end
+  end
+end

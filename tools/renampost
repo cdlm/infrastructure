@@ -1,0 +1,43 @@
+#!/usr/bin/env ruby
+
+if ARGV.size < 1
+  puts <<-HELP
+Usage: renampost.rb <file.mp> [mpost options]+
+
+Runs mpost and renames the output files for direct use by pdflatex.
+
+Renames files according to special '%>' comments after the 'beginfig'
+declarations in the metapost source, eg:
+    beginfig(42); %> foobar
+will result in file.42 being renamed as file_foobar.mps
+HELP
+
+  exit 1
+end
+
+file = ARGV.shift
+options = ARGV
+
+def scan_names(mpfile)
+  names = {}
+  File.new(mpfile).each_line do |line|
+    m = /beginfig\((\d+)\);\s*%>\s*(\w+)/.match(line)
+    next if m.nil?
+    names[m[1]] = m[2]
+  end
+  return names
+end
+
+unless system('mpost', file, *options)
+  $stderr.puts "Metapost failed."
+  exit $?
+end
+
+puts "Renaming metapost output:"
+
+base = File.join(File.dirname(file), File.basename(file, '.mp'))
+scan_names(file).each do |fig,name|
+  mpsname = "#{base}_#{name}.mps"
+  File.rename("#{base}.#{fig}", mpsname)
+  puts mpsname
+end

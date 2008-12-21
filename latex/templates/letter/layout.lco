@@ -1,0 +1,26 @@
+\ProvidesFile{layout.lco}[2005/12/15 letter class option]
+\KOMAoptions{paper=a4}
+\LoadLetterOption{DINmtext}
+\KOMAoptions{fromalign=left}
+\KOMAoptions{foldmarks=false}
+\KOMAoptions{fromemail=true}
+%\KOMAoptions{fromrule=true}
+\setkomavar{emailseparator}{~:~}
+\setkomavar{faxseparator}{~:~}
+\setkomavar{phoneseparator}{~:~}
+\setkomavar{urlseparator}{~:~}
+\setkomavar{ccseparator}{~:~}
+\setkomavar{enclseparator}{~:~}
+\KOMAoptions{subject=titled}
+\KOMAoptions{locfield=wide}
+\setkomafont{pagehead}{\sffamily\small}
+\setkomafont{pagefoot}{\sffamily\small}
+\setkomafont{fromaddress}{\sffamily\small}
+\@addtoplength[.5]{toaddrhpos}{\textwidth}
+\renewcommand{\raggedsignature}{\raggedleft}
+\@setplength{sigindent}{5em}
+\@setplength{sigbeforevskip}{1.5cm}
+% Local Variables:
+% coding: utf-8
+% mode: latex
+% End:

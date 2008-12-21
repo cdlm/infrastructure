@@ -1,0 +1,18 @@
+\ProvidesFile{dpollet-perso.lco}[2005/12/15 letter class option]
+
+\setkomavar{fromname}{Damien \textsc{Pollet}}
+
+\setkomavar{fromaddress}{%
+  24 avenue des Français Libres\\
+  35000 Rennes}
+\setkomavar{backaddress}{}
+
+\setkomavar{fromemail}{damien.pollet@gmail.com}
+\setkomavar{fromphone}{02 23 404 808 --- 06 20 38 39 46}
+% phone needs \KOMAoptions{fromphone=true}
+
+\setkomavar{place}{Rennes}
+% Local Variables:
+% coding: utf-8
+% mode: latex
+% End:

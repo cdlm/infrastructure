@@ -1,0 +1,150 @@
+% -*- coding: utf-8; -*-
+% \documentclass[%
+% 14pt,compress,%
+% svgnames,nodvipsnames,%
+% notes=show%
+% ]{beamer}
+
+\usepackage[english]{babel}
+\usepackage{lhelp}
+\usepackage[utf8x]{inputenc}
+%\usepackage[T1]{fontenc}
+
+
+\mode<article>{
+  \definecolor{linkcolor}{rgb}{0,.2,0}
+  \definecolor{urlcolor}{rgb}{0,0,.2}
+  \usepackage[pdftex,colorlinks,linkcolor=linkcolor,urlcolor=urlcolor]{hyperref}
+  \usepackage{microtype}
+  \usepackage[cm]{fullpage}
+  \setlength{\columnsep}{3em}\setlength{\columnseprule}{.4pt}
+  \raggedright
+}
+
+\mode<presentation>{
+  \setbeamercolor{structure}{fg=SlateBlue!50!White}
+  \setbeamercolor{normal text}{fg=White,bg=DarkSlateBlue!20!Black}
+  \setbeamercolor{alerted text}{fg=Tomato!90!normal text.fg}
+  \setbeamercolor{example text}{fg=SeaGreen!50!normal text.fg}
+  \setbeamerfont{block title}{size=\scriptsize,series=\bfseries}
+  \setbeamercolor{block body}{bg=structure.fg!10!normal text.bg}
+  \setbeamercolor{block body example}{bg=example text.fg!10!normal text.bg}
+  \setbeamerfont{block body}{size=\small}
+  \setbeamercolor{note page}{fg=Black}
+
+  \setbeamertemplate{navigation symbols}{}
+
+  %\usetheme{Warsaw}
+  \setbeamercovered{transparent}
+
+  \AtBeginSubsection[]{%
+    \begin{frame}<beamer>
+      \frametitle{Outline}
+      \tableofcontents[currentsection,currentsubsection]
+    \end{frame}}
+  \setbeamertemplate{headline}{\blap{\vskip2ex\hfill\hbox{\insertframenumber\quad}}}
+  \setbeamertemplate{footline}{%
+    \begin{beamercolorbox}{section in head/foot}%
+      \vskip2pt%
+      \insertnavigation{\paperwidth}%
+      \vskip2pt%
+    \end{beamercolorbox}}
+  % \beamerdefaultoverlayspecification{<+->}
+
+  \newcommand{\cmd}[1]{{\usebeamercolor[fg]{example text}\texttt{#1}}}
+}
+
+
+
+\title    {title}
+\subtitle {subtitle}
+\author   {Damien Pollet}
+\institute{Triskell --- Irisa / Université de Rennes 1}
+\date[2006]{Where, 2006}
+
+
+
+\begin{document}
+
+\mode<article>{
+  \maketitle
+  \tableofcontents
+}
+
+\mode<presentation>{
+  \begin{frame}
+    \titlepage
+  \end{frame}
+  
+  \begin{frame}
+    \frametitle{Outline}
+    \tableofcontents
+    % You might wish to add the option [pausesections]
+  \end{frame}
+}
+
+
+\section{Motivation}
+
+\begin{frame}
+  \frametitle{Slide title}
+  \note{a note}
+
+  blah blah blah:
+  \begin{itemize}[<+->]
+  \item foo
+  \item bar
+  \item quux
+  \end{itemize}
+
+  \mode<presentation>{\vfill}
+  \visible<+->{\begin{center}
+      \alert{Blah!}
+    \end{center}}
+\end{frame}
+
+
+\section*{Summary}
+
+\begin{frame}
+  \frametitle<presentation>{Summary}
+  \begin{itemize}
+  \item The \alert{first main message} of your talk, \\
+    in one or two lines.
+  \item The \alert{second main message} of your talk, \\
+    in one or two lines.
+  \item Perhaps a \alert{third message}, but \\
+    not more than that.
+  \end{itemize}
+  
+  \mode<presentation>{\vskip0pt plus.5fill}
+  \begin{itemize}
+  \item Outlook
+    \begin{itemize}
+    \item Something you haven't solved.
+    \item Something else you haven't solved.
+    \end{itemize}
+  \end{itemize}
+\end{frame}
+
+
+
+\appendix
+\section<presentation>*{\appendixname}
+\subsection<presentation>*{For Further Reading}
+
+\begin{frame}[allowframebreaks]
+  \frametitle<presentation>{For Further Reading}
+    
+  \begin{thebibliography}{10}
+  \bibitem{foo:www} Foo home.
+    \newblock \url{http://foo.org}
+ 
+  \bibitem{bar:www} Bar home.
+    \newblock \url{http://bar.org}
+  \end{thebibliography}
+\end{frame}
+
+\end{document}
+
+

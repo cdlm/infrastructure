@@ -1,0 +1,39 @@
+\documentclass[
+paper=a4,
+layout,
+fontsize=11pt
+]{scrlttr2}
+
+\usepackage[french]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{microtype}
+%\usepackage{fullpage}
+\usepackage{textcomp}
+\usepackage{lhelp}
+\usepackage{xspace}
+
+\begin{document}
+
+\begin{letter}{Desty Nataire\\
+    par là\\
+    loin\\
+    42051 TrèTrèLoint}
+  \LoadLetterOption{dpollet-irisa}
+  \setkomavar{subject}[Objet : ]%
+  {un exemple de lettre}
+
+  \opening{Monsieur,}
+
+  Bla, bla.
+
+  \closing{En vous souhaitant bonne réception, je vous prie d'agréer,
+    monsieur, l'expression de mes sentiments distingués.}
+
+  \ps{au fait...}
+  \encl{ci-joints...}
+\end{letter}
+
+\end{document}
+% Local Variables:
+% coding: utf-8
+% End:

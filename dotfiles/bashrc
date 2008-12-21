@@ -1,0 +1,89 @@
+#!/bin/bash
+# interactive non-login shell setup
+
+export PATH=$HOME/bin:/usr/local/bin:/Developer/Tools:$PATH
+
+# Fink setup
+#if [ -e '/sw/bin/init.sh' ]
+#then
+#    source /sw/bin/init.sh
+#fi
+
+# Darwinports setup
+export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+export MANPATH=/opt/local/share/man:`manpath -q`
+export INFOPATH=/opt/local/share/info:$INFOPATH
+
+# overwrites tetex from fink and darwinports
+# arch=`uname -p`
+# texliveVersion=2007
+# texliveBinaries=/usr/local/texlive/$texliveVersion/bin/$arch-darwin
+# export PATH=$HOME/bin:$texliveBinaries:$PATH
+# export MANPATH=/usr/local/texlive/$texliveVersion/texmf/doc/man:`manpath -q`
+# export INFOPATH=/usr/local/texlive/$texliveVersion/texmf/doc/info:$INFOPATH
+export TEXINPUTS=./local//:
+
+export PATH=$PATH:/usr/X11R6/bin
+export MANPATH=$HOME/Tools/share/man:`manpath -q`
+
+# Rubygems
+export RUBYLIB=/usr/local/lib/ruby/site_ruby/1.8:/usr/local/lib/ruby/site_ruby/1.8/$arch-darwin
+#:/usr/local/lib/ruby/site_ruby
+#export GEM_HOME=/usr/local/lib/ruby/gems
+#export PATH=$GEM_HOME/bin:$PATH
+
+export LC_CTYPE=en_US.UTF-8
+#export EDITOR="see -rw -j Shell"
+export EDITOR="mate -w"
+export PAGER="less -i"
+export CVS_RSH="ssh"
+export CVS_EDITOR="see -rw -j CVS"
+export SVKDIFF="svkopendiff"
+
+nameMachineDirPrompt='\[\e[01;32m\]\u\[\e[00;32m\]@\[\e[01;32m\]\h \[\e[01;33m\]\W \[\e[00;00m\]'
+hourDirPrompt='\[\e[00;32m\]\A \[\e[01;33m\]\W \[\e[00m\]'
+dirPrompt='\[\e[00;01;32;07m\] \[\e[27m\] \W \[\e[00m\]'
+export PS1=$dirPrompt
+export PS2='\[\e[00;32m\]> \[\e[00;00m\]'
+export LSCOLORS='ExGxFxDaCxDaDaAcAcAeEx'
+
+# SubEthaEdit has a command-line tool now
+alias smu='open -a Smultron'
+alias skim='open -a Skim'
+alias irb='irb -r irb/completion'
+alias e='emacsclient -n'
+# alias texhash='sudo $texliveBinaries/texhash'
+#alias xfig='open-x11 xfig'
+#alias emacs='open-x11 emacs'
+#alias gimp='open-x11 gimp'
+
+alias l='ls'
+alias la='ls -A'
+alias ll='ls -l'
+alias ls='ls -GF' # colors
+alias top='top -do cpu'
+alias tree='tree -ACF'
+alias nano='nano -w'
+alias rubber='rubber --pdf --force' # --into rubber-build
+alias snano='sudo nano -w'
+alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
+alias pdflatex='pdflatex -8bit -etex -file-line-error' 
+
+alias lsecvs='cvs -d :ext:dpoll@cvslistic:/raid1/cvsdata/ls-lse'
+alias scg_cvs_tunnel="screen -S scg_cvs_tunnel -d -m \
+	ssh -x -N -o 'BatchMode=yes' -i ~/.ssh/id_scgcvs.dsa \
+	-L 2401:localhost:2401 scgcvs@kilana.unibe.ch"
+alias scgcvs='cvs -d :pserver:pollet@localhost:/home/scg/cvs'
+alias cvslistic='cvs -d dpoll@cvslistic.univ-savoie.fr:/raid1/cvsdata/ls-lse'
+alias darwin-wakeup='wakeonlan 00:11:24:38:94:80'
+
+for f in ~/.bash.d/functions/*; do
+   source $f
+done
+
+if [ -f /opt/local/etc/bash_completion ]; then
+   source /opt/local/etc/bash_completion
+   for f in ~/.bash.d/completion/*; do
+      source $f
+   done
+fi
