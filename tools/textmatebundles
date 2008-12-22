@@ -1,0 +1,57 @@
+#!/bin/bash
+
+prefix="/Library/Application Support/TextMate"
+svnUrl="http://svn.textmate.org/trunk"
+
+svnProjects=( \
+	Bundles \
+	PlugIns \
+	Support \
+	Themes \
+	)
+
+gitBundles=( \
+	Git=git://gitorious.org/git-tmbundle/mainline.git \
+	smalltalk=git://github.com/AntonyBlakey/smalltalk.tmbundle.git \
+	cweb=git://github.com/michaelmelanson/cweb-tmbundle.git \
+	)
+
+function initialize() {
+	echo 'No bundles in here, checking them out from scratch'
+	mkdir -p "${prefix}"
+	cd "${prefix}"
+	for p in ${svnProjects}; do
+		svn checkout ${svnUrl}/${p}
+	done
+	for b in ${gitBundles[@]}; do
+		git clone ${b#*=} ${b%%=*}.tmbundle
+	done
+}
+
+function update() {
+	echo "Updating bundles"
+	cd "${prefix}"
+	for p in ${svnProjects}; do
+		svn update ${p}
+	done
+	for b in ${gitBundles[@]}; do
+		pushd ${b%%=*}.tmbundle
+		git pull
+		popd
+	done
+}
+
+function reload() {
+	if (killall -s TextMate > /dev/null); then # only reload if TM is running
+		echo 'Reloading bundles'
+		osascript -e 'tell application "TextMate" to reload bundles'
+	fi
+}
+
+export LC_CTYPE=en_US.UTF-8
+if [[ ! -d "${prefix}" ]]; then
+	initialize
+else
+	update
+fi
+reload
