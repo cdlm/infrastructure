@@ -20,24 +20,36 @@ function initialize() {
 	echo 'No bundles in here, checking them out from scratch'
 	mkdir -p "${prefix}"
 	cd "${prefix}"
-	for p in ${svnProjects}; do
+	for p in ${svnProjects[@]}; do
 		svn checkout ${svnUrl}/${p}
 	done
 	for b in ${gitBundles[@]}; do
-		git clone ${b#*=} ${b%%=*}.tmbundle
+		bundle="Bundles/${b%%=*}.tmbundle"
+		if [[ -d ${bundle}/.svn ]]; then
+			echo "${bundle} already here from SVN, not overwriting from Git"
+		else
+			git clone ${b#*=} Bundles/${b%%=*}.tmbundle
+		fi
 	done
 }
 
 function update() {
 	echo "Updating bundles"
 	cd "${prefix}"
-	for p in ${svnProjects}; do
+	for p in ${svnProjects[@]}; do
+		echo "SVN: ${p}"
 		svn update ${p}
 	done
 	for b in ${gitBundles[@]}; do
-		pushd ${b%%=*}.tmbundle
-		git pull
-		popd
+		bundle="Bundles/${b%%=*}.tmbundle"
+		if [[ -d ${bundle}/.svn ]]; then
+			echo "${bundle} already here from SVN, not updating with Git"
+		else
+			echo "Git: ${bundle}"
+			pushd ${bundle} >/dev/null
+			git pull
+			popd >/dev/null
+		fi
 	done
 }
 
