@@ -9,7 +9,7 @@ bookmark_usage() {
 		Usage: bookmark NAME
 		       bookmark -o NAME
 		       bookmark [-h] [-l [NAMEs]]
-		       bookmark -a PATH [NAME]
+		       bookmark -a NAME
 		       bookmark -d NAME
 	HELP
 }
