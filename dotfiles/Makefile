@@ -2,7 +2,7 @@
 
 DOTDIRS = bash.d
 DOTFILES = \
-	$(foreach dir, $(DOTDIRS), $(shell find $(dir) -type f)) \
+	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
 	gitconfig gitignore
 
@@ -19,8 +19,8 @@ DESTFILES = $(foreach file, $(DOTFILES), $(DEST)/.$(file))
 treediff:
 	@unset tmp; DEST=$(DEST); \
 	tmp=`mktemp treediff.XXXX`; \
-	find $(DESTFILES) | cut -c $$(($${#DEST} + 3))- | sort > $${tmp}; \
-	find $(DOTFILES) | sort | diff -u - $${tmp}; \
+	find $(DESTDIRS) $(DESTFILES) | sort | uniq | cut -c $$(($${#DEST} + 3))- > $${tmp}; \
+	find $(DOTDIRS) $(DOTFILES) | sort | uniq | diff --unified=0 - $${tmp} | tail -n +4; \
 	rm $${tmp}
 
 diff:
