@@ -5,12 +5,15 @@ DOTFILES = \
 	$(foreach dir, $(DOTDIRS), $(shell find $(dir) -type f)) \
 	bash_profile bashrc \
 	gitconfig gitignore
-# DOTFILES = \
-# 	bash.d \
-# 	bash_profile bashrc \
-# 	gitconfig gitignore
 
+# this could be overriden from command line to install somewhere else
 DEST = $(HOME)
+
+###
+### here be the serious stuff
+###
+
+DESTDIRS = $(foreach dir, $(shell find $(DOTDIRS) -type d), $(DEST)/.$(dir))
 DESTFILES = $(foreach file, $(DOTFILES), $(DEST)/.$(file))
 
 treediff:
@@ -23,8 +26,10 @@ treediff:
 diff:
 	@for f in $(DOTFILES); do diff -uN $${f} $(DEST)/.$${f}; done
 
-install: $(DESTFILES)
-	
-$(DEST)/.%: %
-	@mkdir -p $(@D)
+install: $(DESTDIRS) $(DESTFILES)
+
+$(DESTFILES): $(DEST)/.%: %
 	cp -r $< $@
+
+$(DESTDIRS):
+	mkdir -p $(@)
