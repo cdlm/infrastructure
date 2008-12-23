@@ -1,15 +1,17 @@
 #!/bin/bash
 # interactive non-login shell setup
 
-
+# modularized portable configs
 for f in ~/.bash.d/rc/*; do
    source $f
 done
 
+
+# ad-hoc stuff
 export TEXINPUTS=./local//:
 
-# export MANPATH=$HOME/Tools/share/man:`manpath -q`
 
+# utilities
 for f in ~/.bash.d/functions/*; do
    source $f
 done

@@ -1,13 +1,6 @@
 #!/bin/bash
 # interactive login shell setup
 
-# Share command history across terminals, lookup if path cache outdated
-shopt -s histappend checkhash
-
-export LC_CTYPE=en_US.UTF-8
-
-export PROMPT_COMMAND='history -a'
-
 # Source global definitions
 if [ -f ~/.bashrc ]; then
     . ~/.bashrc
