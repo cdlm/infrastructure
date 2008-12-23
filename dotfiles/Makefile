@@ -15,13 +15,14 @@ DEST = $(HOME)
 
 DESTDIRS = $(foreach dir, $(shell find $(DOTDIRS) -type d), $(DEST)/.$(dir))
 DESTFILES = $(foreach file, $(DOTFILES), $(DEST)/.$(file))
+SHELL=/bin/bash
+export DEST
 
 treediff:
-	@unset tmp; DEST=$(DEST); \
-	tmp=`mktemp treediff.XXXX`; \
-	find $(DESTDIRS) $(DESTFILES) | sort | uniq | cut -c $$(($${#DEST} + 3))- > $${tmp}; \
-	find $(DOTDIRS) $(DOTFILES) | sort | uniq | diff --unified=0 - $${tmp} | tail -n +4; \
-	rm $${tmp}
+	@diff --unified=0 \
+	  <( find $(DESTDIRS) $(DESTFILES) | sort | uniq | sed s:$${DEST}/.:: ) \
+	  <( find $(DOTDIRS) $(DOTFILES) | sort | uniq ) \
+	| tail -n +4
 
 diff:
 	@for f in $(DOTFILES); do diff -uN $${f} $(DEST)/.$${f}; done
