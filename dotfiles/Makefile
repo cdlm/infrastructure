@@ -25,6 +25,6 @@ diff:
 
 install: $(DESTFILES)
 	
-$(HOME)/.%: %
+$(DEST)/.%: %
 	@mkdir -p $(@D)
 	cp -r $< $@
