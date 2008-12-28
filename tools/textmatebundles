@@ -17,7 +17,7 @@ gitBundles=( \
 	)
 
 function initialize() {
-	echo 'No bundles in here, checking them out from scratch'
+	echo "No bundles in ${prefix}, checking them out from scratch"
 	mkdir -p "${prefix}"
 	cd "${prefix}"
 	for p in ${svnProjects[@]}; do
@@ -34,7 +34,7 @@ function initialize() {
 }
 
 function update() {
-	echo "Updating bundles"
+	echo "Updating bundles in ${prefix}"
 	cd "${prefix}"
 	for p in ${svnProjects[@]}; do
 		echo "SVN: ${p}"
