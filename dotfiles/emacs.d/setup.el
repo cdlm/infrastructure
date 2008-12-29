@@ -10,4 +10,3 @@
 (elisp-load-dir "~/.emacs.d/rc")
 
 ;; misc one-liners
-(require 'tabbar)
