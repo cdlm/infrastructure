@@ -1,6 +1,6 @@
-.PHONY: treediff diff install
+.PHONY: default treediff diff install
 
-DOTDIRS = bash.d
+DOTDIRS = bash.d emacs.d
 DOTFILES = \
 	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
@@ -12,6 +12,8 @@ DEST = $(HOME)
 ###
 ### here be the serious stuff
 ###
+
+default: treediff
 
 DESTDIRS = $(foreach dir, $(shell find $(DOTDIRS) -type d), $(DEST)/.$(dir))
 DESTFILES = $(foreach file, $(DOTFILES), $(DEST)/.$(file))
@@ -31,6 +33,9 @@ install: $(DESTDIRS) $(DESTFILES)
 
 $(DESTFILES): $(DEST)/.%: %
 	cp -r $< $@
+
+$(DEST)/.emacs:
+	echo '(load-file "$(DEST)/.emacs.d/setup.el")' >> $@
 
 $(DESTDIRS):
 	mkdir -p $(@)
