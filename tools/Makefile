@@ -1,6 +1,7 @@
 .PHONY: diff install
 
-SRCFILES = stakeout textmatebundles
+SRCFILES = deflac stakeout textmatebundles
+
 
 DEST = $(HOME)/bin
 DESTFILES = $(SRCFILES:%=$(DEST)/%)
