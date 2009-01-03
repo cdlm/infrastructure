@@ -1,4 +1,4 @@
-.PHONY: default treediff diff install
+.PHONY: default treediff diff backup install
 
 DOTDIRS = bash.d emacs.d
 DOTFILES = \
@@ -28,6 +28,11 @@ treediff:
 
 diff:
 	@for f in $(DOTFILES); do diff -uN $${f} $(DEST)/.$${f}; done
+
+backup:
+	for f in $(DESTFILES); do \
+	  if [[ -f $${f} ]]; then mv $${f}{,.old}; fi; \
+	done
 
 install: $(DESTDIRS) $(DESTFILES)
 
