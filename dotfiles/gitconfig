@@ -12,7 +12,7 @@
 	svnci = svn dcommit
 	svnup = svn rebase
 	tgz = !bash -c 'git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz' --
-	ignoretex = !bash -c 'echo -e "${1:-*}.pdf\\\\n*.aux\\\\n*.bbl\\\\n*.blg\\\\n*.log\\\\n*.out\\\\n*.toc" | tee -a .git/info/exclude' --
+	ignoretex = !bash -c 'echo -e "${1:-*}.pdf\\\\n*.aux\\\\n*.bbl\\\\n*.blg\\\\n*.glg\\\\n*.glo\\\\n*.gls\\\\n*.log\\\\n*.out\\\\n*.toc" | tee -a .git/info/exclude' --
 	ignore = !bash -c 'echo -e "${1}" >> .git/info/exclude' --
 
 [diff]
