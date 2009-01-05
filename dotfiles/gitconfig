@@ -4,6 +4,7 @@
 	
 [alias]
 	changes = diff --name-status -r
+	dst = !bash -c 'git diff $* | diffstat' --
 	st = status
 	ci = commit
 	co = checkout
