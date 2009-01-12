@@ -4,7 +4,8 @@ DOTDIRS = bash.d emacs.d
 DOTFILES = \
 	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
-	gitconfig gitignore
+	gitconfig gitignore \
+	latexmkrc
 
 # this could be overriden from command line to install somewhere else
 DEST = $(HOME)
