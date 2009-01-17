@@ -1,0 +1,60 @@
+#!/usr/bin/env ruby
+
+require 'rubygems'
+require 'appscript'
+
+include Appscript
+
+begin
+  omnigraffle = app("OmniGraffle Professional 5")
+rescue
+  omnigraffle = app("OmniGraffle")
+ensure
+  fail "OmniGraffle not found!" if omnigraffle.nil?
+end
+
+open = omnigraffle.documents.path.get
+puts open
+
+### makefile rule:
+
+MAKERULE = <<-EOF
+.SUFFIXES: .graffle .pdf
+
+.graffle.pdf:
+	@echo Converting $< to PDF...
+	@graffle2pdf $< $@
+EOF
+
+### original in AppleScript:
+
+# on run argv
+# 	-- Current working directory
+# 	set PWD to system attribute "PWD"
+# 	-- Relative paths
+# 	set FileName to PWD & "/" & item 1 of argv
+# 	set PDFFileName to PWD & "/" & item 2 of argv
+# 
+# 	set alreadyOpen to isOpen(FileName)
+# 
+# 	tell application "Finder"
+# 		set GraffleFile to POSIX file FileName as alias
+# 	end tell
+# 	tell application "OmniGraffle.app"
+# 		open GraffleFile
+# 		tell front document
+# 			save in POSIX file PDFFileName
+# 			if (alreadyOpen = false) then close
+# 		end tell
+# 	end tell
+# 	--return PDFFileName
+# end run
+# 
+# on isOpen(aDoc)
+# 	tell application "OmniGraffle.app"
+# 		repeat with doc in documents
+# 			if («class ppth» of doc as string) = aDoc then return true
+# 		end repeat
+# 		return false
+# 	end tell
+# end isOpen
