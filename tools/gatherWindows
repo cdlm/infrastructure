@@ -1,0 +1,34 @@
+#!/usr/bin/env ruby
+require 'rubygems'
+require 'appscript'
+require 'log4r'
+
+
+## names of processes to ignore
+IGNORE = [ 'DashboardClient', 'teleportd' ]
+
+
+LOG = Log4r::Logger.new 'out'
+LOG.outputters = Log4r::Outputter.stdout
+LOG.level = Log4r::ERROR unless ARGV.include? '-d'
+
+
+FINDER = Appscript.app 'Finder'
+MENUBAR_HEIGHT = 22
+_, _, width, height = FINDER.desktop.window.bounds.get
+
+SE = Appscript.app 'System Events'
+SE.application_processes.get.each do |process|
+  unless IGNORE.include? process.name.get
+    LOG.debug { "Process \"#{process.name.get}\"" }
+    process.windows.get.each do |window|
+      x, y = window.position.get
+      msg = "   \"#{window.title.get}\" at (#{x},#{y})"
+      if x < 0 or y < MENUBAR_HEIGHT or x > width or y > height
+        window.position.set [0,MENUBAR_HEIGHT]
+        msg[0] = '*'
+      end
+      LOG.debug msg
+    end
+  end
+end

@@ -1,6 +1,6 @@
 .PHONY: diff install
 
-SRCFILES = deflac stakeout textmatebundles
+SRCFILES = deflac gatherWindows graffle2pdf stakeout textmatebundles
 
 
 DEST = $(HOME)/bin
@@ -10,7 +10,7 @@ diff:
 	@for f in $(SRCFILES); do diff -uN $${f} $(DEST)/$${f}; done
 
 install: $(DESTFILES)
-	
+
 $(DEST)/%: % $(DEST)
 	cp $< $@
 
