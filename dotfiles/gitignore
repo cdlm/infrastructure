@@ -13,3 +13,4 @@
 *.out
 *.toc
 *.fdb_latexmk
+*.pdfsync
