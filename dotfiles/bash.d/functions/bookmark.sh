@@ -1,3 +1,9 @@
+### bookmark.sh
+# Manage filesystem bookmarks in the shell
+#
+# Todo:
+#  - parse options as flags to act on a set of arguments ?
+
 # to be sourced
 # set -x
 
@@ -37,6 +43,11 @@ bookmark_defined() {
 bookmark_read() {
 	local bmkname=${1%%/*}
 	echo $(readlink ${BOOKMARK_DATA}/${bmkname})${1#${bmkname}}
+}
+
+bookmark_go() {
+	pushd "$(bookmark_read $1)"
+	terminal_setTabTitle $1
 }
 
 bookmark_list() {
@@ -92,18 +103,18 @@ bookmark() {
 		-e)
 			shift
 			$EDITOR "$(bookmark_read $1)"
+			bookmark_go "$1"
 			break;;
 		-o)
 			shift
 			open "$(bookmark_read $1)"
 			break;;
-		-t)
+		-t) # convenience
 			shift
 			terminal_setTabTitle "${1:-`basename $PWD`}"
 			break;;
 		*) # one argument but no option, go to the bookmark
-			pushd "$(bookmark_read $1)"
-			terminal_setTabTitle $1;;
+			bookmark_go "$1";;
 		esac
 	done
 }
