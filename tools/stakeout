@@ -1,13 +1,16 @@
-#!/usr/bin/env ruby
+#!/usr/bin/env ruby1.9
 ##
 # Automatic build
 
 require 'rubygems'
 
-# needs a hack so that require 'term-ansicolor' works with the gem:
+# without rubygems 1.9, this needs a hack so that require 'term-ansicolor' works with the gem:
 # cd $PREFIX/lib/ruby/gems/1.8/gems/term-ansicolor-1.0.2/lib
 # sudo ln -s term/ansicolor.rb term-ansicolor.rb
-gem 'term-ansicolor'
+#
+# this might be needed too
+# gem 'term-ansicolor'
+
 require 'term/ansicolor'
 require 'io/wait'
 
