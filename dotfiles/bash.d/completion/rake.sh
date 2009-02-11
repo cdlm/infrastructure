@@ -6,4 +6,5 @@ _rakecomplete() {
 }
 
 complete -o default -o nospace -F _rakecomplete rake
+complete -o default -o nospace -F _rakecomplete rake1.9
 # complete -C ~/Tools/scripts/rake-complete.rb -o default rote
