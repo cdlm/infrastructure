@@ -1,4 +1,4 @@
 $pdf_mode = 1;
-$pdflatex = 'pdflatex -synctex=1 -file-line-error -halt-on-error %O %S';
+$pdflatex = 'pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1 %O %S';
 $pdf_previewer = 'open %S';
 $pdf_update_method = 0;
