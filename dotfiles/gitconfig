@@ -13,8 +13,8 @@
 	svnci = svn dcommit
 	svnup = svn rebase
 	tgz = !bash -c 'git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz' --
-	ignore = !bash -c 'echo -e "${1}" >> .git/info/exclude' --
-	unignore = !bash -c 'sed -i .bak "/^${1}\\$/d" .git/info/exclude' --
+	ignore = !bash -c 'echo -e "${1}" >> .gitignore' --
+	unignore = !bash -c 'sed -i .bak "/^${1}\\$/d" .gitignore' --
 
 [diff]
 	renames = true
