@@ -20,4 +20,5 @@ alias nano='nano -w'
 alias rubber='rubber --pdf --force' # --into rubber-build
 alias snano='sudo nano -w'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
-alias pdflatex='pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1' 
+alias pdflatex='pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1'
+alias pwgen='pwgen -s 10 1'
