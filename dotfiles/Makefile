@@ -19,16 +19,17 @@ default: treediff
 DESTDIRS = $(foreach dir, $(shell find $(DOTDIRS) -type d), $(DEST)/.$(dir))
 DESTFILES = $(foreach file, $(DOTFILES), $(DEST)/.$(file))
 SHELL=/bin/bash
+DIFF=$(firstword $(shell which colordiff diff))
 export DEST
 
 treediff:
-	@diff --unified=0 \
+	@$(DIFF) --unified=0 \
 	  <( find $(DESTDIRS) $(DESTFILES) | sort | uniq | sed s:$${DEST}/.:: ) \
 	  <( find $(DOTDIRS) $(DOTFILES) | sort | uniq ) \
 	| tail -n +4
 
 diff:
-	@for f in $(DOTFILES); do diff -uN $${f} $(DEST)/.$${f}; done
+	@for f in $(DOTFILES); do $(DIFF) -uN $${f} $(DEST)/.$${f}; done
 
 backup:
 	for f in $(DESTFILES); do \
