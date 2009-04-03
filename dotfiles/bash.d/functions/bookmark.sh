@@ -8,7 +8,6 @@
 # set -x
 
 [ "$BOOKMARK_DATA" == "" ] && export BOOKMARK_DATA="${HOME}/.bash.d/bookmarks"
-[ -d "${BOOKMARK_DATA}" ] || mkdir -p "${BOOKMARK_DATA}"
 
 bookmark_usage() {
 	cat <<-HELP >&2
@@ -74,6 +73,9 @@ bookmark_delete() {
 
 ### Main function, others should be usable alone but...
 bookmark() {
+	# ensure the bookmark directory exists
+	[ -d "${BOOKMARK_DATA}" ] || mkdir -p "${BOOKMARK_DATA}"
+
 	# no argument
 	if [ $# == 0 ]; then
 		bookmark_list
