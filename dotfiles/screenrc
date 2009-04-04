@@ -1,0 +1,15 @@
+# .screenrc
+
+startup_message off
+
+# auto-name windows
+# needs '\[\033k\033\\\]' somewhere in $PS1
+shelltitle "$|bash"
+
+# name of machine, tabs per screen window
+caption always "%{= km}%H%{= kc} %-Lw%{=b bC}%n %t%{= kc}%+Lw%{= km} %=%l"
+
+# difference with encoding and defencoding ???
+defutf8 on
+utf8 on on
+

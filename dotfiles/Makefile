@@ -5,7 +5,8 @@ DOTFILES = \
 	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
 	gitconfig gitignore \
-	latexmkrc
+	latexmkrc \
+	screenrc
 
 # this could be overriden from command line to install somewhere else
 DEST = $(HOME)

@@ -5,12 +5,21 @@ shopt -s histappend checkhash
 
 export PROMPT_COMMAND='history -a'
 
-nameMachineDirPrompt='\[\e[01;32m\]\u\[\e[00;32m\]@\[\e[01;32m\]\h \[\e[01;33m\]\W \[\e[00;00m\]'
-hourDirPrompt='\[\e[00;32m\]\A \[\e[01;33m\]\W \[\e[00m\]'
-dirPrompt='\[\e[00;01;32;07m\] \[\e[27m\] \W \[\e[00m\]'
-export PS1=${dirPrompt}
+screenTitleEscape='\[\033k\033\\\]'
+promptEnd=' \[\e[0m\]'
+if [ $TERM != ${TERM/screen} ]; then
+	promptEnd=${screenTitleEscape}'\[\e[0;32m\] \$'${promptEnd}
+fi
+# nameMachineDirPrompt='\[\e[01;32m\]\u\[\e[00;32m\]@\[\e[01;32m\]\h \[\e[01;33m\]\W'
+# hourDirPrompt='\[\e[00;32m\]\A \[\e[01;33m\]\W'
+dirPrompt='\[\e[0;92;7m\] \[\e[27;1m\] \W'
+
+export PS1=${dirPrompt}${promptEnd}
 export PS2='\[\e[00;32m\]> \[\e[00;00m\]'
 
 export LSCOLORS='ExGxFxDaCxDaDaAcAcAeEx'
 lesspipe='/opt/local/bin/lesspipe.sh'
 [ -e ${lesspipe} ] && export LESSOPEN="| ${lesspipe} %s"
+
+
+unset screenTitleEscape promptEnd dirPrompt lesspipe
