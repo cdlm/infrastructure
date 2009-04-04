@@ -43,3 +43,4 @@ repositories=()
 for repo in ${repositories[@]}; do
 	alias "${repo%%=*}-checkout"="_scmcheckout '${repo%%=*}' '${repo#*=}'"
 done
+unset repo

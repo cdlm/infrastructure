@@ -22,3 +22,5 @@ if [ -f /opt/local/etc/bash_completion ]; then
       source $f
    done
 fi
+
+unset f

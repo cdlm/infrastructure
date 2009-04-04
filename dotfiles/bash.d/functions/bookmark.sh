@@ -83,10 +83,9 @@ bookmark() {
 	fi
 
 	# handle options
-	params=`getopt hleota:d: $*`
+	local params=`getopt hleota:d: $*`
 	[ $? == 0 ] || { bookmark_usage; return 1; }
 	set -- ${params/--}
-	open_editor=0
 	for param; do
 		case $param in
 		-h)
