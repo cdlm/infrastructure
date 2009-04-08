@@ -1,0 +1,34 @@
+set encoding=utf-8
+set fileencoding=utf-8
+
+syntax on
+filetype on
+filetype plugin on
+filetype plugin indent on
+
+set showmatch
+set wildmenu
+set ruler
+set showcmd
+"set number
+set wrap
+
+" Sane defaults for tabs
+set tabstop=4
+set shiftwidth=4
+set softtabstop=4
+set expandtab
+set smartindent
+
+" Remove GUI menu and toolbar
+set guioptions-=T
+"set guioptions-=m
+if(has("gui_running"))
+	colorscheme twilight2
+    set cursorline
+    "set cursorcolumn
+else
+    set t_Co=256
+    colorscheme gentooish "vibrantink
+endif
+
