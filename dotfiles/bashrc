@@ -9,6 +9,7 @@ done
 
 # ad-hoc stuff
 export TEXINPUTS=./local//:
+export RLWRAP_HOME=~/.rlwrap.d
 
 
 # utilities

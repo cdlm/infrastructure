@@ -1,6 +1,6 @@
 .PHONY: default treediff diff backup install
 
-DOTDIRS = bash.d emacs.d track_my_time.d
+DOTDIRS = bash.d emacs.d rlwrap.d track_my_time.d
 DOTFILES = \
 	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
