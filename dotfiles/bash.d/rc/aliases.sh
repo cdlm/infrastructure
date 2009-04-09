@@ -24,9 +24,3 @@ alias pdflatex='pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1'
 alias pwgen='pwgen -s 10 1'
 
 alias I='ruby1.9 ~/.track_my_time.d/track_my_time.rb'
-
-if [ -n `which rlwrap` ]; then
-
-  alias ocaml='rlwrap ocaml'
-
-fi
