@@ -14,7 +14,8 @@ gitBundles=( \
 	Git=git://gitorious.org/git-tmbundle/mainline.git \
 	smalltalk=git://github.com/AntonyBlakey/smalltalk.tmbundle.git \
 	cweb=git://github.com/michaelmelanson/cweb-tmbundle.git \
-	sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git
+	sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git \
+	clojure=git://github.com/nullstyle/clojure-tmbundle.git
 	)
 
 function initialize() {
