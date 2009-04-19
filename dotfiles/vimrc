@@ -29,6 +29,6 @@ if(has("gui_running"))
     "set cursorcolumn
 else
     set t_Co=256
-    colorscheme gentooish "vibrantink
+    colorscheme xoria256 "gentooish "vibrantink
 endif
 
