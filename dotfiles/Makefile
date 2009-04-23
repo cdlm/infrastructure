@@ -1,4 +1,4 @@
-.PHONY: default treediff diff backup install
+.PHONY: default treediff diff backup install postinstall
 
 DOTDIRS = bash.d emacs.d track_my_time.d vim
 DOTFILES = \
@@ -9,11 +9,11 @@ DOTFILES = \
 	screenrc \
 	vimrc
 
-# this could be overriden from command line to install somewhere else
+# This could be overriden from command line to install somewhere else
 DEST = $(HOME)
 
 ###
-### here be the serious stuff
+### Here be the serious stuff
 ###
 
 default: treediff
@@ -38,13 +38,25 @@ backup:
 	  if [[ -f $${f} ]]; then mv $${f}{,.old}; fi; \
 	done
 
-install: $(DESTDIRS) $(DESTFILES)
+install: $(DESTDIRS) $(DESTFILES) postinstall
 
-$(DESTFILES): $(DEST)/.%: %
+postinstall:
+
+$(DESTFILES): 
+$(DEST)/.%: %
 	cp -r $< $@
-
-$(DEST)/.emacs:
-	echo '(load-file "$(DEST)/.emacs.d/setup.el")' >> $@
 
 $(DESTDIRS):
 	mkdir -p $(@)
+
+###
+### File-specific stuff
+###
+
+$(DEST)/.emacs:
+	echo '(load "$(DEST)/.emacs.d/setup.el")' >> $@
+
+postinstall: $(patsubst %.el, %.elc, $(filter-out %setup.el, $(filter %.el, $(DESTFILES))))
+
+%.elc: %.el
+	emacs -batch -f batch-byte-compile $<
