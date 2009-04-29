@@ -1,0 +1,74 @@
+#! /bin/bash
+#
+# Requires ftxdumperfuser from http://developer.apple.com/textfonts/download/
+#
+# Usage: fixconsolas [files ...]
+#   When called with no arguments, it attempts to operate on every TrueType
+#     file in the current directory.
+#
+# References:
+#   http://bandes-storch.net/blog/2008/12/21/consolas-controlled/#comment-2042
+#   http://lists.macromates.com/textmate/2009-March/028282.html
+#
+# Author Daniel Stockman -- http://gist.github.com/79238
+
+# test for ftxdumperfuser in PATH
+ftxdumperfuser &>/dev/null
+if [ $? -eq 127 ]; then
+	echo "The ftxdumperfuser utility was not found!"
+	echo "Please download and install to continue:"
+	echo "    http://developer.apple.com/textfonts/download/"
+	exit $?
+fi
+
+# protect against spaces in filenames
+# hat tip Alexey Blinov
+# and http://tldp.org/LDP/abs/html/internalvariables.html#IFSH
+IFS=$'\n'
+
+if [ $# -eq 0 ]; then
+	# when no arguments passed,
+	# set positional parameters
+	# to ttf in current directory
+	set -- $(ls *.[Tt][Tt][Ff])
+fi
+
+unset IFS # reset to default
+
+E_NOARGS=85
+if [ -z "$1" ]; then
+	echo "Error: No TrueType font files found!"
+	echo "Usage: `basename $0` [Consolas.ttf]"
+	exit $E_NOARGS
+fi
+
+
+ASC="1884" # ascender
+DSC="514"  # descender, already negative in file
+GAP="0"    # lineGap
+
+D='[0-9]\{1,\}' # BRE equivalent of PCRE \d+
+
+# iterate through positional parameters
+for font
+do
+	# error-checking, what a concept
+	if [ ! -e "$font" ]; then
+		echo "$font does not exist."
+		continue
+	fi
+
+	# dump hhea table
+	ftxdumperfuser -t hhea "$font" | \
+	# replace desired values
+	sed \
+		-e "/ascender=/s/$D/$ASC/" \
+		-e "/descender=/s/$D/$DSC/" \
+		-e "/lineGap=/s/$D/$GAP/" | \
+	# fuse hhea table back into font
+	ftxdumperfuser -F -t hhea "$font"
+
+	echo "Fixed $font"
+done
+
+exit $?
