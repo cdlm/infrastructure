@@ -14,6 +14,7 @@ alias l='ls'
 alias la='ls -A'
 alias ll='ls -l'
 alias ls='ls -GF' # colors
+alias mkdir='mkdir -p'
 alias top='top -do cpu'
 alias tree='tree -ACF'
 alias nano='nano -w'
