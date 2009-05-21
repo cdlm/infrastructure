@@ -16,6 +16,9 @@
 	ignore = !bash -c 'echo -e "${1}" >> .gitignore' --
 	unignore = !bash -c 'sed -i .bak "/^${1}\\$/d" .gitignore' --
 
+[push]
+	default = tracking
+
 [diff]
 	renames = true
 
