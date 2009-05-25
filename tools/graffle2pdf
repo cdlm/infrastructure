@@ -15,7 +15,7 @@ EOF
 SCRIPT = <<EOF
 on run argv
 	-- Current working directory
-	set PWD to system attribute "PWD"
+	set PWD to do shell script "pwd" -- the env var is system attribute "PWD" but it breaks with make -C subdir
 	-- Relative paths
 	set FileName to PWD & "/" & item 1 of argv
 	set PDFFileName to PWD & "/" & item 2 of argv
