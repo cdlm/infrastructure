@@ -1,0 +1,10 @@
+# -*- ini -*-
+
+[extensions]
+        hgk =
+        hgext.mq =
+        hgext.fetch =
+        hgext.record =
+
+[hgk]
+        path = /opt/local/share/mercurial/contrib/hgk

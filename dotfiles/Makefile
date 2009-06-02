@@ -5,6 +5,7 @@ DOTFILES = \
 	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
 	gitconfig gitignore \
+	hgrc \
 	latexmkrc \
 	screenrc \
 	vimrc
