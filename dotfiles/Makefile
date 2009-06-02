@@ -8,6 +8,7 @@ DOTFILES = \
 	hgrc \
 	latexmkrc \
 	screenrc \
+	surfraw.conf \
 	vimrc
 
 # This could be overriden from command line to install somewhere else
