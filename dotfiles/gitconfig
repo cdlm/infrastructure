@@ -1,3 +1,5 @@
+# -*- ini -*-
+
 [user]
 	name = Damien Pollet
 	email = damien.pollet@inria.fr
