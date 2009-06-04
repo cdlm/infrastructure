@@ -129,7 +129,7 @@ bookmark_complete() {
 	prefix=${current%$suffix}
 	COMPREPLY=( $( cd ${BOOKMARK_DATA} \
 		&& compgen -o filenames -o nospace \
-			-W "$( /bin/ls -L1 "${BOOKMARK_DATA}/${prefix}" )" \
+			-W "$( /bin/ls -pL1 "${BOOKMARK_DATA}/${prefix}" )" \
 			-- ${suffix} ) )
 	# COMPREPLY=( $(
 	# 	cd ${BOOKMARK_DATA}
