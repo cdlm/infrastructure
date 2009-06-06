@@ -38,9 +38,18 @@ else
   end
 end
 
+problems = {}
 repositories.each do |repo|
   puts "Updating #{repo.filename}".cyan
   repo.chdir do
     system UPDATE_COMMANDS[repo.extname]
+    problems[repo] = $? unless $?.success?
+  end
+end
+
+unless problems.empty?
+  puts "Problems:".bold.red
+  problems.each do |repo, status|
+    puts "#{status.to_s.rjust(3).cyan}  #{repo.filename}"
   end
 end
