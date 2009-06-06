@@ -1,0 +1,46 @@
+#!/usr/bin/env ruby
+###
+# update SCM checkouts
+
+# per-extension update commands
+UPDATE_COMMANDS = {
+  '.gitclone' => 'git pull',
+  '.svn' => 'svn update',
+  '.gitsvn' => 'git svn rebase'
+}
+
+require 'rubygems'
+require 'rio'
+require 'term/ansicolor'
+
+class String
+  include Term::ANSIColor
+end
+
+class RIO::Rio
+  def repo?
+    return self.directory? && UPDATE_COMMANDS.has_key?(self.extname)
+  end
+end
+
+def usage
+  puts "\
+Usage: scm_update [checkouts]"
+end
+
+if ARGV.empty?
+  repositories = RIO.cwd.dirs[:repo?]
+else
+  repositories = []
+  ARGV.each do |arg|
+    repo = rio(arg)
+    repositories << repo if repo.repo?
+  end
+end
+
+repositories.each do |repo|
+  puts "Updating #{repo.filename}".cyan
+  repo.chdir do
+    system UPDATE_COMMANDS[repo.extname]
+  end
+end
