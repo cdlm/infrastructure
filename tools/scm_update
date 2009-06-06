@@ -23,13 +23,12 @@ class RIO::Rio
   end
 end
 
-def usage
-  puts "\
-Usage: scm_update [checkouts]"
-end
-
 if ARGV.empty?
   repositories = RIO.cwd.dirs[:repo?]
+  if repositories.empty?
+    here = RIO.cwd
+    repositories = [ here ] if here.repo?
+  end
 else
   repositories = []
   ARGV.each do |arg|
