@@ -1,0 +1,20 @@
+\ProvidesFile{authornotes.sty}
+    [2009/07/02 0.2 stupid author collaborative writing notes and comments]
+%
+\RequirePackage{graphicx}
+\RequirePackage{xcolor}
+\RequirePackage{ifthen}
+
+\newboolean{showNotes}\setboolean{showNotes}{true}
+\DeclareOption{hideNotes}{\setboolean{showNotes}{false}}
+\ProcessOptions\relax
+
+\newcommand{\newnote}[3]{%
+	\ifthenelse{\boolean{showNotes}}%
+		{\expandafter\newcommand\csname #1\endcsname[1]{%
+			{\color{#2}\fontfamily{augie}\selectfont ---##1 (#3)}}}
+		{\expandafter\newcommand\csname #1\endcsname[1]{\relax}}}
+
+\newnote{todo}{orange}{TODO}
+% \newnote{foonote}{cyan!70!black}{Foo}
+
