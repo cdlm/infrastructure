@@ -13,7 +13,7 @@
 	branches = branch -a --verbose
 	remotes = remote --verbose
 	svnci = !bash -c 'git svn rebase && git svn dcommit'
-	svnup = !bash -c 'git stash && git svn rebase && git stash apply'
+	svnup = svn rebase
 	tgz = !bash -c 'git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz' --
 	ignore = !bash -c 'echo -e "${1}" >> .gitignore' --
 	unignore = !bash -c 'sed -i .bak "/^${1}\\$/d" .gitignore' --
