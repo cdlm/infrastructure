@@ -1,6 +1,6 @@
 #export EDITOR="see -rw -j Shell"
 export EDITOR="mate --wait"
-export PAGER="less -i"
+export PAGER="less --ignore-case"
 export CVS_RSH="ssh"
 export SVKDIFF="svkopendiff"
 
@@ -20,6 +20,12 @@ alias tree='tree -ACF'
 alias top='top -do cpu'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias pwgen='pwgen -s 10 1'
+
+if which -s colordiff; then
+  alias diff='colordiff --unified'
+else
+  alias diff='diff --unified'
+fi
 
 # LaTeX builders
 alias rubber='rubber --pdf --force' # --into rubber-build
