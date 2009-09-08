@@ -21,11 +21,8 @@ alias top='top -do cpu'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias pwgen='pwgen -s 10 1'
 
-if which -s colordiff; then
-  alias diff='colordiff --unified'
-else
-  alias diff='diff --unified'
-fi
+alias diff='diff --unified'
+alias diffc='colordiff --unified'
 
 # LaTeX builders
 alias rubber='rubber --pdf --force' # --into rubber-build
