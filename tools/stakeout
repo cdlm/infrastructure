@@ -1,22 +1,13 @@
-#!/usr/bin/env ruby1.9
+#!/usr/bin/env ruby
 ##
 # Automatic build
 
 require 'rubygems'
+require 'highlight'
+String.highlighter = Text::ANSIHighlighter.new
 
-# without rubygems 1.9, this needs a hack so that require 'term-ansicolor' works with the gem:
-# cd $PREFIX/lib/ruby/gems/1.8/gems/term-ansicolor-1.0.2/lib
-# sudo ln -s term/ansicolor.rb term-ansicolor.rb
-#
-# this might be needed too
-# gem 'term-ansicolor'
-
-require 'term/ansicolor'
 require 'io/wait'
 
-class String
-  include Term::ANSIColor
-end
 LABEL = "[stakeout]".bold.yellow
 
 if ARGV.size < 2

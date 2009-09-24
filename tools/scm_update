@@ -11,11 +11,8 @@ UPDATE_COMMANDS = {
 
 require 'rubygems'
 require 'rio'
-require 'term/ansicolor'
-
-class String
-  include Term::ANSIColor
-end
+require 'highlight'
+String.highlighter = Text::ANSIHighlighter.new
 
 class RIO::Rio
   def repo?
