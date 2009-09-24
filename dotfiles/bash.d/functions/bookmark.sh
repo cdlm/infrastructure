@@ -20,7 +20,7 @@ bookmark_usage() {
 }
 
 terminal_setTabTitle() {
-	echo -ne "\e]1;$1\a"
+	builtin echo -ne "\033]0;$1\a"
 }
 
 bookmark_help() {
