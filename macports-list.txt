@@ -1,0 +1,29 @@
+# A list of useful MacPorts packages to install directly
+
+# essentials
+bash-completion
+git-core +bash_completion +doc +svn
+tig
+pstree
+tree
+pwgen
+
+colordiff
+lesspipe
+rlwrap
+
+emacs
+auctex
+BibTool
+latexdiff
+poppler +quartz
+
+GraphicsMagick
+rsync
+
+lua
+ocaml
+clojure
+sbcl +html +threads
+slime +sbcl
+scala
