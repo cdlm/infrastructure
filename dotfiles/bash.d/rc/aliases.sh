@@ -17,7 +17,7 @@ alias ll='ls -l'
 alias ls='ls -GF' # colors
 alias mkdir='mkdir -p'
 alias tree='tree -ACF'
-alias top='top -do cpu'
+alias top='top -d -o cpu -s 2'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias pwgen='pwgen -s 10 1'
 
