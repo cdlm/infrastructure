@@ -1,0 +1,16 @@
+#!/usr/bin/env ruby
+#
+# To be used as a startup item.
+# Will wait for SECONDS then launch apps listed in ~/.delayedStartupItems
+SECONDS = 5*60
+
+sleep SECONDS
+items = []
+File.open("#{ENV['HOME']}/.delayedStartupItems") do |io|
+  io.each_line { |line| items << line.strip }
+end
+
+items.each do |i|
+  system "open", "-a", i
+  sleep 2
+end
