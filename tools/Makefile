@@ -1,6 +1,6 @@
 .PHONY: diff install
 
-SRCFILES = deflac gatherWindows graffle2pdf scm_update stakeout textmatebundles
+SRCFILES = deflac delayedStartupItems gatherWindows graffle2pdf scm_update stakeout textmatebundles
 
 
 DEST = $(HOME)/bin
@@ -12,7 +12,7 @@ diff:
 install: $(DESTFILES)
 
 $(DEST)/%: % $(DEST)
-	cp $< $@
+	install $< $@
 
 $(DEST):
-	mkdir -p $(DEST)
+	install -d $(DEST)
