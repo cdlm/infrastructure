@@ -5,6 +5,7 @@
 # per-extension update commands
 UPDATE_COMMANDS = {
   '.gitclone' => 'git pull',
+  '.hgclone' => 'hg pull',
   '.svn' => 'svn update',
   '.gitsvn' => 'git svn rebase'
 }
