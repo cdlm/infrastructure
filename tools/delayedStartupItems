@@ -11,6 +11,7 @@ File.open("#{ENV['HOME']}/.delayedStartupItems") do |io|
 end
 
 items.each do |i|
+  puts "Delayed launch: #{i}" if ARGV.include? '-v'
   system "open", "-a", i
-  sleep 2
+  # sleep 1
 end
