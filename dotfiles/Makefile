@@ -4,7 +4,7 @@ DOTDIRS = bash.d emacs.d track_my_time.d vim
 DOTFILES = \
 	$(shell find $(DOTDIRS) -not -type d) \
 	bash_profile bashrc \
-	gitconfig gitignore \
+	gitconfig gitignore tigrc \
 	hgrc \
 	latexmkrc \
 	screenrc \

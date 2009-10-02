@@ -1,0 +1,2 @@
+bind generic F !git fetch
+bind generic P !git push
