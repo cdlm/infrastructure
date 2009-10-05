@@ -1,0 +1,3 @@
+[submodule "submodules/completion-ruby"]
+	path = submodules/completion-ruby
+	url = git://github.com/mernen/completion-ruby.git
