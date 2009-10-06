@@ -8,7 +8,7 @@ install: install-dotfiles install-tools
 diff: diff-dotfiles diff-tools
 
 include dotfiles.makefile tools.makefile
-# include submodules/completion-ruby.makefile
+include submodules/completion-ruby.makefile
 
 .PHONY: default install diff
 
