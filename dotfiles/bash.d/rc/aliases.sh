@@ -14,6 +14,7 @@ alias snano='sudo nano --nowrap'
 alias l='ls'
 alias la='ls -A'
 alias ll='ls -l'
+alias lh='ls -lh'
 alias ls='ls -GF' # colors
 alias mkdir='mkdir -p'
 alias tree='tree -ACF'
