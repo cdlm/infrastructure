@@ -1,0 +1,18 @@
+set autoindent
+set multibuffer
+set nowrap
+set fill -4
+set tabsize 4
+set whitespace ">."
+
+include /opt/local/share/nano/c.nanorc
+include /opt/local/share/nano/html.nanorc
+include /opt/local/share/nano/java.nanorc
+include /opt/local/share/nano/man.nanorc
+include /opt/local/share/nano/nanorc.nanorc
+include /opt/local/share/nano/patch.nanorc
+include /opt/local/share/nano/perl.nanorc
+include /opt/local/share/nano/python.nanorc
+include /opt/local/share/nano/ruby.nanorc
+include /opt/local/share/nano/sh.nanorc
+include /opt/local/share/nano/tex.nanorc
