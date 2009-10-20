@@ -17,6 +17,7 @@ auctex
 BibTool
 latexdiff
 poppler +quartz
+flip
 
 GraphicsMagick
 rsync
