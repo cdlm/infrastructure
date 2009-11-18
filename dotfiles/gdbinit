@@ -1,0 +1,7 @@
+# Load F-Script into an application
+define loadfs
+    attach $arg0
+    p (char)[[NSBundle bundleWithPath:@"/Developer/Applications/F-Script/FScript.framework"] load]
+    p (void)[FScriptMenuItem insertInMainMenu]
+    continue
+end
