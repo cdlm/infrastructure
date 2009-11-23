@@ -1,0 +1,103 @@
+#!/bin/bash
+
+BASE="/Library/Application Support/TextMate/Bundles"
+
+function git_updateOrClone() {
+    name=$1
+    bundle="${BASE}/${name}.tmbundle"
+    repo="git://github.com/textmate/${name}.tmbundle.git"
+    echo
+    if [ -d ${bundle} ]; then
+        (cd ${bundle}; git pull)
+    else
+        (cd ${BASE}; git clone ${repo})
+    fi
+}
+
+BUNDLES="
+ada
+apache
+bison
+bundle-development
+c
+cmake
+context-free
+css
+ctags
+cvs
+diff
+doxygen
+dylan
+eiffel
+erlang
+f-script
+filemerge
+getbundle
+gettext
+graphviz
+haskell
+hotkey
+html
+hyperlink-helper
+icalendar
+imagebrowser
+ini
+io
+iterm
+java
+javadoc
+javascript
+json
+latex
+lex-flex
+lighttpd
+lisp
+logo
+lua
+macports
+mail
+make
+man-pages
+markdown
+math
+mercurial
+modula
+navigation
+objective-c
+ocaml
+odcompletion
+outlines
+perl
+postscript
+prolog
+property-list
+python
+regularexpressions
+restructuredtext
+ruby
+ruby-haml
+s5
+scheme
+scons
+setext
+shellscript
+slate
+source
+sql
+ssh-config
+standard-ml
+subversion
+tabular
+tcl
+terminalmate
+text
+textile
+textmate
+xml
+yaml
+"
+
+for b in $BUNDLES; do
+    git_updateOrClone $b
+done
+
