@@ -6,11 +6,13 @@ function git_updateOrClone() {
     name=$1
     bundle="${BASE}/${name}.tmbundle"
     repo="git://github.com/textmate/${name}.tmbundle.git"
-    echo
-    if [ -d ${bundle} ]; then
-        (cd ${bundle}; git pull)
+    echo "Updating ${name}:"
+    if [ -d "${bundle}" ]; then
+        cd "${bundle}"
+        git pull
     else
-        (cd ${BASE}; git clone ${repo})
+        cd "$BASE"
+        git clone ${repo} "${bundle}"
     fi
 }
 
