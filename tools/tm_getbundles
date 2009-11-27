@@ -6,7 +6,7 @@ function git_updateOrClone() {
     name=$1
     bundle="${BASE}/${name}.tmbundle"
     repo="git://github.com/textmate/${name}.tmbundle.git"
-    echo "Updating ${name}:"
+    echo -n "${name}   "
     if [ -d "${bundle}" ]; then
         cd "${bundle}"
         git pull
@@ -14,6 +14,13 @@ function git_updateOrClone() {
         cd "$BASE"
         git clone ${repo} "${bundle}"
     fi
+}
+
+function reload() {
+	if (killall -s TextMate > /dev/null); then # only reload if TM is running
+		echo 'Reloading bundles'
+		osascript -e 'tell application "TextMate" to reload bundles'
+	fi
 }
 
 BUNDLES="
@@ -102,4 +109,4 @@ yaml
 for b in $BUNDLES; do
     git_updateOrClone $b
 done
-
+reload
