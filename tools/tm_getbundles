@@ -5,7 +5,7 @@ BASE="/Library/Application Support/TextMate/Bundles"
 function git_updateOrClone() {
     name=$1
     bundle="${BASE}/${name}.tmbundle"
-    repo="git://github.com/textmate/${name}.tmbundle.git"
+    repo=$2 #"git://github.com/textmate/${name}.tmbundle.git"
     echo -n "${name}   "
     if [ -d "${bundle}" ]; then
         cd "${bundle}"
@@ -17,13 +17,18 @@ function git_updateOrClone() {
 }
 
 function reload() {
-	if (killall -s TextMate > /dev/null); then # only reload if TM is running
-		echo 'Reloading bundles'
-		osascript -e 'tell application "TextMate" to reload bundles'
-	fi
+    if (killall -s TextMate > /dev/null); then # only reload if TM is running
+        echo 'Reloading bundles'
+        osascript -e 'tell application "TextMate" to reload bundles'
+    fi
 }
 
 BUNDLES="
+git=git://gitorious.org/git-tmbundle/mainline.git
+smalltalk=git://github.com/AntonyBlakey/smalltalk.tmbundle.git
+cweb=git://github.com/michaelmelanson/cweb-tmbundle.git
+sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git
+clojure=git://github.com/nullstyle/clojure-tmbundle.git
 ada
 apache
 bison
@@ -107,6 +112,11 @@ yaml
 "
 
 for b in $BUNDLES; do
-    git_updateOrClone $b
+    bundle=${b%%=*}
+    repo=${b#*=}
+    if [[ $repo == $bundle ]]; then # default repo = textmate @ github
+        repo="git://github.com/textmate/${bundle}.tmbundle.git"
+    fi
+    git_updateOrClone $bundle $repo
 done
 reload
