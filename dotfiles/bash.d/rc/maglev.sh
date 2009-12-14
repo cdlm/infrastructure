@@ -13,5 +13,10 @@ gemstoneRoot=/opt/gemstone
 if [ -d $gemstoneRoot ]; then
   export GEMSTONE_HOME=$gemstoneRoot/current
   export MAGLEV_HOME=$gemstoneRoot/maglev
-  export PATH=$MAGLEV_HOME/bin:$GEMSTONE_HOME/bin:$PATH
+  # export PATH=$MAGLEV_HOME/bin:$GEMSTONE_HOME/bin:$PATH
 fi
+
+# call by hand only when needed, else it overrides Ruby's irb
+set_maglev_path() {
+    export PATH=$MAGLEV_HOME/bin:$GEMSTONE_HOME/bin:$PATH
+}
