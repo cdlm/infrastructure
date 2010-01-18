@@ -10,7 +10,7 @@ install-dotfiles: $(DOTFILES_DST) $(DOTFILES_POST)
 
 $(DOTFILES_DST): \
 $(PREFIX)/.%: dotfiles/%
-	install -d $(@D)  &&  install $< $@
+	install -d $(@D)  &&  install -m 600 $< $@
 
 # convenience for install
 $(PREFIX)/.emacs:
