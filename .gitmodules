@@ -1,3 +1,6 @@
 [submodule "submodules/completion-ruby"]
 	path = submodules/completion-ruby
 	url = git://github.com/mernen/completion-ruby.git
+[submodule "submodules/markdown-mode"]
+	path = submodules/markdown-mode
+	url = git://jblevins.org/git/markdown-mode.git
