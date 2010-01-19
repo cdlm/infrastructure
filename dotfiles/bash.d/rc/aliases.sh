@@ -19,9 +19,13 @@ alias ls='ls -GF' # colors
 alias mkdir='mkdir -p'
 alias tree='tree -ACF'
 alias top='top -d -o cpu -s 2'
-alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias pwgen='pwgen -s 10 1'
 
+# file transfer like ssh but with rsync (--copy-dirlinks is maybe not that nice...)
+alias rscp='rsync --rsh=ssh --verbose --human-readable --progress --archive --partial --copy-dirlinks'
+
+# devel stuff
+alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
 
