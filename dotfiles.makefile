@@ -4,17 +4,13 @@
 .PHONY: install-dotfiles diff-dotfiles treediff-dotfiles
 DOTFILES_SRC = $(shell find dotfiles -not -type d)
 DOTFILES_DST = $(DOTFILES_SRC:dotfiles/%=$(PREFIX)/.%)
-DOTFILES_POST = $(patsubst %.el, %.elc, $(filter-out %setup.el, $(filter %.el, $(DOTFILES_DST))))
+DOTFILES_POST = $(patsubst %.el, %.elc, $(wildcard $(PREFIX)/.emacs.d/lisp/*.el))
 
 install-dotfiles: $(DOTFILES_DST) $(DOTFILES_POST)
 
 $(DOTFILES_DST): \
 $(PREFIX)/.%: dotfiles/%
 	install -d $(@D)  &&  install -m 600 $< $@
-
-# convenience for install
-$(PREFIX)/.emacs:
-	echo '(load "$(DEST)/.emacs.d/setup.el")' >> $@
 
 diff-dotfiles:
 	@for f in $(DOTFILES_SRC:dotfiles/%=%); do \
