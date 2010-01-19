@@ -8,7 +8,12 @@
 
 ;; load configuration modules
 (require 'elisp-load-dir)
-(elisp-load-dir "~/.emacs.d/rc")
+(eval-after-load "elist-load-dir"
+   (elisp-load-dir "~/.emacs.d/rc"))
 
 ;; misc one-liners
 (server-start)
+
+;; have customizations go to a separate file
+(setq custom-file "~/.emacs-custom.el")
+(load custom-file 'noerror)

@@ -1,4 +1,4 @@
 (if window-system
 	(progn
 		(require 'tabbar)
-		(tabbar-mode t)))
+		(eval-after-load "tabbar" '(tabbar-mode t))))
