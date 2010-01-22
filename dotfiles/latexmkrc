@@ -3,4 +3,10 @@ $pdflatex = 'pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1 %O 
 $pdf_previewer = 'open %S';
 $pdf_update_method = 0;
 $clean_ext = "synctex.gz";
+
 @default_files = ('main.tex');
+
+add_cus_dep( 'graffle', 'pdf', 0, 'graffle2pdf' );
+sub graffle2pdf {
+   system("graffle2pdf $_[0].graffle $_[0].pdf");
+}
