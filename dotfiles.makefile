@@ -2,7 +2,7 @@
 ### dotfiles/x/y goes to $PREFIX/.x/y
 ###
 .PHONY: install-dotfiles diff-dotfiles treediff-dotfiles
-DOTFILES_SRC = $(shell find dotfiles -not -type d)
+DOTFILES_SRC = $(shell find dotfiles -path '*/.svn' -prune -o -type f -print)
 DOTFILES_DST = $(DOTFILES_SRC:dotfiles/%=$(PREFIX)/.%)
 DOTFILES_POST = $(patsubst %.el, %.elc, $(wildcard $(PREFIX)/.emacs.d/lisp/*.el))
 
