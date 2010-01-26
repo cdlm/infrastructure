@@ -30,8 +30,30 @@ alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
 
 # LaTeX builders
-alias rubber='rubber --pdf --force' # --into rubber-build
 alias lmk='latexmk'
 alias lmkc='latexmk -pvc'
-lmkdefault() { echo "@default_files = ('$1');" >> latexmkrc; }
+lmkdefault() { # Set or append to the list of documents built by latexmk
+   local usage='Usage:  lmkdefault [-l] [[-a] file(s)]'
+   local mode="@default_files = (";
+   
+   local params=`getopt ha $*`
+   [ $? != 0 -o $# == 0 ] && { echo $usage; return; }
+   
+   set -- ${params/#*--}
+   for o in ${params/%--*}; do
+      case $o in
+      -h)  echo $usage;;
+      -a)  mode="push @default_files, (";;
+      esac
+   done
+   if [ $# -gt 0 ]; then
+      echo -n "$mode '$1'" >> latexmkrc
+      shift
+      for param; do
+         echo -n ", '$param'" >> latexmkrc
+      done
+      echo " );" >> latexmkrc
+   fi
+}
+
 alias pdflatex='pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1'
