@@ -6,19 +6,21 @@
 	
 [alias]
 	changes = diff --name-status -r
-	dst = !bash -c 'git diff $* | diffstat' --
+	dst = "!f () { git diff $* | diffstat; }; f"
 	diffindex = diff --cached
 	st = status
 	ci = commit
 	co = checkout
 	branches = branch -a --verbose
 	remotes = remote --verbose
-	svnci = !bash -c 'git svn rebase && git svn dcommit'
+	svnci = !"f () { git svn rebase && git svn dcommit; }; f"
 	svnup = svn rebase
-	svnups = !bash -c 'git stash && git svnup && git stash apply'
-	tgz = !bash -c 'git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz' --
-	ignore = !bash -c 'echo -e "${1}" >> .gitignore' --
-	unignore = !bash -c 'sed -i .bak "/^${1}\\$/d" .gitignore' --
+	svnups = !"f () { git stash && git svnup && git stash apply; }; f"
+	tgz = !"f () { git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz; }; f"
+	ignore = !"f () { local ignore_file=$( git rev-parse --show-cdup ).gitignore arg; for arg in $*; do echo $arg >> $ignore_file; done; sort -u -o $ignore_file $ignore_file; }; f"
+	unignore = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
+   exclude = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
+	unexclude = !"f () { sed -i .bak \"/^${1}\\$/d\" .git/info/exclude; }; f"
 
 [push]
 	default = tracking
@@ -27,7 +29,7 @@
 	renames = true
 
 [core]
-	excludesfile = /Users/damien/.gitignore
+	excludesfile = ~/.gitignore
 	pager = less -FRSX
 
 [color]
