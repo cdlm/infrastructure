@@ -2,6 +2,9 @@
 
 startup_message off
 
+# do not leave stuff in the terminal when disconnecting
+altscreen on
+
 # auto-name windows
 # needs '\[\033k\033\\\]' somewhere in $PS1
 shelltitle "$|bash"
