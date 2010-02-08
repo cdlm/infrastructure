@@ -1,2 +1,9 @@
-bind generic F !git fetch
-bind generic P !git push
+set show-refs = yes
+set line-graphics = yes
+set author-width = 10
+# set show-date = relative
+
+bind generic [ !git fetch
+bind generic ] !git push
+bind generic { !git svnup
+bind generic } !git svnci
