@@ -10,3 +10,8 @@ add_cus_dep( 'graffle', 'pdf', 0, 'graffle2pdf' );
 sub graffle2pdf {
    system("graffle2pdf $_[0].graffle $_[0].pdf");
 }
+
+add_cus_dep( 'svg', 'pdf', 0, 'svg2pdf' );
+sub svg2pdf {
+   system("svg2pdf $_[0].svg $_[0].pdf");
+}
