@@ -3,4 +3,4 @@
 #export GEM_HOME=$HOME/.gem
 
 export RUBYOPT=rubygems
-export PATH=$HOME/.gem/ruby/1.8/bin:$PATH
+export PATH=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$PATH
