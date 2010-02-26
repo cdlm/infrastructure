@@ -2,7 +2,7 @@
 
 [user]
 	name = Damien Pollet
-	email = damien.pollet@inria.fr
+	email = damien.pollet@gmail.com
 	
 [alias]
 	changes = diff --name-status -r
