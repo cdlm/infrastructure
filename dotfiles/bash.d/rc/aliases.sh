@@ -7,7 +7,8 @@ export SVKDIFF="svkopendiff"
 alias smu='open -a Smultron'
 alias skim='open -a Skim'
 alias irb='irb -r irb/completion'
-alias e='emacsclient -n'
+alias e='emacsclient --no-wait'
+alias et='emacs --no-window-system'
 alias nano='nano --nowrap'
 alias snano='sudo nano --nowrap'
 
