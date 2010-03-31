@@ -26,7 +26,6 @@ alias pwgen='pwgen -s 10 1'
 alias rscp='rsync --rsh=ssh --verbose --human-readable --progress --archive --partial --copy-dirlinks'
 
 # devel stuff
-alias g='git'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
