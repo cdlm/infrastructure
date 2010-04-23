@@ -8,7 +8,7 @@
 
 ;; load configuration modules
 (require 'elisp-load-dir)
-(eval-after-load "elist-load-dir"
+(eval-after-load 'elist-load-dir
    (elisp-load-dir "~/.emacs.d/rc"))
 
 ;; misc one-liners
