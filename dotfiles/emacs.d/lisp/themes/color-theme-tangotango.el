@@ -1,9 +1,10 @@
-(require 'color-theme)
+(eval-when-compile (require 'color-theme))
+
 (defun color-theme-tangotango ()
   "A color theme based on Tango Palette."
   (interactive)
   (color-theme-install
-   '(color-theme-tango
+   '(color-theme-tangotango
      ((background-color . "#2e3436")
       (background-mode . dark)
       (border-color . "#888a85")

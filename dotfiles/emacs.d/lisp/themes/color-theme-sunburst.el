@@ -1,4 +1,5 @@
-(require 'color-theme)
+(eval-when-compile (require 'color-theme))
+
 (defun color-theme-sunburst ()
     "Color theme by dngpng, created 2007-09-11.
      With slight changes by cDlm (syntax, cursor, selection)."
