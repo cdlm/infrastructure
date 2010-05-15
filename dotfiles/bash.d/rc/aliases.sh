@@ -23,7 +23,7 @@ alias top='top -d -o cpu -s 2'
 alias pwgen='pwgen -s 10 1'
 
 # file transfer like ssh but with rsync (--copy-dirlinks is maybe not that nice...)
-alias rscp='rsync --rsh=ssh --verbose --human-readable --progress --archive --partial --copy-dirlinks'
+alias rscp='rsync --rsh="ssh -o ClearAllForwardings=yes" --verbose --human-readable --progress --archive --partial --copy-dirlinks'
 
 # devel stuff
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
