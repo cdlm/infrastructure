@@ -25,6 +25,25 @@ alias pwgen='pwgen -s 10 1'
 # file transfer like ssh but with rsync (--copy-dirlinks is maybe not that nice...)
 alias rscp='rsync --rsh="ssh -o ClearAllForwardings=yes" --verbose --human-readable --progress --archive --partial --copy-dirlinks'
 
+# seaside server tunneling
+sshtunnel() {
+   local machine ports ssh_command
+   if [ $# == 0 ]; then
+      echo <<EOM
+Usage: sshtunnel machine port(s)
+Connections to localhost:port will go to machine:port
+EOM
+      return 1
+   fi
+   machine=$1; shift
+   ssh_command="ssh -N"
+   if [ $# == 0 ]; then $1=8080; fi
+   for p in $*; do
+      ssh_command="$ssh_command -L$p:localhost:$p"
+   done
+   $ssh_command $machine
+}
+
 # devel stuff
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias diff='diff --unified --ignore-space-change'
@@ -35,7 +54,7 @@ alias lmk='latexmk'
 alias lmkc='latexmk -pvc'
 lmkdefault() { # Set or append to the list of documents built by latexmk
    local usage='Usage:  lmkdefault [-l] [[-a] file(s)]'
-   local mode="@default_files = (";
+   local mode="@default_files = ("
    
    local params=`getopt ha $*`
    [ $? != 0 -o $# == 0 ] && { echo $usage; return; }
