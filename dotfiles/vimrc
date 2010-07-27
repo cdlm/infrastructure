@@ -20,6 +20,7 @@ set shiftwidth=4
 set softtabstop=4
 set expandtab
 set smartindent
+set cpoptions+=$ " mark changed area
 
 " Remove GUI menu and toolbar
 set guioptions-=T
