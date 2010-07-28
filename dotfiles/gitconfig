@@ -5,10 +5,11 @@
 	email = damien.pollet@gmail.com
 	
 [alias]
-	changes = diff --name-status -r
+    l = log --oneline --decorate
 	dst = "!f () { git diff $* | diffstat; }; f"
 	diffindex = diff --cached
-	st = status
+	wdiff = fidd --word-diff
+	st = status --short --branch
 	ci = commit
 	co = checkout
 	branches = branch -a --verbose
