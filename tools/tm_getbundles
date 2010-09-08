@@ -30,6 +30,7 @@ cweb=git://github.com/michaelmelanson/cweb-tmbundle.git
 sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git
 clojure=git://github.com/nullstyle/clojure-tmbundle.git
 ada
+ant
 apache
 bison
 bundle-development
@@ -46,7 +47,6 @@ eiffel
 erlang
 f-script
 filemerge
-getbundle
 gettext
 graphviz
 haskell
@@ -86,6 +86,9 @@ postscript
 prolog
 property-list
 python
+r
+r-console-rdaemon
+r-console-r.app
 regularexpressions
 restructuredtext
 ruby
