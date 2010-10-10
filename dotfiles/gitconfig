@@ -5,10 +5,10 @@
 	email = damien.pollet@gmail.com
 	
 [alias]
-    l = log --oneline --decorate
+        l = log --oneline --decorate --graph
 	dst = "!f () { git diff $* | diffstat; }; f"
 	diffindex = diff --cached
-	wdiff = fidd --word-diff
+	wdiff = diff --word-diff=color
 	st = status --short --branch
 	ci = commit
 	co = checkout
@@ -20,11 +20,11 @@
 	tgz = !"f () { git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz; }; f"
 	ignore = !"f () { local ignore_file=$( git rev-parse --show-cdup ).gitignore arg; for arg in $*; do echo $arg >> $ignore_file; done; sort -u -o $ignore_file $ignore_file; }; f"
 	unignore = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
-   exclude = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
+        exclude = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
 	unexclude = !"f () { sed -i .bak \"/^${1}\\$/d\" .git/info/exclude; }; f"
 
 [push]
-	default = tracking
+	default = current
 
 [diff]
 	renames = true
