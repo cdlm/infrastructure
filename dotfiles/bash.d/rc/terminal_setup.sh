@@ -1,4 +1,4 @@
-export LC_CTYPE=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
 
 # Share command history across terminals, lookup if path cache outdated
 shopt -s histappend checkhash
