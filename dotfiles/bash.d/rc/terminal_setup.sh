@@ -2,6 +2,7 @@ export LC_CTYPE=en_US.UTF-8
 
 # Share command history across terminals, lookup if path cache outdated
 shopt -s histappend checkhash
+export HISTSIZE=1000
 export PROMPT_COMMAND='history -a'
 
 # Show git branch & status in prompt
