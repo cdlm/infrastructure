@@ -27,7 +27,9 @@ BUNDLES="
 git=git://github.com/jcf/git-tmbundle.git
 smalltalk=git://github.com/AntonyBlakey/smalltalk.tmbundle.git
 cweb=git://github.com/michaelmelanson/cweb-tmbundle.git
-sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git
+ruby-sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git
+sass=git://github.com/seaofclouds/sass-textmate-bundle.git
+less=git://github.com/appden/less.tmbundle.git
 clojure=git://github.com/nullstyle/clojure-tmbundle.git
 ada
 ant
