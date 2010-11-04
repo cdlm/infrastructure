@@ -48,6 +48,7 @@ EOM
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
+which -s hub && alias git=hub
 
 # LaTeX builders
 alias lmk='latexmk'
