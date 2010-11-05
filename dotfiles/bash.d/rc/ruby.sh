@@ -6,5 +6,5 @@ export RUBYOPT=rubygems
 export PATH=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$PATH
 
 function man {
-   man $* || gem man $*
+   env man $* || gem man $*
 }
