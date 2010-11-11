@@ -6,6 +6,9 @@ filetype on
 filetype plugin on
 filetype plugin indent on
 
+set laststatus=2
+set statusline=[%{GitBranch()}]\ %f%(\ %m%r%)%=%(%y\ %)%l,%v\ %p%%
+
 set ignorecase
 set smartcase
 set incsearch

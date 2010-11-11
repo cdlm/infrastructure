@@ -4,3 +4,6 @@
 [submodule "submodules/markdown-mode"]
 	path = submodules/markdown-mode
 	url = git://jblevins.org/git/markdown-mode.git
+[submodule "submodules/git-vim"]
+	path = submodules/git-vim
+	url = git://github.com/motemen/git-vim.git
