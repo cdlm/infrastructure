@@ -15,3 +15,8 @@ add_cus_dep( 'svg', 'pdf', 0, 'svg2pdf' );
 sub svg2pdf {
    system("svg2pdf $_[0].svg $_[0].pdf");
 }
+
+add_cus_dep( 'markdown', 'tex', 0, 'kramdown' );
+sub kramdown {
+   system("kramdown -o latex $_[0].markdown > $_[0].tex");
+}
