@@ -59,3 +59,7 @@ else
     "colorscheme gentooish
 endif
 
+" change default color of concealed contents
+highlight clear Conceal
+highlight default link Conceal Statement
+
