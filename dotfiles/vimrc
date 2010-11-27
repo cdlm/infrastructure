@@ -37,7 +37,7 @@ nmap <F1> :NERDTreeToggle<CR>
 
 " Create directories when saving
 function WriteCreatingDirs()
-    execute '!mkdir -p %:h'
+    execute ':silent !mkdir -p %:h'
     write
 endfunction
 command W call WriteCreatingDirs()
