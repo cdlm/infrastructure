@@ -35,6 +35,13 @@ set cpoptions+=$ " mark changed area
 
 nmap <F1> :NERDTreeToggle<CR>
 
+" Create directories when saving
+function WriteCreatingDirs()
+    execute '!mkdir -p %:h'
+    write
+endfunction
+command W call WriteCreatingDirs()
+
 " Remove GUI menu and toolbar
 set guioptions-=T
 "set guioptions-=m
