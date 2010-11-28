@@ -36,11 +36,10 @@ set cpoptions+=$ " mark changed area
 nmap <F1> :NERDTreeToggle<CR>
 
 " Create directories when saving
-function WriteCreatingDirs()
-    execute ':silent !mkdir -p %:h'
-    write
-endfunction
-command W call WriteCreatingDirs()
+augroup BWCCreateDir
+    au!
+    autocmd BufWritePre * if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h")) | execute "silent! !mkdir -p %:h" | redraw! | endif
+augroup END
 
 " Remove GUI menu and toolbar
 set guioptions-=T
