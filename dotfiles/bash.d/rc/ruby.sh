@@ -8,3 +8,7 @@ export PATH=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$PATH
 function man {
    env man $* || gem man $*
 }
+
+if which -s yard; then
+   alias gemyard='yard server --gems --cache --docroot=~/Library/Caches/org.yardoc/index'
+fi
