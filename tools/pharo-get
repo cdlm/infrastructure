@@ -1,0 +1,61 @@
+#!/usr/bin/env ruby
+require 'cgi'
+
+class HudsonProject
+  attr_reader :name
+  
+  def initialize name, artifact
+    @name, @artifact = name, artifact
+  end
+  
+  def job_url
+    "https://pharo-ic.lille.inria.fr/hudson/job/#{CGI.escape @name}"
+  end
+  
+  def download_urls
+    [
+      "#{job_url}/lastSuccessfulBuild/artifact/#{CGI.escape @artifact}/#{CGI.escape @artifact}.image",
+      "#{job_url}/lastSuccessfulBuild/artifact/#{CGI.escape @artifact}/#{CGI.escape @artifact}.changes"
+    ]
+  end
+  
+  def download(as_name = nil)
+    download_urls.each do |url|
+      system 'curl',
+        '--remote-name', # same file name
+        '--insecure', # SSL is a hassle
+        '--progress-bar',
+        url
+    end
+    unless name.nil?
+      File.rename "#{@artifact}.image", "#{as_name}.image"
+      File.rename "#{@artifact}.changes", "#{as_name}.changes"
+    end
+  end
+end
+
+
+if __FILE__ == $PROGRAM_NAME
+
+  PROJECTS = {
+    'dev11'  => HudsonProject.new("Pharo 1.1", "dev1.1"),
+    'dev12'  => HudsonProject.new("Pharo 1.2", "dev1.2"),
+    'core11' => HudsonProject.new("Pharo Core 1.1", "core1.1"),
+    'core12' => HudsonProject.new("Pharo Core 1.2", "core1.2"),
+  }
+  PROJECTS.default = PROJECTS['dev11']
+
+  def usage
+    puts <<-EOS
+#{$PROGRAM_NAME} [project] [name]
+Downloads latest successful build of project from Hudson and optionally renames it.
+
+Known projects:
+EOS
+    PROJECTS.each do |k,p|  puts "#{k}\t#{p.name}: #{p.job_url}"  end
+    exit
+  end
+  
+  usage if /-(h|-?help)/ =~ ARGV.first
+  PROJECTS[ARGV[0]].download(ARGV[1])
+end
