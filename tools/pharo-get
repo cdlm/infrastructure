@@ -1,5 +1,5 @@
 #!/usr/bin/env ruby
-require 'cgi'
+require 'uri'
 
 class HudsonProject
   attr_reader :name
@@ -9,13 +9,13 @@ class HudsonProject
   end
   
   def job_url
-    "https://pharo-ic.lille.inria.fr/hudson/job/#{CGI.escape @name}"
+    "https://pharo-ic.lille.inria.fr/hudson/job/#{URI.escape @name}"
   end
   
   def download_urls
     [
-      "#{job_url}/lastSuccessfulBuild/artifact/#{CGI.escape @artifact}/#{CGI.escape @artifact}.image",
-      "#{job_url}/lastSuccessfulBuild/artifact/#{CGI.escape @artifact}/#{CGI.escape @artifact}.changes"
+      "#{job_url}/lastSuccessfulBuild/artifact/#{URI.escape @artifact}/#{URI.escape @artifact}.image",
+      "#{job_url}/lastSuccessfulBuild/artifact/#{URI.escape @artifact}/#{URI.escape @artifact}.changes"
     ]
   end
   
@@ -24,10 +24,12 @@ class HudsonProject
       system 'curl',
         '--remote-name', # same file name
         '--insecure', # SSL is a hassle
+        '--fail',
         '--progress-bar',
         url
+      raise "Download failed" unless $?.success?
     end
-    unless name.nil?
+    unless as_name.nil?
       File.rename "#{@artifact}.image", "#{as_name}.image"
       File.rename "#{@artifact}.changes", "#{as_name}.changes"
     end
