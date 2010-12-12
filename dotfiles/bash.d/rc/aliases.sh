@@ -1,6 +1,11 @@
 #export EDITOR="see -rw -j Shell"
 export EDITOR="mate --wait"
-export PAGER="less --ignore-case"
+if which -s vimpager; then
+   export PAGER="vimpager"
+   alias less=$PAGER
+else
+   export PAGER="less --ignore-case"
+fi
 export CVS_RSH="ssh"
 export SVKDIFF="svkopendiff"
 
