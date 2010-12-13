@@ -1,14 +1,12 @@
 (require 'color-theme)
 
 (eval-after-load 'color-theme
-  (progn
-    (color-theme-initialize)
-    (load "themes/color-theme-tangotango") ; colorful
-    (load "themes/zenburn") ; subdued
-    (load "themes/color-theme-sunburst") ; black background
     (if window-system
-        (color-theme-tangotango)
-        ; (color-theme-zenburn)
-        (color-theme-hober)
-        )))
+        (progn
+            (require 'color-theme-tangotango "themes/color-theme-tangotango") ; colorful
+            (color-theme-tangotango))
+        (progn
+            (require 'terminal-color-themes "themes/terminal-color-themes")
+            (color-theme-tty-dark))
+    ))
 

@@ -1,11 +1,48 @@
-(eval-when-compile (require 'color-theme))
+;;; Emacs Color theme based on the Tango Palette colors. 
+;;; First derived from color-theme-tango.el,  created by danranx@gmail.com :
+;;; http://www.emacswiki.org/emacs/color-theme-tango.el
+
+;; Copyright (C) 2010 Julien Barnier <julien@nozav.org>
+
+;; Project homepage : http://blog.nozav.org/post/2010/07/12/Updated-tangotango-emacs-color-theme
+
+;; This file is NOT part of GNU Emacs.
+
+;; This is free software; you can redistribute it and/or modify it under
+;; the terms of the GNU General Public License as published by the Free
+;; Software Foundation; either version 2, or (at your option) any later
+;; version.
+
+;; This file is distributed in the hope that it will be useful, but
+;; WITHOUT ANY WARRANTY; without even the implied warranty of
+;; MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the GNU
+;; General Public License for more details.
+
+;; You should have received a copy of the GNU General Public License
+;; along with Emacs; see the file COPYING, or type `C-h C-c'. If not,
+;; write to the Free Software Foundation at this address:
+
+;;   Free Software Foundation
+;;   51 Franklin Street, Fifth Floor
+;;   Boston, MA 02110-1301
+;;   USA
+
+;;; Code:
+
+(eval-when-compile
+  (require 'color-theme))
 
 (defun color-theme-tangotango ()
-  "A color theme based on Tango Palette."
+  "A color theme based on Tango Palette colors."
+  ;; Color codes :
+  ;; - blue :       "dodger blue"
+  ;; - yellow :     "#edd400"
+  ;; - green :      "#6ac214"
+  ;; - orange/red : "tomato"
   (interactive)
   (color-theme-install
    '(color-theme-tangotango
-     ((background-color . "#2e3436")
+     ((background-color . "#2e3434")
       (background-mode . dark)
       (border-color . "#888a85")
       (cursor-color . "#fce94f")
@@ -124,9 +161,9 @@
      (message-header-cc ((t (:foreground "white"))))
      (org-hide ((t (:foreground "#2e3436"))))
      (org-level-1 ((t (:bold t :foreground "dodger blue" :height 1.5))))
-     (org-level-2 ((t (:bold t :foreground "#6ac214" :height 1.2))))
-     (org-level-3 ((t (:bold t :foreground "#edd400" :height 1.1))))
-     (org-level-4 ((t (:bold t :foreground "tomato" :height 1.0))))
+     (org-level-2 ((t (:bold nil :foreground "#edd400" :height 1.2))))
+     (org-level-3 ((t (:bold t :foreground "#6ac214" :height 1.0))))
+     (org-level-4 ((t (:bold nil :foreground "tomato" :height 1.0))))
      (org-date ((t (:underline t :foreground "magenta3"))))
      (org-footnote  ((t (:underline t :foreground "magenta3"))))
      (org-link ((t (:foreground "skyblue2" :background "#2e3436"))))
@@ -137,5 +174,21 @@
      (org-verse ((t (:inherit org-block :slant italic))))
      (org-todo ((t (:bold t :foreground "Red"))))
      (org-done ((t (:bold t :foreground "ForestGreen"))))
+     (org-agenda-structure ((t (:weight bold :foreground "tomato"))))
+     (org-agenda-date ((t (:foreground "#6ac214"))))
+     (org-agenda-date-weekend ((t (:weight normal :foreground "dodger blue"))))
+     (org-agenda-date-today ((t (:weight bold :foreground "#edd400"))))
      (anything-header ((t (:bold t :background "grey15" :foreground "#edd400"))))
+     (ess-jb-comment-face ((t (:background "#2e3436" :foreground "firebrick" :slant italic))))
+     (ess-jb-hide-face ((t (:background "#2e3436" :foreground "#243436"))))
+     (ess-jb-h1-face ((t (:height 1.6 :foreground "dodger blue" :slant normal))))
+     (ess-jb-h2-face ((t (:height 1.4 :foreground "#6ac214" :slant normal))))
+     (ess-jb-h3-face ((t (:height 1.2 :foreground "#edd400" :slant normal))))
+     (ecb-default-highlight-face ((t (:background "#729fcf"))))
+     (ecb-tag-header-face ((t (:background "#f57900"))))
+     (magit-header ((t (:foreground "#edd400"))))
+     (magit-diff-add ((t (:foreground "#729fcf"))))
+     (magit-item-highlight ((t (:weight extra-bold :inverse-video t))))
 )))
+
+(provide 'color-theme-tangotango)
