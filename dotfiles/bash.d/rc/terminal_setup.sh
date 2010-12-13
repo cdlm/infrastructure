@@ -13,14 +13,15 @@ function _parse_git_branch {
   git branch --no-color 2> /dev/null | sed -e '/^[^*]/d' -e "s/* \(.*\)/ [\1$(_parse_git_dirty)]/"
 }
 
+# stupid escape sequences vaguely documented there... http://wapedia.mobi/en/ANSI_escape_code#6.
 # nameMachineDirPrompt='\[\e[01;32m\]\u\[\e[00;32m\]@\[\e[01;32m\]\h \[\e[01;33m\]\W'
 # hourDirPrompt='\[\e[00;32m\]\A \[\e[01;33m\]\W'
-dirPrompt='\[\e[0;92;7m\] \[\e[27;1m\] \W\[\e[0;32m\]$(_parse_git_branch)'
+dirPrompt='\[\e[0;92;102m\]\$\[\e[49;1m\] \W\[\e[0;32m\]$(_parse_git_branch)'
 
 screenTitleEscape='\[\033k\033\\\]'
 promptEnd=' \[\e[0m\]'
 if [ $TERM != ${TERM/screen} ]; then
-	promptEnd=${screenTitleEscape}'\[\e[0;32m\] \$'${promptEnd}
+	promptEnd=${screenTitleEscape}'\[\e[0;32m\]'${promptEnd}
 fi
 
 export PS1=${dirPrompt}${promptEnd}
