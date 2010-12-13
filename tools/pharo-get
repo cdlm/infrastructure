@@ -49,7 +49,7 @@ if __FILE__ == $PROGRAM_NAME
 
   def usage
     puts <<-EOS
-#{$PROGRAM_NAME} [project] [name]
+#{File.basename $PROGRAM_NAME} [project] [name]
 Downloads latest successful build of project from Hudson and optionally renames it.
 
 Known projects:
