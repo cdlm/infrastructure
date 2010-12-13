@@ -46,6 +46,7 @@ set guioptions-=T
 "set guioptions-=m
 if(has("gui_running"))
     "colorscheme twilight2
+    "colorscheme vilight
     "colorscheme zenburn
     colorscheme railscasts
     set cursorline
