@@ -10,7 +10,7 @@ diff: diff-dotfiles diff-tools
 include dotfiles.makefile tools.makefile
 include submodules/completion-ruby.makefile
 include submodules/git-vim.makefile
-include submodules/markdown-mode.makefile
+# include submodules/markdown-mode.makefile
 
 .PHONY: default install diff
 
@@ -19,4 +19,4 @@ include submodules/markdown-mode.makefile
 ###
 
 %.elc: %.el
-	emacs -batch -f batch-byte-compile $<
+	emacs --batch --funcall batch-byte-compile $<

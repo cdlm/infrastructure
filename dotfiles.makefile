@@ -5,8 +5,9 @@
 DOTFILES_SRC = $(shell find dotfiles -path '*/.svn' -prune -o -type f -print)
 DOTFILES_DST = $(DOTFILES_SRC:dotfiles/%=$(PREFIX)/.%)
 DOTFILES_POST = $(patsubst %.el, %.elc, $(wildcard $(PREFIX)/.emacs.d/lisp/*.el))
+ELGET = $(PREFIX)/.emacs.d/el-get
 
-install-dotfiles: $(DOTFILES_DST) $(DOTFILES_POST)
+install-dotfiles: $(DOTFILES_DST) $(DOTFILES_POST) $(ELGET)
 
 $(DOTFILES_DST): \
 $(PREFIX)/.%: dotfiles/%
@@ -22,3 +23,7 @@ treediff-dotfiles:
 	  <( find $(DOTFILES_DST) | sort | uniq | sed s:$(PREFIX)/.:: ) \
 	  <( find $(DOTFILES_SRC) | sort | uniq ) \
 	| tail -n +4
+
+$(ELGET):
+	install -d $(ELGET)
+	cd $(ELGET) && git clone git://github.com/dimitri/el-get.git
