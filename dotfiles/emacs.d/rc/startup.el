@@ -3,7 +3,10 @@
 ")
 
 (if window-system
-   (progn
-      (menu-bar-mode 1)
-      (tool-bar-mode 0))
+    (progn
+        (global-set-key [kp-delete] 'delete-char)
+        (global-set-key [M-kp-delete] 'kill-word)
+        (menu-bar-mode 1)
+        (tool-bar-mode 0))
    (menu-bar-mode 0))
+
