@@ -13,7 +13,7 @@
 	ci = commit
 	co = checkout
 	branches = branch -a --verbose
-	; remotes = remote --verbose
+    remotes = remote --verbose
 	svnci = !"f () { git svn rebase && git svn dcommit; }; f"
 	svnup = svn rebase
 	svnups = !"f () { git stash && git svnup && git stash apply; }; f"
