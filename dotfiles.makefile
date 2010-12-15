@@ -27,3 +27,4 @@ treediff-dotfiles:
 $(ELGET):
 	install -d $(ELGET)
 	cd $(ELGET) && git clone git://github.com/dimitri/el-get.git
+	make $(ELGET)/el-get/el-get.elc
