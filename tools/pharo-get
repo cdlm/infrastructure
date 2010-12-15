@@ -4,19 +4,29 @@ require 'uri'
 class HudsonProject
   attr_reader :name
   
-  def initialize name, artifact
-    @name, @artifact = name, artifact
+  def initialize name, artifact, files
+    @name, @artifact, @files = name, artifact, files
   end
   
   def job_url
     "https://pharo-ic.lille.inria.fr/hudson/job/#{URI.escape @name}"
   end
   
+  def files_for_url
+    all = @files.collect do |type, filename|
+      case type
+      when :zip
+        URI.escape(filename) + '.zip'
+      when :image
+        "#{URI.escape @artifact}/#{URI.escape(filename)}.{image,changes}'"
+      end
+    end
+  end
+  
   def download_urls
-    [
-      "#{job_url}/lastSuccessfulBuild/artifact/#{URI.escape @artifact}/#{URI.escape @artifact}.image",
-      "#{job_url}/lastSuccessfulBuild/artifact/#{URI.escape @artifact}/#{URI.escape @artifact}.changes"
-    ]
+    files_for_url.collect do |each|
+      "#{job_url}/lastSuccessfulBuild/artifact/#{each}"
+    end
   end
   
   def download(as_name = nil)
@@ -24,10 +34,20 @@ class HudsonProject
       system 'curl',
         '--remote-name', # same file name
         '--insecure', # SSL is a hassle
+        '--continue-at', '-', # reuse already-downloaded file
         '--fail',
         '--progress-bar',
         url
-      raise "Download failed" unless $?.success?
+      raise "Download failed: #{url}" unless $?.success?
+    end
+    @files.each do |type, filename|
+      if type = :zip
+        system 'unzip', '-j',
+          filename,
+          "#{@artifact}/#{@artifact}.image",
+          "#{@artifact}/#{@artifact}.changes"
+        # File.rm "#{filename}.zip"
+      end
     end
     unless as_name.nil?
       File.rename "#{@artifact}.image", "#{as_name}.image"
@@ -40,10 +60,10 @@ end
 if __FILE__ == $PROGRAM_NAME
 
   PROJECTS = {
-    'dev11'  => HudsonProject.new("Pharo 1.1", "dev1.1"),
-    'dev12'  => HudsonProject.new("Pharo 1.2", "dev1.2"),
-    'core11' => HudsonProject.new("Pharo Core 1.1", "core1.1"),
-    'core12' => HudsonProject.new("Pharo Core 1.2", "core1.2"),
+    'dev11'  => HudsonProject.new("Pharo 1.1", "dev1.1", :zip => "dev11"),
+    'dev12'  => HudsonProject.new("Pharo 1.2", "dev1.2", :zip => "dev12"),
+    'core11' => HudsonProject.new("Pharo Core 1.1", "core1.1", :zip => "core11"),
+    'core12' => HudsonProject.new("Pharo Core 1.2", "core1.2", :zip => "core12"),
   }
   PROJECTS.default = PROJECTS['dev11']
 
