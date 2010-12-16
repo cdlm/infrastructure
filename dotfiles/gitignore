@@ -1,5 +1,11 @@
+# Mac OS
 .DS_Store
 Icon
+._*
+.Spotlight-V100
+.Trashes
+
+# LaTeX etc
 *.aux
 *.bbl
 *.blg
@@ -16,3 +22,28 @@ Icon
 *.fdb_latexmk
 *.pdfsync
 *.synctex.gz
+
+# Emacs
+*~
+\#*\#
+/.emacs.desktop
+/.emacs.desktop.lock
+.elc
+auto-save-list
+tramp
+
+# Vi(m)
+*.swp
+*.swo
+.*.sw[a-z]
+*.un~
+
+# TextMate
+*.tmproj
+*.tmproject
+tmtags
+
+# Subversion
+/.svn/*
+*/.svn/*
+
