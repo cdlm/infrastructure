@@ -5,8 +5,10 @@
     auctex
     autopair
     switch-window
-    textile-mode
-    tuareg-mode
+    
+    (:name tuareg-mode
+        :after (lambda ()
+            (add-to-list 'auto-mode-alist '("\\.mli?\\'" . tuareg-mode))))
 
     (:name color-theme
         :after (lambda ()
@@ -21,19 +23,23 @@
     (:name magit
         :after (lambda ()
             (progn
-                (global-set-key (kbd "C-x C-z") 'magit-status) ;(require 'magit-svn)
-                )))
+                (require 'magit-svn)
+                (global-set-key (kbd "C-x C-z") 'magit-status))))
     
     (:name markdown-mode
-        :type git
-        :url "git://jblevins.org/git/markdown-mode.git"
         :after (lambda ()
             (progn
-                (add-to-list 'auto-mode-alist '("\\.\\(md\\|markdown\\)$" . markdown-mode))
+                (add-to-list 'auto-mode-alist '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode))
                 (add-hook 'markdown-mode-hook
                    '(lambda()
                       (setq markdown-command "kramdown")
-                      (setq markdown-italic-underscore t))))))
+                      (setq markdown-italic-underscore t)
+                      (setq markdown-enable-math t))))))
+
+    (:name textile-mode
+        :after (lambda ()
+            (add=to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))))
+    
 ))
 
 (el-get)

@@ -2,6 +2,8 @@
 (setq initial-scratch-message ";;;   S C R A T C H   B U F F E R   ;;;
 ")
 
+(setq indent-tabs-mode nil)
+
 (if window-system
     (progn
         (global-set-key [kp-delete] 'delete-char)
