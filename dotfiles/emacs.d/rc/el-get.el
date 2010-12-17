@@ -38,7 +38,7 @@
 
     (:name textile-mode
         :after (lambda ()
-            (add=to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))))
+            (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))))
     
 ))
 
