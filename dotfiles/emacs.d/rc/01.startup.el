@@ -3,9 +3,17 @@
 ")
 
 (setq indent-tabs-mode nil)
+(show-paren-mode t)
 
 (if window-system
     (progn
+        ; update PATH from the bash config, keeping the application bundle's bin/
+        (setq exec-path
+            (delete-dups (append
+                (parse-colon-path (shell-command-to-string "bash -lc 'echo $PATH'"))
+                exec-path)))
+        (setenv "PATH"
+            (mapconcat 'identity exec-path path-separator))
         ; make forward-delete work
         (global-set-key [kp-delete] 'delete-char)
         (global-set-key [M-kp-delete] 'kill-word)

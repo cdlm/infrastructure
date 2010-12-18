@@ -1,14 +1,25 @@
 (require 'el-get "~/.emacs.d/el-get/el-get/el-get")
 (setq el-get-sources '(
-    el-get
-    
-    auctex
-    autopair
-    switch-window
-    
-    (:name tuareg-mode
+    (:name magit
         :after (lambda ()
-            (add-to-list 'auto-mode-alist '("\\.mli?\\'" . tuareg-mode))))
+            (progn
+                (require 'magit-svn)
+                (global-set-key (kbd "C-x C-z") 'magit-status))))
+    
+    el-get
+    asciidoc
+    auctex
+    switch-window
+    yaml-mode
+    
+    ; autopair
+    (:name autopair
+        :after (lambda ()
+            (autopair-global-mode t)))
+    
+    ; (:name tuareg-mode
+    ;     :after (lambda ()
+    ;         (add-to-list 'auto-mode-alist '("\\.mli?\\'" . tuareg-mode))))
 
     (:name color-theme
         :after (lambda ()
@@ -20,12 +31,6 @@
                     (require 'terminal-color-themes "themes/terminal-color-themes")
                     (color-theme-tty-dark)))))
 
-    (:name magit
-        :after (lambda ()
-            (progn
-                (require 'magit-svn)
-                (global-set-key (kbd "C-x C-z") 'magit-status))))
-    
     (:name markdown-mode
         :after (lambda ()
             (progn
@@ -43,3 +48,9 @@
 ))
 
 (el-get)
+
+(defun el-get-update-all ()
+    "Update all packages"
+    (interactive)
+    (dolist (package (mapcar 'el-get-package-name el-get-sources))
+        (el-get-update package)))
