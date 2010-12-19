@@ -10,5 +10,7 @@ function man {
 }
 
 if which -s yard; then
-   alias gemyard='yard server --gems --cache --docroot=~/Library/Caches/org.yardoc/index'
+   which -s thin && gemyardserver=' --server=thin'
+   alias gemyard='yard server --gems --cache --docroot=~/Library/Caches/org.yardoc/index'"$gemyardserver"
+   unset gemyardserver
 fi
