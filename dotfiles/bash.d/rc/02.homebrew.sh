@@ -1,8 +1,10 @@
-if [ -d /opt/homebrew ]; then
-   export PATH=/opt/homebrew/bin:/opt/homebrew/sbin:$PATH
-   source `brew --prefix`/Library/Contributions/brew_bash_completion.sh
-   for f in `brew --prefix`/etc/bash_completion.d/*; do
+bp='/opt/homebrew' #`brew --prefix`
+
+if [ -d $bp ]; then
+   export PATH=$bp/bin:$bp/sbin:$PATH
+   for f in $bp/etc/bash_completion $bp/Library/Contributions/brew_bash_completion.sh; do
       source $f
    done
-   unset f
 fi
+
+unset f bp

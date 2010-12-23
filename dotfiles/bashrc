@@ -16,11 +16,8 @@ for f in ~/.bash.d/functions/*; do
    source $f
 done
 
-if [ -f /opt/local/etc/bash_completion ]; then
-   source /opt/local/etc/bash_completion
-   for f in ~/.bash.d/completion/*.sh; do
-      source $f
-   done
-fi
+for f in ~/.bash.d/completion/*.sh; do
+   source $f
+done
 
 unset f
