@@ -81,7 +81,7 @@
   "Revision number of `elisp-load-dir' library.")
 
 (defvar eload-dir nil
-   "The directory to load all elisp files.")
+  "The directory to load all elisp files.")
 
 ;;;###autoload
 (defun directory-elisp-files (dirname)
@@ -90,27 +90,16 @@ This listing is based on extensions of the files (some.el).  Returns a list of
 files without extensions, ready to be supplied to the `load-library' command."
   (interactive "DDirectory name: ")
   (setq eload-dir
-	(file-name-as-directory(expand-file-name dirname)))
+	(file-name-as-directory (expand-file-name dirname)))
   (let
-      ((dirfiles (directory-files dirname ))
-       elispfiles curfile)
-    (while dirfiles
-      (setq curfile (car dirfiles))
-      (if
-   (and
-    (string-match "^\\(.*\\)\\.\\(el\\|elc\\)$" curfile)
-    (not (member
-   (substring curfile
-       (match-beginning 1)
-       (match-end 1))
-   elispfiles)))
-   (setq elispfiles (cons
-       (substring curfile
-           (match-beginning 1)
-           (match-end 1))
-       elispfiles)))
-      (setq dirfiles (cdr dirfiles)))
-    elispfiles))
+      ((dirfiles (directory-files dirname))
+       (elispfiles '()))
+    (dolist (curfile dirfiles (delete-dups (reverse elispfiles)))
+      (let ((name (and
+		   (string-match "\\`\\(.*\\)\\.elc?\\'" curfile)
+		   (match-string 1 curfile))))
+	(if name
+	    (add-to-list 'elispfiles name))))))
 
 
 ;;;###autoload
