@@ -1,26 +1,31 @@
 (require 'el-get "~/.emacs.d/el-get/el-get/el-get")
 (setq el-get-sources '(
     (:name magit
+	:features magit magit-svn
         :after (lambda ()
-            (progn
-                (require 'magit-svn)
-                (global-set-key (kbd "C-x C-z") 'magit-status))))
+	    (global-set-key (kbd "C-x C-z") 'magit-status)))
     
     el-get
+    egg
     asciidoc
     auctex
     switch-window
+    tuareg-mode
     yaml-mode
+    (:name auto-complete
+        :after (lambda () (global-auto-complete-mode t)))
     
-    ; autopair
+    auto-complete-etags
+    auto-complete-extension
+    yasnippet
+    ssh-config
+    cedet ecb
+    ; ido
+
     (:name autopair
         :after (lambda ()
             (autopair-global-mode t)))
     
-    ; (:name tuareg-mode
-    ;     :after (lambda ()
-    ;         (add-to-list 'auto-mode-alist '("\\.mli?\\'" . tuareg-mode))))
-
     (:name color-theme
         :after (lambda ()
             (if window-system
