@@ -47,7 +47,11 @@ EOF
 
 case ARGV.size
   when 0 then puts MAKERULE
-  when 2 then system 'osascript', '-e', SCRIPT, *ARGV
+  when 2 then
+    # only convert if modification times make sense (for make/latexmk)
+    unless ARGV.all? {|f| File.exists? f } and File.ctime(ARGV.first) <= File.ctime(ARGV.last)
+      system 'osascript', '-e', SCRIPT, *ARGV
+    end
   else raise ArgumentError
 end
 
