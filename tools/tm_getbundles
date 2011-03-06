@@ -31,6 +31,7 @@ ruby-sass=git://github.com/aussiegeek/ruby-sass-tmbundle.git
 sass=git://github.com/seaofclouds/sass-textmate-bundle.git
 less=git://github.com/appden/less.tmbundle.git
 clojure=git://github.com/nullstyle/clojure-tmbundle.git
+go=git://github.com/AlanQuatermain/go-tmbundle.git
 ada
 ant
 apache

@@ -1,0 +1,35 @@
+#!/bin/sh
+# copy image and changes
+#
+# from Eliot Miranda on the Pharo mailing list
+
+force=0
+if [ "$1" = -f ]; then
+	force=1
+	shift
+fi
+
+if [ $# != 2 -o "$1" = "-?" -o "$1" = --help ]; then
+	echo "usage: $0 [-f] image-name-no-ext [image-name-no-ext|dir]"
+	test $# != 2 && exit 1
+	exit 0
+fi
+
+if [ -f "$2.image" -o -f "$2.changes" ]; then
+	if [ "$force" = 0 ]; then
+		echo "$2.image and/or $2.changes already exist." 1>&2
+		exit 1
+	fi
+elif [ -d "$2" ]; then
+	if [ -f "$2/`basename "$1"`.image" -o -f "$2/`basename "$1"`.changes" ]; then
+		if [ "$force" = 0 ]; then
+			echo "$2/`basename "$1"`.image and/or $2/`basename "$1"`.changes already exist." 1>&2
+			exit 1
+		fi
+	fi
+	cp "$1.image" "$1.changes" "$d"
+	exit 0
+fi
+
+cp "$1.image" "$2.image"
+cp "$1.changes" "$2.changes"
