@@ -1,6 +1,18 @@
 #!/bin/bash
 # interactive non-login shell setup
 
+pathmunge () {
+   local path=$1
+   local new=$2
+   if ! echo ${!path} | egrep -q "(^|:)$new($|:)" ; then
+     if [ "$3" = "after" ] ; then
+        export $path=${!path}:$new
+     else
+        export $path=$new:${!path}
+     fi
+   fi
+}
+
 # modularized portable configs
 for f in ~/.bash.d/rc/*; do
    source $f
