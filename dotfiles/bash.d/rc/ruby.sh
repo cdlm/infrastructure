@@ -3,7 +3,13 @@
 #export GEM_HOME=$HOME/.gem
 
 export RUBYOPT=rubygems
-export PATH=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$PATH
+# export PATH=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$PATH
+
+rb=`which ruby`
+if which -s brew && [[ $rb = `brew --prefix`/* ]] ; then
+   pathmunge PATH $(dirname $(dirname $rb)/$(readlink $rb))
+fi
+unset rb
 
 function man {
    env man $* || gem man $*
