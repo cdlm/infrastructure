@@ -1,5 +1,6 @@
 if [ -d /opt/local ]; then
-   export PATH=/opt/local/bin:/opt/local/sbin:$PATH
+   pathmunge PATH /opt/local/sbin
+   pathmunge PATH /opt/local/bin
    #export MANPATH=/opt/local/share/man:`manpath -q`
-   export INFOPATH=/opt/local/share/info:$INFOPATH
+   pathmunge INFOPATH /opt/local/share/info
 fi
