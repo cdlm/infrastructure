@@ -2,6 +2,7 @@
 # interactive non-login shell setup
 
 pathmunge () {
+   (( $# < 2 )) && echo "Usage: pathmunge PATH /foo/bar/bin [after]"
    local path=$1
    local new=$2
    if ! echo ${!path} | egrep -q "(^|:)$new($|:)" ; then
