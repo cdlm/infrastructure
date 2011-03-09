@@ -18,5 +18,6 @@ fi
 
 # call by hand only when needed, else it overrides Ruby's irb
 set_maglev_path() {
-    export PATH=$MAGLEV_HOME/bin:$GEMSTONE_HOME/bin:$PATH
+    pathmunge PATH $GEMSTONE_HOME/bin
+    pathmunge PATH $MAGLEV_HOME/bin
 }
