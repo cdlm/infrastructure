@@ -137,7 +137,4 @@ bookmark_complete() {
 	# ) )
 	COMPREPLY=( ${COMPREPLY[@]/#/"$prefix"} )
 }
-
-if [[ -f /etc/bash_completion || -f /opt/local/etc/bash_completion ]]; then
-	complete -F bookmark_complete -o filenames -o nospace bmk
-fi
+complete -F bookmark_complete -o filenames -o nospace bmk
