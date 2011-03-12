@@ -45,7 +45,7 @@ class HudsonProject
       raise "Download failed: #{url}" unless $?.success?
     end
     @files.each do |type, filename|
-      if type = :zip
+      if type == :zip
         system 'unzip', '-j',
           filename,
           "#{@artifact}/#{@artifact}.image",
