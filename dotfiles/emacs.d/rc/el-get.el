@@ -12,9 +12,7 @@
     switch-window
     tuareg-mode
     yaml-mode
-    (:name auto-complete
-        :after (lambda () (global-auto-complete-mode t)))
-    
+    auto-complete
     auto-complete-etags
     auto-complete-extension
     yasnippet
