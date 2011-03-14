@@ -1,9 +1,9 @@
 (require 'el-get "~/.emacs.d/el-get/el-get/el-get")
 (setq el-get-sources '(
-    (:name magit
-	:features magit magit-svn
-        :after (lambda ()
-	    (global-set-key (kbd "C-x C-z") 'magit-status)))
+    ; (:name magit
+    ; 	:features magit magit-svn
+    ;     :after (lambda ()
+    ; 	    (global-set-key (kbd "C-x C-z") 'magit-status)))
     
     el-get
     egg
@@ -17,7 +17,7 @@
     auto-complete-extension
     yasnippet
     ssh-config
-    cedet ecb
+    ; cedet ecb
     ; ido
 
     (:name autopair
@@ -52,8 +52,9 @@
 
 (el-get)
 
-(defun el-get-update-all ()
-    "Update all packages"
-    (interactive)
-    (dolist (package (mapcar 'el-get-package-name el-get-sources))
-        (el-get-update package)))
+; (defun el-get-update-all ()
+;     "Update all packages"
+;     (interactive)
+;     (dolist (package (mapcar 'el-get-package-name el-get-sources))
+;         (el-get-update package)))
+
