@@ -1,23 +1,33 @@
 (require 'el-get "~/.emacs.d/el-get/el-get/el-get")
 (setq el-get-sources '(
-    ; (:name magit
-    ; 	:features magit magit-svn
-    ;     :after (lambda ()
-    ; 	    (global-set-key (kbd "C-x C-z") 'magit-status)))
-    
     el-get
+
+    ; development tools
     egg
+
+    ; language modes
     asciidoc
     auctex
-    switch-window
+    slime clojure-mode
+    cmake-mode
+    go-mode
+    haml-mode
+    sass-mode
+    ssh-config
+    textile-mode
     tuareg-mode
     yaml-mode
+
+    ; editing
+    ack
     auto-complete
+    auto-complete-clang
     auto-complete-etags
     auto-complete-extension
     yasnippet
-    ssh-config
-    ; cedet ecb
+
+    ; general interface
+    switch-window
     ; ido
 
     (:name autopair
@@ -44,17 +54,6 @@
                       (setq markdown-italic-underscore t)
                       (setq markdown-enable-math t))))))
 
-    (:name textile-mode
-        :after (lambda ()
-            (add-to-list 'auto-mode-alist '("\\.textile\\'" . textile-mode))))
-    
 ))
 
 (el-get)
-
-; (defun el-get-update-all ()
-;     "Update all packages"
-;     (interactive)
-;     (dolist (package (mapcar 'el-get-package-name el-get-sources))
-;         (el-get-update package)))
-
