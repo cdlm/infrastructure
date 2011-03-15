@@ -20,7 +20,9 @@
 
     ; editing
     ack
-    auto-complete
+    (:name auto-complete
+        :after (lambda ()
+            (global-auto-complete-mode t)))
     auto-complete-clang
     auto-complete-etags
     auto-complete-extension
