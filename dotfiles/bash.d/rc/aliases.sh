@@ -12,10 +12,17 @@ export SVKDIFF="svkopendiff"
 alias smu='open -a Smultron'
 alias skim='open -a Skim'
 alias irb='irb -r irb/completion'
-alias e='emacsclient --no-wait --alternate-editor=emacs-app'
-alias et='emacsclient --tty --alternate-editor=emacs'
 alias nano='nano --nowrap'
 alias snano='sudo nano --nowrap'
+alias ec='emacsclient --no-wait --alternate-editor=emacs-app'
+alias et='emacsclient --tty --alternate-editor=emacs'
+function e() {
+   if [ $# == 0 ]; then
+      [ -f main.tex ] && ec main.tex
+   else
+      ec "$*"
+   fi
+}
 
 alias l='ls'
 alias la='ls -A'
