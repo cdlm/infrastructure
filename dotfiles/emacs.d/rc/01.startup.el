@@ -4,6 +4,7 @@
 
 (setq indent-tabs-mode nil)
 (show-paren-mode t)
+(global-visual-line-mode t)
 
 (if window-system
     (progn
