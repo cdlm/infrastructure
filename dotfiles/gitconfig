@@ -49,10 +49,18 @@
 [color "diff"]
 	meta = cyan
 	frag = blue
-	old = red bold
-	new = green bold
+	old = red
+	new = green
 
 [color "status"]
-	added = green bold
+	added = green
 	changed = yellow
 	untracked = magenta
+    header = white
+
+[color "decorate"]
+    HEAD = green
+    branch = cyan
+    tag = blue
+    remoteBranch = red 
+
