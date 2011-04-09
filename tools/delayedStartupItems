@@ -12,6 +12,6 @@ end
 
 items.each do |i|
   puts "Delayed launch: #{i}" if ARGV.include? '-v'
-  system "open", "-a", i
+  system "open", "-a", i unless /^#/ =~ i
   # sleep 1
 end
