@@ -7,7 +7,17 @@ filetype plugin on
 filetype plugin indent on
 
 set laststatus=2
-set statusline=[%{GitBranch()}]\ %f%(\ %m%r%)%=%(%y\ %)%l,%v\ %p%%
+set statusline=\ %f%(\ %y%m%r%)%=L%l\ C%v\ 
+function StatuslineGitBranch()
+    if exists('*GitBranch')
+        let result = GitBranch()
+        if result != ''
+            return '[' . result . ']'
+        endif
+    endif
+    return ''
+endfunction
+set statusline+=%(%{StatuslineGitBranch()}\ %)
 
 set ignorecase
 set smartcase
