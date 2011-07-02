@@ -9,6 +9,7 @@ fi
 export CVS_RSH="ssh"
 export SVKDIFF="svkopendiff"
 
+alias imageoptim="open -g -a ImageOptim"
 alias smu='open -a Smultron'
 alias skim='open -a Skim'
 alias irb='irb -r irb/completion'
