@@ -45,6 +45,9 @@ set cpoptions+=$ " mark changed area
 
 nmap <F1> :NERDTreeToggle<CR>
 
+" sudo write that file
+command SudoWrite write !sudo tee % > /dev/null
+
 " Create directories when saving
 augroup BWCCreateDir
     au!
