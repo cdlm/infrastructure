@@ -20,3 +20,6 @@ if which -s yard; then
    alias gemyard='yard server --gems --cache --docroot=~/Library/Caches/org.yardoc/index'"$gemyardserver"
    unset gemyardserver
 fi
+
+# load rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
