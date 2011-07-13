@@ -5,6 +5,10 @@
 export RUBYOPT=rubygems
 # export PATH=$HOME/.gem/ruby/1.9.1/bin:$HOME/.gem/ruby/1.8/bin:$PATH
 
+# load rvm
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+
+# fix path for homebrew's ruby
 rb=`which ruby`
 if which -s brew && [[ $rb = `brew --prefix`/* ]] ; then
    pathmunge PATH $(dirname $(dirname $rb)/$(readlink $rb))
@@ -20,6 +24,3 @@ if which -s yard; then
    alias gemyard='yard server --gems --cache --docroot=~/Library/Caches/org.yardoc/index'"$gemyardserver"
    unset gemyardserver
 fi
-
-# load rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
