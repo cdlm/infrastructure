@@ -1,6 +1,6 @@
 # autoload -Uz promptinit && promptinit
 autoload -Uz add-zsh-hook vcs_info
-require promptinfo solarized
+require promptinfo solarized autotitle
 
 add-zsh-hook precmd vcs_info
 zstyle ':vcs_info:*' enable git svn hg
