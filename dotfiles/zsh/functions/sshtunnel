@@ -1,0 +1,36 @@
+#! /usr/bin/env zsh
+#
+# zsh: autoload -Uz sshtunnel
+
+local HELP
+HELP="Usage: $0 [options] machine [port(s)]
+
+Redirects localhost connections to the remote machine, for all ports given.
+If no port parameters are given, then port 8080 is redirected.
+
+-h, --help
+   Show this help, then exit.
+
+-p, --print
+   Only display the ssh invocation without actually running it.
+"
+
+local -a print help usage
+zparseopts -D -K \
+   p=print -print=print \
+   h=help -help=help \
+   \?=usage
+
+[[ -n $help ]] && { echo "$HELP"; return 0 }
+[[ -n $usage || $# -eq 0 ]] && { echo "$HELP" >&2; return 1 }
+
+local machine ssh_command ports
+
+machine=$1; shift
+ports=($*)
+ssh_command=(echo ssh -N)
+for p in ${ports:-8080}; do
+   ssh_command+="-L${p}:localhost:${p}"
+done
+
+${print:+echo} $ssh_command $machine

@@ -1,0 +1,37 @@
+#! /bin/zsh
+require zgit
+
+function status() { "$@"; echo $? }
+
+function promptinfo_exitstatus_precmd() {
+   local ex=$?
+   psvar=()
+
+   if [[ $ex -ge 128 ]]; then
+      sig=$signals[$ex-127]
+      psvar[1]="sig${(L)sig}"
+   else
+      psvar[1]="$ex"
+   fi
+   echo -n
+}
+
+function promptinfo_git_status() {
+   zgit_isgit || return
+   local msg
+   
+   if zgit_inworktree; then
+      local fmt
+      zstyle -s ':promptinfo:' git-status fmt
+      [[ -z ${fmt} ]] && fmt='%(i.-.+)%(w.-.*)%(m.!.-)%(t.?.-)'
+      
+      zformat -f msg ${fmt} \
+         i:$(status zgit_isindexclean) \
+         w:$(status zgit_isworktreeclean) \
+         m:$(status zgit_hasunmerged) \
+         t:$(status zgit_hasuntracked)
+   fi
+   echo -n ${msg}
+}
+
+provide promptinfo

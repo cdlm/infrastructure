@@ -1,0 +1,22 @@
+#! /bin/zsh
+# solarized colors, iterm palette
+require spectrum
+
+FG[base03]=$FG[008]  BG[base03]=$BG[008]        # 234
+FG[base02]=$FG[000]  BG[base02]=$BG[000]        # 235
+FG[base01]=$FG[010]  BG[base01]=$BG[010]        # 240
+FG[base00]=$FG[011]  BG[base00]=$BG[011]        # 241
+FG[base0]=$FG[012]   BG[base0]=$BG[012]         # 244
+FG[base1]=$FG[014]   BG[base1]=$BG[014]         # 245
+FG[base2]=$FG[007]   BG[base2]=$BG[007]         # 254
+FG[base3]=$FG[015]   BG[base3]=$BG[015]         # 230
+FG[yellow]=$FG[003]  BG[yellow]=$BG[003]        # 136
+FG[orange]=$FG[009]  BG[orange]=$BG[009]        # 166
+FG[red]=$FG[001]     BG[red]=$BG[001]           # 160
+FG[magenta]=$FG[005] BG[magenta]=$BG[005]       # 125
+FG[violet]=$FG[013]  BG[violet]=$BG[013]        # 061
+FG[blue]=$FG[004]    BG[blue]=$BG[004]          # 033
+FG[cyan]=$FG[006]    BG[cyan]=$BG[006]          # 037
+FG[green]=$FG[002]   BG[green]=$BG[002]         # 064
+
+provide solarized

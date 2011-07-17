@@ -1,0 +1,33 @@
+#! /bin/zsh
+# A script to make using 256 colors in zsh less painful.
+#
+# Modified from http://lucentbeing.com/blog/that-256-color-thing/
+# by P.C. Shyamshankar <sykora@lucentbeing.com>
+
+typeset -Ag FX FG BG
+
+# here be ESC invisibles
+FX=(
+    reset     "[00m"
+    bold      "[01m" no-bold      "[22m"
+    italic    "[03m" no-italic    "[23m"
+    underline "[04m" no-underline "[24m"
+    blink     "[05m" no-blink     "[25m"
+    reverse   "[07m" no-reverse   "[27m"
+    save      "[s"   restore      "[u"
+)
+
+function spectrum_fg() {
+   echo -ne "\e[38;5;${1}m"
+}
+function spectrum_bg() {
+   echo -ne "\e[48;5;${1}m"
+}
+
+# use the functions for
+for color in {000..015}; do
+    FG[$color]="[38;5;${color}m"
+    BG[$color]="[48;5;${color}m"
+done
+
+provide spectrum
