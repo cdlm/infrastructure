@@ -26,7 +26,6 @@ alias ja='jump --add'
 alias jl='jump --list'
 alias bmk='jump'
 
-setopt auto_name_dirs
 setopt auto_pushd
 setopt pushd_ignore_dups
 alias -- -='cd -'
