@@ -1,10 +1,10 @@
 Z=~/.zsh
 
-fpath+=(
+fpath=(
    $Z/functions
    $Z/completions
    $Z/lib
-)
+   $fpath)
 
 # module / dependency loading
 function require() {
