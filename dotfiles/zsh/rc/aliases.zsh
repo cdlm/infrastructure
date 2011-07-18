@@ -62,6 +62,7 @@ alias lln='noglob zln -W'
 
 # devel stuff
 alias g=git && compdef g=git
+function g/() { cd $(git root); }
 command which -s hub && function git(){ hub "$@" }
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
