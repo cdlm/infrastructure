@@ -1,6 +1,39 @@
 [submodule "submodules/completion-ruby"]
 	path = submodules/completion-ruby
 	url = git://github.com/mernen/completion-ruby.git
-[submodule "submodules/git-vim"]
-	path = submodules/git-vim
-	url = git://github.com/motemen/git-vim.git
+[submodule "dotfiles/vim/bundle/nerdtree"]
+	path = dotfiles/vim/bundle/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "dotfiles/vim/bundle/nerdcommenter"]
+	path = dotfiles/vim/bundle/nerdcommenter
+	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule "dotfiles/vim/bundle/vim-colors-solarized"]
+	path = dotfiles/vim/bundle/vim-colors-solarized
+	url = https://github.com/altercation/vim-colors-solarized.git
+[submodule "dotfiles/vim/bundle/vim-haml"]
+	path = dotfiles/vim/bundle/vim-haml
+	url = https://github.com/tpope/vim-haml.git
+[submodule "dotfiles/vim/bundle/vim-rake"]
+	path = dotfiles/vim/bundle/vim-rake
+	url = https://github.com/tpope/vim-rake.git
+[submodule "dotfiles/vim/bundle/vim-fugitive"]
+	path = dotfiles/vim/bundle/vim-fugitive
+	url = https://github.com/tpope/vim-fugitive.git
+[submodule "dotfiles/vim/bundle/vim-surround"]
+	path = dotfiles/vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "dotfiles/vim/bundle/vim-unimpaired"]
+	path = dotfiles/vim/bundle/vim-unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git
+[submodule "dotfiles/vim/bundle/TeX-9"]
+	path = dotfiles/vim/bundle/TeX-9
+	url = https://github.com/vim-scripts/TeX-9.git
+[submodule "dotfiles/vim/bundle/L9"]
+	path = dotfiles/vim/bundle/L9
+	url = https://github.com/vim-scripts/L9.git
+[submodule "dotfiles/vim/bundle/markdown"]
+	path = dotfiles/vim/bundle/markdown
+	url = https://github.com/vim-scripts/Markdown.git
+[submodule "dotfiles/vim/bundle/autocomplpop"]
+	path = dotfiles/vim/bundle/autocomplpop
+	url = https://github.com/vim-scripts/AutoComplPop.git
