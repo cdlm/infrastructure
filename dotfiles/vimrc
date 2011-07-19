@@ -1,13 +1,31 @@
 set encoding=utf-8
 set fileencoding=utf-8
 
+" load pathogen
+call pathogen#runtime_append_all_bundles()
+call pathogen#helptags()
+
+" prefix/namespace for user commands
+let mapleader=";"
+
+" anticipating some common typos
+function! CommandAlias(abbreviation, expansion)
+    execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
+endfunction
+command! -nargs=+ CommandAlias call CommandAlias(<f-args>)
+" Use it on itself to define a simpler abbreviation for itself.
+CommandAlias alias CommandAlias
+map q :q
+CommandAlias Q q
+CommandAlias qw wq
+
 syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
 
 set laststatus=2
-set statusline=\ %f%(\ %y%m%r%)%=L%l\ C%v\ 
+let &statusline=' %f%( %y%m%r%)%=L%l C%v '
 function StatuslineGitBranch()
     if exists('*GitBranch')
         let result = GitBranch()
@@ -18,6 +36,16 @@ function StatuslineGitBranch()
     return ''
 endfunction
 set statusline+=%(%{StatuslineGitBranch()}\ %)
+if version >= 700
+    " set the status line to flashy colors in insert mode
+    autocmd InsertEnter * highlight StatusLine term=reverse ctermfg=15 ctermbg=9 gui=undercurl guisp=Magenta
+    autocmd InsertEnter * highlight ModeMsg    term=reverse ctermfg=15 ctermbg=9
+    autocmd InsertLeave * highlight StatusLine term=reverse ctermfg=14 ctermbg=0 gui=bold,reverse
+    autocmd InsertLeave * highlight ModeMsg    term=NONE    ctermfg=4  ctermbg=NONE
+    " unfortunately impossible to reuse the variables from solarized.vim
+    "autocmd InsertEnter * exe "highlight! StatusLine" . s:fmt_none . s:fg_base3 . :bg_orange . s:fmt_revbb
+    "autocmd InsertLeave * exe "highlight! StatusLine" . s:fmt_none . s:fg_base1 . s:bg_base01 . s:fmt_revbb
+endif
 
 set ignorecase
 set smartcase
@@ -48,9 +76,16 @@ nmap <F1> :NERDTreeToggle<CR>
 " sudo write that file
 command SudoWrite write !sudo tee % > /dev/null
 
+" Invisible characters: shortcut to rapidly toggle
+nmap <leader>i :set list!<CR>
+set listchars=tab:▸\ ,eol:¬
+"highlight NonText guifg=#4a4a59
+"highlight SpecialKey guifg=#4a4a59
+
+
 " Create directories when saving
 augroup BWCCreateDir
-    au!
+    autocmd!
     autocmd BufWritePre * if expand("<afile>")!~#'^\w\+:/' && !isdirectory(expand("%:h")) | execute "silent! !mkdir -p %:h" | redraw! | endif
 augroup END
 
@@ -58,15 +93,20 @@ augroup END
 set guioptions-=T
 "set guioptions-=m
 if(has("gui_running"))
+    set background=dark
+    colorscheme solarized
+    "colorscheme mustang
+    "colorscheme railscasts
     "colorscheme twilight2
     "colorscheme vilight
     "colorscheme zenburn
-    colorscheme railscasts
     set cursorline
     "set cursorcolumn
 else
     set t_Co=256
-    colorscheme railscasts
+    set background=dark
+    colorscheme solarized
+    "colorscheme railscasts
     "colorscheme vibrantink
     "colorscheme xoria256
     "colorscheme gentooish
