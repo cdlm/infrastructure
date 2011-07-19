@@ -9,7 +9,7 @@ install-tools: $(TOOLS_DST)
 
 $(TOOLS_DST): \
 $(PREFIX)/bin/%: tools/%
-	install -d $(@D)  &&  install $< $@
+	@$(INSTALLDIR) $(@D)  &&  $(INSTALLBIN) $< $@
 
 diff-tools:
 	@for f in $(TOOLS_SRC:tools/%=%); do \

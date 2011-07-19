@@ -1,6 +1,10 @@
 # This could be overriden from command line to install somewhere else
 PREFIX = $(HOME)
 DIFF = $(firstword $(shell which colordiff diff))
+INSTALL = install -Cvm 600
+INSTALLBIN = install -Cvm 700
+INSTALLDIR = install -d
+
 
 default: install
 

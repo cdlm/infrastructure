@@ -9,12 +9,12 @@ install-completion-ruby: $(CR_PREFIX) $(CR_DST) $(CR_PREFIX)/ruby.sh
 
 $(CR_DST): \
 $(CR_PREFIX)/%: $(CR)/%
-	install -m 0644 $< $@
+	@$(INSTALL) $< $@
 
 $(CR_PREFIX):
-	install -d $@
+	@$(INSTALLDIR) $@
 
 $(CR_PREFIX)/ruby.sh:
-	install -m 0644 $(CR)/completion-ruby-all $@
+	@$(INSTALL) $(CR)/completion-ruby-all $@
 
 .PHONY: install-completion-ruby
