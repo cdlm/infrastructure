@@ -2,6 +2,10 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " load pathogen
+let g:pathogen_disabled = []
+if !has('ruby') || !has('gui_running')
+    call add(g:pathogen_disabled, 'TeX-9')
+endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
