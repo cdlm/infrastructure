@@ -21,6 +21,7 @@ function e() {
    fi
 }
 
+require jump
 alias j='jump'
 alias ja='jump --add'
 alias jl='jump --list'
