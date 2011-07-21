@@ -1,24 +1,24 @@
 Z=~/.zsh
 
+# language options
+setopt function_argzero
+
+# module / dependency loading
+# require: load & initialize a separate module
+# provide: mark the module as loaded (if it does not provide an eponym function)
+function require() { for name ($*) autoload -Uz $name && $name; }
+function provide() { for name ($*) function $name() { return 0; }; }
+
 fpath=(
    $Z/functions
    $Z/completions
    $Z/lib
    $fpath)
 
-# module / dependency loading
-function require() {
-   for name ($*)
-      autoload -Uz $name && $name
-}
-
-function provide() {
-   for name ($*)
-      function $name() { return 0; }
-}
-
+# environment & shell interaction setup
 for config_file ($Z/rc/*.zsh)
    source $config_file
 
+# tools implemented as shell functions
 for function_file ($Z/functions/*)
    autoload -Uz ${function_file:t}
