@@ -1,0 +1,11 @@
+#!/usr/bin/env zsh
+
+function rm-dsstore() {
+    if [[ $# -gt 1 ]]; then
+       echo "Usage: $0 [dir]" >&2
+       return 1
+   fi 
+
+    find "${1:-.}" -name '.DS_Store' -type f -delete
+}
+
