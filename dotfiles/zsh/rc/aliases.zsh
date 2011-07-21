@@ -38,11 +38,17 @@ alias cd.....='cd ../../../..'
 alias cd/='cd /'
 function mcd() { mkdir -p "$1" && cd "$1"; }
 
-alias ls='ls -GF' # colors
+if command which -s gls; then
+    alias ls='gls --classify --color=auto'
+else # use BSD ls from OS X
+    alias ls='ls -GF'
+fi
 alias l='ls'
 alias la='ls -A'
-alias ll='ls -l'
 alias lh='ls -lh'
+alias ll='lh'
+alias lla='ll -A'
+alias lll='ls -la'
 alias mkdir='mkdir -p'
 alias tree='tree -ACF'
 alias top='top -d -o cpu -s 2'
@@ -60,10 +66,13 @@ alias mmv='noglob zmv -W'
 alias ccp='noglob zcp -W'
 alias lln='noglob zln -W'
 
+alias fu='sudo $(fc -ln -1)'
+
 # devel stuff
 alias g=git && compdef g=git
 function g/() { cd $(git root); }
 command which -s hub && function git(){ hub "$@" }
+
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
