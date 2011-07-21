@@ -27,6 +27,7 @@ syntax on
 filetype on
 filetype plugin on
 filetype plugin indent on
+set omnifunc=syntaxcomplete#Complete
 
 set laststatus=2
 let &statusline=' %f%( %y%m%r%)%=L%l C%v '
@@ -56,7 +57,7 @@ set smartcase
 set incsearch
 set hlsearch
 set showmatch
-set wildmenu
+set wildmenu wildmode=list:longest,full
 set ruler
 set showcmd
 set showmode
