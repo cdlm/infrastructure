@@ -8,7 +8,7 @@
     root = rev-parse --show-toplevel
     l = log --oneline --decorate --graph
     dst = !"f () { git diff $* | diffstat; }; f"
-    diffindex = diff --cached
+    staged = diff --staged
     wdiff = diff --word-diff=color
     st = status --short --branch
     ci = commit
