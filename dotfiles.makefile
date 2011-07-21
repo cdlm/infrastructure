@@ -5,7 +5,8 @@
 DOTFILES_SRC = $(shell find dotfiles \
 				\! \( -name '.git' -prune \) \
 				\! -name '.*' \
-				-type f -print)
+				\( -type f -o -type l \) \
+				-print)
 DOTFILES_DST = $(DOTFILES_SRC:dotfiles/%=$(PREFIX)/.%)
 DOTFILES_POST = $(patsubst %.el, %.elc, $(wildcard $(PREFIX)/.emacs.d/lisp/*.el))
 ELGET = $(PREFIX)/.emacs.d/el-get
