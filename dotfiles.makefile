@@ -2,7 +2,10 @@
 ### dotfiles/x/y goes to $PREFIX/.x/y
 ###
 .PHONY: install-dotfiles diff-dotfiles treediff-dotfiles
-DOTFILES_SRC = $(shell find dotfiles -name '.git' -prune -o -type f -print)
+DOTFILES_SRC = $(shell find dotfiles \
+				\! \( -name '.git' -prune \) \
+				\! -name '.*' \
+				-type f -print)
 DOTFILES_DST = $(DOTFILES_SRC:dotfiles/%=$(PREFIX)/.%)
 DOTFILES_POST = $(patsubst %.el, %.elc, $(wildcard $(PREFIX)/.emacs.d/lisp/*.el))
 ELGET = $(PREFIX)/.emacs.d/el-get
