@@ -9,6 +9,9 @@ endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" don't start autocomplpop too eagerly
+let g:acp_behaviorKeywordLength = 3
+
 " prefix/namespace for user commands
 let mapleader=";"
 
@@ -24,8 +27,6 @@ CommandAlias Q q
 CommandAlias qw wq
 
 syntax on
-filetype on
-filetype plugin on
 filetype plugin indent on
 set omnifunc=syntaxcomplete#Complete
 
