@@ -1,3 +1,6 @@
+export LC_ALL=en_US.UTF-8
+export LC_CTERM=en_US.UTF-8
+
 export HISTSIZE=5000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
