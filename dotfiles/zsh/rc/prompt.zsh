@@ -9,11 +9,11 @@ zstyle ':vcs_info:*' actionformats "%{$FG[violet]%}[%b]%{$FG[orange]%}%a"
 zstyle ':promptinfo:' git-status "%{$FG[green]%}%(i..+)%{$FG[yellow]%}%(w..*)%{$FG[orange]%}%(m.*.)%{$FG[base01]%}%(t.?.)"
 
 # prompt
-setopt promptsubst
+setopt promptsubst promptpercent
 promptcolor="green"
 add-zsh-hook precmd promptinfo_exitstatus_precmd
 PROMPT="%{$FX[reset]%}%(?..%{$FG[red]%}‣ exited %1v%{$FX[reset]%}
 )"
 PROMPT+="%{$FG[$promptcolor]$FX[reverse]%} %{$FX[no-reverse]%} "
-PROMPT+="%1~%{$FG[base03]%}%(!.#.$)%{$FX[reset]%}"
+PROMPT+="%2~%{$FG[base03]%}%(!.#.$)%{$FX[reset]%}"
 RPROMPT="\$(promptinfo_git_status)\${vcs_info_msg_0_}%{$FX[reset]%}"
