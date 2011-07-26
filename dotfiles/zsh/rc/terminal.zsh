@@ -25,9 +25,11 @@ setopt no_hash_list_all
 # ls colors, assuming gnu coreutils from homebrew
 if command which -s gdircolors; then
     [[ -f ~/.dircolors ]] && eval `gdircolors ~/.dircolors`
+    zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
-export LSCOLORS='exgxdadacxfafaAcAcAeex'
 export GREP_OPTIONS='--color=auto'
+export CLICOLORS=true
+export LSCOLORS='exgxdadacxfafaAcAcAeex'
 
 # Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
 bindkey "^[[3~" delete-char
