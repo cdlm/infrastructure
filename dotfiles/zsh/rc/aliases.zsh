@@ -67,6 +67,8 @@ alias mmv='noglob zmv -W'
 alias ccp='noglob zcp -W'
 alias lln='noglob zln -W'
 
+alias rehash='hash -rf'
+
 alias fu='sudo $(fc -ln -1)'
 
 # devel stuff
