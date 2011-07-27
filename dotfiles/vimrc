@@ -1,7 +1,9 @@
 set encoding=utf-8
 set fileencoding=utf-8
 
-" load pathogen
+" load pathogen bundles
+"let g:solarized_visibility = 'low'
+"let g:solarized_hitrail = 1
 let g:pathogen_disabled = []
 if !has('ruby') || !has('gui_running')
     call add(g:pathogen_disabled, 'TeX-9')
@@ -66,6 +68,7 @@ set showmode
 set wrap
 set visualbell
 set fillchars=""
+set cursorline
 
 " Sane defaults for tabs
 set hidden
@@ -84,7 +87,7 @@ command SudoWrite write !sudo tee % > /dev/null
 
 " Invisible characters: shortcut to rapidly toggle
 nmap <leader>i :set list!<CR>
-set listchars=tab:▸\ ,eol:¬
+set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
 "highlight NonText guifg=#4a4a59
 "highlight SpecialKey guifg=#4a4a59
 
