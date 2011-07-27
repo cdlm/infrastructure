@@ -91,6 +91,8 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
 "highlight NonText guifg=#4a4a59
 "highlight SpecialKey guifg=#4a4a59
 
+" unhighlight search results in normal mode
+nmap <silent> <leader>n :silent noh<CR>
 
 " Create directories when saving
 augroup BWCCreateDir
@@ -109,10 +111,10 @@ if(has("gui_running"))
     "colorscheme twilight2
     "colorscheme vilight
     "colorscheme zenburn
-    set cursorline
     "set cursorcolumn
+    highlight Cursor guibg=#eabf50
 else
-    set t_Co=256
+    "set t_Co=256
     set background=dark
     colorscheme solarized
     "colorscheme railscasts
