@@ -27,14 +27,25 @@ if command which -s gdircolors; then
     [[ -f ~/.dircolors ]] && eval `gdircolors ~/.dircolors`
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
-export GREP_OPTIONS='--color=auto'
 export CLICOLORS=true
 export LSCOLORS='exgxdadacxfafaAcAcAeex'
+
+# Setup grep
+GREP_OPTIONS=( --color=auto --exclude=\*.{elc,pyc,zwc} --exclude=tags )
+if ! $(grep --exclude-dir 2> /dev/null); then
+    GREP_OPTIONS+=( --exclude-dir=.{svn,hg,bzr,git} )
+else
+    GREP_OPTIONS+=( --exclude=\*.{svn,hg,bzr,git}\* )
+fi
+export GREP_OPTIONS
 
 # Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
 bindkey "^[[3~" delete-char
 bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
+
+# Push current command on a stack, to run another one first
+bindkey "^J" push-line
 
 ## smart urls
 autoload -U url-quote-magic
