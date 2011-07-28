@@ -121,6 +121,9 @@ imap <C-a> <C-o>I
 "imap <C-S-Enter> <C-o>O
 "nmap <C-S-Enter> O
 
+" <Del> works, I don't see why <BS> shouldn't
+map <BS> X
+
 " Show highlighting group for current word
 function! <SID>SyntaxStack()
     if !exists("*synstack")
