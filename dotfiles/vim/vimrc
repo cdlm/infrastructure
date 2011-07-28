@@ -111,6 +111,16 @@ nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
 
+" Emacs-style jump to end of line
+imap <C-e> <C-o>A
+imap <C-a> <C-o>I
+
+" Open line above (ctrl-shift-o much easier than ctrl-o shift-O)
+"imap <C-Enter> <C-o>o
+"nmap <C-Enter> o
+"imap <C-S-Enter> <C-o>O
+"nmap <C-S-Enter> O
+
 " Create directories when saving
 augroup BWCCreateDir
     autocmd!
