@@ -1,5 +1,5 @@
 CR = submodules/completion-ruby
-CR_PREFIX = $(PREFIX)/.bash.d/completion
+CR_PREFIX = $(PREFIX)/.bash/completion
 CR_SRC = $(notdir $(filter-out %-all, $(wildcard $(CR)/completion-*)))
 CR_DST = $(addprefix $(CR_PREFIX)/, $(CR_SRC))
 
