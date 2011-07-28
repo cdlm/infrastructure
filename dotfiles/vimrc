@@ -97,6 +97,9 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
 " Unhighlight search results in normal mode
 nmap <silent> <leader>n :silent nohlsearch<CR>
 
+" Opening files relative to current one, e.g. :e %/bar.txt
+cmap %/ <C-r>=expand('%:p:.:h')<Enter>/
+
 " Create directories when saving
 augroup BWCCreateDir
     autocmd!
