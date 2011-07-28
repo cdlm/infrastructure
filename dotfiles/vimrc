@@ -70,7 +70,10 @@ set visualbell
 set fillchars=""
 set cursorline
 
-" Sane defaults for tabs
+" Integrate copy/paste with Mac OS
+set clipboard=unnamed
+
+" Sane indentation defaults
 set hidden
 set tabstop=4
 set shiftwidth=4
@@ -91,8 +94,8 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
 "highlight NonText guifg=#4a4a59
 "highlight SpecialKey guifg=#4a4a59
 
-" unhighlight search results in normal mode
-nmap <silent> <leader>n :silent noh<CR>
+" Unhighlight search results in normal mode
+nmap <silent> <leader>n :silent nohlsearch<CR>
 
 " Create directories when saving
 augroup BWCCreateDir
@@ -104,6 +107,10 @@ augroup END
 set guioptions-=T
 "set guioptions-=m
 if(has("gui_running"))
+    " Mac-like tab navigation
+    map <D-S-]> gt
+    map <D-S-[> gT
+    
     set background=dark
     colorscheme solarized
     "colorscheme mustang
