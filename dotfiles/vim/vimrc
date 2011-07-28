@@ -1,7 +1,8 @@
+set nocompatible
 set encoding=utf-8
 set fileencoding=utf-8
 
-" load pathogen bundles
+" Load pathogen bundles
 "let g:solarized_visibility = 'low'
 "let g:solarized_hitrail = 1
 let g:pathogen_disabled = []
@@ -11,13 +12,13 @@ endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
-" don't start autocomplpop too eagerly
+" Don't start autocomplpop too eagerly
 let g:acp_behaviorKeywordLength = 3
 
-" prefix/namespace for user commands
+" Prefix/namespace for user commands
 let mapleader=";"
 
-" anticipating some common typos
+" Anticipating some common typos
 function! CommandAlias(abbreviation, expansion)
     execute 'cabbr ' . a:abbreviation . ' <c-r>=getcmdpos() == 1 && getcmdtype() == ":" ? "' . a:expansion . '" : "' . a:abbreviation . '"<CR>'
 endfunction
@@ -65,6 +66,7 @@ set ruler
 set showcmd
 set showmode
 "set number
+set hidden
 set wrap
 set visualbell
 set fillchars=""
@@ -72,20 +74,22 @@ set cursorline
 
 " Integrate copy/paste with Mac OS
 set clipboard=unnamed
+"set mouse=a
 
 " Sane indentation defaults
-set hidden
 set tabstop=4
 set shiftwidth=4
 set softtabstop=4
 set expandtab
 set smartindent
+set autoindent
+
 set backspace=indent,eol,start
 set cpoptions+=$ " mark changed area
 
 nmap <F1> :NERDTreeToggle<CR>
 
-" sudo write that file
+" Sudo write that file!
 command SudoWrite write !sudo tee % > /dev/null
 
 " Invisible characters: shortcut to rapidly toggle
