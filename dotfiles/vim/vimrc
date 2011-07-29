@@ -25,9 +25,12 @@ endfunction
 command! -nargs=+ CommandAlias call CommandAlias(<f-args>)
 " Use it on itself to define a simpler abbreviation for itself.
 CommandAlias alias CommandAlias
-map q :q
-CommandAlias Q q
+
+" Remap 'quit' keys
+nnoremap q :q
 CommandAlias qw wq
+" macros can still be nice sometimes, so put them on € (option-@)
+nnoremap € q
 
 syntax on
 filetype plugin indent on
@@ -130,6 +133,7 @@ imap <C-a> <C-o>I
 function! <SID>SyntaxStack()
     if !exists("*synstack")
         return
+    endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
 command SyntaxStack call <SID>SyntaxStack()
