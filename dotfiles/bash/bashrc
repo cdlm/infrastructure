@@ -15,7 +15,7 @@ pathmunge () {
 }
 
 # modularized portable configs
-for f in ~/.bash.d/rc/*; do
+for f in ~/.bash/rc/*; do
    source $f
 done
 
@@ -25,11 +25,11 @@ export TEXINPUTS=./local//:
 
 
 # utilities
-for f in ~/.bash.d/functions/*; do
+for f in ~/.bash/functions/*; do
    source $f
 done
 
-for f in ~/.bash.d/completion/*.sh; do
+for f in ~/.bash/completion/*.sh; do
    source $f
 done
 
