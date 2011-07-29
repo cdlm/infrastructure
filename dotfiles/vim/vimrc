@@ -85,7 +85,10 @@ set smartindent
 set autoindent
 
 set backspace=indent,eol,start
-set cpoptions+=$ " mark changed area
+"set cpoptions+=$ " mark changed area
+set whichwrap=b,s,h,l,<,>,[,]
+" <Del> works, I don't see why <BS> shouldn't
+map <BS> X
 
 nmap <F1> :NERDTreeToggle<CR>
 
@@ -99,7 +102,7 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
 "highlight SpecialKey guifg=#4a4a59
 
 " Unhighlight search results in normal mode
-nmap <silent> <leader>n :silent nohlsearch<CR>
+nmap <silent> <leader>/ :silent nohlsearch<CR>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
@@ -110,6 +113,8 @@ nmap <C-Up> [e
 nmap <C-Down> ]e
 vmap <C-Up> [egv
 vmap <C-Down> ]egv
+vnoremap < <gv
+vnoremap > >gv
 
 " Emacs-style jump to end of line
 imap <C-e> <C-o>A
@@ -120,9 +125,6 @@ imap <C-a> <C-o>I
 "nmap <C-Enter> o
 "imap <C-S-Enter> <C-o>O
 "nmap <C-S-Enter> O
-
-" <Del> works, I don't see why <BS> shouldn't
-map <BS> X
 
 " Show highlighting group for current word
 function! <SID>SyntaxStack()
