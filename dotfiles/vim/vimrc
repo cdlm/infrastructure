@@ -12,6 +12,9 @@ endif
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Load project-local settings if any
+set exrc secure
+
 " Don't start autocomplpop too eagerly
 let g:acp_behaviorKeywordLength = 3
 
@@ -25,6 +28,16 @@ endfunction
 command! -nargs=+ CommandAlias call CommandAlias(<f-args>)
 " Use it on itself to define a simpler abbreviation for itself.
 CommandAlias alias CommandAlias
+
+" Quick access to .vimrc & testing vimscript code
+nmap <leader>erc :edit $MYVIMRC<cr>
+nmap <leader>src :source $MYVIMRC<cr>
+function! DoIt() range
+    let lines = join(getline(a:firstline, a:lastline), "\n")
+    execute lines
+endfunction
+command! DoIt call DoIt()
+map <leader>d :DoIt<cr>
 
 " Remap 'quit' keys
 nnoremap q :q
