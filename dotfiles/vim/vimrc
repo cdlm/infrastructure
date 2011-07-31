@@ -77,13 +77,14 @@ set smartcase
 set incsearch
 set hlsearch
 set showmatch
-set wildmenu wildmode=list:longest,full
+set wildmenu wildmode=list:longest,full wildignore=*.swp,*.bak,*.pyc,*.elc,*.zwc,*.class
 set ruler
 set showcmd
 set showmode
 "set number
 set hidden
 set wrap
+nmap <leader>w :set wrap!<cr>
 set visualbell
 set fillchars=""
 set cursorline
@@ -110,6 +111,7 @@ nmap <F1> :NERDTreeToggle<CR>
 
 " Sudo write that file!
 command SudoWrite write !sudo tee % > /dev/null
+cmap w!! :SudoWrite
 
 " Invisible characters: shortcut to rapidly toggle
 nmap <leader>i :set list!<CR>
@@ -118,7 +120,7 @@ set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
 "highlight SpecialKey guifg=#4a4a59
 
 " Unhighlight search results in normal mode
-nmap <silent> <leader>/ :silent nohlsearch<CR>
+nmap <silent> <leader>/ :nohlsearch<CR>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
@@ -135,6 +137,9 @@ vnoremap > >gv
 " Emacs-style jump to end of line
 imap <C-e> <C-o>A
 imap <C-a> <C-o>I
+" move around according to visual lines
+nnoremap <up> gk
+nnoremap <down> gj
 
 " Open line above (ctrl-shift-o much easier than ctrl-o shift-O)
 "imap <C-Enter> <C-o>o
