@@ -43,3 +43,6 @@
 [submodule "dotfiles/vim/bundle/delimitMate"]
 	path = dotfiles/vim/bundle/delimitMate
 	url = https://github.com/Raimondi/delimitMate.git
+[submodule "dotfiles/vim/bundle/command-t"]
+	path = dotfiles/vim/bundle/command-t
+	url = https://github.com/wincent/Command-T.git
