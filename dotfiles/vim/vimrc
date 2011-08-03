@@ -51,16 +51,8 @@ set omnifunc=syntaxcomplete#Complete
 
 set laststatus=2
 let &statusline=' %f%( %y%m%r%)%=L%l C%v '
-function StatuslineGitBranch()
-    if exists('*GitBranch')
-        let result = GitBranch()
-        if result != ''
-            return '[' . result . ']'
-        endif
-    endif
-    return ''
-endfunction
-set statusline+=%(%{StatuslineGitBranch()}\ %)
+set statusline+=%(%{fugitive#statusline()}\ %)
+
 if version >= 700
     " set the status line to flashy colors in insert mode
     autocmd InsertEnter * highlight StatusLine term=reverse ctermfg=15 ctermbg=9
