@@ -6,7 +6,7 @@ add-zsh-hook precmd vcs_info
 zstyle ':vcs_info:*' enable git svn hg
 zstyle ':vcs_info:*' formats "%{$FG[cyan]%}[%b]"
 zstyle ':vcs_info:*' actionformats "%{$FG[violet]%}[%b]%{$FG[orange]%}%a"
-zstyle ':promptinfo:' git-status "%{$FG[green]%}%(i..+)%{$FG[yellow]%}%(w..*)%{$FG[orange]%}%(m.*.)%{$FG[base01]%}%(t.?.)"
+zstyle ':promptinfo:' git-status "%{$FG[green]%}%(i..+)%{$FG[yellow]%}%(w..±)%{$FG[red]%}%(m.≠.)%{$FG[base01]%}%(t.?.)"
 
 # prompt
 setopt promptsubst promptpercent
