@@ -107,7 +107,7 @@ set whichwrap=b,s,h,l,<,>,[,]
 " <Del> works, I don't see why <BS> shouldn't
 map <BS> X
 
-nmap <F1> :NERDTreeToggle<CR>
+nmap <leader>t :NERDTreeToggle<cr>
 
 " Sudo write that file!
 command SudoWrite write !sudo tee % > /dev/null
@@ -188,6 +188,10 @@ else
     "colorscheme vibrantink
     "colorscheme xoria256
     "colorscheme gentooish
+endif
+
+if has('mouse')
+    set mouse=a
 endif
 
 " change default color of concealed contents

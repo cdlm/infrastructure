@@ -2,7 +2,7 @@ require compinit
 require solarized
 
 zstyle ':completion::complete:*' use-cache 1
-zstyle ':completion:*' completer _complete _prefix
+zstyle ':completion:*' completer _complete _prefix _files
 
 zstyle ':completion:*:*:*:*:*' menu select
 zstyle ':completion:*:*:*:*:processes' command "ps -u `whoami` -o pid,user,comm -w -w"
