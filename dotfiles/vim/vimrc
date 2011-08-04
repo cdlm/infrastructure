@@ -7,11 +7,16 @@ let g:pathogen_disabled = ['autocomplpop', 'TeX-9']
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
+" Setup bundles
+let g:acp_behaviorKeywordLength = 3
+let g:SuperTabDefaultCompletionType = "context"
+let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:CommandTMaxHeight=7
+let g:CommandTMatchWindowReverse=1
+nmap <leader>nt :NERDTreeToggle<cr>
+
 " Load project-local settings if any
 set exrc secure
-
-" Don't start autocomplpop too eagerly
-let g:acp_behaviorKeywordLength = 3
 
 " Prefix/namespace for user commands
 let mapleader=";"
@@ -95,10 +100,6 @@ set whichwrap=b,s,h,l,<,>,[,]
 " <Del> works, I don't see why <BS> shouldn't
 map <BS> X
 
-" Command-T binds to <leader>t and <leader>b
-let g:CommandTMaxHeight=7
-let g:CommandTMatchWindowReverse=1
-nmap <leader>nt :NERDTreeToggle<cr>
 nmap <leader>qf :botright copen<cr>
 nmap <leader>spell :setlocal spell!<cr>
 
