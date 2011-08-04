@@ -7,7 +7,7 @@
 # to be sourced
 # set -x
 
-[ "$BOOKMARK_DATA" == "" ] && export BOOKMARK_DATA="${HOME}/.bash.d/bookmarks"
+[ "$BOOKMARK_DATA" == "" ] && export BOOKMARK_DATA="${HOME}/.bash/bookmarks"
 
 bookmark_usage() {
 	cat <<-HELP >&2
