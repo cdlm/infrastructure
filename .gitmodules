@@ -25,9 +25,6 @@
 [submodule "dotfiles/vim/bundle/vim-unimpaired"]
 	path = dotfiles/vim/bundle/vim-unimpaired
 	url = https://github.com/tpope/vim-unimpaired.git
-[submodule "dotfiles/vim/bundle/TeX-9"]
-	path = dotfiles/vim/bundle/TeX-9
-	url = https://github.com/vim-scripts/TeX-9.git
 [submodule "dotfiles/vim/bundle/L9"]
 	path = dotfiles/vim/bundle/L9
 	url = https://github.com/vim-scripts/L9.git
