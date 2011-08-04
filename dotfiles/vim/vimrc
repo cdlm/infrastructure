@@ -112,12 +112,10 @@ cmap w!! :SudoWrite
 
 " Invisible characters: shortcut to rapidly toggle
 nmap <leader>i :set list!<CR>
-set listchars=tab:▸\ ,eol:¬,trail:·,nbsp:_,extends:→,precedes:→
-"highlight NonText guifg=#4a4a59
-"highlight SpecialKey guifg=#4a4a59
+set listchars=tab:▸\ ,eol:\ ,trail:·,nbsp:_,extends:→,precedes:→
 
 " Unhighlight search results in normal mode
-nmap <silent> <leader>/ :nohlsearch<CR>
+nmap <silent> <leader><cr> :nohlsearch<cr>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
@@ -162,21 +160,22 @@ augroup END
 
 " Remove GUI menu and toolbar
 set guioptions-=T
-set guifont=Consolas:h11,Menlo:h11
 "set guioptions-=m
-    " Mac-like tab navigation
+set guifont=Consolas:h11,Menlo:h11
+" Mac-like tab navigation
 map <D-S-]> gt
 map <D-S-[> gT
-
-set background=dark
-colorscheme solarized
-highlight Cursor guibg=#eabf50
 
 if has('mouse')
     set mouse=a
 endif
 
-" change default color of concealed contents
+" Color scheme and tweaks
+set background=dark
+colorscheme solarized
+highlight Cursor guibg=#eabf50
+highlight NonText term=NONE ctermfg=2 ctermbg=NONE guifg=#4a4a59
+highlight SpecialKey guifg=#4a4a59
 highlight clear Conceal
 highlight default link Conceal Statement
 
