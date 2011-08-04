@@ -52,3 +52,6 @@
 [submodule "submodules/vim-latex"]
 	path = submodules/vim-latex
 	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
+[submodule "dotfiles/vim/bundle/supertab"]
+	path = dotfiles/vim/bundle/supertab
+	url = https://github.com/ervandew/supertab.git
