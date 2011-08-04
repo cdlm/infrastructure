@@ -3,12 +3,7 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " Load pathogen bundles
-"let g:solarized_visibility = 'low'
-"let g:solarized_hitrail = 1
-let g:pathogen_disabled = []
-if !has('ruby') || !has('gui_running')
-    call add(g:pathogen_disabled, 'TeX-9')
-endif
+let g:pathogen_disabled = ['autocomplpop', 'TeX-9']
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
 
@@ -47,6 +42,7 @@ nnoremap € q
 
 syntax on
 filetype plugin indent on
+let g:tex_flavor='latex'
 set omnifunc=syntaxcomplete#Complete
 
 set laststatus=2
