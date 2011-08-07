@@ -12,6 +12,7 @@ function provide() { for name ($*) function $name() { return 0; }; }
 fpath=(
    $Z/functions
    $Z/completions
+   $Z/completions-zshusers
    $Z/lib
    $fpath)
 
