@@ -94,6 +94,9 @@ set expandtab
 set smartindent
 set autoindent
 
+" Which EOL conventions to detect
+set fileformats=unix,dos,mac
+
 set backspace=indent,eol,start
 "set cpoptions+=$ " mark changed area
 set whichwrap=b,s,h,l,<,>,[,]
