@@ -55,3 +55,6 @@
 [submodule "dotfiles/zsh/completions-zshusers"]
 	path = dotfiles/zsh/completions-zshusers
 	url = https://github.com/zsh-users/zsh-completions.git
+[submodule "dotfiles/vim/bundle/easytags"]
+	path = dotfiles/vim/bundle/easytags
+	url = https://github.com/vim-scripts/easytags.vim.git

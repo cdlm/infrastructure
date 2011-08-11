@@ -3,6 +3,8 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " Load pathogen bundles
+let g:easytags_cmd = '/opt/homebrew/bin/ctags'
+let Tlist_Ctags_Cmd = g:easytags_cmd
 let g:pathogen_disabled = ['autocomplpop', 'TeX-9', 'L9']
 call pathogen#runtime_append_all_bundles()
 call pathogen#helptags()
