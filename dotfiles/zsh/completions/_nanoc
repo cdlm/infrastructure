@@ -1,0 +1,102 @@
+#compdef nanoc nanoc3
+#
+# Completion script for nanoc (http://nanoc.stoneship.org)
+#
+# Author
+#   Damien Pollet (http://github.com/cdlm)
+#
+# vim: ft=zsh
+
+nanoc_general_flags=(
+    "(-h --help)"{-h,--help}"[Show this help message and quit]"
+    "(-v --version)"{-v,--version}"[Show version information and quit]"
+    "(-V --verbose)"{-V,--verbose}"[Make nanoc output more detailed]"
+    "(-d --debug)"{-d,--debug}"[Enable debugging]"
+    "(-w --warn)"{-w,--warn}"[Enable warnings]"
+    "(-l --color)"{-l,--color}"[Enable color]"
+    "(-C --no-color)"{-C,--no-color}"[Disable color]"
+    $nul_arg
+)
+
+_nanoc() {
+    if (( CURRENT > 2 )); then
+        (( CURRENT-- ))
+        shift words
+        _call_function 1 _nanoc_${words[1]}
+    else
+        _values "nanoc command" \
+            "help[Show help]" \
+            "autocompile[Start the autocompiler]" \
+            "compile[Compile items of this site]" \
+            "create_item[Create an item]" \
+            "create_layout[Create a layout]" \
+            "create_site[Create a site]" \
+            "debug[Show debug information for this site]" \
+            "info[Show info about available plugins]" \
+            "update[Update the data stored by the data source to a newer version]" \
+            "view[Start the web server that serves static files]" \
+            "watch[Start the watcher]"
+    fi
+}
+
+__nanoc_help_arguments() {
+    _args=(
+        "help"
+        "autocompile"
+        "compile"
+        "create_item"
+        "create_layout"
+        "create_site"
+        "debug"
+        "info"
+        "update"
+        "view"
+        "watch")
+    compadd "$@" -k _args
+}
+
+_nanoc_help() {
+    _arguments \
+        ":argument:__nanoc_help_arguments" \
+        $nanoc_general_flags && ret=0
+}
+
+_nanoc_{autocompile,view}() {
+   _arguments \
+       "(-H --handler)"{-H,--handler}"[Specify the handler to use (webrick/mongrel/...)]" \
+       "(-o --host)"{-o,--host}"[Specify the host to listen on (default: 0.0.0.0)]" \
+       "(-p --port)"{-p,--port}"[Specify the port to listen on (default: 3000)]" \
+       $nanoc_general_flags && ret=0
+}
+
+_nanoc_{compile,debug,info,watch}() {
+    # nothing really interesting to complete here
+    # compile has a couple ignored options, meh.
+    _arguments $nanoc_general_flags && ret=0
+}
+
+_nanoc_update() {
+    _arguments \
+        "(-c --vcs)"{-c,--vcs}"[Select the VCS to use]" \
+        "(-y --yes)"{-y,--yes}"[Update the data without warning]" \
+        $nanoc_general_flags && ret=0
+}
+
+_nanoc_create_item() {
+    # TODO identifier
+    _arguments \
+        "(-c --vcs)"{-c,--vcs}"[Select the VCS to use]" \
+        $nanoc_general_flags && ret=0
+}
+
+_nanoc_create_layout() {
+    # TODO identifier
+    _arguments $nanoc_general_flags && ret=0
+}
+
+_nanoc_create_site() {
+    # TODO path
+    _arguments \
+        "(-d --datasource)"{-d,--datasource}"[Specify the datasource for the new site]" \
+        $nanoc_general_flags && ret=0
+}
