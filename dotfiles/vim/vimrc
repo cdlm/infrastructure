@@ -135,14 +135,14 @@ vnoremap > >gv
 imap <C-e> <C-o>A
 imap <C-a> <C-o>I
 " move around according to visual lines
-map  <silent> <up>        gk
-imap <silent> <up>   <C-o>gk
-map  <silent> <down>      gj
-imap <silent> <down> <C-o>gj
-map  <silent> <home>      g<home>
-imap <silent> <home> <C-o>g<home>
-map  <silent> <end>       g<end>
-imap <silent> <end>  <C-o>g<end>
+nnoremap <silent> <up>        gk
+nnoremap <silent> <down>      gj
+nnoremap <silent> <home>      g<home>
+nnoremap <silent> <end>       g<end>
+inoremap <silent> <up>   <C-o>gk
+inoremap <silent> <down> <C-o>gj
+inoremap <silent> <home> <C-o>g<home>
+inoremap <silent> <end>  <C-o>g<end>
 
 " Open line above (ctrl-shift-o much easier than ctrl-o shift-O)
 "imap <C-Enter> <C-o>o
