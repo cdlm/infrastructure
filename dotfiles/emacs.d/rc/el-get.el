@@ -56,6 +56,12 @@
                       (setq markdown-italic-underscore t)
                       (setq markdown-enable-math t))))))
 
+    (:name textlint
+        :type git
+        :url "git@github.com:DamienCassou/textlint.git"
+        :website "http://scg.unibe.ch/research/textlint"
+        :description "Allows the integration of TextLint within Emacs"
+        :load "textlint.el")
 ))
 
 (el-get)
