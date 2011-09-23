@@ -34,7 +34,7 @@ $(ELGET):
 	cd $(ELGET) && git clone git://github.com/dimitri/el-get.git
 	make $(ELGET)/el-get/el-get.elc
 
-$(COMMAND_T)/ext.bundle: $(COMMAND_T)/extconf.rb $(COMMAND_T)/*.[ch]
+$(COMMAND_T)/ext.bundle: $(COMMAND_T)/extconf.rb $(wildcard $(COMMAND_T)/*.[ch])
 	@echo 'Command-T needs a build, run this:'
-	@echo '(rvm system; cd $(COMMAND_T); ruby extconf.rb && make; rm *.o)'
-
+	@echo '(rvm use system; cd $(COMMAND_T); ruby extconf.rb && make; rm *.o)'
+	cd $(COMMAND_T); rvm use system; ruby extconf.rb && make; rm *.o
