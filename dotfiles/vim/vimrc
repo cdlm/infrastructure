@@ -20,6 +20,7 @@ let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:CommandTMaxHeight=7
 let g:CommandTMatchWindowReverse=1
 nmap <leader>nt :NERDTreeToggle<cr>
+nmap <leader>tb :TagbarToggle<cr>
 
 " Load project-local settings if any
 set exrc secure
@@ -190,4 +191,5 @@ highlight NonText term=NONE ctermfg=2 ctermbg=NONE guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 highlight clear Conceal
 highlight default link Conceal Statement
+highlight default link qfSeparator Conceal
 
