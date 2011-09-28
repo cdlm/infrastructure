@@ -2,7 +2,7 @@ set nocompatible
 set encoding=utf-8
 set fileencoding=utf-8
 
-" Load pathogen bundles
+" Configure & load pathogen bundles
 let g:easytags_cmd = '/opt/homebrew/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
 " jslint: force node instead of javascriptcore: https://github.com/hallettj/jslint.vim/issues/31
@@ -10,8 +10,8 @@ let $JS_CMD = 'node'
 " disable bundles I'm not sure I like
 let g:pathogen_disabled = ['autocomplpop', 'TeX-9', 'L9']
 
-call pathogen#runtime_append_all_bundles()
-call pathogen#helptags()
+runtime bundle/pathogen/autoload/pathogen.vim
+call pathogen#infect()
 
 " Setup bundles
 let g:acp_behaviorKeywordLength = 3
