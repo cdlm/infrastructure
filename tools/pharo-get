@@ -65,9 +65,10 @@ if __FILE__ == $PROGRAM_NAME
 
   PROJECTS = {
     'pharo' => JenkinsProject.new("Pharo 1.4", "Pharo-1.4"),
-    'coral' => JenkinsProject.new("Coral")
+    'coral' => JenkinsProject.new("Coral"),
+    'nautilus' => JenkinsProject.new("Nautilus", "Nautilus1.4")
   }
-  PROJECTS.default = PROJECTS['12']
+  PROJECTS.default = PROJECTS['pharo']
 
   def usage
     puts <<-EOS
