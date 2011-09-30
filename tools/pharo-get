@@ -1,7 +1,7 @@
 #!/usr/bin/env ruby
 require 'uri'
 
-class HudsonProject
+class JenkinsProject
   attr_reader :name
   
   def initialize name, artifact=name, files=[:zip]
@@ -13,7 +13,7 @@ class HudsonProject
   end
   
   def job_url
-    "https://pharo-ic.lille.inria.fr/hudson/job/#{URI.escape @name}"
+    "https://ci.lille.inria.fr/pharo/job/#{URI.escape @name}"
   end
   
   def files_for_url
@@ -63,18 +63,10 @@ end
 
 if __FILE__ == $PROGRAM_NAME
 
-  PROJECTS = {}
-  (1..3).each do |i| 
-    PROJECTS["1#{i}"] = HudsonProject.new("Pharo 1.#{i}", "Pharo-1.#{i}")
-    PROJECTS["core1#{i}"] = HudsonProject.new("Pharo Core 1.#{i}", "PharoCore-1.#{i}")
-  end
-  PROJECTS.update(
-    'opal' => HudsonProject.new("Pharo OpalCompiler", "Opal"),
-    'rpackage' => HudsonProject.new("Pharo RPackage", "RPackage"),
-    'seaside' => HudsonProject.new("Seaside Pharo 1.2", "Seaside", :zip => "Seaside1.2"),
-    'sista' => HudsonProject.new("Sista"),
-    'zinc' => HudsonProject.new("Zinc Pharo 1.2", "Zinc")
-  )
+  PROJECTS = {
+    'pharo' => JenkinsProject.new("Pharo 1.4", "Pharo-1.4"),
+    'coral' => JenkinsProject.new("Coral")
+  }
   PROJECTS.default = PROJECTS['12']
 
   def usage
@@ -91,3 +83,6 @@ EOS
   usage if /-(h|-?help)/ =~ ARGV.first
   PROJECTS[ARGV[0]].download(ARGV[1])
 end
+
+# vim:sw=2:sts=2:ts=2:
+
