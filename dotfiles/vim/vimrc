@@ -49,6 +49,7 @@ map <leader>d :DoIt<cr>
 " Remap 'quit' keys
 nnoremap q :q
 CommandAlias qw wq
+CommandAlias W w
 " macros can still be nice sometimes, so put them on € (option-@)
 nnoremap € q
 
