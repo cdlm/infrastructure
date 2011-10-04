@@ -19,8 +19,8 @@ let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:CommandTMaxHeight=7
 let g:CommandTMatchWindowReverse=1
-nmap <leader>nt :NERDTreeToggle<cr>
-nmap <leader>tb :TagbarToggle<cr>
+nnoremap <leader>nt :NERDTreeToggle<cr>
+nnoremap <leader>tb :TagbarToggle<cr>
 
 " Load project-local settings if any
 set exrc secure
