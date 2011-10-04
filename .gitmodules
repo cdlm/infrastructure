@@ -67,3 +67,9 @@
 [submodule "dotfiles/vim/bundle/pathogen"]
 	path = dotfiles/vim/bundle/pathogen
 	url = https://github.com/tpope/vim-pathogen.git
+[submodule "dotfiles/vim/bundle/vim-repeat"]
+	path = dotfiles/vim/bundle/vim-repeat
+	url = https://github.com/tpope/vim-repeat.git
+[submodule "dotfiles/vim/bundle/vim-commentary"]
+	path = dotfiles/vim/bundle/vim-commentary
+	url = https://github.com/tpope/vim-commentary.git
