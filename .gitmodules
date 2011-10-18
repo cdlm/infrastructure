@@ -73,3 +73,6 @@
 [submodule "dotfiles/vim/bundle/vim-commentary"]
 	path = dotfiles/vim/bundle/vim-commentary
 	url = https://github.com/tpope/vim-commentary.git
+[submodule "dotfiles/vim/bundle/vim-ruby"]
+	path = dotfiles/vim/bundle/vim-ruby
+	url = https://github.com/vim-ruby/vim-ruby.git
