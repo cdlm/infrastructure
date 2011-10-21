@@ -10,7 +10,7 @@ DOTFILES_SRC = $(shell find dotfiles \
 DOTFILES_DST = $(DOTFILES_SRC:dotfiles/%=$(PREFIX)/.%)
 DOTFILES_POST = $(patsubst %.el, %.elc, $(wildcard $(PREFIX)/.emacs.d/lisp/*.el))
 ELGET = $(PREFIX)/.emacs.d/el-get
-COMMAND_T = $(PREFIX)/.vim/bundle/command-t/ruby/command-t
+COMMAND_T = $(PREFIX)/.vim/bundle/Command-T/ruby/command-t
 
 install-dotfiles: $(DOTFILES_DST) $(DOTFILES_POST) $(ELGET) $(COMMAND_T)/ext.bundle
 
@@ -37,4 +37,3 @@ $(ELGET):
 $(COMMAND_T)/ext.bundle: $(COMMAND_T)/extconf.rb $(wildcard $(COMMAND_T)/*.[ch])
 	@echo 'Command-T needs a build, run this:'
 	@echo '(rvm use system; cd $(COMMAND_T); ruby extconf.rb && make; rm *.o)'
-	cd $(COMMAND_T); rvm use system; ruby extconf.rb && make; rm *.o
