@@ -3,7 +3,7 @@
 function texlive_set_paths() {
     local texliveVersion texlivePrefix
 
-    texliveVersion=${1:-$(< ~/.texliveVersion 2>/dev/null)}
+    texliveVersion=${1:-$(< ~/.texliveVersion)} 2>/dev/null
     texlivePrefix=/usr/local/texlive/${texliveVersion:-2010}
 
     path+=$texlivePrefix/bin/universal-darwin

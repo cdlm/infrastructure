@@ -22,13 +22,16 @@ setopt list_packed
 setopt bang_hist
 setopt no_hash_list_all
 
-# ls colors, assuming gnu coreutils from homebrew
-if command which -s gdircolors; then
-    [[ -f ~/.dircolors ]] && eval `gdircolors ~/.dircolors`
+# ls colors, assuming gnu coreutils from homebrew on mac
+dircolors=dircolors
+[[ `uname` == Darwin ]] && dircolors=gdircolors
+if has_command $dircolors; then
+    [[ -f ~/.dircolors ]] && eval `$dircolors ~/.dircolors`
     zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 fi
 export CLICOLORS=true
 export LSCOLORS='exgxdadacxfafaAcAcAeex'
+unset dircolors
 
 # Setup grep
 GREP_OPTIONS=( --color=auto --exclude=\*.{elc,pyc,zwc} --exclude=tags )

@@ -1,5 +1,5 @@
 export EDITOR="mate --wait"
-if command which -s vimpager; then
+if has_command vimpager; then
    export PAGER="vimpager"
    alias less=$PAGER
 else
@@ -39,7 +39,7 @@ alias cd.....='cd ../../../..'
 alias cd/='cd /'
 function mcd() { mkdir -p "$1" && cd "$1"; }
 
-if command which -s gls; then
+if has_command gls; then
     alias ls='gls --classify --color=auto'
 else # use BSD ls from OS X
     alias ls='ls -GF'
@@ -74,7 +74,7 @@ alias fu='sudo $(fc -ln -1)'
 # devel stuff
 alias g=git && compdef g=git
 function g/() { cd $(git root); }
-command which -s hub && function git(){ hub "$@" }
+has_command hub && function git(){ hub "$@" }
 
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'

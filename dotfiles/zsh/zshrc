@@ -9,6 +9,8 @@ setopt function_argzero
 function require() { for name ($*) autoload -Uz $name && $name; }
 function provide() { for name ($*) function $name() { return 0; }; }
 
+function has_command() { which -p $* >/dev/null; }
+
 fpath=(
    $Z/functions
    $Z/completions
