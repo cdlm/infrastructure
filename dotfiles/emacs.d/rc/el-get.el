@@ -1,67 +1,77 @@
-(require 'el-get "~/.emacs.d/el-get/el-get/el-get")
-(setq el-get-sources '(
-    el-get
+(add-to-list 'load-path "~/.emacs.d/el-get/el-get")
+(require 'el-get)
 
-    ; development tools
-    egg
+(setq el-get-sources
+      '(
+	(:name auto-complete
+	       :after (lambda ()
+			(global-auto-complete-mode t)))
+	
+	(:name autopair
+	       :after (lambda ()
+			(autopair-global-mode t)))
+	
+	(:name color-theme
+	       :after (lambda ()
+			(if window-system
+			    (progn
+			      (require 'color-theme-tangotango "themes/color-theme-tangotango") ; colorful
+			      (color-theme-tangotango))
+			  (progn
+			    (require 'terminal-color-themes "themes/terminal-color-themes")
+			    (color-theme-tty-dark)))))
+	
+	(:name markdown-mode
+	       :after (lambda ()
+			(progn
+			  (add-to-list 'auto-mode-alist '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode))
+			  (add-hook 'markdown-mode-hook
+				    '(lambda()
+				       (setq markdown-command "kramdown")
+				       (setq markdown-italic-underscore t)
+				       (setq markdown-enable-math t))))))
 
-    ; language modes
-    asciidoc
-    auctex
-    slime clojure-mode
-    cmake-mode
-    go-mode
-    haml-mode
-    sass-mode
-    ssh-config
-    textile-mode
-    tuareg-mode
-    yaml-mode
+	(:name textlint
+	       :type git
+	       :url "git@github.com:DamienCassou/textlint.git"
+	       :website "http://scg.unibe.ch/research/textlint"
+	       :description "Allows the integration of TextLint within Emacs"
+	       :load "textlint.el")
+	))
 
-    ; editing
-    ack
-    (:name auto-complete
-        :after (lambda ()
-            (global-auto-complete-mode t)))
-    auto-complete-clang
-    auto-complete-etags
-    auto-complete-extension
-    yasnippet
+(setq my-packages
+      (append
+       '(
+	 el-get
 
-    ; general interface
-    switch-window
-    ; ido
+	 ;;; development tools
+	 egg
+	 
+	 ;;; language modes
+	 ;; asciidoc
+	 ;; auctex
+	 ;; slime clojure-mode
+	 cmake-mode
+	 go-mode
+	 haml-mode
+	 sass-mode
+	 ssh-config
+	 textile-mode
+	 ;; tuareg-mode
+	 yaml-mode
+	 
+	 ;;; editing
+	 ack
+	 auto-complete-clang
+	 auto-complete-etags
+	 auto-complete-extension
+	 yasnippet
+	 
+	 ;; general interface
+	 switch-window
+	 ;; ido
+	 )
+       (mapcar 'el-get-source-name el-get-sources)))
 
-    (:name autopair
-        :after (lambda ()
-            (autopair-global-mode t)))
-    
-    (:name color-theme
-        :after (lambda ()
-            (if window-system
-                (progn
-                    (require 'color-theme-tangotango "themes/color-theme-tangotango") ; colorful
-                    (color-theme-tangotango))
-                (progn
-                    (require 'terminal-color-themes "themes/terminal-color-themes")
-                    (color-theme-tty-dark)))))
+(el-get 'sync my-packages)
 
-    (:name markdown-mode
-        :after (lambda ()
-            (progn
-                (add-to-list 'auto-mode-alist '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode))
-                (add-hook 'markdown-mode-hook
-                   '(lambda()
-                      (setq markdown-command "kramdown")
-                      (setq markdown-italic-underscore t)
-                      (setq markdown-enable-math t))))))
-
-    (:name textlint
-        :type git
-        :url "git@github.com:DamienCassou/textlint.git"
-        :website "http://scg.unibe.ch/research/textlint"
-        :description "Allows the integration of TextLint within Emacs"
-        :load "textlint.el")
-))
-
-(el-get)
