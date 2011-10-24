@@ -39,11 +39,16 @@ alias cd.....='cd ../../../..'
 alias cd/='cd /'
 function mcd() { mkdir -p "$1" && cd "$1"; }
 
-if has_command gls; then
-    alias ls='gls --classify --color=auto'
-else # use BSD ls from OS X
-    alias ls='ls -GF'
-fi
+case `uname` in
+    Darwin)
+        if has_command gls; then
+            alias ls='gls --classify --color=auto'
+        else # use BSD ls from OS X
+            alias ls='ls -GF'
+        fi ;;
+    Linux)
+        alias ls='ls --classify --color=auto' ;;
+esac
 alias l='ls'
 alias la='ls -A'
 alias lh='ls -lh'
