@@ -28,7 +28,7 @@ local machine ssh_command ports
 
 machine=$1; shift
 ports=($*)
-ssh_command=(echo ssh -N)
+ssh_command=(ssh -N)
 for p in ${ports:-8080}; do
    ssh_command+="-L${p}:localhost:${p}"
 done
