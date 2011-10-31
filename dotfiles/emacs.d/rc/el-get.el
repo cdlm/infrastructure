@@ -1,5 +1,11 @@
 (add-to-list 'load-path "~/.emacs.d/el-get/el-get")
-(require 'el-get)
+(unless (require 'el-get nil t)
+  (with-current-buffer
+      (url-retrieve-synchronously
+       "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
+    (let (el-get-master-branch)
+      (end-of-buffer)
+      (eval-print-last-sexp))))
 
 (setq el-get-sources
       '(
@@ -48,16 +54,16 @@
 	 egg
 	 
 	 ;;; language modes
-	 ;; asciidoc
-	 ;; auctex
-	 ;; slime clojure-mode
+	 asciidoc
+	 auctex
+	 slime clojure-mode
 	 cmake-mode
 	 go-mode
 	 haml-mode
 	 sass-mode
 	 ssh-config
 	 textile-mode
-	 ;; tuareg-mode
+	 tuareg-mode
 	 yaml-mode
 	 
 	 ;;; editing
@@ -69,7 +75,6 @@
 	 
 	 ;; general interface
 	 switch-window
-	 ;; ido
 	 )
        (mapcar 'el-get-source-name el-get-sources)))
 
