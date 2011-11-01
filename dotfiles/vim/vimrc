@@ -2,6 +2,9 @@ set nocompatible " be iMproved
 set encoding=utf-8
 set fileencoding=utf-8
 
+" Prefix/namespace for user commands
+let mapleader=";"
+
 " Configure & load bundles
 let g:easytags_cmd = '/opt/homebrew/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
@@ -21,9 +24,6 @@ nnoremap <leader>tb :TagbarToggle<cr>
 
 " Load project-local settings if any
 set exrc secure
-
-" Prefix/namespace for user commands
-let mapleader=";"
 
 " Anticipating some common typos
 function! CommandAlias(abbreviation, expansion)
