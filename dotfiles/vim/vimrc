@@ -21,6 +21,7 @@ let g:CommandTMaxHeight=7
 let g:CommandTMatchWindowReverse=1
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>tb :TagbarToggle<cr>
+nnoremap <leader>e :CommandT<cr>
 
 " Load project-local settings if any
 set exrc secure
@@ -33,8 +34,7 @@ command! -nargs=+ CommandAlias call CommandAlias(<f-args>)
 " Use it on itself to define a simpler abbreviation for itself.
 CommandAlias alias CommandAlias
 
-" Quick access to .vimrc & testing vimscript code
-nmap <leader>erc :edit $MYVIMRC<cr>
+" Quick (re)sourcing to .vimrc & testing vimscript code
 nmap <leader>src :source $MYVIMRC<cr>
 function! DoIt() range
     let lines = join(getline(a:firstline, a:lastline), "\n")
