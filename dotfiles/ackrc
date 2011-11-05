@@ -1,0 +1,18 @@
+# new file types
+--type-set=bibtex=.bib,.bst
+--type-set=dart=.dart
+--type-set=makefile=.makefile
+--type-set=markdown=.md,.mdown,.markdown
+
+# new file extensions
+--type-add=css=.sass,.scss
+--type-add=ruby=.haml
+--type-add=smalltalk=.coral
+--type-add=tex=.bib
+
+# solarized
+--color-filename=cyan
+--color-lineno=blue
+--color-match=yellow
+
+# vim: ft=conf
