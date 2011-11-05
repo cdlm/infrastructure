@@ -120,7 +120,7 @@ nmap <leader>i :set list!<cr>
 set listchars=tab:▸\ ,eol:\ ,trail:·,nbsp:_,extends:→,precedes:→
 
 " Unhighlight search results in normal mode
-nmap <silent> <leader><cr> :nohlsearch<cr>
+nnoremap <silent> <space> :silent nohlsearch<cr>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
