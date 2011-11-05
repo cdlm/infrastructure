@@ -22,6 +22,7 @@ let g:CommandTMatchWindowReverse=1
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>tb :TagbarToggle<cr>
 nnoremap <leader>e :CommandT<cr>
+nnoremap <leader>TF :CommandTFlush<cr>
 
 " Load project-local settings if any
 set exrc secure
@@ -42,6 +43,14 @@ function! DoIt() range
 endfunction
 command! DoIt call DoIt()
 map <leader>d :DoIt<cr>
+
+" Quick modeline insertion
+function! AppendModeline()
+    let l:modeline = printf(" vim: set ts=%d sw=%d ts=%d :", &tabstop, &shiftwidth, &softtabstop)
+    let l:modeline = substitute(&commentstring, "%s", l:modeline, "")
+    call append(line("$"), l:modeline)
+endfunction
+nnoremap <silent> <Leader>ml :call AppendModeline()<cr>
 
 " Remap 'quit' keys
 nnoremap q :q
@@ -92,12 +101,20 @@ set clipboard=unnamed
 "set mouse=a
 
 " Sane indentation defaults
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
 set expandtab
 set smartindent
 set autoindent
+
+function! SetIndent(...)
+    let size = (a:0 == 0) ? 4 : a:1
+    execute 'set tabstop=' . size
+    execute 'set shiftwidth=' . size
+    execute 'set softtabstop=' . size
+endfunction
+command! -nargs=? SetIndent call SetIndent(<f-args>)
+cnoremap seti SetIndent
+" call once to set the default
+SetIndent
 
 " Which EOL conventions to detect
 set fileformats=unix,dos,mac
@@ -112,7 +129,7 @@ nmap <leader>qf :botright copen<cr>
 nmap <leader>spell :setlocal spell!<cr>
 
 " Sudo write that file!
-command SudoWrite write !sudo tee % > /dev/null
+command! SudoWrite write !sudo tee % > /dev/null
 cmap w!! :SudoWrite
 
 " Invisible characters: shortcut to rapidly toggle
@@ -191,3 +208,4 @@ highlight clear Conceal
 highlight default link Conceal Statement
 highlight default link qfSeparator Conceal
 
+" vim: set ts=4 sw=4 ts=4 :
