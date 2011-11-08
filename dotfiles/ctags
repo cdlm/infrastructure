@@ -1,0 +1,3 @@
+--langdef=BibTeX
+--langmap=BibTeX:.bib
+--regex-BibTeX=/^@[A-Za-z_]+\{(.*)\,/\1/b,bibentry/
