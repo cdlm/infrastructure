@@ -15,6 +15,12 @@ if [ -d $bp ]; then
       $path)
 fi
 
+local hs="$HOME/.cabal" # haskell cabal
+if [ -d $hs ]; then
+    path=($hs/bin $path)
+    manpath=($hs/share/man $manpath)
+fi
+
 path=($HOME/bin $path)
 
 # rvm
