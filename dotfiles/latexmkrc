@@ -20,3 +20,5 @@ add_cus_dep( 'markdown', 'tex', 0, 'kramdown' );
 sub kramdown {
    system("kramdown -o latex $_[0].markdown > $_[0].tex");
 }
+
+# vim: ft=perl
