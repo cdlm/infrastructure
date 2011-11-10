@@ -95,6 +95,7 @@ nmap <leader>w :set wrap!<cr>
 set visualbell
 set fillchars=""
 set cursorline
+set nofoldenable
 
 " Integrate copy/paste with Mac OS
 set clipboard=unnamed
