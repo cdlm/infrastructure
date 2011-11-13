@@ -15,30 +15,38 @@
 	
 	(:name autopair
 	       :after (lambda ()
-			(autopair-global-mode t)))
-	
-	(:name color-theme
-	       :after (lambda ()
-			(if window-system
-			    (progn
-			      (require 'color-theme-tangotango "themes/color-theme-tangotango") ; colorful
-			      (color-theme-tangotango))
-			  (progn
-			    (require 'terminal-color-themes "themes/terminal-color-themes")
-			    (color-theme-tty-dark)))))
+			(progn
+			  (add-hook 'sldb-mode-hook #'(lambda () (setq autopair-dont-activate t)))
+			  (autopair-global-mode t))))
+
+	(:name color-theme-solarized
+	       :type git
+	       :url "https://github.com/sellout/emacs-color-theme-solarized.git"
+	       :website "https://github.com/sellout/emacs-color-theme-solarized"
+	       :description "Solarized color theme"
+	       :require 'color-theme
+	       :post-init (lambda ()
+			    ;; this is supposed to work in Emacs 24 (but doesn't):
+			    ;; (add-to-list 'custom-theme-load-path
+			    ;;    (el-get-load-path 'color-theme-solarized))
+			    ;; (load-theme "solarized-dark" t)))
+			    (require 'color-theme-solarized)
+			    (color-theme-solarized-dark)))
+
 	
 	(:name markdown-mode
 	       :after (lambda ()
 			(progn
 			  (add-to-list 'auto-mode-alist '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode))
 			  (add-hook 'markdown-mode-hook
-				    '(lambda()
-				       (setq markdown-command "kramdown")
-				       (setq markdown-italic-underscore t)
-				       (setq markdown-enable-math t))))))
+				    #'(lambda ()
+					(setq markdown-command "kramdown")
+					(setq markdown-italic-underscore t)
+					(setq markdown-enable-math t))))))
 
 	(:name textlint
 	       :type git
+	       ;; this is the RW url
 	       :url "git@github.com:DamienCassou/textlint.git"
 	       :website "http://scg.unibe.ch/research/textlint"
 	       :description "Allows the integration of TextLint within Emacs"
