@@ -6,7 +6,7 @@ export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
 # history options
-setopt share_history
+# setopt share_history
 setopt extended_history
 setopt hist_ignore_all_dups
 setopt hist_expire_dups_first
