@@ -1,24 +1,21 @@
 #! /usr/bin/env zsh
 
-# Set or append to the list of documents built by latexmk
-local usage='Usage:  lmkdefault [-l] [[-a] file(s)]'
-local mode="@default_files = ("
-   
-local params=`getopt ha $*`
-[ $? != 0 -o $# == 0 ] && { echo $usage; return; }
-   
-set -- ${params/#*--}
-for o in ${params/%--*}; do
-   case $o in
-   -h)  echo $usage; return 0;;
-   -a)  mode="push @default_files, (";;
-   esac
-done
-if [ $# -gt 0 ]; then
-   echo -n "$mode '$1'" >> latexmkrc
-   shift
-   for param; do
-      echo -n ", '$param'" >> latexmkrc
-   done
-   echo " );" >> latexmkrc
+local usage='Usage:  lmkdefault [-l] [[-a] file(s)]
+Set or append to the list of documents built by latexmk'
+local mode='@default_files = ('
+
+local -a help append
+zparseopts -D -K h=help a=append
+
+if [[ $? != 0 || $# == 0 || -n $help ]]; then
+    echo "$usage"
+    return 0
 fi
+[[ -n $append ]] && mode='push @default_files, ('
+
+echo -n "$mode '$1'" >> .latexmkrc
+shift
+for param; do
+  echo -n ", '$param'" >> .latexmkrc
+done
+echo " );" >> .latexmkrc
