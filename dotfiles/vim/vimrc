@@ -1,6 +1,5 @@
 set nocompatible " be iMproved
 set encoding=utf-8
-set fileencoding=utf-8
 
 " Prefix/namespace for user commands
 let mapleader=";"
@@ -178,8 +177,7 @@ function! <SID>SyntaxStack()
     endif
     echo map(synstack(line('.'), col('.')), 'synIDattr(v:val, "name")')
 endfunction
-command SyntaxStack call <SID>SyntaxStack()
-nmap <leader>P :SyntaxStack<Enter>
+nmap <leader>P :call <SID>SyntaxStack()<Enter>
 
 " Create directories when saving
 augroup BWCCreateDir
