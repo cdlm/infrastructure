@@ -42,9 +42,15 @@ else
 fi
 export GREP_OPTIONS
 
+# Fix key bindings for movind around:
+# home/end
+bindkey "\e[H" beginning-of-line
+bindkey "\e[F" end-of-line
+# option-left/right
+bindkey "\e[1;9D" backward-word
+bindkey "\e[1;9C" forward-word
+
 # Make the delete key (or Fn + Delete on the Mac) work instead of outputting a ~
-bindkey "^[[3~" delete-char
-bindkey "^[3;5~" delete-char
 bindkey "\e[3~" delete-char
 
 # Push current command on a stack, to run another one first
