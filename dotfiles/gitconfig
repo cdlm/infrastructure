@@ -7,6 +7,7 @@
 [alias]
     root = rev-parse --show-toplevel
     l = log --oneline --decorate --graph
+    l1 = log -1 --oneline --decorate
     lu = !git l @{u}
     li = !git l ..@{u}
     lo = !git l @{u}..
@@ -16,6 +17,7 @@
     st = status --short --branch
     ci = commit
     co = checkout
+    pl = !"f () { git l1 && git pull $*; }; f"
     branches = branch -a --verbose
     remotes = remote --verbose
     svnci = !"f () { git svn rebase && git svn dcommit; }; f"
