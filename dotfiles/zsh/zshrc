@@ -25,3 +25,5 @@ for config_file ($Z/rc/*.zsh)
 # tools implemented as shell functions
 for function_file ($Z/functions/*)
    autoload -Uz ${function_file:t}
+
+source $Z/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
