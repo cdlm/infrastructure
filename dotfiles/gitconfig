@@ -39,6 +39,11 @@
     excludesfile = ~/.gitignore
     pager = less -FRSX
 
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+
 [color]
     diff = auto
     status = auto
