@@ -1,5 +1,5 @@
 PREFIX = ENV['HOME']
-RSYNC_OPTIONS = %w{ --archive --exclude .git* }
+RSYNC_OPTIONS = %w{ --archive --human-readable -FF } # .rsync-filter
 FILE_DIFF_OPTIONS = %w{ --brief --exclude=.git* }
 DIR_DIFF_OPTIONS  = FILE_DIFF_OPTIONS + %w{ --recursive }
 
@@ -12,15 +12,20 @@ def dest relative_path, options={}
 end
 
 def rsync src, target, options={}
-    sh 'rsync', *RSYNC_OPTIONS, src, target
+    sh 'rsync', *RSYNC_OPTIONS.merge(options[:options]), src, target
+    touch target, verbose:false
 end
 
 def rsync_task name, srcGlob, destOptions={}, &block
     task name
     FileList[srcGlob].each do |src|
         target = dest(src, destOptions, &block)
-        file target => [src] do |task|
-            rsync src, target
+        file target => FileList[src, "#{src}/**/*"] do |task|
+            if File.directory? src
+                rsync src+'/', target
+            else
+                cp src, target
+            end
         end
         task name => target
     end
@@ -31,7 +36,7 @@ def diff_task name, srcGlob, destOptions={}, &block
         FileList[srcGlob].each do |src|
             target = dest(src, destOptions, &block)
             options = File.directory?(src)  ? DIR_DIFF_OPTIONS  :  FILE_DIFF_OPTIONS
-            sh 'diff', *options, src, target, :verbose => false do |ok, res|
+            sh 'diff', *options, src, target, verbose:false do |ok, res|
                 raise "Problem running diff" if !ok && res.exitstatus != 1
             end
         end

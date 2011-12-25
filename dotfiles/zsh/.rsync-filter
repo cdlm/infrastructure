@@ -1,0 +1,2 @@
+exclude /zsh-syntax-highlighting/tests
+exclude /zsh-syntax-highlighting/**/test-data
