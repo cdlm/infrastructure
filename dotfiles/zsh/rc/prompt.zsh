@@ -12,8 +12,24 @@ zstyle ':promptinfo:' git-status "%{$FG[green]%}%(i..+)%{$FG[yellow]%}%(w..±)%{
 setopt promptsubst promptpercent
 promptcolor="green"
 add-zsh-hook precmd promptinfo_exitstatus_precmd
-PROMPT="%{$FX[reset]%}%(?..%{$FG[red]%}‣ exited %1v%{$FX[reset]%}
+
+# auto-hide the return code after an empty command
+prompt_return_code_show="%{$FX[reset]%}%(?..%{$FG[red]%}‣ exited %1v%{$FX[reset]%}
 )"
-PROMPT+="%{$FG[$promptcolor]$FX[reverse]%} %{$FX[no-reverse]%} "
+prompt_return_code_hide=""
+prompt_return_code=$prompt_return_code_show
+
+function accept-line-or-clear-warning() {
+	if [[ -z $BUFFER ]]; then
+		prompt_return_code=$prompt_return_code_hide
+	else
+		prompt_return_code=$prompt_return_code_show
+	fi
+	zle accept-line
+}
+zle -N accept-line-or-clear-warning
+bindkey '^M' accept-line-or-clear-warning
+
+PROMPT='${prompt_return_code}'"%{$FG[$promptcolor]$FX[reverse]%} %{$FX[no-reverse]%} "
 PROMPT+="%2~%{$FG[base03]%}%(!.#.$)%{$FX[reset]%}"
 RPROMPT="\$(promptinfo_git_status)\${vcs_info_msg_0_}%{$FX[reset]%}"
