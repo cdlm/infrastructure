@@ -12,7 +12,7 @@ def dest relative_path, options={}
 end
 
 def rsync src, target, options={}
-    sh 'rsync', *RSYNC_OPTIONS.merge(options[:options]), src, target
+    sh 'rsync', *(options[:options] || RSYNC_OPTIONS), src, target
     touch target, verbose:false
 end
 
