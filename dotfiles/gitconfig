@@ -23,6 +23,7 @@
     svnci = !"f () { git svn rebase && git svn dcommit; }; f"
     svnup = svn rebase
     svnups = !"f () { git stash && git svnup && git stash apply; }; f"
+    tags = show-ref --tags
     tgz = !"f () { git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz; }; f"
     ignore = !"f () { local ignore_file=$( git rev-parse --show-cdup ).gitignore arg; for arg in $*; do echo $arg >> $ignore_file; done; sort -u -o $ignore_file $ignore_file; }; f"
     unignore = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
