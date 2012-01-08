@@ -2,7 +2,7 @@ $pdf_mode = 1;
 $pdflatex = 'pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1 %O %S';
 $pdf_previewer = 'open %S';
 $pdf_update_method = 0;
-$clean_ext = "synctex.gz";
+$clean_ext = "synctex.gz run.xml %R-blx.bib";
 
 @default_files = ('main.tex');
 
