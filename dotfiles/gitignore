@@ -22,6 +22,9 @@ Icon
 *.fdb_latexmk
 *.pdfsync
 *.synctex.gz
+*-blx.bib
+*.bcf
+*.run.xml
 
 # Emacs
 *~
