@@ -52,7 +52,9 @@ endfunction
 nnoremap <silent> <Leader>ml :call AppendModeline()<cr>
 
 " Remap 'quit' keys
-nnoremap q :q
+if ! exists('vimpager')
+    nnoremap q :q
+endif
 CommandAlias qw wq
 CommandAlias W w
 " macros can still be nice sometimes, so put them on € (option-@)
@@ -136,8 +138,8 @@ cmap w!! :SudoWrite
 nmap <leader>i :set list!<cr>
 set listchars=tab:▸\ ,eol:\ ,trail:·,nbsp:_,extends:→,precedes:→
 
-" Unhighlight search results in normal mode
-nnoremap <silent> <space> :silent nohlsearch<cr>
+" Unhighlight search results in normal mode (and still redraw screen)
+nnoremap <silent> <C-l> :silent nohlsearch<cr><C-l>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
@@ -155,14 +157,19 @@ vnoremap > >gv
 imap <C-e> <C-o>A
 imap <C-a> <C-o>I
 " move around according to visual lines
-nnoremap <silent> <up>        gk
-nnoremap <silent> <down>      gj
-nnoremap <silent> <home>      g<home>
-nnoremap <silent> <end>       g<end>
-inoremap <silent> <up>   <C-o>gk
-inoremap <silent> <down> <C-o>gj
-inoremap <silent> <home> <C-o>g<home>
-inoremap <silent> <end>  <C-o>g<end>
+if exists('vimpager')
+    nnoremap <silent> <home>      gg
+    nnoremap <silent> <end>       G
+else
+    nnoremap <silent> <up>        gk
+    nnoremap <silent> <down>      gj
+    nnoremap <silent> <home>      g<home>
+    nnoremap <silent> <end>       g<end>
+    inoremap <silent> <up>   <C-o>gk
+    inoremap <silent> <down> <C-o>gj
+    inoremap <silent> <home> <C-o>g<home>
+    inoremap <silent> <end>  <C-o>g<end>
+endif
 
 " Open line above (ctrl-shift-o much easier than ctrl-o shift-O)
 "imap <C-Enter> <C-o>o
