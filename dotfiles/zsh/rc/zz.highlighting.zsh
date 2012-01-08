@@ -1,3 +1,5 @@
+zle_highlight=(isearch:standout)
+
 source $Z/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 ZSH_HIGHLIGHT_STYLES[default]='fg=cyan,bold' #base1
