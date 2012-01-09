@@ -38,6 +38,7 @@ Bundle "garbas/vim-snipmate"
 
 " vim-scripts
 Bundle 'easytags.vim'
+Bundle 'matchit.zip'
 
 
 filetype plugin indent on
