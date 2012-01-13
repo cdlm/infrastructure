@@ -3,7 +3,7 @@ RSYNC_OPTIONS = %w{ --archive --human-readable -FF } # .rsync-filter
 FILE_DIFF_OPTIONS = %w{ --brief --exclude=.git* }
 DIR_DIFF_OPTIONS  = FILE_DIFF_OPTIONS + %w{ --recursive }
 
-task :default => 'dotfiles:install'
+task :default => :install
 
 def dest relative_path, options={}
     prefix = options[:prefix] || PREFIX
@@ -43,6 +43,7 @@ def diff_task name, srcGlob, destOptions={}, &block
     end
 end
 
+
 namespace :dotfiles do
 
     DOTFILES_PATH_TRANSFORM = lambda do |path|
@@ -56,3 +57,17 @@ namespace :dotfiles do
     diff_task :diff, 'dotfiles/*', &DOTFILES_PATH_TRANSFORM
 
 end
+task :install => 'dotfiles:install'
+
+
+namespace :tools do
+
+    TOOLS_PATH_TRANSFORM = lambda do |path|
+        path.gsub /^tools/, 'bin'
+    end
+
+    desc 'Install executable scripts'
+    rsync_task :install, 'tools/*', &TOOLS_PATH_TRANSFORM
+
+end
+task :install => 'tools:install'
