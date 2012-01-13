@@ -8,7 +8,6 @@ fi
 
 alias imageoptim="open -g -a ImageOptim"
 alias skim='open -a Skim'
-alias irb='irb -r irb/completion'
 alias nano='nano --nowrap'
 alias snano='sudo nano --nowrap'
 alias ec='emacsclient --no-wait --alternate-editor=emacs-app'

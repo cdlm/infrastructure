@@ -1,0 +1,38 @@
+#!env ruby
+# http://drnicwilliams.com/2006/10/12/my-irbrc-for-consoleirb/
+#
+require 'rubygems'
+require 'irb/completion'
+
+def optional_require *libs
+  libs.each do |lib|
+    begin
+      require lib
+      yield if block_given?
+    rescue LoadError => err
+      warn "Oops! during IRB setup: #{err}"
+    end
+  end
+end
+
+optional_require 'map_by_method', 'what_methods', 'pp'
+optional_require 'wirble' do
+  Wirble.init
+  Wirble.colorize
+  # TODO solarize the sh*t out of this!
+  # http://pablotron.org/software/wirble/README
+  # https://github.com/altercation/solarized/issues/15
+end
+
+IRB.conf[:AUTO_INDENT] = true
+IRB.conf[:USE_READLINE] = true
+IRB.conf[:PROMPT_MODE] = :CUSTOM
+IRB.conf[:PROMPT][:CUSTOM] = {
+  PROMPT_I: '> ',
+  PROMPT_S: '> ',
+  PROMPT_C: '> ',
+  RETURN:   "%s\n"
+}
+
+def pbcopy(something)  IO.popen('pbcopy', 'w') { |f| f << something.to_s }  end
+def pbpaste()  `pbpaste`  end
