@@ -8,15 +8,14 @@ call vundle#rc()
 Bundle 'gmarik/vundle'
 
 " github repos
+Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'hallettj/jslint.vim'
-Bundle 'hallison/vim-markdown'
-Bundle 'majutsushi/tagbar'
 Bundle 'mileszs/ack.vim'
-Bundle 'postmodern/vim-yard'
 Bundle 'Raimondi/delimitMate'
+Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'tpope/vim-commentary'
 Bundle 'tpope/vim-fugitive'
@@ -26,15 +25,17 @@ Bundle 'tpope/vim-repeat'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-unimpaired'
 Bundle 'vim-pandoc/vim-pandoc'
+Bundle 'hallison/vim-markdown'
 Bundle 'vim-pandoc/vim-markdownfootnotes'
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'wincent/Command-T'
+Bundle 'postmodern/vim-yard'
 
 " snipmate & deps
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "honza/snipmate-snippets"
-Bundle "garbas/vim-snipmate"
+Bundle 'MarcWeber/vim-addon-mw-utils'
+Bundle 'tomtom/tlib_vim'
+Bundle 'garbas/vim-snipmate'
+Bundle 'honza/snipmate-snippets'
+Bundle 'rbonvall/snipmate-snippets-bib'
 
 " vim-scripts
 Bundle 'easytags.vim'
