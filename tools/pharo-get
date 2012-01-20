@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 require 'uri'
+require 'text-table'
 
 class JenkinsProject
   attr_reader :name
@@ -33,7 +34,11 @@ class JenkinsProject
     end
   end
   
-  def download(as_name = nil)
+  def check_overwrite
+    raise 'Image already exists' if File.exists?("#{Dir.pwd}/#{@final_name}")
+  end
+  
+  def fetch
     download_urls.each do |url|
       system 'curl',
         '--remote-name', # same file name
@@ -44,20 +49,59 @@ class JenkinsProject
         url
       raise "Download failed: #{url}" unless $?.success?
     end
+  end
+  
+  def expand
     @files.each do |type, filename|
       if type == :zip
-        system 'unzip', '-j',
-          filename,
+        system 'unzip', filename,
           "#{@artifact}/#{@artifact}.image",
           "#{@artifact}/#{@artifact}.changes"
-        # File.rm "#{filename}.zip"
+        File.delete "#{filename}.zip"
       end
     end
-    unless as_name.nil?
-      File.rename "#{@artifact}.image", "#{as_name}.image"
-      File.rename "#{@artifact}.changes", "#{as_name}.changes"
+  end
+  
+  def rename
+    unless @final_name == @artifact
+      File.rename "#{@artifact}/#{@artifact}.image",   "#{@artifact}/#{@final_name}.image"
+      File.rename "#{@artifact}/#{@artifact}.changes", "#{@artifact}/#{@final_name}.changes"
+      File.rename @artifact, @final_name
     end
   end
+  
+  def setup
+    #TODO package-cache link
+    #TODO global + per-project script
+  end
+  
+  def download(as_name = nil)
+    @final_name = as_name || @artifact
+    check_overwrite
+    fetch
+    expand
+    rename
+    setup
+  end
+end
+
+
+USAGE_TEXT = <<-EOS
+#{File.basename $PROGRAM_NAME} [project] [name]
+Downloads latest successful build of project from Hudson and optionally renames it.
+
+Known projects:
+EOS
+
+def usage
+  puts USAGE_TEXT
+  table = Text::Table.new do |t|
+    t.vertical_boundary = t.horizontal_boundary = t.boundary_intersection = ''
+    t.horizontal_padding = 1
+    PROJECTS.each do |k,p|  t.rows << [k, p.name, p.job_url]  end
+  end
+  puts table
+  exit
 end
 
 
@@ -69,17 +113,6 @@ if __FILE__ == $PROGRAM_NAME
     'nautilus' => JenkinsProject.new("Nautilus", "Nautilus1.4")
   }
   PROJECTS.default = PROJECTS['pharo']
-
-  def usage
-    puts <<-EOS
-#{File.basename $PROGRAM_NAME} [project] [name]
-Downloads latest successful build of project from Hudson and optionally renames it.
-
-Known projects:
-EOS
-    PROJECTS.each do |k,p|  puts "#{k}\t#{p.name}: #{p.job_url}"  end
-    exit
-  end
   
   usage if /-(h|-?help)/ =~ ARGV.first
   PROJECTS[ARGV[0]].download(ARGV[1])
