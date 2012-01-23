@@ -1,2 +1,8 @@
 gem: --no-rdoc --no-ri
 search: --remote
+
+# for rubygems-bundler (gem regenerate_binstubs after change):
+custom_shebang: $env ruby_bundler_wrapper
+#custom_shebang: $env ruby
+
+# vim: ft=yaml
