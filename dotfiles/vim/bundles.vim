@@ -29,6 +29,7 @@ Bundle 'hallison/vim-markdown'
 Bundle 'vim-pandoc/vim-markdownfootnotes'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'postmodern/vim-yard'
+Bundle 'DamienCassou/textlint'
 
 " snipmate & deps
 Bundle 'MarcWeber/vim-addon-mw-utils'
