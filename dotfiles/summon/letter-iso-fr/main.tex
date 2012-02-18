@@ -1,0 +1,25 @@
+\documentclass[11pt]{isodoc}
+\usepackage[french]{babel}
+\usepackage{isodoc-clean}
+\usepackage{isodoc-address}
+
+\setupdocument{
+    opening   = {Madame, Monsieur},
+    closing   = {Cordialement,},
+    % foreign, % if it will cross borders
+    % header,  % for references etc (yourletter, yourref)
+    % footer,  % for additional contact info
+}
+
+\begin{document}
+
+\letter[
+    % date       = YYYY-MM-DD, % defines \today in this letter
+    to           = {DESTINATAIRE},
+    subject      = {OBJET},
+    % enclosures = {}
+]{%
+    CONTENU
+}
+
+\end{document}

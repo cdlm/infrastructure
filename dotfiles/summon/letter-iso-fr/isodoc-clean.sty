@@ -1,0 +1,42 @@
+\NeedsTeXFormat{LaTeX2e}
+\ProvidesPackage{isodoc-clean}[%
+    2012/02/18 General setup and style options for isodoc
+]
+
+\RequirePackage{babel} % actual language to be set in the document
+\RequirePackage[utf8]{inputenc}
+\RequirePackage[T1]{fontenc}
+\RequirePackage[default]{opensans}
+\RequirePackage{microtype}
+\RequirePackage{csquotes}
+\RequirePackage{graphicx}
+\RequirePackage{afterpage}
+
+\pagestyle{empty}
+\setlength{\parskip}{\medskipamount}
+\setlength{\parindent}{0pt}
+\definecolor{headcolor}{gray}{.5}
+
+\renewcommand\logo{% reposition & remove company
+    \Tbox{35}{20}{140}{\noindent\footnotesize\sffamily
+        \ifx\undefined\logoaddress
+            \ifx\undefined\tbfigures\else\tbfigures\fi
+            \ifx\who\empty\else\who\\\fi
+            \ifx\street\empty\else\street\\\fi
+            \zippedcity
+            \ifforeign\\\country\fi
+        \else\logoaddress\fi}}
+
+\newcommand\ontoday@prefix{%
+    \iflanguage{french}{le }{}%
+    \iflanguage{english}{on }{}}
+
+\setupdocument{
+    language  = \languagename,
+    rightaddress,
+    noheader,
+    nofooter,
+    autograph = 1,
+    closingskip = {3\baselineskip},
+    signature   = {\ontoday@prefix\date, \who},
+}
