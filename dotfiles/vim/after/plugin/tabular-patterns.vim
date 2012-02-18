@@ -8,6 +8,7 @@ set cpo&vim
 
 AddTabularPattern! colon /^[^:]*: \zs/
 AddTabularPattern! space /^\s*\S*\zs\s/l0
+AddTabularPattern! latex /&
 
 " From https://gist.github.com/1171605
 AddTabularPattern! equals       /^[^=]*\zs=/
