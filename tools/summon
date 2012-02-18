@@ -1,0 +1,40 @@
+#!/usr/bin/env ruby
+
+require 'cri'
+
+NAME  = File.basename(__FILE__)
+REPO  = "#{ENV['HOME']}/.#{NAME}"
+RSYNC = %w(rsync --human-readable --archive --copy-dirlinks)
+TREE  = %w(tree)
+
+def fatal msg="oops...", exit_status=1
+  puts msg
+  exit exit_status
+end
+
+def find_template name
+  template = File.join(REPO, name)
+  fatal "No template found for #{name}" unless File.exists?(template)
+  template = File.join(template, '') if File.directory? template
+  template
+end
+
+command = Cri::Command.define do
+  name        NAME
+  usage       "#{NAME} <template> [destination]"
+  summary     "makes a new project file structure from a template"
+  description ""
+
+  run do |opts, args, cmd|
+    fatal cmd.help, 0 if args.empty?
+
+    template = find_template args.shift
+    destination = args.shift || File.basename(template)
+
+    puts "Generating #{destination} from #{template}"
+    system *RSYNC, template, destination
+    system *TREE, destination
+  end
+end
+
+command.run ARGV
