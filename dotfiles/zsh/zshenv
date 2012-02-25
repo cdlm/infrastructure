@@ -37,5 +37,11 @@ unset hs
 # user-specific tools
 path=($HOME/bin $path)
 
-# rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"
+# Ruby with either rbenv or rvm
+[[ -x "$HOME/.rbenv/bin/rbenv" ]] && path=($HOME/.rbenv/bin $path)
+if command which -s rbenv; then
+    eval "$(rbenv init -)"
+elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then # fallback on rvm
+    . "$HOME/.rvm/scripts/rvm"
+    __rvm_project_rvmrc
+fi
