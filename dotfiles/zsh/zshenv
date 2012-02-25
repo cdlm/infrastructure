@@ -1,10 +1,7 @@
 typeset -U path fpath manpath
 export -TU INFOPATH infopath
 
-path=(
-   /Developer/usr/bin
-   /Developer/Tools
-   $path)
+path=(/usr/local/bin $path)
 
 # homebrew
 local bp='/opt/homebrew' #`brew --prefix`
