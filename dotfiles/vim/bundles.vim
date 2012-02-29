@@ -12,6 +12,7 @@ Bundle 'gmarik/vundle'
 " github repos
 Bundle 'wincent/Command-T'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'Lokaltog/vim-powerline'
 Bundle 'ervandew/supertab'
 Bundle 'godlygeek/tabular'
 Bundle 'hallettj/jslint.vim'
