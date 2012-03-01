@@ -2,6 +2,8 @@
 require 'uri'
 require 'text-table'
 
+SCRIPTS="#{ENV['HOME']}/.pharo/setup"
+
 class JenkinsProject
   attr_reader :name
   
@@ -28,6 +30,14 @@ class JenkinsProject
     end
   end
   
+  def setup_scripts
+    [SCRIPTS, File.join(SCRIPTS, @artifact)].collect{ |f|
+      "#{f}.st"
+    }.select{ |f|
+      File.exists? f
+    }
+  end
+
   def download_urls
     files_for_url.collect do |each|
       "#{job_url}/lastSuccessfulBuild/artifact/#{each}"
@@ -40,6 +50,7 @@ class JenkinsProject
   
   def fetch
     download_urls.each do |url|
+      progress "Fetching: #{url}"
       system 'curl',
         '--remote-name', # same file name
         '--insecure', # SSL is a hassle
@@ -54,6 +65,7 @@ class JenkinsProject
   def expand
     @files.each do |type, filename|
       if type == :zip
+        progress "Unzipping:"
         system 'unzip', filename,
           "#{@artifact}/#{@artifact}.image",
           "#{@artifact}/#{@artifact}.changes"
@@ -64,6 +76,7 @@ class JenkinsProject
   
   def rename
     unless @final_name == @artifact
+      progress "Renaming: #{@artifact} => #{@final_name}"
       File.rename "#{@artifact}/#{@artifact}.image",   "#{@artifact}/#{@final_name}.image"
       File.rename "#{@artifact}/#{@artifact}.changes", "#{@artifact}/#{@final_name}.changes"
       File.rename @artifact, @final_name
@@ -74,10 +87,9 @@ class JenkinsProject
     if File.directory? 'package-cache'
       File.symlink '../package-cache', "#{@final_name}/package-cache"
     end
-    #TODO global + per-project script
-    image_setup = "#{ENV['HOME']}/.pharo-image-setup.st"
-    if File.exists? image_setup
-      system 'pharo', '-headless', "#{ENV['PWD']}/#{@final_name}/#{@final_name}.image", image_setup 
+    setup_scripts.each do |script|
+      progress "Initializing: #{File.basename(script)}"
+      system 'pharo', '-headless', "#{ENV['PWD']}/#{@final_name}/#{@final_name}.image", script
     end
   end
   
@@ -100,14 +112,18 @@ Known projects:
 EOS
 
 def usage
-  puts USAGE_TEXT
+  $stderr.puts USAGE_TEXT
   table = Text::Table.new do |t|
     t.vertical_boundary = t.horizontal_boundary = t.boundary_intersection = ''
     t.horizontal_padding = 1
     PROJECTS.each do |k,p|  t.rows << [k, p.name, p.job_url]  end
   end
-  puts table
+  $stderr.puts table
   exit
+end
+
+def progress(msg)
+  puts msg
 end
 
 

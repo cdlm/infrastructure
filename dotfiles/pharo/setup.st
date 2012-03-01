@@ -1,6 +1,7 @@
 Author fullName: 'Damien Pollet'.
 
 " UI behavior settings "
+World submorphs do: [:each | each delete ].
 Debugger alwaysOpenFullDebugger: true.
 TextEditorDialogWindow autoAccept: true.
 
@@ -15,5 +16,6 @@ FreeTypeFontProvider current updateFromSystem.
 StandardFonts codeFont: (LogicalFont familyName: 'Consolas' pointSize: 10).
 
 " Save the image "
+FileStream stderr nextPutAll: '  done'; lf.
 Smalltalk snapshot: true andQuit: true.
 
