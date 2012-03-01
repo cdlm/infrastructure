@@ -7,7 +7,6 @@ let mapleader=";"
 " Configure & load bundles
 let g:easytags_cmd = '/opt/homebrew/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
-let g:cssColorVimDoNotMessMyUpdatetime = 'kthxbye'
 " jslint: force node instead of javascriptcore: https://github.com/hallettj/jslint.vim/issues/31
 let $JS_CMD = 'node'
 
@@ -17,11 +16,19 @@ runtime bundles.vim
 let g:acp_behaviorKeywordLength = 3
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
+let g:cssColorVimDoNotMessMyUpdatetime = 'kthxbye'
+" indent guides
+let g:indent_guides_indent_levels = 12
+let g:indent_guides_start_level = 3
+" let g:indent_guides_guide_size = 0
+let g:indent_guides_auto_colors = 0
+autocmd VimEnter,Colorscheme * :highlight link IndentGuidesOdd CursorLine
+autocmd VimEnter,Colorscheme * :highlight clear IndentGuidesEven
 let g:CommandTMaxHeight=7
 let g:CommandTMatchWindowReverse=1
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>tb :TagbarToggle<cr>
-nnoremap <leader>e :CommandT<cr>
+nnoremap <leader>e  :CommandT<cr>
 nnoremap <leader>TF :CommandTFlush<cr>
 
 " Load project-local settings if any
@@ -73,10 +80,10 @@ set laststatus=2
 
 if version >= 700
     " set the status line to flashy colors in insert mode
-    autocmd InsertEnter * highlight StatusLine term=reverse ctermfg=15 ctermbg=9
     autocmd InsertEnter * highlight ModeMsg    term=reverse ctermfg=15 ctermbg=9
-    autocmd InsertLeave * highlight StatusLine term=reverse ctermfg=14 ctermbg=0 gui=bold,reverse
     autocmd InsertLeave * highlight ModeMsg    term=NONE    ctermfg=4  ctermbg=NONE
+    " autocmd InsertEnter * highlight StatusLine term=reverse ctermfg=15 ctermbg=9
+    " autocmd InsertLeave * highlight StatusLine term=reverse ctermfg=14 ctermbg=0 gui=bold,reverse
     " unfortunately impossible to reuse the variables from solarized.vim
     "autocmd InsertEnter * exe "highlight! StatusLine" . s:fmt_none . s:fg_base3 . :bg_orange . s:fmt_revbb
     "autocmd InsertLeave * exe "highlight! StatusLine" . s:fmt_none . s:fg_base1 . s:bg_base01 . s:fmt_revbb
@@ -210,7 +217,8 @@ endif
 set background=dark
 let g:solarized_menu=0
 colorscheme solarized
-highlight Cursor guibg=#eabf50
+highlight Cursor guibg=#ecff55
+                 " was #eabf50
 highlight NonText term=NONE ctermfg=2 ctermbg=NONE guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
 highlight clear Conceal
