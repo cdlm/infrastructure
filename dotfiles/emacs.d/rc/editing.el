@@ -6,6 +6,12 @@
 
 (global-set-key (kbd "C-<return>") 'open-next-line)
 
+(defun indent-buffer ()
+  "Indent whole buffer, as per `indent-region'"
+  (interactive)
+  (delete-trailing-whitespace)
+  (indent-region (point-min) (point-max) nil))
+
 ;; movement keys
 (global-set-key (kbd "M-z") 'undo)
 

@@ -73,6 +73,12 @@
 
          ;;; editing
          ack
+         auto-indent-mode
+         auto-complete-emacs-lisp
+         auto-complete-yasnippet
+         auto-complete-css
+         auto-complete-ruby
+         auto-complete-latex
          auto-complete-clang
          auto-complete-etags
          auto-complete-extension
@@ -80,6 +86,8 @@
 
          ;; general interface
          switch-window
+         color-theme
+         tabbar
          )
        (mapcar 'el-get-source-name el-get-sources)))
 
