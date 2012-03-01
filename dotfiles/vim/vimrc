@@ -7,6 +7,7 @@ let mapleader=";"
 " Configure & load bundles
 let g:easytags_cmd = '/opt/homebrew/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
+let g:cssColorVimDoNotMessMyUpdatetime = 'kthxbye'
 " jslint: force node instead of javascriptcore: https://github.com/hallettj/jslint.vim/issues/31
 let $JS_CMD = 'node'
 
@@ -68,7 +69,7 @@ set omnifunc=syntaxcomplete#Complete
 set laststatus=2
 " let &statusline=' %f%( %y%m%r%)%=L%l C%v '
 " set statusline+=%(%{fugitive#statusline()}\ %)
-let Powerline_symbols='unicode'
+" let Powerline_symbols='unicode'
 
 if version >= 700
     " set the status line to flashy colors in insert mode
