@@ -139,6 +139,11 @@ map <bs> X
 nmap <leader>qf :botright copen<cr>
 nmap <leader>spell :setlocal spell!<cr>
 
+" Undoing even after closing the file
+set undofile
+set undodir=~/.vim-undo
+set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+
 " Sudo write that file!
 command! SudoWrite write !sudo tee % > /dev/null
 cmap w!! :SudoWrite
