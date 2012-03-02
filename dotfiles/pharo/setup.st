@@ -1,7 +1,10 @@
 Author fullName: 'Damien Pollet'.
 
-" UI behavior settings "
+" Remove logo, close workspaces
+...currently this kills the task bar as well "
 World submorphs do: [:each | each delete ].
+
+" UI behavior settings "
 Debugger alwaysOpenFullDebugger: true.
 TextEditorDialogWindow autoAccept: true.
 
