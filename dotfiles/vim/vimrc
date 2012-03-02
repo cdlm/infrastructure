@@ -71,7 +71,11 @@ nnoremap € q
 syntax on
 filetype plugin indent on
 let g:tex_flavor='latex'
-set omnifunc=syntaxcomplete#Complete
+set completefunc=syntaxcomplete#Complete
+autocmd Filetype *
+    \ if &omnifunc == "" |
+    \   setlocal omnifunc=syntaxcomplete#Complete |
+    \ endif
 
 set laststatus=2
 " let &statusline=' %f%( %y%m%r%)%=L%l C%v '
@@ -168,7 +172,8 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Emacs-style jump to end of line
-imap <C-e> <C-o>A
+" caveat: C-e would prevent canceling the completion menu
+inoremap <C-e> <C-r>=pumvisible() ? "\<lt>C-e>" :"\<lt>C-o>A"<cr>
 imap <C-a> <C-o>I
 " move around according to visual lines
 if exists('vimpager')

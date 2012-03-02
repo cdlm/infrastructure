@@ -27,6 +27,7 @@ Bundle 'skammer/vim-css-color'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-rake'
 Bundle 'vim-ruby/vim-ruby'
+Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'postmodern/vim-yard'
 
 " Editing
