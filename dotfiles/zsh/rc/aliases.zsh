@@ -20,11 +20,13 @@ function e() {
    fi
 }
 
-require jump
-alias j='jump'
-alias ja='jump --add'
-alias jl='jump --list'
-alias bmk='jump'
+# require jump
+source `jump-bin --zsh-integration` && {
+    alias j='jump'
+    alias ja='jump --add'
+    alias jl='jump --list'
+    alias bmk='jump'
+}
 
 setopt auto_pushd
 setopt pushd_ignore_dups

@@ -1,5 +1,5 @@
 PREFIX = ENV['HOME']
-RSYNC_OPTIONS = %w{ --archive --human-readable -FF } # .rsync-filter
+RSYNC_OPTIONS = %w{ --archive --checksum --itemize-changes --human-readable --cvs-exclude -FF } # .rsync-filter
 FILE_DIFF_OPTIONS = %w{ --brief --exclude=.git* }
 DIR_DIFF_OPTIONS  = FILE_DIFF_OPTIONS + %w{ --recursive }
 
