@@ -1,2 +1,2 @@
 " Pandoc 
-au! Bufread,BufNewFile *.pdc    set filetype=pdc
+autocmd! Bufread,BufNewFile *.pdc    set filetype=pdc
