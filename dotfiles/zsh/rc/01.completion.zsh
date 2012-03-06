@@ -25,3 +25,7 @@ zstyle ':completion:*:warnings' format \
 zstyle ':completion:*:*:(latexmk|(|la|pdf|pdfla|xe|xela|lua|luala)tex):*' file-patterns \
     '*.(tex|latex|ltx|dtx|ins):tex-files:TeX\ source' \
     '%p:all-files:all\ other\ files'
+
+zstyle ':completion:*:*:pharo:*' file-patterns \
+    '*.image:smalltalk-images:Smalltalk\ images' \
+    '%p:all-files:all\ other\ files'
