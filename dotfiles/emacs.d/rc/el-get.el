@@ -3,92 +3,65 @@
   (with-current-buffer
       (url-retrieve-synchronously
        "https://raw.github.com/dimitri/el-get/master/el-get-install.el")
-    (let (el-get-master-branch)
+    (let ((el-get-install-branch "3.stable"))
       (end-of-buffer)
       (eval-print-last-sexp))))
 
-(setq el-get-sources
-      '(
-        (:name auto-complete
-               :after (progn (global-auto-complete-mode t)))
+(eval-after-load 'el-get
+  '(progn
+     (setq el-get-user-packages-directory "~/.emacs.d/packages-init")
+     (setq el-get-sources '(
+                            (:name textlint
+                                   :type git
+                                   ;; this is the RW url
+                                   :url "git@github.com:DamienCassou/textlint.git"
+                                   :website "http://scg.unibe.ch/research/textlint"
+                                   :description "Allows the integration of TextLint within Emacs"
+                                   :load "textlint.el")
+                            ))
 
-        (:name autopair
-               :after (progn
-                        (add-hook 'sldb-mode-hook #'(lambda () (setq autopair-dont-activate t)))
-                        (autopair-global-mode)
-                        ))
+     (setq my-packages
+           (append
+            '(
+              el-get
 
-        (:name color-theme-solarized
-               :type git
-               :url "https://github.com/sellout/emacs-color-theme-solarized.git"
-               :website "https://github.com/sellout/emacs-color-theme-solarized"
-               :description "Solarized color theme"
-               :require 'color-theme
-               :post-init (progn
-                            ;; this is supposed to work in Emacs 24 (but doesn't):
-                            ;; (add-to-list 'custom-theme-load-path
-                            ;;    (el-get-load-path 'color-theme-solarized))
-                            ;; (load-theme "solarized-dark" t)))
-                            (require 'color-theme-solarized)
-                            (color-theme-solarized-dark)))
+              ;; development tools
+              egg
 
-        (:name markdown-mode
-               :after (progn
-                        (add-to-list 'auto-mode-alist '("\\.\\(md\\|mdown\\|markdown\\)\\'" . markdown-mode))
-                        (add-hook 'markdown-mode-hook
-                                  #'(lambda ()
-                                      (setq markdown-command "kramdown")
-                                      (setq markdown-italic-underscore t)
-                                      (setq markdown-enable-math t)))))
+              ;; language modes
+              asciidoc
+              auctex
+              slime clojure-mode
+              cmake-mode
+              go-mode
+              haml-mode
+              markdown-mode
+              sass-mode
+              ssh-config
+              textile-mode
+              tuareg-mode
+              yaml-mode
 
-        (:name textlint
-               :type git
-               ;; this is the RW url
-               :url "git@github.com:DamienCassou/textlint.git"
-               :website "http://scg.unibe.ch/research/textlint"
-               :description "Allows the integration of TextLint within Emacs"
-               :load "textlint.el")
-        ))
+              ;; editing
+              ack
+              autopair
+              ;;auto-indent-mode
+              auto-complete
+              auto-complete-emacs-lisp
+              ;;auto-complete-yasnippet
+              auto-complete-css
+              auto-complete-ruby
+              ;;auto-complete-latex
+              auto-complete-clang
+              auto-complete-etags
+              auto-complete-extension
+              ;;yasnippet
 
-(setq my-packages
-      (append
-       '(
-         el-get
+              ;; general interface
+              switch-window
+              color-theme-solarized
+              ;;tabbar
+              )
+            (mapcar 'el-get-source-name el-get-sources)))
 
-         ;;; development tools
-         egg
-
-         ;;; language modes
-         asciidoc
-         auctex
-         slime clojure-mode
-         cmake-mode
-         go-mode
-         haml-mode
-         sass-mode
-         ssh-config
-         textile-mode
-         tuareg-mode
-         yaml-mode
-
-         ;;; editing
-         ack
-         auto-indent-mode
-         auto-complete-emacs-lisp
-         auto-complete-yasnippet
-         auto-complete-css
-         auto-complete-ruby
-         auto-complete-latex
-         auto-complete-clang
-         auto-complete-etags
-         auto-complete-extension
-         yasnippet
-
-         ;; general interface
-         switch-window
-         color-theme
-         tabbar
-         )
-       (mapcar 'el-get-source-name el-get-sources)))
-
-(el-get 'sync my-packages)
+     (el-get 'sync my-packages)))
