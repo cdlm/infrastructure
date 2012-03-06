@@ -1,8 +1,9 @@
 Author fullName: 'Damien Pollet'.
 
-" Remove logo, close workspaces
-...currently this kills the task bar as well "
-World submorphs do: [:each | each delete ].
+" Close workspaces "
+World submorphs
+    select: [:each | (each isKindOf: SystemWindow) and: [each model isKindOf: Workspace] ]
+    thenDo: [:each | each delete ].
 
 " UI behavior settings "
 Debugger alwaysOpenFullDebugger: true.
