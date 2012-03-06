@@ -17,7 +17,7 @@ ConfigurationOfPetitParser updateToLatestPackageVersions: ''''
 ';
     openLabel: 'Working')
   width: 1000; height: 300;
-  setToAdhereToEdge: #bottomLeft.
+  setToAdhereToEdge: #left.
 
 " Nautilus groups "
 Smalltalk at: #Nautilus ifPresent: [
@@ -34,7 +34,7 @@ Smalltalk at: #Nautilus ifPresent: [
     'AST-Core-Nodes'
   ) do: [ :packageName |
     Nautilus groupsManager
-      addADynamicGroupNamed: packageName
+      addADynamicClassGroupNamed: packageName
       block: [ (RPackageOrganizer default packageNamed: packageName) orderedClasses ] ] ].
 
 " Save the image "
