@@ -176,6 +176,8 @@ vnoremap > >gv
 " caveat: C-e would prevent canceling the completion menu
 inoremap <C-e> <C-r>=pumvisible() ? "\<lt>C-e>" :"\<lt>C-o>A"<cr>
 imap <C-a> <C-o>I
+cmap <C-e> <end>
+cmap <C-a> <home>
 " move around according to visual lines
 if exists('vimpager')
     nnoremap <silent> <home>      gg
@@ -196,6 +198,12 @@ endif
 "nmap <C-Enter> o
 "imap <C-S-Enter> <C-o>O
 "nmap <C-S-Enter> O
+function! <SID>TerminateLine()
+    s/;\?\s*$/;/
+    silent nohlsearch
+endfunction
+inoremap <A-cr> <C-o>:call <SID>TerminateLine()<enter><end><cr>
+nnoremap <A-cr> :call <SID>TerminateLine()<enter>
 
 " Show highlighting group for current word
 function! <SID>SyntaxStack()
