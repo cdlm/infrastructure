@@ -15,6 +15,7 @@ Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/nerdtree'
 Bundle 'nathanaelkane/vim-indent-guides'
+Bundle 'henrik/vim-indexed-search'
 
 " Bundle 'altercation/vim-colors-solarized'
 Bundle 'cdlm/vim-colors-solarized'
