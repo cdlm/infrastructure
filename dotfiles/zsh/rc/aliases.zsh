@@ -20,7 +20,10 @@ function e() {
    fi
 }
 
-# require jump
+alias -s image=pharo
+alias -s pdf=skim
+alias -s {txt,md,mdown,markdown}=vim
+
 source `jump-bin --zsh-integration` && {
     alias j='jump'
     alias ja='jump --add'
