@@ -11,6 +11,11 @@ let g:tagbar_ctags_bin = g:easytags_cmd
 " jslint: force node instead of javascriptcore: https://github.com/hallettj/jslint.vim/issues/31
 let $JS_CMD = 'node'
 
+" add path to Go vim plugins before loading bundles
+if !empty($GOROOT)
+    set rtp+=$GOROOT/misc/vim
+endif
+
 runtime bundles.vim
 
 " Setup bundles
