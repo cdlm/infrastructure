@@ -204,9 +204,14 @@ endif
 "imap <C-S-Enter> <C-o>O
 "nmap <C-S-Enter> O
 function! <SID>TerminateLine()
-    s/;\?\s*$/;/
-    silent nohlsearch
+    let delim=exists('b:statementDelimiter') ? b:statementDelimiter : g:statementDelimiter
+    if !empty(delim)
+        let reslash= delim == '/' ? ':' : '/'
+        execute 'substitute' . reslash . delim . '\?\s*$' . reslash . delim . reslash
+        silent nohlsearch
+    endif
 endfunction
+let g:statementDelimiter=''
 inoremap <A-cr> <C-o>:call <SID>TerminateLine()<enter><end><cr>
 nnoremap <A-cr> :call <SID>TerminateLine()<enter>
 
