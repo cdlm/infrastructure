@@ -19,7 +19,7 @@
     co = checkout
     pl = !"f () { git l1 && git pull $*; }; f"
     branches = branch -a --verbose
-    remotes = remote --verbose
+    remotes = !"f () { local n; if [[ $1 = '-n' ]]; then n=$1; shift; fi; git remote show $n ${*:-`git remote | paste -sd ' ' -`}; }; f"
     svnci = !"f () { git svn rebase && git svn dcommit; }; f"
     svnup = svn rebase
     svnups = !"f () { git stash && git svnup && git stash apply; }; f"
