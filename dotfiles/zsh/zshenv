@@ -9,6 +9,7 @@ if [ -d $bp ]; then
    path=(
       $bp/sbin
       $bp/bin
+      $bp/share/python3
       $bp/share/python
       $path)
 fi
