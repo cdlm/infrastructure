@@ -1,0 +1,8 @@
+#! /usr/bin/env zsh
+
+for crap in autoconf automake; do
+    local prefix=`brew --prefix $crap`
+    path=($prefix/bin $path)
+    export LDFLAGS="-L$prefix/lib $LDFLAGS"
+    export CPPFLAGS="-I`brew --prefix $crap`/include $CPPFLAGS"
+done
