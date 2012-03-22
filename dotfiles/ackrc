@@ -3,6 +3,7 @@
 --type-set=dart=.dart
 --type-set=makefile=.makefile
 --type-set=markdown=.md,.mdown,.markdown
+--type-set=zsh=.zsh
 
 # new file extensions
 --type-add=css=.sass,.scss
