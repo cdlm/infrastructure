@@ -1,8 +1,10 @@
 # new file types
 --type-set=bibtex=.bib,.bst
+--type-set=cmake=.txt,.cmake
 --type-set=dart=.dart
 --type-set=makefile=.makefile
 --type-set=markdown=.md,.mdown,.markdown
+--type-set=plist=.plist
 --type-set=zsh=.zsh
 
 # new file extensions
