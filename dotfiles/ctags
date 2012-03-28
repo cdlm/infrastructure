@@ -1,3 +1,10 @@
 --langdef=BibTeX
 --langmap=BibTeX:.bib
 --regex-BibTeX=/^@[A-Za-z_]+\{(.*)\,/\1/b,bibentry/
+
+--langdef=markdown
+--langmap=markdown:.md.mkd.markdown
+--regex-markdown=/^#[ \t]+(.*)/\1/h,heading1/
+--regex-markdown=/^##[ \t]+(.*)/\. \1/h,heading2/
+--regex-markdown=/^###[ \t]+(.*)/\.\. \1/h,heading3/
+--regex-markdown=/^\[([^]]+)\]:.*/\1/r,ref/
