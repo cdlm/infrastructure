@@ -58,6 +58,7 @@
               ;;yasnippet
 
               ;; general interface
+              popup
               switch-window
               color-theme-solarized
               ;;tabbar
