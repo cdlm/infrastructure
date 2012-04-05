@@ -1,0 +1,7 @@
+#!/bin/sh
+# stolen from https://github.com/int3/gitcommands
+
+# This will create a diff from the last point that master was merged into the
+# currently checked out branch.
+# This is essentially equivalent to hg pdiff.
+git diff `git merge-base HEAD master` $1
