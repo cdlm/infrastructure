@@ -151,8 +151,10 @@ nmap <leader>spell :setlocal spell!<cr>
 
 " Undoing even after closing the file
 set undofile
-set undodir=~/.vim-undo
 set undoreload=10000 "maximum number lines to save for undo on a buffer reload
+set   undodir=~/.vim-tmp//,.
+set backupdir=~/.vim-tmp//,.
+set directory=~/.vim-tmp//,.
 
 " Sudo write that file!
 command! SudoWrite write !sudo tee % > /dev/null
