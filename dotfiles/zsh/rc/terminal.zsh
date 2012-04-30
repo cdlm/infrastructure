@@ -5,6 +5,9 @@ export HISTSIZE=5000
 export HISTFILE=~/.zsh_history
 export SAVEHIST=$HISTSIZE
 
+export REPORTTIME=10
+export TIMEFMT="$FG[base02]‣ %J:  cpu %P  real %E  user %U  system %S$FX[reset]"
+
 # history options
 # setopt share_history
 setopt extended_history
