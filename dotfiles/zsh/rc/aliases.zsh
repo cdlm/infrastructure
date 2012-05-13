@@ -1,4 +1,5 @@
-export EDITOR="mate --wait"
+# export EDITOR="mate --wait"
+export EDITOR=vim
 if has_command vimpager; then
    export PAGER="vimpager"
    alias less=$PAGER
