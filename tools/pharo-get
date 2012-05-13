@@ -131,6 +131,7 @@ if __FILE__ == $PROGRAM_NAME
 
   PROJECTS = {
     'pharo'    => JenkinsProject.new("Pharo 1.4", "Pharo-1.4"),
+    '1.4'      => JenkinsProject.new("Pharo 1.4", "Pharo-1.4"),
     '1.3'      => JenkinsProject.new("Pharo 1.3", "Pharo-1.3"),
     'coral'    => JenkinsProject.new("Coral"),
     'citezen'  => JenkinsProject.new("Citezen"),
