@@ -70,6 +70,8 @@ if ! exists('vimpager')
     nnoremap q :q
 endif
 CommandAlias qw wq
+CommandAlias Wq wq
+CommandAlias WQ wq
 CommandAlias W w
 " macros can still be nice sometimes, so put them on € (option-@)
 nnoremap € q
