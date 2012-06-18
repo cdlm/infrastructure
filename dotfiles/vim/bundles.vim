@@ -60,6 +60,7 @@ Bundle 'rbonvall/snipmate-snippets-bib'
 
 " External tools
 Bundle 'easytags.vim'
+Bundle 'jpalardy/vim-slime'
 Bundle 'hallettj/jslint.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'

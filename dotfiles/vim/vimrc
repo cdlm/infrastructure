@@ -19,6 +19,7 @@ endif
 runtime bundles.vim
 
 " Setup bundles
+let g:slime_target = 'tmux'
 let g:acp_behaviorKeywordLength = 3
 let g:SuperTabDefaultCompletionType = "context"
 let g:SuperTabContextDefaultCompletionType = "<c-n>"
