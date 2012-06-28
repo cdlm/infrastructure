@@ -1,5 +1,6 @@
 typeset -U path fpath manpath
 export -TU INFOPATH infopath
+export -TU CLASSPATH classpath
 
 path=(/usr/local/bin $path)
 
@@ -23,7 +24,7 @@ function texlive_set_paths() {
 
     path+=$texlivePrefix/bin/universal-darwin
     infopath+=$texlivePrefix/texmf/doc/info
-    MANPATH+=$texlivePrefix/texmf/doc/man
+    manpath+=$texlivePrefix/texmf/doc/man
 }
 texlive_set_paths
 
