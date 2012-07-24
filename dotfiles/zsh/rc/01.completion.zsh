@@ -1,7 +1,7 @@
-fpath=(
-   $Z/completions
-   $Z/completions-zshusers
-   $fpath)
+if [[ -n $bp && -d $bp ]]; then
+    fpath=($bp/share/zsh-completions $fpath)
+fi
+fpath=($Z/completions $fpath)
 
 require compinit solarized
 

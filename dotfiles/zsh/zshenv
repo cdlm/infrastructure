@@ -14,7 +14,6 @@ if [ -d $bp ]; then
       $bp/share/python
       $path)
 fi
-unset bp
 
 # standalone texlive, selected from ~/.texliveVersion
 function texlive_set_paths() {
