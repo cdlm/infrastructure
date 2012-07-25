@@ -41,6 +41,7 @@ Bundle 'vim-ruby/vim-ruby'
 Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'postmodern/vim-yard'
+Bundle 'seebi/easychair.vim'
 
 " Editing
 Bundle 'matchit.zip'
