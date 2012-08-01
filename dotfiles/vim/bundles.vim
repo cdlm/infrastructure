@@ -42,6 +42,7 @@ Bundle 'sunaku/vim-ruby-minitest'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'postmodern/vim-yard'
 Bundle 'seebi/easychair.vim'
+Bundle 'jinfield/vim-nginx'
 
 " Editing
 Bundle 'matchit.zip'

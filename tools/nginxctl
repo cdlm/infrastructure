@@ -1,0 +1,51 @@
+#!/bin/sh
+ 
+NGINX_BASE_DIR=`brew --prefix`
+NGINX_DAEMON="${NGINX_BASE_DIR}/sbin/nginx"
+NGINX_CONF="${NGINX_BASE_DIR}/etc/nginx/nginx.conf"
+ 
+__show_usage( ) {
+  echo "Usage: ${0} {start|stop|restart|reload|validate}"
+  exit 3
+}
+ 
+__launch_signal( ) {
+  ${NGINX_DAEMON} -s ${1} &>/dev/null
+}
+ 
+__checkconfig( ) {
+  __validate &>/dev/null
+}
+
+__validate( ) {
+  ${NGINX_DAEMON} -c ${NGINX_CONF} -t
+}
+ 
+__start( ) {
+  [ -r ${NGINX_CONF} ] || exit 1 
+  __checkconfig && ${NGINX_DAEMON} -c ${NGINX_CONF} &>/dev/null || return ${?}
+}
+ 
+__stop( ) {
+  __launch_signal stop
+}
+ 
+__reload( ) {
+  __checkconfig && __launch_signal reload || return ${?}  
+}
+ 
+__restart( ) {
+  __stop && __start
+}
+ 
+##
+# :: main ::
+case "${1}" in
+  start|stop|restart|reload|validate)
+    [ -x ${NGINX_DAEMON} ] || exit 2
+    __${1}
+    ;;
+  *)
+    __show_usage
+    ;;
+esac
