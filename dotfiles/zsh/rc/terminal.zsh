@@ -25,6 +25,8 @@ setopt list_packed
 setopt bang_hist
 setopt no_hash_list_all
 
+setopt correct
+
 # ls colors, assuming gnu coreutils from homebrew on mac
 dircolors=dircolors
 [[ `uname` == Darwin ]] && dircolors=gdircolors
