@@ -33,6 +33,13 @@ source `jump-bin --zsh-integration` && {
     alias bmk='jump'
 }
 
+# time tracking tool: gem install trak
+has_command trak && {
+    alias t='trak'
+    for time in 15 30 45; do alias ${time}min="trak ${time}min"; done
+    alias 1h='trak 1h'
+}
+
 setopt auto_pushd
 setopt pushd_ignore_dups
 alias -- -='cd -'
