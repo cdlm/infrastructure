@@ -33,6 +33,9 @@ autocmd VimEnter,Colorscheme * :highlight link IndentGuidesOdd CursorLine
 autocmd VimEnter,Colorscheme * :highlight clear IndentGuidesEven
 let g:CommandTMaxHeight=7
 let g:CommandTMatchWindowReverse=1
+let NERDTreeIgnore = [
+            \ '\.\(aux\|blg\|brf\|fdb_latexmk\|fls\|log\|maf\|mtc\d*\|out\|synctex\.gz\|toc\)$'
+            \ ]
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>tb :TagbarToggle<cr>
 nnoremap <leader>e  :CommandT<cr>
