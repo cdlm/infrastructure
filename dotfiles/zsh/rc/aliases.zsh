@@ -26,19 +26,23 @@ alias -s image=pharo
 alias -s pdf=skim
 alias -s {txt,md,mdown,markdown}=vim
 
-source `jump-bin --zsh-integration` && {
-    alias j='jump'
-    alias ja='jump --add'
-    alias jl='jump --list'
-    alias bmk='jump'
-}
-
 # time tracking tool: gem install trak
 has_command trak && {
     alias t='trak'
     for time in 15 30 45; do alias ${time}min="trak ${time}min"; done
     alias 1h='trak 1h'
 }
+
+# jumping around in the file system…
+# with bookmarks
+source `jump-bin --zsh-integration` && {
+    alias j='jump'
+    alias ja='jump --add'
+    alias jl='jump --list'
+    alias bmk='jump'
+}
+# or by frecence
+source `brew --prefix`/etc/profile.d/z.sh
 
 setopt auto_pushd
 setopt pushd_ignore_dups
