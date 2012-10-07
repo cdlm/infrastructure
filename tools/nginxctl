@@ -1,51 +1,109 @@
 #!/bin/sh
- 
+
+# TODO: maybe add option for launching a local server on :8080 or so
+# TODO: add option for generating launchd plist
+
 NGINX_BASE_DIR=`brew --prefix`
-NGINX_DAEMON="${NGINX_BASE_DIR}/sbin/nginx"
+NGINX="${NGINX_BASE_DIR}/sbin/nginx"
 NGINX_CONF="${NGINX_BASE_DIR}/etc/nginx/nginx.conf"
- 
-__show_usage( ) {
-  echo "Usage: ${0} {start|stop|restart|reload|validate}"
-  exit 3
-}
- 
-__launch_signal( ) {
-  ${NGINX_DAEMON} -s ${1} &>/dev/null
-}
- 
-__checkconfig( ) {
-  __validate &>/dev/null
+LAUNCHD_JOB="/Library/LaunchDaemons/homebrew.mxcl.nginx.plist"
+LAUNCHCTL=/bin/launchctl
+SUDO=/usr/bin/sudo
+
+
+### internal functions
+
+__show_usage() {
+    echo "Usage: ${0} {start|stop|restart|reload|validate|plist}" >&2
+    exit 3
 }
 
-__validate( ) {
-  ${NGINX_DAEMON} -c ${NGINX_CONF} -t
+__be_root() {
+    if [ $UID != 0 ]; then
+        echo "Getting administrator privileges..." >&2
+        exec ${SUDO} ${@}
+    fi
 }
- 
-__start( ) {
-  [ -r ${NGINX_CONF} ] || exit 1 
-  __checkconfig && ${NGINX_DAEMON} -c ${NGINX_CONF} &>/dev/null || return ${?}
+
+__nginx_signal() {
+    ${NGINX} -s ${1} &>/dev/null
 }
- 
-__stop( ) {
-  __launch_signal stop
+
+__checkconfig() {
+    __validate &>/dev/null
 }
- 
-__reload( ) {
-  __checkconfig && __launch_signal reload || return ${?}  
+
+
+### subcommand functions
+
+__start() {
+    [ -r ${NGINX_CONF} ] || exit 1
+    __checkconfig  && ${LAUNCHCTL} load -w ${LAUNCHD_JOB} || return ${?}
 }
- 
-__restart( ) {
-  __stop && __start
+
+__stop() {
+    ${LAUNCHCTL} unload -w ${LAUNCHD_JOB}
 }
- 
-##
-# :: main ::
+
+__restart() {
+    __stop && __start
+}
+
+__reload() {
+    __validate && __nginx_signal reload || return ${?}
+}
+
+__validate() {
+    ${NGINX} -c ${NGINX_CONF} -t
+}
+
+
+### main
+
 case "${1}" in
-  start|stop|restart|reload|validate)
-    [ -x ${NGINX_DAEMON} ] || exit 2
-    __${1}
-    ;;
-  *)
-    __show_usage
-    ;;
+    start|stop|restart|reload|validate)
+        __be_root ${0} ${@}
+        [ -x ${NGINX} ] || exit 2
+        __${1}
+        ;;
+    plist)
+        cat <<EOF
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>Label</key>
+    <string>homebrew.mxcl.nginx</string>
+
+    <!-- These settings assume a few things on the nginx.conf side:
+        user  _www;
+        daemon off;
+    -->
+
+    <key>UserName</key>
+    <string>root</string>
+
+    <key>RunAtLoad</key>
+    <true/>
+
+    <key>LaunchOnlyOnce</key>
+    <false/>
+
+    <key>KeepAlive</key>
+    <true/>
+
+    <key>WorkingDirectory</key>
+    <string>/opt/homebrew</string>
+
+    <key>ProgramArguments</key>
+    <array>
+        <string>/opt/homebrew/sbin/nginx</string>
+    </array>
+  </dict>
+</plist>
+EOF
+        ;;
+    *)
+        __show_usage
+        ;;
 esac
