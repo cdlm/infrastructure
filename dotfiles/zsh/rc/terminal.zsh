@@ -61,6 +61,11 @@ bindkey "\e[3~" delete-char
 # Push current command on a stack, to run another one first
 bindkey "^J" push-line
 
+# fix above w.r.t iTerm2 settings, and:
+# cmd-backspace backward-kill-line
+# cmd-delete kill-line
+# do nothing when getting pgup or pgdn
+
 ## smart urls
 autoload -U url-quote-magic
 zle -N self-insert url-quote-magic
