@@ -1,0 +1,29 @@
+#!env zsh
+
+local original size name cmd
+
+if [[ $# -lt 1 || "$1" =~ '^((-h)|(--?help))$' ]]; then
+    echo "$0 <original> [size=400] [name]"
+    echo "Resize a JPG file for use as an album cover"
+    return
+fi
+
+original="$1"
+shift
+if [[ "$1" =~ '^[0-9]+$' ]]; then
+    size="$1"
+    shift
+else
+    size=400
+fi
+set name="$1"
+
+cmd=(sips -Z $size "$original")
+if [ "$name" ]; then
+    cmd+=(--out `dirname "$original"`/"$name")
+else
+    name="$original"
+fi
+
+$cmd
+open -g -a ImageOptim "$name"
