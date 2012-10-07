@@ -93,6 +93,7 @@ alias lln='noglob zln -W'
 alias rehash='hash -rf'
 
 alias fu='sudo $(fc -ln -1)'
+alias please=sudo
 
 # devel stuff
 alias g=git && compdef g=git
