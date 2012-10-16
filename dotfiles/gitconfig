@@ -38,6 +38,7 @@
 
 [diff]
     renames = true
+    tool = opendiff
 
 [rebase]
     autosquash = true
@@ -50,6 +51,9 @@
     log = diff-highlight | less
     show = diff-highlight | less
     diff = diff-highlight | less
+
+[credential]
+    helper = osxkeychain
 
 [color]
     diff = auto
