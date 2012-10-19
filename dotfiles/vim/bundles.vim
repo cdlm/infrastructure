@@ -43,6 +43,7 @@ Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'postmodern/vim-yard'
 Bundle 'seebi/easychair.vim'
 Bundle 'jinfield/vim-nginx'
+Bundle 'bartekd/vim-dart'
 
 " Editing
 Bundle 'matchit.zip'
