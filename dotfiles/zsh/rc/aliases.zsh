@@ -7,6 +7,7 @@ else
    export PAGER="less --ignore-case"
 fi
 
+alias ql="qlmanage -p"
 alias imageoptim="open -g -a ImageOptim"
 alias skim='open -a Skim'
 alias rbrh='rbenv rehash'
