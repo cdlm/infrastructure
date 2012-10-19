@@ -123,10 +123,6 @@ set fillchars=""
 set cursorline
 set nofoldenable
 
-" Integrate copy/paste with Mac OS
-set clipboard=unnamed
-"set mouse=a
-
 " Sane indentation defaults
 set expandtab
 set smartindent
@@ -246,8 +242,13 @@ set guifont=Consolas:h11,Menlo:h11
 map <D-S-]> gt
 map <D-S-[> gT
 
+" Integrate copy/paste with Mac OS
+" set clipboard=unnamed
+set clipboard=autoselect
+
 if has('mouse')
     set mouse=a
+    set ttymouse=xterm2
 endif
 
 " Color scheme and tweaks
