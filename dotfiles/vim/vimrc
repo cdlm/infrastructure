@@ -77,6 +77,7 @@ CommandAlias qw wq
 CommandAlias Wq wq
 CommandAlias WQ wq
 CommandAlias W w
+CommandAlias Q q
 " macros can still be nice sometimes, so put them on € (option-@)
 nnoremap € q
 
@@ -243,8 +244,7 @@ map <D-S-]> gt
 map <D-S-[> gT
 
 " Integrate copy/paste with Mac OS
-" set clipboard=unnamed
-set clipboard=autoselect
+set clipboard=unnamed,autoselect
 
 if has('mouse')
     set mouse=a
