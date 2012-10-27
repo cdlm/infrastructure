@@ -16,10 +16,11 @@ if [[ "$1" =~ '^[0-9]+$' ]]; then
 else
     size=400
 fi
-set name="$1"
 
 cmd=(sips -Z $size "$original")
-if [ "$name" ]; then
+
+name="$1"
+if [ -n "$name" ]; then
     cmd+=(--out `dirname "$original"`/"$name")
 else
     name="$original"
