@@ -44,6 +44,7 @@ Bundle 'postmodern/vim-yard'
 Bundle 'seebi/easychair.vim'
 Bundle 'jinfield/vim-nginx'
 Bundle 'bartekd/vim-dart'
+Bundle 'chrisbra/csv.vim'
 
 " Editing
 Bundle 'matchit.zip'
