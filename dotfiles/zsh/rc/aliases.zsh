@@ -105,7 +105,9 @@ alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 
-# LaTeX builders
+# LaTeX tools
 alias lmk='latexmk'
 alias lmkc='latexmk -pvc'
 alias pdflatex='pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1'
+alias texcount="texcount -opt=$HOME/.texcount"
+

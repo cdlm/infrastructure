@@ -1,0 +1,9 @@
+# options
+-inc
+-total
+-nosub
+-col
+
+# macro rules
+%macro \href [0,1]
+%macro \url [0]
