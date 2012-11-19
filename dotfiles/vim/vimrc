@@ -19,6 +19,7 @@ endif
 runtime bundles.vim
 
 " Setup bundles
+let g:tex_fold_enabled=1
 let g:slime_target = 'tmux'
 let g:acp_behaviorKeywordLength = 3
 let g:SuperTabDefaultCompletionType = "context"
@@ -172,6 +173,30 @@ nnoremap <silent> <C-l> :silent nohlsearch<cr><C-l>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
+
+" Space to toggle folds.
+nnoremap <Space> za
+vnoremap <Space> za
+" Focus current line (uses mark z)
+nnoremap <C-z> mzzMzvzz`z
+
+function! MyFoldText() " {{{
+    " stolen from https://github.com/sjl/dotfiles/blob/master/vim/vimrc
+    let line = getline(v:foldstart)
+
+    let nucolwidth = &fdc + &number * &numberwidth
+    let windowwidth = winwidth(0) - nucolwidth - 3
+    let foldedlinecount = v:foldend - v:foldstart
+
+    " expand tabs into spaces
+    let onetab = strpart('          ', 0, &tabstop)
+    let line = substitute(line, '\t', onetab, 'g')
+
+    let line = strpart(line, 0, windowwidth - 2 -len(foldedlinecount))
+    let fillcharcount = windowwidth - len(line) - len(foldedlinecount)
+    return line . '…' . repeat(" ",fillcharcount) . foldedlinecount . '…' . ' '
+endfunction " }}}
+set foldtext=MyFoldText()
 
 " Remap line-exchange commands to match TextMate's shortcuts. Thanks to vimcasts.org for this :)
 " Requires vim-unimpaired
