@@ -175,8 +175,10 @@ nnoremap <silent> <C-l> :silent nohlsearch<cr><C-l>
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
 
 " Space to toggle folds.
-nnoremap <Space> za
-vnoremap <Space> za
+if !exists('vimpager')
+    nnoremap <Space> za
+    vnoremap <Space> za
+endif
 " Focus current line (uses mark z)
 nnoremap <C-z> mzzMzvzz`z
 
