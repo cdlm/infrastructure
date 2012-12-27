@@ -35,8 +35,8 @@ if [ -d $hs ]; then
 fi
 unset hs
 
-# user-specific tools
-path=($HOME/bin $path)
+# ocaml opam; might need to run opam init
+which -p opam >/dev/null && [ -d ~/.opam ] && eval `opam config -env`
 
 # Ruby with either rbenv or rvm
 [[ -x "$HOME/.rbenv/bin/rbenv" ]] && path=($HOME/.rbenv/bin $path)
@@ -46,3 +46,7 @@ elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then # fallback on rvm
     . "$HOME/.rvm/scripts/rvm"
     __rvm_project_rvmrc
 fi
+
+# user-specific tools
+path=($HOME/bin $path)
+
