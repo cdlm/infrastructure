@@ -68,6 +68,7 @@ Bundle 'jpalardy/vim-slime'
 Bundle 'hallettj/jslint.vim'
 Bundle 'mileszs/ack.vim'
 Bundle 'tpope/vim-fugitive'
+Bundle 'mattn/gist-vim'
 Bundle 'DamienCassou/textlint'
 
 
