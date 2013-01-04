@@ -1,0 +1,128 @@
+#!env ruby
+#
+# TODO: document with the literate-code-webpage thing (rocco)
+
+class Update
+
+  OPTION_DEFAULTS = {
+    dry_run: false,
+    sudo: false
+  }
+
+  def initialize options={}
+    @options = OPTION_DEFAULTS.merge(options)
+  end
+
+  def sudo?()  @options[:sudo]  end
+  def dry_run?()  @options[:dry_run]  end
+
+  def describe indent
+    desc = @options[:description]
+    puts "#{'  ' * indent}#{desc}" unless desc.nil?
+  end
+end
+
+class SingleUpdate < Update
+  def initialize words, options={}
+    super options
+    @words = words
+    @result = false
+    @options[:description] ||= @words.join ' '
+  end
+
+  def command
+    (sudo? ? ['sudo'] : []) + @words
+  end
+
+  def run indent=0
+    describe indent
+    system *command unless dry_run?
+    @result = dry_run? || $?.success?
+  end
+
+  def success?()  @result  end
+end
+
+class Updates < Update
+  def initialize options={}
+    super options
+    @things = []
+    @results = []
+    yield self
+  end
+
+  def self.run *args, &block
+    all_the_things = self.new(*args, &block)
+    success = all_the_things.run
+    all_the_things.notify success
+    exit success ? 0 : 1
+  end
+
+  def group options={}, &block
+    @things << Updates.new(@options.merge(options), &block)
+  end
+
+  def seq options={}, &block
+    @things << DependentUpdates.new(@options.merge(options), &block)
+  end
+
+  def step words, options={}
+    @things << SingleUpdate.new(words, @options.merge(options))
+  end
+
+  def sub_indent
+    @options.has_key?(:description) ? 1 : 0
+  end
+
+  def run indent=0
+    describe indent
+    @results = @things.collect do |t| t.run(indent + sub_indent) end
+    success?
+  end
+
+  def success?()  @results.all?  end
+
+  def notify success
+    message = if success
+                "Successfully upgraded all the things!"
+              else
+                "Failed to upgrade all the things :("
+              end
+    require 'terminal-notifier'
+    if ::TerminalNotifier.available?
+      ::TerminalNotifier.remove :update_all_the_things
+      ::TerminalNotifier.notify message,
+        title: 'Tools upgrade',
+        subtitle: 'Now get back to actual work',
+        group: :update_all_the_things
+    end
+  rescue LoadError
+  ensure
+    $stderr.puts message
+  end
+end
+
+class DependentUpdates < Updates
+  def run indent=0
+    describe indent
+    @things.each do |t|
+      @results << t.run(indent + sub_indent)
+      break unless t.success?
+    end
+    success?
+  end
+end
+
+Updates.run do |g|
+  g.step %w(tlmgr update --self --all), sudo: true
+  g.step %w(gem update)
+  g.seq do |brew|
+    brew.step %w(brew update)
+    brew.step %w(brew upgrade)
+    brew.step %w(brew cleanup)
+  end
+  g.seq do |opam|
+    opam.step %w(opam update)
+    opam.step %w(opam upgrade)
+  end
+end
