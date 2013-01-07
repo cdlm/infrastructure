@@ -1,12 +1,22 @@
 # vim: list noexpandtab tabstop=8
-
+#
+# testing for duplicates:
+#   grep -v ^# .acronyms | cut -f1 | xargs wtf
+#
 AMA	ask me anything
 BDFL	benevolent dictator for life
+DIP	dependency inversion principle
 FTTC	fiber to the cabinet
 FTTH	fiber to the home
 GIMF	Google is my friend
 ISMETA	I'm So Meta Even This Acronym (xkcd.com/917)
+ISP	interface segregation principle
 LMGTFY	let me google that for you
+LSP	Liskov subsitution principle
 MOOC	massive open online course
 NNTR	no need to respond
+OCD	obsessive-compulsive disorder
+OCP	open/closed principle
+SOLID	Single responsibility, Open/closed, Liskov, Interface segregation, Dependency inversion
+SRP	single responsibility principle
 TGIF	thank God it's Friday
