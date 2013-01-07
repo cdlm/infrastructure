@@ -1,17 +1,12 @@
-AMA     ask me anything
-BDUF    big design up front
-EOM     end of message / mail
-FTFY    fixed that for you
-FTTC    fiber to the cabinet
-FTTH    fiber to the home
-GIMF    Google is my friend
-GIYF    Google is your friend
-ISMETA  I'm So Meta Even This Acronym (xkcd.com/917)
-LMGTFY  let me google that for you
-MOOC    massive open online course
-NNTR    no need to respond
-TGIF    thank God it's Friday
-TIL     today I learned
-TLDR    too long; didn't read
-WTF     {what,when,where,who,why} the fuck
-YAGNI   you aren't gonna need it
+# vim: list noexpandtab tabstop=8
+
+AMA	ask me anything
+BDFL	benevolent dictator for life
+FTTC	fiber to the cabinet
+FTTH	fiber to the home
+GIMF	Google is my friend
+ISMETA	I'm So Meta Even This Acronym (xkcd.com/917)
+LMGTFY	let me google that for you
+MOOC	massive open online course
+NNTR	no need to respond
+TGIF	thank God it's Friday
