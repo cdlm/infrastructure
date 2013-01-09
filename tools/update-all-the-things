@@ -6,13 +6,15 @@ class Update
 
   OPTION_DEFAULTS = {
     dry_run: false,
-    sudo: false
+    sudo: false,
+    nice: false
   }
 
   def initialize options={}
     @options = OPTION_DEFAULTS.merge(options)
   end
 
+  def nice?()  @options[:nice]  end
   def sudo?()  @options[:sudo]  end
   def dry_run?()  @options[:dry_run]  end
 
@@ -31,7 +33,7 @@ class SingleUpdate < Update
   end
 
   def command
-    (sudo? ? ['sudo'] : []) + @words
+    (sudo? ? ['sudo'] : []) + (nice? ? ['nice'] : []) + @words
   end
 
   def run indent=0
@@ -113,7 +115,7 @@ class DependentUpdates < Updates
   end
 end
 
-Updates.run do |g|
+Updates.run nice: true do |g|
   g.step %w(tlmgr update --self --all), sudo: true
   g.step %w(gem update)
   g.seq do |brew|
