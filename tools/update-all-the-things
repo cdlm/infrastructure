@@ -127,4 +127,6 @@ Updates.run nice: true do |g|
     opam.step %w(opam update)
     opam.step %w(opam upgrade)
   end
+  g.step %w(vim +BundleUpdate +qa)
 end
+
