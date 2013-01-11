@@ -103,19 +103,22 @@ else
     echo " nope, rbenv not found :("
     exit 1
 fi
-(rbenv versions | grep "$RUBY_VERSION") || rbenv install "$RUBY_VERSION" && rbenv rehash
+(rbenv versions | grep "$RUBY_VERSION") || rbenv install "$RUBY_VERSION"
+rbenv global "$RUBY_VERSION"
+rbenv rehash
 
 
 echo -n "Installing basic ruby gems..."
-if [[ `which gem` == "$HOME/.rbenv/shims/gem" ]]; then
-    echo " let's go!"
+if [[ `which gem` == "$HOME/.rbenv/shims/gem" && `rbenv which gem` == "$HOME/.rbenv/versions/$RUBY_VERSION/bin/gem" ]]; then
+    echo
 else
-    echo " Oops, found `which gem` instead of rbenv's gem!"
+    echo " Oops, found `rbenv which gem` instead of rbenv's gem!"
     exit 1
 fi
 
 gem install bundler && rbenv rehash
 bundle install --gemfile=./bootstrap-gemfile.rb
+rbenv rehash
 
 
 echo "Installing TeXlive..."

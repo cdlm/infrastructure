@@ -6,14 +6,15 @@ source :rubygems
 
 gem 'bundler' # this one needs to be done by hand…
 
+# ruby development
+gem 'yard'
+gem 'pry'
+gem 'rake'
+
 # general utilities
 gem 'jump'
 gem 'gist'
 gem 'terminal-notifier'
-
-# ruby development
-gem 'pry'
-gem 'yard'
 
 # writing
 gem 'trex'
