@@ -8,6 +8,8 @@ gem 'bundler' # this one needs to be done by hand…
 
 # general utilities
 gem 'jump'
+gem 'gist'
+gem 'terminal-notifier'
 
 # ruby development
 gem 'pry'
