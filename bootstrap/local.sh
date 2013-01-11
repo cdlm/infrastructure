@@ -125,8 +125,8 @@ echo "Installing TeXlive..."
 mkdir install-tl
 (
     cd install-tl
-    curl http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
-        | tar xf - --strip-components 1
+    curl -fsSkL http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
+        | tar xzf - --strip-components 1
     
     texlive_version=$(./install-tl --version | sed '/^TeX Live/!d;s/.*\([0-9][0-9][0-9][0-9]\).*/\1/')
     sed -e "s/<%= *PREFIX *%>/${TEXLIVE_PREFIX}/" -e "s/<% *RELEASE *%>/${texlive_version}/" ../texlive.profile > texlive.profile
