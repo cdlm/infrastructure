@@ -1,10 +1,10 @@
 selected_scheme scheme-full
-TEXDIR         /usr/local/texlive/RELEASE
-TEXMFSYSCONFIG /usr/local/texlive/RELEASE/texmf-config
-TEXMFSYSVAR    /usr/local/texlive/RELEASE/texmf-var
-TEXMFLOCAL     /usr/local/texlive/texmf-local
-TEXMFCONFIG    ~/Library/texlive/RELEASE/texmf-config
-TEXMFVAR       ~/Library/texlive/RELEASE/texmf-var
+TEXDIR         <%= PREFIX %>/<%= RELEASE %>
+TEXMFSYSCONFIG <%= PREFIX %>/<%= RELEASE %>/texmf-config
+TEXMFSYSVAR    <%= PREFIX %>/<%= RELEASE %>/texmf-var
+TEXMFLOCAL     <%= PREFIX %>/texmf-local
+TEXMFCONFIG    ~/Library/texlive/<%= RELEASE %>/texmf-config
+TEXMFVAR       ~/Library/texlive/<%= RELEASE %>/texmf-var
 TEXMFHOME      ~/Library/TeX
 binary_universal-darwin 1
 binary_x86_64-darwin 1

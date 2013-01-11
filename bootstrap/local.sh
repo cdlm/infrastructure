@@ -1,6 +1,9 @@
 #!/bin/bash
 set -o nounset -o errexit
 
+
+TEXLIVE_PREFIX='/opt/texlive'
+HOMEBREW_PREFIX='/opt/homebrew'
 HOMEBREW_PACKAGES=(
     ruby-build rbenv rbenv-bundler
 
@@ -39,6 +42,19 @@ function exists() {
 }
 
 
+if [[ `groups` != *admin* ]]; then
+    echo "You must have admin (sudo) rights on the machine"
+    exit 1
+fi
+
+
+echo "Preparing some directories..."
+sudo install -d -o root -g wheel -m 755 `basename "$HOMEBREW_PREFIX"`
+sudo install -d -o root -g admin -m 775 "$HOMEBREW_PREFIX"
+sudo install -d -o root -g wheel -m 755 `basename "$TEXLIVE_PREFIX"`
+sudo install -d -o root -g admin -m 775 "$TEXLIVE_PREFIX"
+
+
 echo "Check for software updates..."
 if exists softwareupdate; then
   sudo softwareupdate --install
@@ -61,9 +77,8 @@ fi
 
 
 echo "Installing homebrew..."
-homebrew_prefix='/opt/homebrew'
-ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go | sed -e "s|^\(HOMEBREW_PREFIX[ \t]*=[ \t]*\).*$|\1'$homebrew_prefix'|" )"
-export PATH="$homebrew_prefix:$PATH"
+ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go | sed -e "s|^\(HOMEBREW_PREFIX[ \t]*=[ \t]*\).*$|\1'$HOMEBREW_PREFIX'|" )"
+export PATH="$HOMEBREW_PREFIX:$PATH"
 if ! exists brew; then
     echo "Oops, brew not found!?"
     exit 1
@@ -105,12 +120,8 @@ mkdir install-tl
     curl http://mirror.ctan.org/systems/texlive/tlnet/install-tl-unx.tar.gz \
         | tar xf - --strip-components 1
     
-    sudo mkdir -p /usr/local/texlive
-    sudo chown -R :admin /usr/local/texlive
-    sudo chmod 775 /usr/local/texlive
-
     texlive_version=$(./install-tl --version | sed '/^TeX Live/!d;s/.*\([0-9][0-9][0-9][0-9]\).*/\1/')
-    sed "s/RELEASE/${texlive_version}/" ../texlive.profile > texlive.profile
+    sed -e "s/<%= *PREFIX *%>/${TEXLIVE_PREFIX}/" -e "s/<% *RELEASE *%>/${texlive_version}/" ../texlive.profile > texlive.profile
     ./install-tl -no-gui -profile texlive.profile
 )
 

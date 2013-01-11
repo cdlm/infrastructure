@@ -26,7 +26,6 @@ echo " $target_dir"
 echo "Copying stuff over..."
 tar czf - -C "$bootstrap_dir" . | ssh "$target" "tar xzf - -C $target_dir"
 
-exit
 
 echo "Bootstrapping $target..."
 ssh -t "$target" "cd '$target_dir' && ./local.sh"
