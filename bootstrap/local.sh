@@ -129,7 +129,7 @@ mkdir install-tl
         | tar xzf - --strip-components 1
     
     texlive_version=$(./install-tl --version | sed '/^TeX Live/!d;s/.*\([0-9][0-9][0-9][0-9]\).*/\1/')
-    sed -e "s/<%= *PREFIX *%>/${TEXLIVE_PREFIX}/" -e "s/<% *RELEASE *%>/${texlive_version}/" ../texlive.profile > texlive.profile
+    sed -e "s|<%= *PREFIX *%>|${TEXLIVE_PREFIX}|" -e "s/<%= *RELEASE *%>/${texlive_version}/" ../texlive.profile > texlive.profile
     ./install-tl -no-gui -profile texlive.profile
 )
 
