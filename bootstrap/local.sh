@@ -5,12 +5,11 @@ set -o nounset -o errexit
 TEXLIVE_PREFIX='/opt/texlive'
 HOMEBREW_PREFIX='/opt/homebrew'
 HOMEBREW_PACKAGES=(
-    ruby-build rbenv rbenv-bundler
+    ruby-build rbenv-bundler
 
     zsh zsh-completions
     ssh-copy-id
     git hub tig
-    subversion
 
     ack
     tmux
@@ -76,18 +75,24 @@ if [[ "$xcode_path" != "$xcode_expected" ]]; then
 fi
 
 
-echo "Installing homebrew..."
-ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go | sed -e "s|^\(HOMEBREW_PREFIX[ \t]*=[ \t]*\).*$|\1'$HOMEBREW_PREFIX'|" )"
-export PATH="$HOMEBREW_PREFIX:$PATH"
-if ! exists brew; then
-    echo "Oops, brew not found!?"
-    exit 1
+echo -n "Installing homebrew..."
+export PATH="$HOMEBREW_PREFIX/bin:$PATH"
+if exists brew; then
+    echo "already done, apparently"
+else
+    echo
+    rm -fr "$HOMEBREW_PREFIX/*.*"
+    ruby -e "$(curl -fsSkL raw.github.com/mxcl/homebrew/go | sed -e "s|^\(HOMEBREW_PREFIX[ \t]*=[ \t]*\).*$|\1'$HOMEBREW_PREFIX'|" )"
+    if ! exists brew; then
+        echo "Oops, brew not found!?"
+        exit 1
+    fi
 fi
 
 
 echo "Installing basic homebrew packages..."
 for package in "${HOMEBREW_PACKAGES[@]}"; do
-    brew install "$package"
+    (brew list | grep "^$package$") || brew install "$package"
 done
 
 
@@ -98,7 +103,7 @@ else
     echo " nope, rbenv not found :("
     exit 1
 fi
-rbenv install "$RUBY_VERSION" && rbenv rehash
+(rbenv versions | grep "$RUBY_VERSION") || rbenv install "$RUBY_VERSION" && rbenv rehash
 
 
 echo -n "Installing basic ruby gems..."
