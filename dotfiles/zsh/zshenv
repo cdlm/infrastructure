@@ -19,11 +19,17 @@ fi
 function texlive_set_paths() {
     local texliveVersion texlivePrefix
     texliveVersion=${1:-$(< ~/.texliveVersion)} 2>/dev/null
-    texlivePrefix=/usr/local/texlive/${texliveVersion:-2010}
+    for dir in {/opt,/usr/local}/texlive; do
+        if [ -d "$dir" ]; then
+            texlivePrefix="${dir}/${texliveVersion:-2010}"
+            break
+        fi
+    done
+    [ -d "$texlivePrefix" ] || return
 
-    path+=$texlivePrefix/bin/universal-darwin
-    infopath+=$texlivePrefix/texmf/doc/info
-    manpath+=$texlivePrefix/texmf/doc/man
+    path+="$texlivePrefix/bin/universal-darwin"
+    infopath+="$texlivePrefix/texmf/doc/info"
+    manpath+="$texlivePrefix/texmf/doc/man"
 }
 texlive_set_paths
 
