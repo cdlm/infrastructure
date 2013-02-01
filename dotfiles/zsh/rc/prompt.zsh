@@ -31,5 +31,10 @@ zle -N accept-line-or-clear-warning
 bindkey '^M' accept-line-or-clear-warning
 
 PROMPT='${prompt_return_code}'"%{$FG[$promptcolor]$FX[reverse]%} %{$FX[no-reverse]%} "
-PROMPT+="%2~%{$FG[base03]%}%(!.#.$)%{$FX[reset]%}"
+if [[ $COLORFGBG = *';15' ]]; then # solarized light
+    prompt_low_contrast_color="base3"
+else
+    prompt_low_contrast_color="base03"
+fi
+PROMPT+="%2~%{$FG[$prompt_low_contrast_color]%}%(!.#.$)%{$FX[reset]%}"
 RPROMPT="\$(promptinfo_git_status)\${vcs_info_msg_0_}%{$FX[reset]%}"
