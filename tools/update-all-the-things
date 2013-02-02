@@ -117,7 +117,7 @@ end
 
 Updates.run nice: true do |g|
   g.step %w(vim +BundleUpdate +qa)
-  g.step %w(tlmgr update --self --all), sudo: true
+  g.step %w(tlmgr update --self --all)
   g.step %w(gem update)
   g.seq do |brew|
     brew.step %w(brew update)
