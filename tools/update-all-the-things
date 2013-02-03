@@ -17,10 +17,12 @@ class Update
   def nice?()  @options[:nice]  end
   def sudo?()  @options[:sudo]  end
   def dry_run?()  @options[:dry_run]  end
+  def skip?()  dry_run?  end
 
   def describe indent
     desc = @options[:description]
-    puts "#{'  ' * indent}#{desc}" unless desc.nil?
+    skipped = if skip? then ' (skipped)' else '' end
+    puts "#{'  ' * indent}#{desc}#{skipped}" unless desc.nil?
   end
 end
 
@@ -30,7 +32,10 @@ class SingleUpdate < Update
     @words = words
     @result = false
     @options[:description] ||= @words.join ' '
+    @command_available = system("which #{@words.first} > /dev/null 2>&1")
   end
+
+  def skip?()  super || !@command_available  end
 
   def command
     (sudo? ? ['sudo'] : []) + (nice? ? ['nice'] : []) + @words
@@ -38,8 +43,8 @@ class SingleUpdate < Update
 
   def run indent=0
     describe indent
-    system *command unless dry_run?
-    @result = dry_run? || $?.success?
+    system *command unless skip?
+    @result = skip? || $?.success?
   end
 
   def success?()  @result  end
