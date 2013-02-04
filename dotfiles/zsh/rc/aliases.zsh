@@ -110,3 +110,5 @@ alias lmkc='latexmk -pvc'
 alias pdflatex='pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1'
 alias texcount="texcount -opt=$HOME/.texcount"
 
+# per-directory environment setup
+has_command direnv && eval `direnv hook zsh`
