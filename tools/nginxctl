@@ -6,7 +6,7 @@
 NGINX_BASE_DIR=`brew --prefix`
 NGINX="${NGINX_BASE_DIR}/sbin/nginx"
 NGINX_CONF="${NGINX_BASE_DIR}/etc/nginx/nginx.conf"
-LAUNCHD_JOB="/Library/LaunchDaemons/homebrew.mxcl.nginx.plist"
+LAUNCHD_JOB="/Library/LaunchDaemons/homebrew.nginx.plist"
 LAUNCHCTL=/bin/launchctl
 SUDO=/usr/bin/sudo
 
@@ -67,40 +67,25 @@ case "${1}" in
         __${1}
         ;;
     plist)
-        cat <<EOF
-<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-  <dict>
-    <key>Label</key>
-    <string>homebrew.mxcl.nginx</string>
-
-    <!-- These settings assume a few things on the nginx.conf side:
-        user  _www;
-        daemon off;
-    -->
-
-    <key>UserName</key>
-    <string>root</string>
-
-    <key>RunAtLoad</key>
-    <true/>
-
-    <key>LaunchOnlyOnce</key>
-    <false/>
-
-    <key>KeepAlive</key>
-    <true/>
-
-    <key>WorkingDirectory</key>
-    <string>/opt/homebrew</string>
-
-    <key>ProgramArguments</key>
-    <array>
-        <string>/opt/homebrew/sbin/nginx</string>
-    </array>
-  </dict>
-</plist>
+        cat <<EOF >&2
+This sets the options below, which might clash with those in nginx.conf:
+    user _www;
+    daemon off;
+plist goes to $LAUNCHD_JOB
+EOF
+        cat <<EOF | plutil -convert xml1 -o - -
+{
+  "WorkingDirectory" : "\/opt\/homebrew",
+  "ProgramArguments" : [
+    "\/opt\/homebrew\/sbin\/nginx",
+    "-g", "user _www; daemon off;"
+  ],
+  "LaunchOnlyOnce" : false,
+  "UserName" : "root",
+  "RunAtLoad" : true,
+  "KeepAlive" : true,
+  "Label" : "homebrew.mxcl.nginx"
+}
 EOF
         ;;
     *)
