@@ -98,7 +98,7 @@ alias please=sudo
 # devel stuff
 alias g=git && compdef g=git
 function g/() { cd $(git root); }
-has_command hub && function git(){ hub "$@" }
+has_command hub && eval "$(hub alias -s)"
 
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
