@@ -13,7 +13,6 @@ diff: diff-dotfiles diff-tools
 
 include dotfiles.makefile tools.makefile
 include submodules/completion-ruby.makefile
-include submodules/vim-latex.makefile
 
 .PHONY: default install diff
 

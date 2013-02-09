@@ -45,6 +45,7 @@ Bundle 'seebi/easychair.vim'
 Bundle 'jinfield/vim-nginx'
 Bundle 'bartekd/vim-dart'
 Bundle 'chrisbra/csv.vim'
+Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 
 " Editing
 Bundle 'matchit.zip'

@@ -1,9 +1,6 @@
 [submodule "submodules/completion-ruby"]
 	path = submodules/completion-ruby
 	url = git://github.com/mernen/completion-ruby.git
-[submodule "submodules/vim-latex"]
-	path = submodules/vim-latex
-	url = git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex
 [submodule "dotfiles/zsh/lib/zsh-syntax-highlighting"]
 	path = dotfiles/zsh/zsh-syntax-highlighting
 	url = git://github.com/zsh-users/zsh-syntax-highlighting.git
