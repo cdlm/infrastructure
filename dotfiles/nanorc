@@ -5,14 +5,14 @@ set fill -4
 set tabsize 4
 set whitespace ">."
 
-include /opt/local/share/nano/c.nanorc
-include /opt/local/share/nano/html.nanorc
-include /opt/local/share/nano/java.nanorc
-include /opt/local/share/nano/man.nanorc
-include /opt/local/share/nano/nanorc.nanorc
-include /opt/local/share/nano/patch.nanorc
-include /opt/local/share/nano/perl.nanorc
-include /opt/local/share/nano/python.nanorc
-include /opt/local/share/nano/ruby.nanorc
-include /opt/local/share/nano/sh.nanorc
-include /opt/local/share/nano/tex.nanorc
+# include /opt/homebrew/opt/nano/share/nano/c.nanorc
+# include /opt/homebrew/opt/nano/share/nano/html.nanorc
+# include /opt/homebrew/opt/nano/share/nano/java.nanorc
+# include /opt/homebrew/opt/nano/share/nano/man.nanorc
+# include /opt/homebrew/opt/nano/share/nano/nanorc.nanorc
+# include /opt/homebrew/opt/nano/share/nano/patch.nanorc
+# include /opt/homebrew/opt/nano/share/nano/perl.nanorc
+# include /opt/homebrew/opt/nano/share/nano/python.nanorc
+# include /opt/homebrew/opt/nano/share/nano/ruby.nanorc
+# include /opt/homebrew/opt/nano/share/nano/sh.nanorc
+# include /opt/homebrew/opt/nano/share/nano/tex.nanorc
