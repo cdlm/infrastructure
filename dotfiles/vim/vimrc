@@ -149,6 +149,7 @@ set backspace=indent,eol,start
 set whichwrap=b,s,h,l,<,>,[,]
 " <Del> works, I don't see why <BS> shouldn't
 map <bs> X
+nnoremap <C-t> Xp
 
 nmap <leader>qf :botright copen<cr>
 nmap <leader>spell :setlocal spell!<cr>
@@ -168,6 +169,9 @@ cmap w!! :SudoWrite
 nmap <leader>i :set list!<cr>
 set listchars=tab:▸\ ,eol:\ ,trail:·,nbsp:_,extends:→,precedes:→
 
+" Incremental search
+nnoremap <C-s> /<C-r>/
+cnoremap <C-s> <cr>/<C-r>/
 " Unhighlight search results in normal mode (and still redraw screen)
 nnoremap <silent> <C-l> :silent nohlsearch<cr><C-l>
 
