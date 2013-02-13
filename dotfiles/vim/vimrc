@@ -5,6 +5,7 @@ set encoding=utf-8
 let mapleader=";"
 
 " Configure & load bundles
+let g:Tex_Menus = 0
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_cmd = '/opt/homebrew/opt/ctags/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
