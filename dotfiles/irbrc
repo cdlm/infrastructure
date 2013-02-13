@@ -28,10 +28,10 @@ IRB.conf[:AUTO_INDENT] = true
 IRB.conf[:USE_READLINE] = true
 IRB.conf[:PROMPT_MODE] = :CUSTOM
 IRB.conf[:PROMPT][:CUSTOM] = {
-  PROMPT_I: '> ',
-  PROMPT_S: '> ',
-  PROMPT_C: '> ',
-  RETURN:   "%s\n"
+  :PROMPT_I => '> ',
+  :PROMPT_S => '> ',
+  :PROMPT_C => '> ',
+  :RETURN   => "%s\n"
 }
 
 def pbcopy(something)  IO.popen('pbcopy', 'w') { |f| f << something.to_s }  end
