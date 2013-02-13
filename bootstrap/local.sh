@@ -5,7 +5,7 @@ set -o nounset -o errexit
 TEXLIVE_PREFIX='/opt/texlive'
 HOMEBREW_PREFIX='/opt/homebrew'
 HOMEBREW_PACKAGES=(
-    ruby-build rbenv-bundler
+    rbenv ruby-build rbenv-bundler rbenv-default-gems
 
     zsh zsh-completions
     ssh-copy-id
@@ -25,7 +25,7 @@ HOMEBREW_PACKAGES=(
     dos2unix exiv2 youtube-dl
     direnv
 )
-RUBY_VERSION='1.9.3-p362'
+RUBY_VERSION='1.9.3-p385' # latest one available in ruby-build
 
 
 ################################################################################
@@ -40,6 +40,7 @@ function exists() {
   fi
 }
 
+bootstrap_dir="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd)"
 
 if [[ `groups` != *admin* ]]; then
     echo "You must have admin (sudo) rights on the machine"
@@ -99,26 +100,19 @@ done
 echo -n "Building a nice modern Ruby..."
 if exists rbenv; then
     eval "$(rbenv init -)"
+    default_gems="${bootstrap_dir}/default-gems" # sent by remote.sh
+    [ -f "$default_gems" ] || default_gems="${bootstrap_dir}/../dotfiles/rbenv/default-gems"
+    if [ -f "$default_gems" ]; then
+        install -d "$(rbenv root)"
+        install "$default_gems" "$(rbenv root)"
+    fi
+    (rbenv versions | grep "$RUBY_VERSION") || rbenv install "$RUBY_VERSION"
+    rbenv global "$RUBY_VERSION"
+    rbenv rehash
 else
     echo " nope, rbenv not found :("
     exit 1
 fi
-(rbenv versions | grep "$RUBY_VERSION") || rbenv install "$RUBY_VERSION"
-rbenv global "$RUBY_VERSION"
-rbenv rehash
-
-
-echo -n "Installing basic ruby gems..."
-if [[ `which gem` == "$HOME/.rbenv/shims/gem" && `rbenv which gem` == "$HOME/.rbenv/versions/$RUBY_VERSION/bin/gem" ]]; then
-    echo
-else
-    echo " Oops, found `rbenv which gem` instead of rbenv's gem!"
-    exit 1
-fi
-
-gem install bundler && rbenv rehash
-bundle install --gemfile=./bootstrap-gemfile.rb
-rbenv rehash
 
 
 echo "Installing TeXlive..."

@@ -24,7 +24,11 @@ echo " $target_dir"
 
 
 echo "Copying stuff over..."
-tar czf - -C "$bootstrap_dir" . | ssh "$target" "tar xzf - -C $target_dir"
+cp .
+tar czf - \
+    -C "$bootstrap_dir" . \
+    -C "${bootstrap_dir}/../dotfiles/rbenv" default-gems \
+    | ssh "$target" "tar xzf - -C $target_dir"
 
 
 echo "Bootstrapping $target..."
