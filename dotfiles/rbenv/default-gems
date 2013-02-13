@@ -1,0 +1,18 @@
+bundler
+
+# ruby development
+yard
+pry
+rake
+
+# general utilities
+gem-man
+jump
+gist
+jist
+terminal-notifier
+
+# writing
+trex
+kramdown
+
