@@ -129,6 +129,7 @@ Updates.run nice: true do |g|
     brew.step %w(brew upgrade)
     brew.step %w(brew cleanup)
   end
+  g.step %w(cabal update)
   g.seq do |opam|
     opam.step %w(opam update)
     opam.step %w(opam upgrade)
