@@ -2,8 +2,10 @@ bundler
 
 # ruby development
 yard
-pry
 rake
+pry
+pry-nav
+pry-stack_explorer
 
 # general utilities
 gem-man

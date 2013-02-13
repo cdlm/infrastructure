@@ -1,11 +1,15 @@
 # http://stackoverflow.com/questions/7798795/how-to-adjust-pry-colors
 
 # pry-debugger commands
-Pry.commands.alias_command 's', 'step'
-Pry.commands.alias_command 'n', 'next'
-Pry.commands.alias_command 'f', 'finish'
-Pry.commands.alias_command 'c', 'continue'
-Pry.commands.alias_command 'i', 'step' # into
-Pry.commands.alias_command 'o', 'next' # over
-Pry.commands.alias_command 'u', 'finish' # up to caller
-Pry.commands.alias_command 'p', 'continue' # proceed
+if defined?(PryDebugger) || defined?(PryNav)
+  Pry.commands.alias_command 's', 'step'
+  Pry.commands.alias_command 'n', 'next'
+  Pry.commands.alias_command 'f', 'finish'
+  Pry.commands.alias_command 'c', 'continue'
+  Pry.commands.alias_command 'i', 'step' # into
+  Pry.commands.alias_command 'o', 'next' # over
+  Pry.commands.alias_command 'u', 'finish' # up to caller
+  Pry.commands.alias_command 'p', 'continue' # proceed
+end
+
+# vim: ft=ruby
