@@ -19,6 +19,7 @@ endif
 runtime bundles.vim
 
 " Setup bundles
+let g:tex_flavor='latex'
 let g:tex_fold_enabled=1
 let g:slime_target = 'tmux'
 let g:acp_behaviorKeywordLength = 3
@@ -84,7 +85,6 @@ nnoremap € q
 
 syntax on
 filetype plugin indent on
-let g:tex_flavor='latex'
 set completefunc=syntaxcomplete#Complete
 autocmd Filetype *
     \ if &omnifunc == "" |
