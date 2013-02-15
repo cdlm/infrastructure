@@ -22,7 +22,7 @@ class Update
   def describe indent
     desc = @options[:description]
     skipped = if skip? then ' (skipped)' else '' end
-    puts "#{'  ' * indent}#{desc}#{skipped}" unless desc.nil?
+    $stderr.puts "#{'  ' * indent}#{desc}#{skipped}" unless desc.nil?
   end
 end
 
@@ -105,7 +105,15 @@ class Updates < Update
     end
   rescue LoadError
   ensure
-    $stderr.puts message
+    if success && $stderr.tty? && require('lolcat')
+      $stdout = $stderr
+      Lol.println message,
+        os: rand(256),
+        spread: 3.0,
+        freq: 0.1
+    else
+      $stderr.puts message
+    end
   end
 end
 
