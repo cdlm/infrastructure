@@ -30,8 +30,9 @@ alias -s {txt,md,mdown,markdown}=vim
 # time tracking tool: gem install trak
 has_command trak && {
     alias t='trak'
-    for time in 15 30 45; do alias ${time}min="trak ${time}min"; done
-    alias 1h='trak 1h'
+    for time in 15 30 45; do alias ${time}m="trak ${time}min"; done
+    for time in 1 2 3; do alias ${time}h="trak ${time}h"; done
+    for time in 1 2 3; do alias ${time}h30="trak ${time}.5h"; done
 }
 
 # jumping around in the file system…
