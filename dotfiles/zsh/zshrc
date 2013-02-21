@@ -23,3 +23,5 @@ fpath=($Z/lib $fpath)
 # environment & shell interaction setup
 for config_file ($Z/rc/*.zsh)
    source $config_file
+
+rehash
