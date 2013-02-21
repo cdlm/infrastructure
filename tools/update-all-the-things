@@ -35,11 +35,13 @@ class SingleUpdate < Update
     @command_available = system("which #{@words.first} > /dev/null 2>&1")
   end
 
-  def skip?()  super || !@command_available  end
+  def skip?()  super || !@command_available || ARGV.include?("--no-#{name}")  end
 
   def command
     (sudo? ? ['sudo'] : []) + (nice? ? ['nice'] : []) + @words
   end
+
+  def name()  @words.first  end
 
   def run indent=0
     describe indent
