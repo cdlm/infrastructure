@@ -101,6 +101,8 @@ alias g=git && compdef g=git
 function g/() { cd $(git root); }
 has_command hub && eval "$(hub alias -s)"
 
+alias gist=jist
+
 alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'

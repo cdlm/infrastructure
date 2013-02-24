@@ -10,7 +10,6 @@ pry-stack_explorer
 # general utilities
 gem-man
 jump
-gist
 jist
 terminal-notifier
 
