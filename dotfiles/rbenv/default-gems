@@ -6,6 +6,7 @@ rake
 pry
 pry-nav
 pry-stack_explorer
+magic_encoding
 
 # general utilities
 gem-man
@@ -13,7 +14,8 @@ jump
 jist
 terminal-notifier
 
-# writing
+# writing & productivity
+beemind
 trex
 kramdown
 
