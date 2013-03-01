@@ -72,3 +72,5 @@ zle -N self-insert url-quote-magic
 
 autoload -U zcalc
 
+# per-directory environment setup
+has_command direnv && eval `direnv hook zsh`
