@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE keyboard PUBLIC "" "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
-<!--Last edited by Ukelele version 2.2.3 on 2012-10-17 at 02:24 (GMT+02:00)-->
+<!--Last edited by Ukelele version 2.2.4 on 2013-03-01 at 14:21 (GMT+01:00)-->
 <!--Slightly modified QWERTY layout (based on U.S..keylayout).
 
     2012-10-17:
@@ -76,7 +76,7 @@
             <key code="17" action="t"/>
             <key code="18" output="1"/>
             <key code="19" output="2"/>
-            <key code="20" output="3"/>
+            <key code="20" action="3 1"/>
             <key code="21" output="4"/>
             <key code="22" output="6"/>
             <key code="23" output="5"/>
@@ -106,7 +106,7 @@
             <key code="47" action="."/>
             <key code="48" output="&#x0009;"/>
             <key code="49" action="5"/>
-            <key code="50" output="`"/>
+            <key code="50" action="` 1"/>
             <key code="51" output="&#x0008;"/>
             <key code="52" output="&#x0003;"/>
             <key code="53" output="&#x001B;"/>
@@ -218,7 +218,7 @@
             <key code="47" output="&#x003E;"/>
             <key code="48" output="&#x0009;"/>
             <key code="49" action="5"/>
-            <key code="50" output="~"/>
+            <key code="50" action="~"/>
             <key code="51" output="&#x0008;"/>
             <key code="52" output="&#x0003;"/>
             <key code="53" output="&#x001B;"/>
@@ -1062,6 +1062,7 @@
         <action id=".">
             <when state="none" output="."/>
             <when state="left" output="≫"/>
+            <when state="right" output="≫"/>
         </action>
         <action id="/">
             <when state="none" output="/"/>
@@ -1091,6 +1092,10 @@
             <when state="circumflex" output="û"/>
             <when state="grave" output="ù"/>
             <when state="umlaut" output="ü"/>
+        </action>
+        <action id="3 1">
+            <when state="none" output="3"/>
+            <when state="left" output="♥"/>
         </action>
         <action id="4">
             <when state="none" next="tilde"/>
@@ -1270,6 +1275,10 @@
         <action id="`">
             <when state="none" next="grave"/>
         </action>
+        <action id="` 1">
+            <when state="none" output="`"/>
+            <when state="left" output="❦"/>
+        </action>
         <action id="c">
             <when state="none" output="c"/>
             <when state="circumflex" output="ĉ"/>
@@ -1334,6 +1343,11 @@
         <action id="}">
             <when state="none" output="}"/>
             <when state="math" output="⟩"/>
+        </action>
+        <action id="~">
+            <when state="none" output="~"/>
+            <when state="left" output="☙"/>
+            <when state="right" output="❧"/>
         </action>
         <action id=" ">
             <when state="none" output=" "/>
@@ -1507,6 +1521,7 @@
         <action id="≥ 1">
             <when state="none" next="right"/>
             <when state="left" output="»"/>
+            <when state="right" output="»"/>
         </action>
     </actions>
     <terminators>
