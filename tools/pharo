@@ -1,0 +1,15 @@
+#!/bin/bash
+set -o errexit
+
+DEFAULT_VM='/Applications/Developer/Pharo/Pharo.app/Contents/MacOS/Pharo'
+
+function die() {
+    echo "$1" >&2
+    exit ${2:--1}
+}
+
+VM="${PHARO_VM:-$DEFAULT_VM}"
+[[ -n "$VM" && -x "$VM" ]] || die 'No virtual machine found; set $PHAROVM.'
+
+set -o noglob
+exec "$VM" -headless "$@"
