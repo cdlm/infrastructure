@@ -17,6 +17,7 @@ Bundle 'tomtom/tlib_vim'
 Bundle 'kana/vim-textobj-user'
 
 " UI improvements
+Bundle 'sjl/vitality.vim'
 Bundle 'wincent/Command-T'
 Bundle 'Lokaltog/vim-powerline'
 Bundle 'majutsushi/tagbar'
