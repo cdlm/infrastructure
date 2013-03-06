@@ -112,7 +112,7 @@ class Updates < Update
       Lol.println message,
         os: rand(256),
         spread: 3.0,
-        freq: 0.1
+        freq: 0.25
     else
       $stderr.puts message
     end
