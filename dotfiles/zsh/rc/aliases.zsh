@@ -46,17 +46,17 @@ source `jump-bin --zsh-integration` && {
 # or by frecence
 source `brew --prefix`/etc/profile.d/z.sh
 
+setopt auto_cd
 setopt auto_pushd
 setopt pushd_ignore_dups
 alias -- -='cd -'
-alias ..='cd ..'
+# alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
 alias cd..='cd ..'
 alias cd...='cd ../..'
 alias cd....='cd ../../..'
 alias cd.....='cd ../../../..'
-alias cd/='cd /'
 function mcd() { mkdir -p "$1" && cd "$1"; }
 
 case `uname` in
