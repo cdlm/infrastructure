@@ -16,6 +16,7 @@ Icon
 *.ilg
 *.ind
 *.ist
+*.lof
 *.log
 *.out
 *.toc
