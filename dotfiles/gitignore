@@ -18,6 +18,7 @@ Icon
 *.ist
 *.lof
 *.log
+*.lot
 *.out
 *.toc
 *.fls
