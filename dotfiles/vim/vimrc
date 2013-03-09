@@ -42,8 +42,6 @@ let NERDTreeIgnore = [
             \ ]
 nnoremap <leader>nt :NERDTreeToggle<cr>
 nnoremap <leader>tb :TagbarToggle<cr>
-nnoremap <leader>e  :CommandT<cr>
-nnoremap <leader>TF :CommandTFlush<cr>
 
 " Load project-local settings if any
 set exrc secure
@@ -114,7 +112,9 @@ set smartcase
 set incsearch
 set hlsearch
 set showmatch
-set wildmenu wildmode=list:longest,full wildignore+=*.swp,*.bak,*.pyc,*.elc,*.zwc,*.class,*.git
+set wildmenu wildmode=list:longest,full
+let base_wildignore='*.swp,*.bak,*.pyc,*.elc,*.zwc,*.class,*.git'
+exec 'set wildignore+=' . base_wildignore
 set ruler
 set showcmd
 set showmode
