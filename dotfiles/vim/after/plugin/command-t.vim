@@ -6,7 +6,7 @@ function! Git_Repo_Cdup() " Get the relative path to repo root
     let git_fail = 'fatal: Not a git repository'
     if strpart(git_top, 0, strlen(git_fail)) == git_fail
         " Above line says we are not in git repo. Ugly. Better version?
-        return ''
+        return '.'
     else
         " Return the cdup path to the root. If already in root,
         " path will be empty, so add './'

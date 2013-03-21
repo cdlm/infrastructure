@@ -98,7 +98,7 @@ alias please=sudo
 
 # devel stuff
 alias g=git && compdef g=git
-function g/() { cd $(git root); }
+function g/() { local dest=$(git root); cd ${dest:-.}; }
 has_command hub && eval "$(hub alias -s)"
 
 alias gist=jist
