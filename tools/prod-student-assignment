@@ -1,0 +1,42 @@
+#!/usr/bin/env ruby
+#
+# requires the unar command from http://unarchiver.c3.cx/commandline
+
+require 'tmpdir'
+require 'fileutils'
+
+def prod file
+  return if blacklist? file
+  base = File.basename file
+  dest = base.sub /\..*$/, ''
+  unless File.exist? dest
+    Dir.mktmpdir do |tmp|
+      unarchive base, tmp
+      contents = Dir.glob "#{tmp}/*"
+      die "expected exactly one file" unless contents.size == 1
+      FileUtils.mv contents.first, dest
+    end
+  end
+  system 'tree', dest
+end
+
+def unarchive file, dest
+  system 'unar', '-output-directory', dest, file 
+end
+
+def blacklist? file
+  !File.exist? file or
+    File.directory? file or
+    File.extname(file) == '.pdf'
+end
+
+def die msg, status=1
+  $stderr.puts msg
+  exit status
+end
+
+if __FILE__ == $0
+  ARGV.each do |f|
+    prod f if File.exist? f
+  end
+end
