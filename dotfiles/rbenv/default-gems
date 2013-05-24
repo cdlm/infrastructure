@@ -3,6 +3,7 @@ bundler
 # ruby development
 yard
 rake
+gli
 pry
 pry-nav
 pry-stack_explorer
@@ -15,7 +16,7 @@ jist
 terminal-notifier
 
 # writing & productivity
-beemind
+beeminder
 trex
 kramdown
 
