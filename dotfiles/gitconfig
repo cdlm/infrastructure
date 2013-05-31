@@ -39,6 +39,7 @@
 [diff]
     renames = true
     tool = opendiff
+    algorithm = patience
 
 [rebase]
     autosquash = true
