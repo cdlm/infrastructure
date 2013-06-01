@@ -1,47 +1,47 @@
 # -*- ini -*-
 
 [user]
-    name = Damien Pollet
+    name  = Damien Pollet
     email = damien.pollet@gmail.com
 
 [alias]
-    root = rev-parse --show-toplevel
-    l = log --oneline --decorate --graph
-    l1 = log -1 --oneline --decorate
-    lu = !git l @{u}
-    li = !git l ..@{u}
-    lo = !git l @{u}..
-    dst = !"f () { git diff $* | diffstat; }; f"
-    staged = diff --staged
-    wdiff = diff --word-diff=color
-    st = status --short --branch
-    ci = commit
-    co = checkout
-    ri = rebase --interactive
-    pl = !"f () { git l1 && git pull $*; }; f"
-    fixup = !sh -c 'git commit --fixup=$1' -
-    squash = !sh -c 'git commit --squash=$1' -
-    tags = show-ref --tags
-    branches = branch -a --verbose
-    remotes = !"f () { local n; if [[ $1 = '-n' ]]; then n=$1; shift; fi; git remote show $n ${*:-`git remote | paste -sd ' ' -`}; }; f"
-    svnci = !"f () { git svn rebase && git svn dcommit; }; f"
-    svnup = svn rebase
-    svnups = !"f () { git stash && git svnup && git stash apply; }; f"
-    tgz = !"f () { git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz; }; f"
-    ignore = !"f () { local ignore_file=$( git rev-parse --show-cdup ).gitignore arg; for arg in $*; do echo $arg >> $ignore_file; done; sort -u -o $ignore_file $ignore_file; }; f"
-    unignore = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
-    exclude = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
+    root      = rev-parse --show-toplevel
+    l         = log --oneline --decorate --graph
+    l1        = log -1 --oneline --decorate
+    lu        = !git l @{u}
+    li        = !git l ..@{u}
+    lo        = !git l @{u}..
+    dst       = !"f () { git diff $* | diffstat; }; f"
+    staged    = diff --staged
+    wdiff     = diff --word-diff=color
+    st        = status --short --branch
+    ci        = commit
+    co        = checkout
+    ri        = rebase --interactive
+    pl        = !"f () { git l1 && git pull $*; }; f"
+    fixup     = !sh -c 'git commit --fixup=$1' -
+    squash    = !sh -c 'git commit --squash=$1' -
+    tags      = show-ref --tags
+    branches  = branch -a --verbose
+    remotes   = !"f () { local n; if [[ $1 = '-n' ]]; then n=$1; shift; fi; git remote show $n ${*:-`git remote | paste -sd ' ' -`}; }; f"
+    svnci     = !"f () { git svn rebase && git svn dcommit; }; f"
+    svnup     = svn rebase
+    svnups    = !"f () { git stash && git svnup && git stash apply; }; f"
+    tgz       = !"f () { git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz; }; f"
+    ignore    = !"f () { local ignore_file=$( git rev-parse --show-cdup ).gitignore arg; for arg in $*; do echo $arg >> $ignore_file; done; sort -u -o $ignore_file $ignore_file; }; f"
+    unignore  = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
+    exclude   = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
     unexclude = !"f () { sed -i .bak \"/^${1}\\$/d\" .git/info/exclude; }; f"
-    assume = update-index --assume-unchanged
-    unassume = update-index --no-assume-unchanged
-    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
+    assume    = update-index --assume-unchanged
+    unassume  = update-index --no-assume-unchanged
+    assumed   = "!git ls-files -v | grep ^h | cut -c 3-"
 
 [push]
     default = current
 
 [diff]
-    renames = true
-    tool = opendiff
+    renames   = true
+    tool      = opendiff
     algorithm = patience
 
 [rebase]
@@ -52,7 +52,7 @@
     pager = less -FRSX
 
 [pager]
-    log = diff-highlight | less
+    log  = diff-highlight | less
     show = diff-highlight | less
     diff = diff-highlight | less
 
@@ -60,33 +60,33 @@
     helper = osxkeychain
 
 [color]
-    diff = auto
-    status = auto
-    branch = auto
+    diff        = auto
+    status      = auto
+    branch      = auto
     interactive = auto
-    ui = true
-    pager = true
+    ui          = true
+    pager       = true
 
 [color "branch"]
     current = green reverse
-    local = green
-    remote = red bold
+    local   = green
+    remote  = red bold
 
 [color "diff"]
     meta = cyan
     frag = blue
-    old = red
-    new = green
+    old  = red
+    new  = green
 
 [color "status"]
-    added = green
-    changed = yellow
+    added     = green
+    changed   = yellow
     untracked = magenta
-    header = white
+    header    = white
 
 [color "decorate"]
-    HEAD = green
-    branch = cyan
-    tag = blue
-    remoteBranch = red 
+    HEAD         = green
+    branch       = cyan
+    tag          = blue
+    remoteBranch = red
 
