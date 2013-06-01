@@ -32,6 +32,9 @@
     unignore = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
     exclude = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
     unexclude = !"f () { sed -i .bak \"/^${1}\\$/d\" .git/info/exclude; }; f"
+    assume = update-index --assume-unchanged
+    unassume = update-index --no-assume-unchanged
+    assumed = "!git ls-files -v | grep ^h | cut -c 3-"
 
 [push]
     default = current
