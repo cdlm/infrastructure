@@ -1,6 +1,6 @@
 zle_highlight=(isearch:standout)
 
-source $Z/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source $bp/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 if [[ $COLORFGBG = *';15' ]]; then
     # solarized light

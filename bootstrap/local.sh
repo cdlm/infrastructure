@@ -7,7 +7,7 @@ HOMEBREW_PREFIX='/opt/homebrew'
 HOMEBREW_PACKAGES=(
     rbenv ruby-build rbenv-bundler rbenv-default-gems
 
-    zsh zsh-completions
+    zsh zsh-completions zsh-syntax-highlighting
     ssh-copy-id
     git hub tig
 
