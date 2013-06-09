@@ -11,6 +11,7 @@
     lu        = !git l @{u}
     li        = !git l ..@{u}
     lo        = !git l @{u}..
+    ls        = ls-files
     dst       = !"f () { git diff $* | diffstat; }; f"
     staged    = diff --staged
     wdiff     = diff --word-diff=color
