@@ -129,8 +129,10 @@ set nofoldenable
 
 " Sane indentation defaults
 set expandtab
-set smartindent
+" set smartindent
 set autoindent
+" disable smartindent's unshiftable left-aligned comments
+" inoremap # X<C-h>#
 
 function! SetIndent(...)
     let size = (a:0 == 0) ? 4 : a:1
