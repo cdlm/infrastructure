@@ -15,6 +15,8 @@ Bundle 'MarcWeber/vim-addon-mw-utils'
 Bundle 'tomtom/tlib_vim'
 "   textobj-rubyblock:
 Bundle 'kana/vim-textobj-user'
+"   easytags.vim
+Bundle 'xolox/vim-misc'
 
 " UI improvements
 Bundle 'sjl/vitality.vim'
@@ -71,7 +73,7 @@ Bundle 'honza/snipmate-snippets'
 Bundle 'rbonvall/snipmate-snippets-bib'
 
 " External tools
-Bundle 'easytags.vim'
+Bundle 'xolox/vim-easytags'
 Bundle 'jpalardy/vim-slime'
 Bundle 'hallettj/jslint.vim'
 Bundle 'mileszs/ack.vim'
