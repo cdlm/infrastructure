@@ -11,5 +11,11 @@ function die() {
 VM="${PHARO_VM:-$DEFAULT_VM}"
 [[ -n "$VM" && -x "$VM" ]] || die 'No virtual machine found; set $PHAROVM.'
 
+if [[ "$0" == *'-gui' ]]; then
+    HEADFUL=''
+else
+    HEADFUL='-headless'
+fi
+
 set -o noglob
-exec "$VM" -headless "$@"
+exec "$VM" $HEADFUL "$@"
