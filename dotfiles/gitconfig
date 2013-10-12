@@ -6,8 +6,8 @@
 
 [alias]
     root      = rev-parse --show-toplevel
-    l         = log --oneline --decorate --graph
-    l1        = log -1 --oneline --decorate
+    l         = log --graph --pretty=tformat:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%an %cr)%Creset'
+    l1        = l -1
     lu        = !git l @{u}
     li        = !git l ..@{u}
     lo        = !git l @{u}..
@@ -40,33 +40,39 @@
 [push]
     default = current
 
+[fetch]
+    recurseSubmodules = on-demand
+
+[status]
+    submoduleSummary = true
+
 [diff]
-    renames   = true
-    tool      = opendiff
-    algorithm = patience
+    renames        = true
+    tool           = opendiff
+    algorithm      = patience
+    mnemonicPrefix = true
+
+[merge]
+    conflictStyle = diff3
 
 [rebase]
     autosquash = true
 
 [core]
     excludesfile = ~/.gitignore
-    pager = less -FRSX
+    pager = cat
 
 [pager]
-    log  = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
+    log  = diff-highlight
+    show = diff-highlight
+    diff = diff-highlight
 
 [credential]
     helper = osxkeychain
 
 [color]
-    diff        = auto
-    status      = auto
-    branch      = auto
-    interactive = auto
-    ui          = true
-    pager       = true
+    ui     = auto
+    parger = true
 
 [color "branch"]
     current = green reverse
