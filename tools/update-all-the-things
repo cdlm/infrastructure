@@ -97,6 +97,11 @@ class Updates < Update
               else
                 "Failed to upgrade all the things :("
               end
+    osx_notify message
+    success && $stderr.tty? && lol_notify(message) || $stderr.puts(message)
+  end
+
+  def osx_notify message
     require 'terminal-notifier'
     if ::TerminalNotifier.available?
       ::TerminalNotifier.remove :update_all_the_things
@@ -106,16 +111,20 @@ class Updates < Update
         group: :update_all_the_things
     end
   rescue LoadError
+  end
+
+  def lol_notify message
+    old_stdout = $stdout
+    require('lolcat')
+    $stdout = $stderr
+    Lol.println message,
+      os: rand(256),
+      spread: 3.0,
+      freq: 0.25
+  rescue LoadError
+    false
   ensure
-    if success && $stderr.tty? && require('lolcat')
-      $stdout = $stderr
-      Lol.println message,
-        os: rand(256),
-        spread: 3.0,
-        freq: 0.25
-    else
-      $stderr.puts message
-    end
+    $stdout = old_stdout
   end
 end
 
