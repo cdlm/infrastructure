@@ -121,6 +121,7 @@ class Updates < Update
       os: rand(256),
       spread: 3.0,
       freq: 0.25
+    true
   rescue LoadError
     false
   ensure
