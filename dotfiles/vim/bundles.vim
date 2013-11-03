@@ -54,6 +54,7 @@ Bundle 'jinfield/vim-nginx'
 Bundle 'dart-lang/dart-vim-plugin'
 Bundle 'chrisbra/csv.vim'
 Bundle 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+Bundle 'ledger/vim-ledger'
 
 " Editing
 Bundle 'matchit.zip'
