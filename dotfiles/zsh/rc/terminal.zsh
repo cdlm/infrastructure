@@ -75,5 +75,5 @@ autoload -U zcalc
 # per-directory environment setup
 if has_command direnv; then
     export DIRENV_RUBY=/usr/bin/ruby
-    eval `direnv hook zsh`
+    eval "`direnv hook zsh`"
 fi
