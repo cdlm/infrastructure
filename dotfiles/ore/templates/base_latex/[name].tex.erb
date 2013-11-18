@@ -1,0 +1,16 @@
+<%= includes :documentclass %>
+<%= includes :preamble %>
+
+\title{<%= @name %>}
+<%- if @author -%>
+\author{<%= @author %>}
+<%- end -%>
+\date{<%= @year %>}
+
+\begin{document}
+\maketitle
+
+Hello.
+
+\end{document}
+

@@ -1,0 +1,42 @@
+%%
+% `separateauthordate' option -- do not include author & date in title block
+
+\newboolean{@tufte@local@separateauthordate}
+\DeclareOptionX[tufte]<local>{separateauthordate}{\setboolean{@tufte@local@separateauthordate}{true}}
+\ProcessOptionsX*[tufte]<local>\relax
+
+% Override of tufte-common.def
+\renewcommand{\maketitle}{%                                                                                           
+    \newpage
+    \global\@topnum\z@% prevent floats from being placed at the top of the page
+    \begingroup
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{4pt}
+    \ifthenelse{\boolean{@tufte@sfsidenotes}}{
+        \begingroup
+        % FIXME fails with \thanks
+        \sffamily
+        \par{\begin{fullwidth}\LARGE\allcaps{\@title}\end{fullwidth}}
+        \ifthenelse{\boolean{@tufte@local@separateauthordate}}{}{
+            \ifthenelse{\equal{\@author}{}}{}{\par{\Large\allcaps{\@author}}}
+            \ifthenelse{\equal{\@date}{}}{}{\par{\Large\allcaps{\@date}}}
+        }
+        \endgroup
+    }{
+        \begingroup
+        \par{\LARGE\textit{\@title}}
+        \ifthenelse{\boolean{@tufte@local@separateauthordate}}{}{
+            \ifthenelse{\equal{\@author}{}}{}{\par{\Large\textit{\@author}}}
+            \ifthenelse{\equal{\@date}{}}{}{\par{\Large\textit{\@date}}}
+        }
+        \endgroup
+    }\par
+    \endgroup
+    \thispagestyle{plain}% suppress the running head
+    % redefine \author and \date to display the one set before \maketitle
+    \renewcommand{\author}{\@author}
+    \renewcommand{\date}{\@date}
+}
+
+\endinput
+
