@@ -1,0 +1,19 @@
+\setupdocument{
+    noheader, rightaddress, autograph = 1,
+    language = french,
+    opening = {Madame, Monsieur},
+    signature = {le \today, <%= @author %>},
+    logoaddress = {<%= @author %>\\ ADDRESS},
+}
+
+\begin{document}
+
+\letter[date=<%= Time.now.strftime("%Y-%m-%d") %>,
+  subject = {SUBJECT},
+  to = {DESTINATAIRE},
+  closing = {Cordialement},
+  % enclosures = {PIECES JOINTES}
+]{%
+  Hello.
+}
+\end{document}
