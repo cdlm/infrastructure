@@ -24,6 +24,7 @@ HOMEBREW_PACKAGES=(
     colordiff
     dos2unix exiv2 youtube-dl
     direnv
+    mtools
 )
 RUBY_VERSION='1.9.3-p385' # latest one available in ruby-build
 
