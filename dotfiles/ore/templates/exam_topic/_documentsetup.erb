@@ -1,0 +1,23 @@
+\parindent 0pt
+\linefillheight 8mm
+\shadedsolutions
+\definecolor{SolutionColor}{rgb}{.8,1,.8}
+\CorrectChoiceEmphasis{\color{Green}\itshape}
+\renewcommand{\questionlabel}{\bfseries\llap{Question \thequestion\hspace{.5em}}}
+\pointsinmargin
+\pointpoints{point}{points}
+\marginpointname{\points}
+\pointformat{\smash{\raisebox{-\baselineskip}{\small\sffamily\thepoints}}}
+\bonuspointformat{\smash{\raisebox{-\baselineskip}{\small\sffamily\thepoints}}}
+
+\checkboxchar{$\Box$}
+\newcommand\checkbox{$\Box$}
+\newcommand\checkedbox{%
+    \ifprintanswers
+        \rlap{$\Box$}\textcolor{Green}{\ding{52}}
+    \else
+        $\Box$
+    \fi}
+\newcommand\solutionnote[1]{\ifprintanswers\textcolor{Green}{\itshape #1}\fi}
+
+
