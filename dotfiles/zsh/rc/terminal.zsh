@@ -72,6 +72,9 @@ zle -N self-insert url-quote-magic
 
 autoload -U zcalc
 
+unalias run-help
+autoload run-help
+
 # per-directory environment setup
 if has_command direnv; then
     export DIRENV_RUBY=/usr/bin/ruby
