@@ -36,6 +36,10 @@
     assume    = update-index --assume-unchanged
     unassume  = update-index --no-assume-unchanged
     assumed   = "!git ls-files -v | grep ^h | cut -c 3-"
+    show-staged = !git show ":0:$1"
+    show-merge-ancestor = !git show ":1:$1"
+    show-merge-target = !git show ":2:$1"
+    show-merge-source = !git show ":3:$1"
 
 [push]
     default = current
