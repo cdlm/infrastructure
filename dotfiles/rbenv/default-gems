@@ -12,7 +12,7 @@ magic_encoding
 # general utilities
 gem-man
 jump
-jist
+gist
 terminal-notifier
 
 # writing & productivity
