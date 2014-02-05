@@ -1,2 +1,2 @@
 " Pandoc 
-autocmd! Bufread,BufNewFile *.pdc    set filetype=pdc
+autocmd! BufRead,BufNewFile *.pdc    setfiletype pdc

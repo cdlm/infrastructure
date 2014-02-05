@@ -1,1 +1,2 @@
-autocmd! Bufread,BufNewFile .envrc setfiletype sh
+" direnv http://direnv.net
+autocmd! BufRead,BufNewFile .envrc  setfiletype sh

@@ -1,3 +1,3 @@
 " Smalltalk
-autocmd! Bufread,BufNewFile *.cs,*.st,*.cst,*.coral    set filetype=st
+autocmd! BufRead,BufNewFile *.cs,*.st,*.cst,*.coral    setfiletype st
 
