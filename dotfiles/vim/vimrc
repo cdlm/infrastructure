@@ -6,6 +6,9 @@ let mapleader=";"
 
 " Configure & load bundles
 let g:Tex_Menus = 0
+let g:easytags_by_filetype = '~/.vimtags.d'
+let g:easytags_dynamic_files = 1
+let g:easytags_auto_highlight = 0
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_cmd = '/opt/homebrew/opt/ctags/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
