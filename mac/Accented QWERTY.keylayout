@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE keyboard PUBLIC "" "file://localhost/System/Library/DTDs/KeyboardLayout.dtd">
-<!--Last edited by Ukelele version 2.2.4 on 2013-03-01 at 14:21 (GMT+01:00)-->
+<!--Last edited by Ukelele version 2.2.7 on 2014-02-20 at 13:36 (GMT+1)-->
 <!--Slightly modified QWERTY layout (based on U.S..keylayout).
 
     2012-10-17:
@@ -522,7 +522,7 @@
             <key code="15" output="‰"/>
             <key code="16" action="Á"/>
             <key code="17" action="ˇ"/>
-            <key code="18" output="¡"/>
+            <key code="18" output="‽"/>
             <key code="19" output="€"/>
             <key code="20" output="ಠ"/>
             <key code="21" output="¢"/>
