@@ -6,6 +6,7 @@
 --type-set=markdown=.md,.mdown,.markdown
 --type-set=plist=.plist
 --type-set=zsh=.zsh
+--type-set=pier=.pier
 
 # new file extensions
 --type-add=css=.sass,.scss
