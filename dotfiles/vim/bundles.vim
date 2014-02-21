@@ -37,6 +37,7 @@ Bundle 'cdlm/vim-colors-solarized'
 Bundle 'chriskempson/vim-tomorrow-theme'
 
 " Language modes
+Bundle 'cdlm/vim-pillar'
 Bundle 'vim-pandoc/vim-pandoc'
 Bundle 'hallison/vim-markdown'
 Bundle 'vim-pandoc/vim-markdownfootnotes'
