@@ -179,8 +179,8 @@ set listchars=tab:▸\ ,eol:\ ,trail:·,nbsp:_,extends:→,precedes:→
 " Incremental search
 nnoremap <C-s> /<C-r>/
 cnoremap <C-s> <cr>/<C-r>/
-" Unhighlight search results in normal mode (and still redraw screen)
-nnoremap <silent> <C-l> :silent nohlsearch<cr><C-l>
+" Unhighlight search results in normal mode, clear exchange region, and still redraw screen
+nnoremap <silent> <C-l> :nohlsearch<cr> \| :normal cxc<cr><C-l>
 
 " Opening files relative to current one, e.g. :e %/bar.txt
 cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
