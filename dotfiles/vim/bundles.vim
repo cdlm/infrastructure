@@ -76,6 +76,7 @@ Bundle 'garbas/vim-snipmate'
 Bundle 'honza/vim-snippets'
 Bundle 'rbonvall/snipmate-snippets-bib'
 Bundle 'tommcdo/vim-exchange'
+Bundle 'rhysd/clever-f.vim'
 
 " External tools
 Bundle 'xolox/vim-easytags'
