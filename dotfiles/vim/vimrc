@@ -155,7 +155,7 @@ set backspace=indent,eol,start
 "set cpoptions+=$ " mark changed area
 set whichwrap=b,s,h,l,<,>,[,]
 " <Del> works, I don't see why <BS> shouldn't
-map <bs> X
+noremap <bs> X
 nnoremap <C-t> Xp
 
 nmap <leader>qf :botright copen<cr>
