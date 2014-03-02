@@ -13,6 +13,7 @@ if [ -d $bp ]; then
       $bp/share/python3
       $bp/share/python
       $path)
+    manpath=($bp/share/man $manpath)
 fi
 
 # standalone texlive, selected from ~/.texliveVersion
