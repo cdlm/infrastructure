@@ -16,6 +16,11 @@ if [ -d $bp ]; then
     manpath=($bp/share/man $manpath)
 fi
 
+# byobu screen/tmux wrapper
+if command which -s byobu; then
+    export BYOBU_PREFIX="$bp"
+fi
+
 # standalone texlive, selected from ~/.texliveVersion
 function texlive_set_paths() {
     local texliveVersion texlivePrefix
