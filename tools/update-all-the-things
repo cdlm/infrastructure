@@ -141,15 +141,24 @@ class DependentUpdates < Updates
 end
 
 Updates.run nice: true do |g|
-  g.step %w(vim +BundleUpdate +qa)
+  g.seq do |vim|
+    # vim.step %w(vim +BundleUpdate +qa)
+    vim.step %w(vim +PlugUpgrade +qa)
+    vim.step %w(vim +PlugUpdate  +qa)
+  end
+
   g.step %w(tlmgr update --self --all)
+
   g.step %w(gem update)
+
   g.seq do |brew|
     brew.step %w(brew update)
     brew.step %w(brew upgrade)
     brew.step %w(brew cleanup)
   end
+
   g.step %w(cabal update)
+
   g.seq do |opam|
     opam.step %w(opam update)
     opam.step %w(opam upgrade)

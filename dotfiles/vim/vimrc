@@ -20,7 +20,7 @@ if !empty($GOROOT)
     set rtp+=$GOROOT/misc/vim
 endif
 
-runtime bundles.vim
+runtime plugins.vim
 
 " Setup bundles
 let g:Imap_UsePlaceHolders = 0
@@ -28,8 +28,8 @@ let g:tex_flavor = 'latex'
 let g:tex_fold_enabled = 1
 let g:slime_target = 'tmux'
 let g:acp_behaviorKeywordLength = 3
+let g:indexed_search_show_index_mappings=0
 let g:SuperTabDefaultCompletionType = "context"
-let g:SuperTabContextDefaultCompletionType = "<c-n>"
 let g:cssColorVimDoNotMessMyUpdatetime = 'kthxbye'
 " indent guides
 let g:indent_guides_indent_levels = 12
@@ -276,7 +276,10 @@ augroup END
 " Remove GUI menu and toolbar
 set guioptions-=T
 "set guioptions-=m
-set guifont=Consolas:h11,Menlo:h11
+"set guifont=Consolas:h11,Menlo:h11
+"set guifont=Ubuntu\ Mono\ derivative\ Powerline:h13
+set guifont=Powerline\ Consolas:h13
+
 " Mac-like tab navigation
 map <D-S-]> gt
 map <D-S-[> gT
