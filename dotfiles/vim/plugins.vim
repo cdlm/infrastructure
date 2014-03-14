@@ -28,6 +28,8 @@ Plug 'tpope/vim-sensible'
 " focus events within tmux
 Plug 'sjl/vitality.vim'
 Plug 'wincent/Command-T'
+"" spawn finder or terminal on current file: gof, got
+Plug 'justinmk/vim-gtfo'
 Plug 'Shougo/unite.vim'
 Plug 'h1mesuke/unite-outline'
 " numbered search matches
@@ -37,6 +39,9 @@ Plug 'ervandew/supertab'
 " Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
+"" trailing whitespace: :ToggleWhitespace
+Plug 'ntpeters/vim-better-whitespace'
+Plug 'sdanielf/vim-stdtabs'
 
 """
 """ Appearance
@@ -50,14 +55,20 @@ Plug 'edkolev/promptline.vim'
 """ Tools interaction
 """
 
-" git
+"" git
 Plug 'tpope/vim-fugitive'
-" github
+"" github
 Plug 'tpope/vim-rhubarb'
+"" documentation in Dash.app
+Plug 'rizzatti/funcoo.vim'
+Plug 'rizzatti/dash.vim'
+Plug 'Keithbsmiley/investigate.vim'
 
 """ Editing
 
 Plug 'junegunn/vim-easy-align'
+" language-aware jumps to open/close: %
+Plug 'matchit.zip'
 " indent-aware paste: ]p
 Plug 'sickill/vim-pasta'
 " automatic delimiter pairs
@@ -122,7 +133,6 @@ call plug#end()
 " " Language modes
 
 " " Editing
-" Bundle 'matchit.zip'
 " Bundle 'godlygeek/tabular'
 " Bundle 'Align'
 " Bundle 'garbas/vim-snipmate'
