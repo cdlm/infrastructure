@@ -4,17 +4,17 @@ call plug#begin("~/.vim/plugged")
 """ Libraries
 """
 
-" support for repeating commands
+"" support for repeating commands
 Plug 'tpope/vim-repeat'
 
-" snipmate
+"" snipmate
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 
-" textobj-rubyblock
+"" textobj-rubyblock
 Plug 'kana/vim-textobj-user'
 
-" easytags.vim
+"" easytags.vim
 Plug 'xolox/vim-misc'
 
 " unite.vim
@@ -25,18 +25,19 @@ Plug 'Shougo/neomru.vim'
 """
 
 Plug 'tpope/vim-sensible'
-" focus events within tmux
+"" focus events within tmux
 Plug 'sjl/vitality.vim'
 Plug 'wincent/Command-T'
+Plug 'junegunn/fzf'
 "" spawn finder or terminal on current file: gof, got
 Plug 'justinmk/vim-gtfo'
 Plug 'Shougo/unite.vim'
 Plug 'h1mesuke/unite-outline'
-" numbered search matches
+"" numbered search matches
 Plug 'henrik/vim-indexed-search'
 " completion using <tab>
 Plug 'ervandew/supertab'
-" Plug 'majutsushi/tagbar'
+"" Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
 "" trailing whitespace: :ToggleWhitespace
@@ -57,6 +58,7 @@ Plug 'edkolev/promptline.vim'
 
 "" git
 Plug 'tpope/vim-fugitive'
+Plug 'gregsexton/gitv'
 "" github
 Plug 'tpope/vim-rhubarb'
 "" documentation in Dash.app
@@ -67,27 +69,29 @@ Plug 'Keithbsmiley/investigate.vim'
 """ Editing
 
 Plug 'junegunn/vim-easy-align'
-" language-aware jumps to open/close: %
+"" find & replace
+Plug 'junegunn/vim-fnr'
+"" language-aware jumps to open/close: %
 Plug 'matchit.zip'
-" indent-aware paste: ]p
+"" indent-aware paste: ]p
 Plug 'sickill/vim-pasta'
-" automatic delimiter pairs
+"" automatic delimiter pairs
 Plug 'Raimondi/delimitMate'
-" case substitutions: :S, cr{m,c,s,u}
+"" case substitutions: :S, cr{m,c,s,u}
 Plug 'tpope/vim-abolish'
-" extended character info: ga
+"" extended character info: ga
 Plug 'tpope/vim-characterize'
-" commenting: gc…
+"" commenting: gc…
 Plug 'tpope/vim-commentary'
-" automatic end keyword
+"" automatic end keyword
 Plug 'tpope/vim-endwise'
-" buffer/file rename, move, sudo write…
+"" buffer/file rename, move, sudo write…
 Plug 'tpope/vim-eunuch'
-" ERB-like tags, URL/entity encoding
+"" ERB-like tags, URL/entity encoding
 Plug 'tpope/vim-ragtag'
-" using/changing delimiter pairs
+"" using/changing delimiter pairs
 Plug 'tpope/vim-surround'
-" quick buffer changes: [b …and options switches: [oi
+"" quick buffer changes: [b …and options switches: [oi
 Plug 'tpope/vim-unimpaired'
 
 """
