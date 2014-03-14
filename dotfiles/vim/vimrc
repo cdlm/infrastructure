@@ -12,7 +12,7 @@ let g:easytags_auto_highlight = 0
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_cmd = '/opt/homebrew/opt/ctags/bin/ctags'
 let g:tagbar_ctags_bin = g:easytags_cmd
-let g:pandoc_syntax_dont_use_conceal_for_rules = ['atx', 'list', 'quotes']
+let g:pandoc_syntax_dont_use_conceal_for_rules = ['atx', 'list', 'quotes', 'codeblock_start', 'codeblock_delim']
 " jslint: force node instead of javascriptcore: https://github.com/hallettj/jslint.vim/issues/31
 let $JS_CMD = 'node'
 

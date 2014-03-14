@@ -11,5 +11,7 @@ syntax region yamlFrontmatter start=/\%^---$/ end=/^---$/ keepend contains=@Yaml
 
 highlight link yamlFrontmatter Comment
 
+highlight link pandocDelimitedCodeBlock pandocNoFormatted
+
 let b:current_syntax=s:current_syntax
 unlet s:current_syntax
