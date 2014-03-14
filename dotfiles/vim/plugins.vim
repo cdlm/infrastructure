@@ -34,7 +34,7 @@ Plug 'h1mesuke/unite-outline'
 Plug 'henrik/vim-indexed-search'
 " completion using <tab>
 Plug 'ervandew/supertab'
-Plug 'majutsushi/tagbar'
+" Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
 
@@ -98,14 +98,16 @@ Plug 'hallison/vim-markdown'
 Plug 'vim-pandoc/vim-markdownfootnotes'
 Plug 'vim-pandoc/vim-pantondoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-" Plug 'vim-pandoc/vim-pandoc-after' " problems with supertab… https://github.com/vim-pandoc/vim-pandoc-after/issues/1
+"" problems with supertab… https://github.com/vim-pandoc/vim-pandoc-after/issues/1
+" Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'cdlm/vim-pillar'
 Plug 'tracwiki'
 
 Plug 'rodjek/vim-puppet'
 Plug 'jinfield/vim-nginx'
 
-Plug 'skammer/vim-css-color'
+"" startup without huge delay http://github.com/skammer/vim-css-color/issues/3
+Plug 'ap/vim-css-color'
 Plug 'othree/html5.vim'
 
 Plug 'seebi/easychair.vim'
