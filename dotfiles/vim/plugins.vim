@@ -24,10 +24,11 @@ Plug 'rizzatti/funcoo.vim'
 Plug 'tpope/vim-sensible'
 "" focus events within tmux
 Plug 'sjl/vitality.vim'
-Plug 'wincent/Command-T'
-Plug 'junegunn/fzf'
 "" spawn finder or terminal on current file: gof, got
 Plug 'justinmk/vim-gtfo'
+"" fuzzy finders
+Plug 'wincent/Command-T'
+Plug 'junegunn/fzf'
 Plug 'Shougo/unite.vim'
 Plug 'h1mesuke/unite-outline'
 Plug 'rhysd/unite-ruby-require.vim'
