@@ -11,9 +11,6 @@ Plug 'tpope/vim-repeat'
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
 
-"" textobj-rubyblock
-Plug 'kana/vim-textobj-user'
-
 "" easytags.vim
 Plug 'xolox/vim-misc'
 
@@ -33,6 +30,7 @@ Plug 'junegunn/fzf'
 Plug 'justinmk/vim-gtfo'
 Plug 'Shougo/unite.vim'
 Plug 'h1mesuke/unite-outline'
+Plug 'rhysd/unite-ruby-require.vim'
 "" numbered search matches
 Plug 'henrik/vim-indexed-search'
 " completion using <tab>
@@ -48,6 +46,7 @@ Plug 'sdanielf/vim-stdtabs'
 """ Appearance
 """
 
+Plug 'reedes/vim-thematic'
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
 Plug 'edkolev/promptline.vim'
@@ -59,6 +58,7 @@ Plug 'edkolev/promptline.vim'
 "" git
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+Plug 'rhysd/git-messenger.vim'
 "" github
 Plug 'tpope/vim-rhubarb'
 "" documentation in Dash.app
@@ -67,6 +67,25 @@ Plug 'rizzatti/dash.vim'
 Plug 'Keithbsmiley/investigate.vim'
 
 """ Editing
+
+"" semantic selection
+Plug 'kana/vim-textobj-user'
+" Plug 'nelstrom/vim-textobj-rubyblock'
+Plug 'rhysd/vim-textobj-ruby'
+Plug 'glts/vim-textobj-comment'
+Plug 'kana/vim-textobj-indent'
+Plug 'kana/vim-textobj-fold'
+Plug 'kana/vim-textobj-diff'
+Plug 'kana/vim-textobj-line'
+Plug 'jceb/vim-textobj-uri'
+Plug 'rbonvall/vim-textobj-latex'
+Plug 'rhysd/vim-textobj-word-column'
+Plug 'reedes/vim-textobj-quote'
+Plug 'reedes/vim-textobj-sentence'
+
+"" edition operators
+Plug 'kana/vim-operator-user'
+Plug 'rhysd/vim-operator-evalruby'
 
 Plug 'junegunn/vim-easy-align'
 "" find & replace
@@ -100,7 +119,6 @@ Plug 'tpope/vim-unimpaired'
 
 Plug 'vim-ruby/vim-ruby'
 Plug 'sunaku/vim-ruby-minitest'
-Plug 'nelstrom/vim-textobj-rubyblock'
 Plug 'postmodern/vim-yard'
 Plug 'tpope/vim-rake'
 Plug 'tpope/vim-haml'
