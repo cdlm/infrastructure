@@ -6,16 +6,16 @@ call plug#begin("~/.vim/plugged")
 
 "" support for repeating commands
 Plug 'tpope/vim-repeat'
-
 "" snipmate
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
-
 "" easytags.vim
 Plug 'xolox/vim-misc'
-
-" unite.vim
+"" unite.vim
 Plug 'Shougo/neomru.vim'
+"" greper
+Plug 'rizzatti/funcoo.vim'
+
 
 """
 """ Behavior
@@ -58,15 +58,22 @@ Plug 'edkolev/promptline.vim'
 "" git
 Plug 'tpope/vim-fugitive'
 Plug 'gregsexton/gitv'
+Plug 'int3/vim-extradite'
 Plug 'rhysd/git-messenger.vim'
 "" github
 Plug 'tpope/vim-rhubarb'
-"" documentation in Dash.app
-Plug 'rizzatti/funcoo.vim'
-Plug 'rizzatti/dash.vim'
-Plug 'Keithbsmiley/investigate.vim'
 
+"" documentation in Dash.app
+Plug 'Keithbsmiley/investigate.vim'
+"" …but this one is slow to load
+" Plug 'rizzatti/dash.vim'
+
+"" grep, ack, ag
+Plug 'rizzatti/greper.vim'
+
+"""
 """ Editing
+"""
 
 "" semantic selection
 Plug 'kana/vim-textobj-user'
@@ -92,10 +99,14 @@ Plug 'junegunn/vim-easy-align'
 Plug 'junegunn/vim-fnr'
 "" language-aware jumps to open/close: %
 Plug 'matchit.zip'
-"" indent-aware paste: ]p
-Plug 'sickill/vim-pasta'
+"" exchanging text: cx{motion}
+Plug 'tommcdo/vim-exchange'
+"" easier repeating & undoing of jumps with fF/tT
+Plug 'rhysd/clever-f.vim'
 "" automatic delimiter pairs
 Plug 'Raimondi/delimitMate'
+"" indent-aware paste: ]p
+Plug 'sickill/vim-pasta'
 "" case substitutions: :S, cr{m,c,s,u}
 Plug 'tpope/vim-abolish'
 "" extended character info: ga
@@ -160,14 +171,10 @@ call plug#end()
 " Bundle 'garbas/vim-snipmate'
 " Bundle 'honza/vim-snippets'
 " Bundle 'rbonvall/snipmate-snippets-bib'
-" Bundle 'tommcdo/vim-exchange'
-" Bundle 'rhysd/clever-f.vim'
 
 " " External tools
 " Bundle 'xolox/vim-easytags'
 " Bundle 'jpalardy/vim-slime'
 " Bundle 'hallettj/jslint.vim'
-" Bundle 'mileszs/ack.vim'
-" Bundle 'int3/vim-extradite'
 " Bundle 'mattn/gist-vim'
 " Bundle 'DamienCassou/textlint'
