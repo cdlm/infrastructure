@@ -1,3 +1,4 @@
+let g:plug_threads = 8
 call plug#begin("~/.vim/plugged")
 
 """
