@@ -29,7 +29,7 @@ Plug 'sjl/vitality.vim'
 Plug 'justinmk/vim-gtfo'
 "" fuzzy finders
 Plug 'wincent/Command-T'
-Plug 'junegunn/fzf'
+Plug 'junegunn/fzf', { 'on': 'FZF' }
 Plug 'Shougo/unite.vim'
 Plug 'h1mesuke/unite-outline'
 Plug 'rhysd/unite-ruby-require.vim'
@@ -48,10 +48,9 @@ Plug 'sdanielf/vim-stdtabs'
 """ Appearance
 """
 
-Plug 'reedes/vim-thematic'
+Plug 'reedes/vim-thematic', { 'on': 'Thematic' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
-Plug 'edkolev/promptline.vim'
 
 """
 """ Tools interaction
@@ -59,10 +58,10 @@ Plug 'edkolev/promptline.vim'
 
 "" git
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv'
-Plug 'int3/vim-extradite'
+Plug 'gregsexton/gitv', { 'on': 'Gitv' }
+Plug 'int3/vim-extradite', { 'on': 'Extradite' }
 Plug 'rhysd/git-messenger.vim'
-"" github
+"" github issues omni-completion
 Plug 'tpope/vim-rhubarb'
 
 "" documentation in Dash.app
