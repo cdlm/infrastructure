@@ -72,6 +72,9 @@ Plug 'Keithbsmiley/investigate.vim'
 "" grep, ack, ag
 Plug 'rizzatti/greper.vim'
 
+"" ctags
+Plug 'surfer.vim', { 'on': 'Surf' }
+
 """
 """ Editing
 """
@@ -150,6 +153,7 @@ Plug 'tracwiki'
 
 Plug 'rodjek/vim-puppet'
 Plug 'jinfield/vim-nginx'
+Plug 'httplog'
 
 "" startup without huge delay http://github.com/skammer/vim-css-color/issues/3
 Plug 'ap/vim-css-color'
