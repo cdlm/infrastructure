@@ -75,9 +75,16 @@ Plug 'rizzatti/greper.vim'
 "" ctags
 Plug 'surfer.vim', { 'on': 'Surf' }
 
+"" syntax checking
+Plug 'scrooloose/syntastic'
+
 """
 """ Editing
 """
+
+"" snippets
+Plug 'sirver/ultisnips'
+Plug 'honza/vim-snippets'
 
 "" semantic selection
 Plug 'kana/vim-textobj-user'
@@ -98,6 +105,8 @@ Plug 'reedes/vim-textobj-sentence'
 Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-operator-evalruby'
 
+"" text alignment
+Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
 "" find & replace
 Plug 'junegunn/vim-fnr'
@@ -151,7 +160,8 @@ Plug 'vim-pandoc/vim-pandoc-syntax'
 Plug 'cdlm/vim-pillar'
 Plug 'tracwiki'
 
-Plug 'rodjek/vim-puppet'
+" Plug 'rodjek/vim-puppet'
+Plug 'ajf/puppet-vim'
 Plug 'jinfield/vim-nginx'
 Plug 'httplog'
 
