@@ -105,6 +105,8 @@ alias diff='diff --unified --ignore-space-change'
 alias diffc='colordiff --unified --ignore-space-change'
 alias cvsstatus='cvs status | grep Status | grep -v "Up-to-date"'
 
+alias ag="ag --color-path '36' --color-line-number '34'"
+
 # LaTeX tools
 alias lmk='latexmk'
 alias lmkc='latexmk -pvc'
