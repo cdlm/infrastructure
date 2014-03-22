@@ -42,7 +42,6 @@ Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'nathanaelkane/vim-indent-guides'
 "" trailing whitespace: :ToggleWhitespace
 Plug 'ntpeters/vim-better-whitespace'
-Plug 'sdanielf/vim-stdtabs'
 
 """
 """ Appearance
