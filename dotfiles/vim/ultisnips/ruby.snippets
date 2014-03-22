@@ -1,0 +1,52 @@
+# Gemfile
+snippet source "Gemfile source" bw
+source "https://${1:rubygems.org}"
+
+${2:gemspec}
+endsnippet
+
+snippet "(ruby|engine)" "Ruby interpreter version dependency" brw
+ruby '${1:`ruby -e 'print RUBY_VERSION'`}'${2:, engine: '${3:`ruby -e 'print RUBY_ENGINE'`}', engine_version: '$4'}${5:, patchlevel: '${6:`ruby -e 'print RUBY_PATCHLEVEL'`'}}
+endsnippet
+
+snippet group "Dependency group" bw
+group ${1::test} do
+	$0
+end
+endsnippet
+
+snippet gem "Gem dependency" bw
+gem '${1:name}'${2:, '${3:version}'}
+endsnippet
+
+snippet ":req(uire)?" ":require => filename/false" rw
+require: ${1:false}
+endsnippet
+
+snippet ":gr(ou)?p" ":group => ..." rw
+group: ${1:[:development${2:, :test}]}
+endsnippet
+
+snippet :path ":path => some/local/gem" w
+path: '${1:dir}'
+endsnippet
+
+snippet :git ":git => repo" w
+git: '${1:git://${2:github.com/user/repo}.git}'
+endsnippet
+
+snippet ":(gh|github)" ":github => repo" rw
+github: '${1:user/repo}'
+endsnippet
+
+snippet ":br(anch)?" "git branch" rw
+branch: '${1:master}'
+endsnippet
+
+snippet :tag "git tag" w
+tag: '${1:release}'
+endsnippet
+
+snippet :ref "git ref" w
+ref: '${1:ref}'
+endsnippet
