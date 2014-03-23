@@ -292,8 +292,11 @@ set guifont=Powerline\ Consolas:h13
 map <D-S-]> gt
 map <D-S-[> gT
 
-" Integrate copy/paste with Mac OS
-set clipboard=unnamed,autoselect
+"" Integrate copy/paste with Mac OS
+set clipboard+=unnamed
+"" do not overwrite clipboard on selection
+set clipboard-=autoselect
+set guioptions-=a
 
 if has('mouse')
     set mouse=a
