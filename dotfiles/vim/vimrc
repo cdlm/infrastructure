@@ -31,6 +31,8 @@ let g:UltiSnipsExpandTrigger = "<tab>"
 let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
+let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+
 let g:Imap_UsePlaceHolders = 0
 let g:tex_flavor = 'latex'
 let g:tex_fold_enabled = 1
