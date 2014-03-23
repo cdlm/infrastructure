@@ -18,9 +18,15 @@ Plug 'Shougo/neomru.vim'
 Plug 'rizzatti/funcoo.vim'
 
 
+
 """
 """ Behavior
 """
+
+Plug 'utl.vim'
+Plug 'itchyny/calendar.vim'
+Plug 'jceb/vim-orgmode'
+Plug 'hsitz/VimOrganizer'
 
 Plug 'tpope/vim-sensible'
 "" focus events within tmux
@@ -39,6 +45,7 @@ Plug 'henrik/vim-indexed-search'
 Plug 'ervandew/supertab'
 "" Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'Shougo/vimfiler.vim'
 Plug 'nathanaelkane/vim-indent-guides'
 "" trailing whitespace: :ToggleWhitespace
 Plug 'ntpeters/vim-better-whitespace'
@@ -87,7 +94,8 @@ Plug 'honza/vim-snippets'
 
 "" semantic selection
 Plug 'kana/vim-textobj-user'
-" Plug 'nelstrom/vim-textobj-rubyblock'
+"" select nearest text object with <enter>
+Plug 'gcmt/wildfire.vim'
 Plug 'rhysd/vim-textobj-ruby'
 Plug 'glts/vim-textobj-comment'
 Plug 'kana/vim-textobj-indent'
