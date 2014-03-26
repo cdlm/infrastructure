@@ -7,6 +7,8 @@ call plug#begin("~/.vim/plugged")
 
 "" support for repeating commands
 Plug 'tpope/vim-repeat'
+"" vim organizer
+Plug 'tpope/vim-speeddating'
 "" snipmate
 Plug 'MarcWeber/vim-addon-mw-utils'
 Plug 'tomtom/tlib_vim'
