@@ -13,6 +13,7 @@ alias skim='open -a Skim'
 alias rbrh='rbenv rehash'
 alias nano='nano --nowrap'
 alias snano='sudo nano --nowrap'
+alias :e='vim'
 alias ec='emacsclient --no-wait --alternate-editor=emacs-app'
 alias et='emacsclient --tty --alternate-editor=emacs'
 function e() {
