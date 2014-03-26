@@ -52,6 +52,8 @@ Plug 'nathanaelkane/vim-indent-guides'
 "" trailing whitespace: :ToggleWhitespace
 Plug 'ntpeters/vim-better-whitespace'
 
+
+
 """
 """ Appearance
 """
@@ -59,6 +61,8 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'reedes/vim-thematic', { 'on': 'Thematic' }
 Plug 'altercation/vim-colors-solarized'
 Plug 'bling/vim-airline'
+
+
 
 """
 """ Tools interaction
@@ -85,6 +89,8 @@ Plug 'surfer.vim', { 'on': 'Surf' }
 
 "" syntax checking
 Plug 'scrooloose/syntastic'
+
+
 
 """
 """ Editing
@@ -145,6 +151,10 @@ Plug 'tpope/vim-ragtag'
 Plug 'tpope/vim-surround'
 "" quick buffer changes: [b …and options switches: [oi
 Plug 'tpope/vim-unimpaired'
+"" easy moving text around
+Plug 't9md/vim-textmanip'
+
+
 
 """
 """ Syntax & language support
@@ -171,6 +181,7 @@ Plug 'tracwiki'
 
 " Plug 'rodjek/vim-puppet'
 Plug 'ajf/puppet-vim'
+Plug 't9md/vim-chef'
 Plug 'jinfield/vim-nginx'
 Plug 'httplog'
 
