@@ -318,5 +318,6 @@ highlight SpecialKey guifg=#4a4a59
 highlight clear Conceal
 highlight default link Conceal Statement
 highlight default link qfSeparator Conceal
+highlight link multiple_cursors_cursor Cursor
 
 " vim: set ts=4 sw=4 ts=4 :

@@ -120,6 +120,8 @@ Plug 'reedes/vim-textobj-sentence'
 Plug 'kana/vim-operator-user'
 Plug 'rhysd/vim-operator-evalruby'
 
+Plug 'terryma/vim-multiple-cursors'
+
 "" text alignment
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
