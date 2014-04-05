@@ -25,6 +25,8 @@ Plug 'rizzatti/funcoo.vim'
 """ Behavior
 """
 
+" Plug 'FredKSchott/CoVim'
+
 Plug 'utl.vim'
 Plug 'itchyny/calendar.vim'
 Plug 'jceb/vim-orgmode'
