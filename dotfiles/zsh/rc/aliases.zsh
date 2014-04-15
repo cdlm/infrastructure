@@ -11,6 +11,7 @@ alias ql="qlmanage -p"
 alias imageoptim="open -g -a ImageOptim"
 alias skim='open -a Skim'
 alias rbrh='rbenv rehash'
+alias be='bundle exec'
 alias nano='nano --nowrap'
 alias snano='sudo nano --nowrap'
 alias :e='vim'
