@@ -50,6 +50,7 @@ Plug 'ervandew/supertab'
 "" Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 Plug 'Shougo/vimfiler.vim'
+Plug 'tpope/vim-vinegar'
 Plug 'nathanaelkane/vim-indent-guides'
 "" trailing whitespace: :ToggleWhitespace
 Plug 'ntpeters/vim-better-whitespace'
