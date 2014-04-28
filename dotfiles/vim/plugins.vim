@@ -35,6 +35,8 @@ Plug 'hsitz/VimOrganizer'
 Plug 'tpope/vim-sensible'
 "" focus events within tmux
 Plug 'sjl/vitality.vim'
+" resize vertical splits to make the active one bigger
+Plug 'justincampbell/vim-eighties'
 "" spawn finder or terminal on current file: gof, got
 Plug 'justinmk/vim-gtfo'
 "" fuzzy finders
