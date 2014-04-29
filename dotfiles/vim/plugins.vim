@@ -18,6 +18,8 @@ Plug 'xolox/vim-misc'
 Plug 'Shougo/neomru.vim'
 "" greper
 Plug 'rizzatti/funcoo.vim'
+"" FormatToWidth
+Plug 'ingo-library'
 
 
 
@@ -130,6 +132,7 @@ Plug 'terryma/vim-multiple-cursors'
 "" text alignment
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
+Plug 'FormatToWidth'
 "" find & replace
 Plug 'junegunn/vim-fnr'
 "" language-aware jumps to open/close: %
