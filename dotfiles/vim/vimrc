@@ -33,6 +33,7 @@ let g:UltiSnipsJumpForwardTrigger = "<tab>"
 let g:UltiSnipsJumpBackwardTrigger = "<s-tab>"
 
 let g:syntastic_ruby_checkers = ['mri', 'rubocop']
+let g:syntastic_tex_checkers = ['chktex']
 
 let g:Imap_UsePlaceHolders = 0
 let g:tex_flavor = 'latex'
