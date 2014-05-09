@@ -25,6 +25,16 @@ function e() {
    fi
 }
 
+function open-pharo-image() {
+    local image="${1:-${PHARO_IMAGE}}"
+    if [ -z ${image} ]; then
+        image=`ls *.image | head -n 1` || { echo "No image around here…" >&2; return 1; }
+    else
+        image="${image%.image}.image"
+    fi
+    open ${image}
+}
+alias p=open-pharo-image
 alias -s image=pharo
 alias -s pdf=skim
 alias -s {txt,md,mdown,markdown}=vim
