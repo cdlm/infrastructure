@@ -33,6 +33,7 @@ Plug 'utl.vim'
 Plug 'itchyny/calendar.vim'
 Plug 'jceb/vim-orgmode'
 Plug 'hsitz/VimOrganizer'
+Plug 'vimwiki/vimwiki'
 
 Plug 'tpope/vim-sensible'
 "" focus events within tmux

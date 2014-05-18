@@ -26,6 +26,16 @@ endif
 runtime plugins.vim
 
 " Setup bundles
+let g:vimwiki_list = [{
+    \ 'path': '~/.vimwiki',
+    \ 'path_html': '~/Sites/vimwiki',
+    \ 'syntax': 'markdown',
+    \ }]
+let g:vimwiki_ext2syntax = { '.wiki': 'markdown' }
+let g:vimwiki_listsyns = ' ·-×X'
+let g:vimwiki_hl_cb_checked = 1
+nmap <leader>w<Space> <Plug>VimwikiToggleListItem
+
 let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'
 let g:UltiSnipsSnippetDirectories = ['ultisnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<tab>"
@@ -142,6 +152,8 @@ set visualbell
 set fillchars=""
 set cursorline
 set nofoldenable
+set splitbelow
+set splitright
 
 " Sane indentation defaults
 set expandtab
