@@ -1,9 +1,9 @@
-set line-graphics = yes
+set line-graphics = ascii
 set main-view = \
     author:full \
     date:short,width=10 \
     id:yes \
-    commit-title:yes,graph,refs \
+    commit-title:yes,graph,refs
 
 bind generic [ !git fetch
 bind generic ] !git push
