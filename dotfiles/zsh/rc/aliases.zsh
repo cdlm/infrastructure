@@ -15,6 +15,8 @@ alias be='bundle exec'
 alias nano='nano --nowrap'
 alias snano='sudo nano --nowrap'
 alias :e='vim'
+alias wi='mvim +VimwikiMakeDiaryNote'
+alias wiki='mvim +VimwikiIndex'
 alias ec='emacsclient --no-wait --alternate-editor=emacs-app'
 alias et='emacsclient --tty --alternate-editor=emacs'
 function e() {
