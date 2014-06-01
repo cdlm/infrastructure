@@ -68,7 +68,11 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'reedes/vim-thematic', { 'on': 'Thematic' }
 Plug 'altercation/vim-colors-solarized'
+Plug 'blueyed/vim-diminactive'
 Plug 'bling/vim-airline'
+"" show changes in gutter… gitgutter is git-only but can stage hunks
+" Plug 'mhinz/vim-signify'
+Plug 'airblade/vim-gitgutter'
 
 
 
