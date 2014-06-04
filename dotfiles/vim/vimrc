@@ -23,6 +23,9 @@ if !empty($GOROOT)
     set rtp+=$GOROOT/misc/vim
 endif
 
+let g:wildfire_fuel_map = "<Enter>"
+let g:wildfire_water_map = "<S-Enter>"
+
 runtime plugins.vim
 
 " Setup bundles
