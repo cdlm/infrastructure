@@ -134,6 +134,9 @@ Plug 'rhysd/vim-operator-evalruby'
 
 Plug 'terryma/vim-multiple-cursors'
 
+"" stolen from Emacs
+Plug 'paredit.vim'
+
 "" text alignment
 Plug 'godlygeek/tabular'
 Plug 'junegunn/vim-easy-align'
