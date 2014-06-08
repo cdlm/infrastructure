@@ -1,0 +1,16 @@
+global !p
+def padding(text, goal_width, min_width=0):
+	"""expand to spaces padding text up to the goal width, but not less than the min"""
+	snip.rv = max(min_width, goal_width - len(text)) * ' '
+
+def unless_empty(text, prefix):
+	"""expand to prefix unless text is empty"""
+	snip.rv = prefix if len(text) > 0 else ''
+endglobal
+
+snippet t "Transaction" b
+${1:`!v strftime("%Y/%m/%d")`}  ${2:transaction}
+	${3:expenses}`!p padding(t[3]+t[4], 46, 2)`€ ${4:0.00}`!p unless_empty(t[5], '  ; ')`${5:comment}
+	${6:assets}
+$0
+endsnippet
