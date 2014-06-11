@@ -82,8 +82,9 @@ Plug 'airblade/vim-gitgutter'
 
 "" git
 Plug 'tpope/vim-fugitive'
-Plug 'gregsexton/gitv', { 'on': 'Gitv' }
+Plug 'idanarye/vim-merginal'
 Plug 'int3/vim-extradite', { 'on': 'Extradite' }
+Plug 'gregsexton/gitv', { 'on': 'Gitv' }
 Plug 'rhysd/git-messenger.vim'
 "" github issues omni-completion
 Plug 'tpope/vim-rhubarb'
