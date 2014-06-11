@@ -5,8 +5,9 @@ yard
 rake
 gli
 pry
-pry-nav
+# pry-byebug
 pry-stack_explorer
+byebug
 magic_encoding
 
 # general utilities
@@ -16,7 +17,6 @@ gist
 terminal-notifier
 
 # writing & productivity
-beeminder
 trex
 kramdown
 
