@@ -178,17 +178,20 @@ Plug 't9md/vim-textmanip'
 """ Syntax & language support
 """
 
-Plug 'vim-ruby/vim-ruby'
+" many languages at once
+Plug 'sheerun/vim-polyglot'
+
+" Plug 'vim-ruby/vim-ruby'
 Plug 'sunaku/vim-ruby-minitest'
-Plug 'postmodern/vim-yard'
+" Plug 'postmodern/vim-yard'
 Plug 'tpope/vim-rake'
-Plug 'tpope/vim-haml'
+" Plug 'tpope/vim-haml'
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'groovy.vim'
 
-Plug 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
-Plug 'hallison/vim-markdown'
+" Plug 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
+" Plug 'hallison/vim-markdown'
 Plug 'vim-pandoc/vim-markdownfootnotes'
 Plug 'vim-pandoc/vim-pantondoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
@@ -198,17 +201,17 @@ Plug 'cdlm/vim-pillar'
 Plug 'tracwiki'
 
 " Plug 'rodjek/vim-puppet'
-Plug 'ajf/puppet-vim'
+" Plug 'ajf/puppet-vim'
 Plug 't9md/vim-chef'
-Plug 'jinfield/vim-nginx'
+" Plug 'jinfield/vim-nginx'
 Plug 'httplog'
 
 "" startup without huge delay http://github.com/skammer/vim-css-color/issues/3
-Plug 'ap/vim-css-color'
-Plug 'othree/html5.vim'
+" Plug 'ap/vim-css-color'
+" Plug 'othree/html5.vim'
 
 Plug 'seebi/easychair.vim'
-Plug 'chrisbra/csv.vim'
+" Plug 'chrisbra/csv.vim'
 Plug 'ledger/vim-ledger'
 
 call plug#end()
