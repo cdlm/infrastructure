@@ -154,7 +154,6 @@ set showmode
 "set number
 set hidden
 set wrap
-nmap <leader>w :set wrap!<cr>
 set visualbell
 set fillchars=""
 set cursorline
@@ -191,7 +190,6 @@ noremap <bs> X
 nnoremap <C-t> Xp
 
 nmap <leader>qf :botright copen<cr>
-nmap <leader>spell :setlocal spell!<cr>
 
 " Undoing even after closing the file
 set undofile
@@ -205,7 +203,6 @@ command! SudoWrite write !sudo tee % > /dev/null
 cmap w!! :SudoWrite
 
 " Invisible characters: shortcut to rapidly toggle
-nmap <leader>i :set list!<cr>
 set listchars=tab:▸\ ,eol:\ ,trail:·,nbsp:_,extends:→,precedes:→
 
 " Incremental search

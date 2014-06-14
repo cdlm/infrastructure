@@ -169,7 +169,7 @@ Plug 'tpope/vim-eunuch'
 Plug 'tpope/vim-ragtag'
 "" using/changing delimiter pairs
 Plug 'tpope/vim-surround'
-"" quick buffer changes: [b …and options switches: [oi
+"" quick buffer changes: [b …and options switches: [oi [ow [ol
 Plug 'tpope/vim-unimpaired'
 "" easy moving text around
 Plug 't9md/vim-textmanip'
