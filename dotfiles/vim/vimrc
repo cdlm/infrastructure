@@ -13,6 +13,7 @@ let g:easytags_auto_highlight = 0
 let g:easytags_updatetime_autodisable = 1
 let g:easytags_cmd = '/opt/homebrew/opt/ctags/bin/ctags'
 let g:pandoc_syntax_dont_use_conceal_for_rules = ['atx', 'list', 'quotes', 'codeblock_start', 'codeblock_delim']
+let g:pandoc#after#modules#enabled = ["ultisnips", "unite", "supertab"]
 let g:Tex_Menus = 0
 let g:tagbar_ctags_bin = g:easytags_cmd
 " jslint: force node instead of javascriptcore: https://github.com/hallettj/jslint.vim/issues/31
@@ -39,6 +40,7 @@ let g:vimwiki_listsyns = ' ·-×X'
 let g:vimwiki_hl_cb_checked = 1
 nmap <leader>w<Space> <Plug>VimwikiToggleListItem
 
+let g:snips_author = "Damien Pollet"
 let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'
 let g:UltiSnipsSnippetDirectories = ['ultisnips', 'UltiSnips']
 let g:UltiSnipsExpandTrigger = "<tab>"

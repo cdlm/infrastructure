@@ -197,8 +197,7 @@ Plug 'groovy.vim'
 Plug 'vim-pandoc/vim-markdownfootnotes'
 Plug 'vim-pandoc/vim-pantondoc'
 Plug 'vim-pandoc/vim-pandoc-syntax'
-"" problems with supertab… https://github.com/vim-pandoc/vim-pandoc-after/issues/1
-" Plug 'vim-pandoc/vim-pandoc-after'
+Plug 'vim-pandoc/vim-pandoc-after'
 Plug 'cdlm/vim-pillar'
 Plug 'tracwiki'
 
