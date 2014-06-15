@@ -10,7 +10,10 @@ endglobal
 
 snippet t "Transaction" b
 ${1:`!v strftime("%Y/%m/%d")`}  ${2:transaction}
-	${3:expenses}`!p padding(t[3]+t[4], 46, 2)`€ ${4:0.00}`!p unless_empty(t[5], '  ; ')`${5:comment}
-	${6:assets}
+$0
+endsnippet
+
+snippet p "Posting" bs
+	${3:expenses}`!p padding(t[3]+t[4]+t[5], 46, 2)`${4:x} ${5:0.00}  ${6:; comment}
 $0
 endsnippet
