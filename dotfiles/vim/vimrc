@@ -333,6 +333,7 @@ colorscheme solarized
 
 set guicursor+=a:blinkwait300-blinkoff130-blinkon230
 highlight! Cursor gui=NONE guibg=#ecff55 guifg=NONE
+highlight MatchParen guifg=#ecff55 guibg=NONE
 
 highlight NonText term=NONE ctermfg=2 ctermbg=NONE guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
