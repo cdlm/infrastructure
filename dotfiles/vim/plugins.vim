@@ -184,6 +184,9 @@ Plug 't9md/vim-textmanip'
 "" Still a good source of plugin recommendations
 " Plug 'sheerun/vim-polyglot'
 
+" code formatting
+Plug 'Chiel92/vim-autoformat'
+
 Plug 'vim-ruby/vim-ruby'
 Plug 'sunaku/vim-ruby-minitest'
 Plug 'postmodern/vim-yard'
