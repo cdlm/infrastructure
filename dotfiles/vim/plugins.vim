@@ -74,6 +74,10 @@ Plug 'bling/vim-airline'
 "" show changes in gutter… gitgutter is git-only but can stage hunks
 " Plug 'mhinz/vim-signify'
 Plug 'airblade/vim-gitgutter'
+" writeroom-like buffer layout
+Plug 'junegunn/goyo.vim'
+" focus on current text block 
+Plug 'junegunn/limelight.vim'
 
 
 
