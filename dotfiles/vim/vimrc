@@ -239,6 +239,7 @@ cnoremap %% <C-r>=expand('%:p:.:h') . '/' <Enter>
 if !exists('vimpager')
     nnoremap <Space> za
     vnoremap <Space> za
+    nnoremap z<Space> zR
 endif
 " Focus current line (uses mark z)
 nnoremap <C-z> mzzMzvzz`z
