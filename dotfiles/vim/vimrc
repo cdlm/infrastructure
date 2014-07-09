@@ -27,6 +27,7 @@ endif
 let g:wildfire_fuel_map = "<Enter>"
 let g:wildfire_water_map = "<S-Enter>"
 
+
 runtime plugins.vim
 
 " Setup bundles
@@ -39,6 +40,24 @@ let g:vimwiki_ext2syntax = { '.wiki': 'markdown' }
 let g:vimwiki_listsyns = ' ·-×X'
 let g:vimwiki_hl_cb_checked = 1
 nmap <leader>w<Space> <Plug>VimwikiToggleListItem
+
+function! GoyoBefore()
+  silent !tmux set status off
+  set noshowmode noshowcmd
+  Limelight
+endfunction
+
+function! GoyoAfter()
+  silent !tmux set status on
+  set showmode showcmd
+  Limelight!
+endfunction
+
+let g:goyo_width = 100
+let g:goyo_callbacks = [function('GoyoBefore'), function('GoyoAfter')]
+let g:goyo_margin_top = 2
+let g:goyo_margin_bottom = g:goyo_margin_top
+nnoremap <Leader><Space> :Goyo<CR>
 
 let g:snips_author = "Damien Pollet"
 let g:UltiSnipsSnippetsDir = '~/.vim/ultisnips'
