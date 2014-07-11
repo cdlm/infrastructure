@@ -27,8 +27,13 @@ endif
 let g:wildfire_fuel_map = "<Enter>"
 let g:wildfire_water_map = "<S-Enter>"
 
+let g:gitgutter_eager = 0
+let g:gitgutter_realtime = 0
+let g:gitgutter_on_bufenter = 0
+
 
 runtime plugins.vim
+
 
 " Setup bundles
 let g:vimwiki_list = [{
