@@ -2,6 +2,8 @@ $pdf_mode = 1;
 $pdflatex = 'pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1 %O %S';
 $pdf_previewer = 'open %S';
 $pdf_update_method = 0;
+# $biber = 'biber --debug %O %S';
+$bibtex_use = 2; # treat .bbl as compile result
 $clean_ext = "synctex.gz run.xml %R-blx.bib";
 
 @default_files = ('main.tex');
