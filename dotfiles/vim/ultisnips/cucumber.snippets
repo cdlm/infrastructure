@@ -1,0 +1,58 @@
+snippet defs "Step Definitions" b
+Using step definitions from: '${1:steps}'${2:, '${3:relative-path}'}
+$0
+endsnippet
+
+snippet f "Feature" b
+Feature: ${1:Describe your feature here}
+	In order to ${2:achieve some goal}
+	As ${3:a particular role}
+	I want to ${4:take a certain action}
+endsnippet
+
+snippet b "b" b
+Background:
+	${1}
+endsnippet
+
+snippet sce "Scenario" b
+Scenario: ${1:terse description of what's different}
+	Given ${2:the bare-minimum context/state}
+	When ${3:some kind of action happens}
+	Then ${4:some result should occur}
+endsnippet
+
+snippet s "s" b
+Scenario: 
+endsnippet
+
+snippet so "so" b
+Scenario Outline: 
+endsnippet
+
+snippet e "e" b
+Examples:
+	${1}
+endsnippet
+
+snippet g "g" b
+Given 
+endsnippet
+
+snippet w "w" b
+When 
+endsnippet
+
+snippet a "a" b
+And 
+endsnippet
+
+snippet t "t" b
+Then 
+endsnippet
+
+snippet str "multiline string" b
+"""
+${1:${VISUAL}}
+"""
+endsnippet

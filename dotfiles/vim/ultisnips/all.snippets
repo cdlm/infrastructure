@@ -1,0 +1,5 @@
+global !p
+def padding(text, goal_width, min_width=0):
+	"""pad text with spaces, up to the goal, but not less than the min"""
+	snip.rv = max(min_width, goal_width - len(text)) * ' '
+endglobal
