@@ -61,6 +61,8 @@ let g:syntastic_tex_checkers = ['chktex']
 let g:syntastic_tex_chktex_args = '--localrc .chktexrc'
 let g:syntastic_cucumber_cucumber_quiet_messages = { 'regex': ['Cucumber::Undefined'] }
 
+let g:strip_whitespace_on_save = 1
+
 let g:Imap_UsePlaceHolders = 0
 let g:tex_flavor = 'latex'
 let g:tex_fold_enabled = 1
