@@ -1,0 +1,21 @@
+#!/bin/sh
+
+DATA="$HOME/.source-highlight"
+STYLE="$DATA/solarized.style"
+OUTLANG="$DATA/solarized.outlang"
+for source in "$@"; do
+    local LANG='--infer-lang'
+    case $source in
+        *ChangeLog|*changelog)
+            LANG='--lang-def=changelog.lang' ;;
+        *Makefile|*makefile|*deps)
+            LANG='--lang-def=makefile.lang' ;;
+        *README|*Readme|*readme)
+            LANG='--lang-def=markdown.lang' ;;
+    esac
+    source-highlight \
+        --outlang-def="$OUTLANG" \
+        --style-file="$STYLE" \
+        --failsafe $LANG \
+        --input="$source"
+done

@@ -1,0 +1,35 @@
+keyword green ;
+type, classname yellow ;
+variable blue ;
+function black b;
+comment gray i ;
+preproc red ;
+string cyan ;
+regexp cyan ;
+number cyan ;
+specialchar pink ;
+symbol darkred ;
+cbracket orange;
+
+// line numbers
+linenum gray;
+
+// other elements for ChangeLog and Log files
+date cyan ;
+time cyan ;
+ip green ;
+file yellow ;
+name blue ;
+
+// Internet related
+url blue;
+
+// for diffs
+oldfile red;
+newfile green;
+difflines blue;
+
+// for css
+selector blue;
+property yellow;
+value cyan;
