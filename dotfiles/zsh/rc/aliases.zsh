@@ -1,11 +1,13 @@
 # export EDITOR="mate --wait"
 export EDITOR=vim
-if has_command vimpager; then
-   export PAGER="vimpager"
-   alias less=$PAGER
-else
-   export PAGER="less --ignore-case"
-fi
+# if has_command vimpager; then
+#    export PAGER='vimpager'
+#    alias less=$PAGER
+# fi
+
+export PAGER='less'
+export LESS='--ignore-case --RAW-CONTROL-CHARS'
+has_command pygmentize && export LESSOPEN="| pygmentize -g %s"
 
 alias ql="qlmanage -p"
 alias imageoptim="open -g -a ImageOptim"
