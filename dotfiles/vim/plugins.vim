@@ -69,6 +69,9 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'reedes/vim-thematic', { 'on': 'Thematic' }
 Plug 'altercation/vim-colors-solarized'
+"" rainbow parentheses
+Plug 'amdt/vim-niji'
+"" more obvious active window
 Plug 'blueyed/vim-diminactive'
 Plug 'bling/vim-airline'
 "" show changes in gutter… gitgutter is git-only but can stage hunks
