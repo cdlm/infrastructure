@@ -348,6 +348,7 @@ highlight MatchParen guifg=#ecff55 guibg=NONE
 
 highlight NonText term=NONE ctermfg=2 ctermbg=NONE guifg=#4a4a59
 highlight SpecialKey guifg=#4a4a59
+highlight Comment cterm=italic
 highlight clear Conceal
 highlight default link Conceal Statement
 highlight default link qfSeparator Conceal
