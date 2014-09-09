@@ -1,1 +1,0 @@
-(color-theme-solarized-dark)
