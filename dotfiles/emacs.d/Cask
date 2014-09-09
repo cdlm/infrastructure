@@ -2,6 +2,7 @@
 (source marmalade)
 (source melpa)
 
+(depends-on "anzu")
 (depends-on "auctex")
 (depends-on "auctex-latexmk")
 (depends-on "color-theme-sanityinc-solarized")
@@ -11,6 +12,7 @@
 (depends-on "flx-ido")
 (depends-on "flyparens")
 (depends-on "git-gutter")
+(depends-on "guide-key")
 (depends-on "haml-mode")
 (depends-on "helm")
 (depends-on "helm-ag")
@@ -24,6 +26,7 @@
 (depends-on "ledger-mode")
 (depends-on "magit")
 (depends-on "magit-svn")
+(depends-on "markdown-toc")
 (depends-on "minitest")
 (depends-on "nginx-mode")
 (depends-on "ninja-mode")
