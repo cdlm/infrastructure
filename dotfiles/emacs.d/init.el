@@ -20,11 +20,11 @@
 (use-package magit
   :bind ("C-x g" . magit-status)
   :config (progn
-	    ;(require 'magit-svn)
 	    (use-package magit-svn
-	      :defer t
 	      :diminish magit-svn-mode)
-	    (add-hook 'magit-mode-hook 'turn-on-magit-svn)))
+	    (use-package magit-gh-pulls)
+	    (add-hook 'magit-mode-hook 'turn-on-magit-svn)
+	    (add-hook 'magit-mode-hook 'turn-on-magit-gh-pulls)))
 
 (use-package ido
   :config (progn
