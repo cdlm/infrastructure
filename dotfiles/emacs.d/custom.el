@@ -29,7 +29,8 @@
  '(solarized-use-more-italic t)
  '(solarized-use-variable-pitch nil)
  '(sp-show-pair-from-inside t)
- '(tool-bar-mode nil))
+ '(tool-bar-mode nil)
+ '(uniquify-buffer-name-style (quote forward) nil (uniquify)))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -37,8 +38,10 @@
  ;; If there is more than one, they won't work right.
  '(default ((t (:inherit nil :stipple nil :inverse-video nil :box nil :strike-through nil :overline nil :underline nil :slant normal :weight normal :height 140 :width normal :family "Ubuntu Mono"))))
  '(cursor ((t (:background "#df4"))))
+ '(fringe ((t (:background "#0a2832" :foreground "#154a55"))))
  '(mode-line ((t (:background "#e9e2cb" :inverse-video t :box (:line-width 1 :color "#52676f") :weight normal))))
  '(ns-working-text-face ((t (:inherit cursor))))
- '(show-paren-match ((t (:background "#042028" :foreground "#df4" :inverse-video nil :weight extra-bold))))
- '(show-paren-mismatch ((t (:inherit show-paren-match :background "#042028" :foreground "#c61b6e"))))
+ '(region ((t (:background "#154a55" :inverse-video nil))))
+ '(show-paren-match ((t (:background "#042028" :foreground "#df4" :inverse-video nil :weight extra-bold))) t)
+ '(show-paren-mismatch ((t (:inherit show-paren-match :background "#042028" :foreground "#c61b6e"))) t)
  '(sp-show-pair-match-face ((t (:inherit show-paren-match)))))
