@@ -1,5 +1,6 @@
+export EDITOR=emacs-edit
+# export EDITOR=vim
 # export EDITOR="mate --wait"
-export EDITOR=vim
 # if has_command vimpager; then
 #    export PAGER='vimpager'
 #    alias less=$PAGER
@@ -19,13 +20,14 @@ alias snano='sudo nano --nowrap'
 alias :e='vim --remote'
 alias wi='mvim +VimwikiMakeDiaryNote'
 alias wiki='mvim +VimwikiIndex'
-alias ec='emacsclient --no-wait --alternate-editor=emacs-app'
-alias et='emacsclient --tty --alternate-editor=emacs'
+
+alias et=emacs-term
+alias ee=emacs-edit
 function e() {
    if [ $# == 0 ]; then
-      [ -f main.tex ] && ec main.tex
+      [ -f main.tex ] && emacs-open main.tex
    else
-      ec "$*"
+      emacs-open "$*"
    fi
 }
 

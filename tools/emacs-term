@@ -1,0 +1,8 @@
+#!/bin/sh
+
+export TERM=xterm
+exec emacsclient \
+    --tty \
+    --alternate-editor=emacs \
+    "$*"
+
