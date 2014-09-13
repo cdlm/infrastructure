@@ -1,4 +1,4 @@
-# -*- ini -*-
+# -*- mode: gitconfig -*-
 
 [user]
     name  = Damien Pollet
@@ -25,6 +25,7 @@
     tags      = show-ref --tags
     branches  = branch -a --verbose
     remotes   = !"f () { local n; if [[ $1 = '-n' ]]; then n=$1; shift; fi; git remote show $n ${*:-`git remote | paste -sd ' ' -`}; }; f"
+    trim-merged = !"f() { git branch --merged ${1:-HEAD} | grep -v '*' | xargs -n1 git branch -d; }; f"
     svnci     = !"f () { git svn rebase && git svn dcommit; }; f"
     svnup     = svn rebase
     svnups    = !"f () { git stash && git svnup && git stash apply; }; f"
@@ -40,6 +41,16 @@
     show-merge-ancestor = !git show ":1:$1"
     show-merge-target = !git show ":2:$1"
     show-merge-source = !git show ":3:$1"
+
+[core]
+    excludesfile = ~/.gitignore
+    pager = cat
+
+[credential]
+    helper = osxkeychain
+
+[include]
+    path = ~/.gitconfig.private  # tokens etc
 
 [push]
     default = current
@@ -62,17 +73,10 @@
 [rebase]
     autosquash = true
 
-[core]
-    excludesfile = ~/.gitignore
-    pager = cat
-
 [pager]
     log  = diff-highlight
     show = diff-highlight
     diff = diff-highlight
-
-[credential]
-    helper = osxkeychain
 
 [color]
     ui     = auto
@@ -100,4 +104,3 @@
     branch       = cyan
     tag          = blue
     remoteBranch = red
-
