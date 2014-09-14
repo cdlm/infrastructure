@@ -37,6 +37,7 @@ Icon
 .elc
 auto-save-list
 tramp
+/.flycheck_*
 
 # Vi(m)
 *.swp
