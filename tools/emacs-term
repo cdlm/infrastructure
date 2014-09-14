@@ -4,5 +4,4 @@ export TERM=xterm
 exec emacsclient \
     --tty \
     --alternate-editor=emacs \
-    "$*"
-
+    "$@"

@@ -3,5 +3,4 @@
 exec emacsclient \
     --create-frame \
     --alternate-editor=emacs-app \
-    "$*"
-
+    "$@"

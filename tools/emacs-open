@@ -1,7 +1,6 @@
-#!/bin/sh
+#!/bin/bash
 
 exec emacsclient \
     --no-wait \
     --alternate-editor=emacs-app \
-    "$*"
-
+    "$@"
