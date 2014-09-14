@@ -1,16 +1,22 @@
-#!env ruby
+#!/usr/bin/env ruby
+# rubocop:disable Style/FileName, Style/SingleLineMethods, Style/TrivialAccessors
 #
 # TODO: document with the literate-code-webpage thing (rocco)
+require 'English'
 
+# An update wraps a shell command, storing options about whether and
+# how to run it.
+#
+# @abstract Subclasses specify how to {Update#run} the actual update.
 class Update
-
   OPTION_DEFAULTS = {
     dry_run: false,
     sudo: false,
-    nice: false
+    nice: false,
+    directory: '~'
   }
 
-  def initialize options={}
+  def initialize(options = {})
     @options = OPTION_DEFAULTS.merge(options)
   end
 
@@ -19,15 +25,19 @@ class Update
   def dry_run?()  @options[:dry_run]  end
   def skip?()  dry_run?  end
 
-  def describe indent
+  def describe(indent)
     desc = @options[:description]
-    skipped = if skip? then ' (skipped)' else '' end
+    skipped = skip?  ?  ' (skipped)'  :  ''
     $stderr.puts "#{'  ' * indent}#{desc}#{skipped}" unless desc.nil?
   end
 end
 
+# A single-command update, running under `nice`, `sudo`, or in a
+# precise directory, as specified.
+# Fails gracefully if the required command is not available.
+# Succeeds if the shell command succeeds.
 class SingleUpdate < Update
-  def initialize words, options={}
+  def initialize(words, options = {})
     super options
     @words = words
     @result = false
@@ -43,84 +53,104 @@ class SingleUpdate < Update
 
   def name()  @words.first  end
 
-  def run indent=0
+  def run(indent = 0)
     describe indent
-    system *command unless skip?
-    @result = skip? || $?.success?
+    Dir.chdir(File.expand_path(@options[:directory])) do
+      system(*command)
+    end unless skip?
+    @result = skip? || $CHILD_STATUS.success?
   end
 
   def success?()  @result  end
 end
 
+# A group made of independent updates. Provides a small DSL to compose
+# children updates.  Attempts to run all children, propagating options
+# down to them, but succeeds only if all children succeeded.
 class Updates < Update
-  def initialize options={}
+  def initialize(options = {})
     super options
     @things = []
     @results = []
     yield self
   end
 
-  def self.run *args, &block
-    all_the_things = self.new(*args, &block)
+  # Entry point of the update DSL. Initiates and runs the root update
+  # group, then report on success.
+  #
+  # @api public
+  def self.run(*args, &block)
+    all_the_things = new(*args, &block)
     success = all_the_things.run
     all_the_things.notify success
     exit success ? 0 : 1
   end
 
-  def group options={}, &block
+  # Define a sub-group of updates.
+  #
+  # @api public
+  def group(options = {}, &block)
     @things << Updates.new(@options.merge(options), &block)
   end
 
-  def seq options={}, &block
+  # Define a sub-sequence of updates
+  #
+  # @api public
+  def seq(options = {}, &block)
     @things << DependentUpdates.new(@options.merge(options), &block)
   end
 
-  def step words, options={}
+  # Define a single child update.
+  #
+  # @api public
+  def step(words, options = {})
     @things << SingleUpdate.new(words, @options.merge(options))
   end
 
   def sub_indent
-    @options.has_key?(:description) ? 1 : 0
+    @options.key?(:description) ? 1 : 0
   end
 
-  def run indent=0
+  def run(indent = 0)
     describe indent
-    @results = @things.collect do |t| t.run(indent + sub_indent) end
+    @results = @things.map { |t| t.run(indent + sub_indent) }
     success?
   end
 
   def success?()  @results.all?  end
 
-  def notify success
+  # Notifies success or failure to the user.
+  def notify(success)
     message = if success
-                "Successfully upgraded all the things!"
+                'Successfully upgraded all the things!'
               else
-                "Failed to upgrade all the things :("
+                'Failed to upgrade all the things :('
               end
     osx_notify message
     success && $stderr.tty? && lol_notify(message) || $stderr.puts(message)
   end
 
-  def osx_notify message
+  def osx_notify(message)
     require 'terminal-notifier'
     if ::TerminalNotifier.available?
       ::TerminalNotifier.remove :update_all_the_things
       ::TerminalNotifier.notify message,
-        title: 'Tools upgrade',
-        subtitle: 'Now get back to actual work',
-        group: :update_all_the_things
+                                title: 'Tools upgrade',
+                                subtitle: 'Now get back to actual work',
+                                group: :update_all_the_things
     end
   rescue LoadError
+    self
   end
 
-  def lol_notify message
+  def lol_notify(message)
     old_stdout = $stdout
     require('lolcat')
     $stdout = $stderr
     Lol.println message,
-      os: rand(256),
-      spread: 3.0,
-      freq: 0.25
+                os: rand(256),
+                spread: 3.0,
+                freq: 0.25
     true
   rescue LoadError
     false
@@ -129,8 +159,10 @@ class Updates < Update
   end
 end
 
+# A sequence of interdependent updates. Runs children in order and
+# fails as soon as one of them fails.
 class DependentUpdates < Updates
-  def run indent=0
+  def run(indent = 0)
     describe indent
     @things.each do |t|
       @results << t.run(indent + sub_indent)
@@ -140,6 +172,7 @@ class DependentUpdates < Updates
   end
 end
 
+# My actual list of update steps (to be run several times a day).
 Updates.run nice: true do |g|
   g.seq do |vim|
     # vim.step %w(vim +BundleUpdate +qa)
@@ -147,6 +180,11 @@ Updates.run nice: true do |g|
     vim.step %w(vim +PlugUpdate  +qa)
   end
 
+  g.seq directory: '~/.emacs.d' do |cask|
+    cask.step %w(cask upgrade)
+    cask.step %w(cask update)
+  end
+  
   g.step %w(tlmgr update --self --all)
 
   g.step %w(gem update)
@@ -164,4 +202,3 @@ Updates.run nice: true do |g|
     opam.step %w(opam upgrade)
   end
 end
-
