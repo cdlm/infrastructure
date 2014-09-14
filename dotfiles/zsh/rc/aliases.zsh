@@ -24,11 +24,15 @@ alias wiki='mvim +VimwikiIndex'
 alias et=emacs-term
 alias ee=emacs-edit
 function e() {
-   if [ $# == 0 ]; then
-      [ -f main.tex ] && emacs-open main.tex
-   else
-      emacs-open "$*"
-   fi
+    if [[ $# -gt 0 ]]; then
+        touch -a "$@"
+        emacs-open "$@"
+    else
+        for f in main.tex README.markdown README.md README.txt README .; do
+            [ -e $f ] && break
+        done
+        emacs-open $f
+    fi
 }
 
 function open-pharo-image() {
