@@ -1,0 +1,3 @@
+Style/SingleLineMethods: { Enabled: false }
+Style/EmptyLineBetweenDefs: { AllowAdjacentOneLineDefs: true }
+Metrics/LineLength: { Max: 90 }
