@@ -23,7 +23,7 @@
     fixup     = !sh -c 'git commit --fixup=$1' -
     squash    = !sh -c 'git commit --squash=$1' -
     tags      = show-ref --tags
-    branches  = branch -a --verbose
+    branches  = branch --all --verbose --verbose
     remotes   = !"f () { local n; if [[ $1 = '-n' ]]; then n=$1; shift; fi; git remote show $n ${*:-`git remote | paste -sd ' ' -`}; }; f"
     trim-merged = !"f() { git branch --merged ${1:-HEAD} | grep -v '*' | xargs -n1 git branch -d; }; f"
     svnci     = !"f () { git svn rebase && git svn dcommit; }; f"
