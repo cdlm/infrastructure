@@ -122,7 +122,7 @@ class Updates < Update
   # Notifies success or failure to the user.
   def notify(success)
     message = if success
-                'Successfully upgraded all the things!'
+                "Successfully upgraded all the things! (#{Time.now.strftime("%H:%M, %-d %b")})"
               else
                 'Failed to upgrade all the things :('
               end
