@@ -49,7 +49,7 @@ fi
 unset hs
 
 # ocaml opam; might need to run opam init
-which -p opam >/dev/null && [ -d ~/.opam ] && eval `opam config -env`
+which -p opam >/dev/null && [ -d ~/.opam ] && eval `opam config env`
 
 # Ruby with either rbenv or rvm
 if command which -s rbenv; then
