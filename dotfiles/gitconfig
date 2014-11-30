@@ -49,6 +49,9 @@
 [credential]
     helper = osxkeychain
 
+[ghi]
+    token = !security find-internet-password -a cdlm -s github.com -l 'ghi token' -w
+
 [include]
     path = ~/.gitconfig.private  # tokens etc
 
@@ -104,3 +107,8 @@
     branch       = cyan
     tag          = blue
     remoteBranch = red
+
+[filter "media"] # https://github.com/alebedev/git-media
+    clean = git-media-clean %f
+    smudge = git-media-smudge %f
+
