@@ -32,8 +32,8 @@
     tgz       = !"f () { git archive --format=tar --prefix=${1:-HEAD}/ ${2:-HEAD} | gzip > ${1:-HEAD}.tar.gz; }; f"
     ignore    = !"f () { local ignore_file=$( git rev-parse --show-cdup ).gitignore arg; for arg in $*; do echo $arg >> $ignore_file; done; sort -u -o $ignore_file $ignore_file; }; f"
     unignore  = !"f () { sed -i .bak \"/^${1}\\$/d\" .gitignore; }; f"
-    exclude   = !"f () { for each; do echo \"${each}\" >> .git/info/exclude; done; }; f"
-    unexclude = !"f () { sed -i .bak \"/^${1}\\$/d\" .git/info/exclude; }; f"
+    exclude   = !"f () { for each; do echo \"${each}\" >> $(git rev-parse --git-dir)/info/exclude; done; }; f"
+    unexclude = !"f () { sed -i .bak \"/^${1}\\$/d\" $(git rev-parse --git-dir)/info/exclude; }; f"
     assume    = update-index --assume-unchanged
     unassume  = update-index --no-assume-unchanged
     assumed   = "!git ls-files -v | grep ^h | cut -c 3-"
