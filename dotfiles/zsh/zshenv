@@ -48,8 +48,10 @@ if [ -d $hs ]; then
 fi
 unset hs
 
-# ocaml opam; might need to run opam init
-which -p opam >/dev/null && [ -d ~/.opam ] && eval `opam config env`
+# Ocaml, fully installed via opam
+which -p opam >/dev/null \
+    && [ -f "$HOME/.opam/opam-init/init.zsh" ] \
+    && . "$HOME/.opam/opam-init/init.zsh"
 
 # Ruby with either rbenv or rvm
 if command which -s rbenv; then
