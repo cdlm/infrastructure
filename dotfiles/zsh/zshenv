@@ -11,7 +11,7 @@ if [ -d $bp ]; then
       $bp/sbin
       $bp/bin
       $path)
-    manpath=($bp/share/man $manpath)
+    manpath=($bp/share/man ${manpath:-''}) # empty string required to inherit global paths
 fi
 
 # byobu screen/tmux wrapper
@@ -35,8 +35,8 @@ function texlive_set_paths() {
     [ -d "$texliveBin" ] || return
 
     path+="$texliveBin"
-    infopath+="$texlivePrefix/texmf/doc/info"
-    manpath+="$texlivePrefix/texmf/doc/man"
+    infopath+="$texlivePrefix/texmf-dist/doc/info"
+    manpath+="$texlivePrefix/texmf-dist/doc/man"
 }
 texlive_set_paths
 
