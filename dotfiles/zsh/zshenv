@@ -1,3 +1,4 @@
+# -*- mode: sh -*-
 typeset -U path fpath manpath
 export -TU INFOPATH infopath
 export -TU CLASSPATH classpath
