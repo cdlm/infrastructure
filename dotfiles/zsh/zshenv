@@ -4,6 +4,7 @@ export -TU INFOPATH infopath
 export -TU CLASSPATH classpath
 
 path=(/usr/local/bin $path)
+manpath=('') # empty element falls back to system path
 
 # homebrew
 local bp='/opt/homebrew' #`brew --prefix`
@@ -12,7 +13,7 @@ if [ -d $bp ]; then
       $bp/sbin
       $bp/bin
       $path)
-    manpath=($bp/share/man ${manpath:-''}) # empty string required to inherit global paths
+   manpath+="$bp/share/man"
 fi
 
 # byobu screen/tmux wrapper
@@ -45,7 +46,7 @@ texlive_set_paths
 local hs="$HOME/.cabal"
 if [ -d $hs ]; then
     path=($hs/bin $path)
-    manpath=($hs/share/man $manpath)
+    manpath+="$hs/share/man"
 fi
 unset hs
 
