@@ -1,7 +1,7 @@
 $pdf_mode = 1;
 $postscript_mode = $dvi_mode = 0;
 
-$pdflatex = 'pdflatex -8bit -etex -file-line-error -halt-on-error -synctex=1 %O %S';
+$pdflatex = 'pdflatex -8bit -file-line-error -halt-on-error -synctex=1 %O %S';
 $recorder = 1;
 
 $pdf_previewer = 'open %S';
