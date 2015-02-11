@@ -112,3 +112,12 @@
     clean = git-media-clean %f
     smudge = git-media-smudge %f
 
+# Pharo merge driver for FileTree
+[merge "mcVersion"]
+	driver = git-filetree-mergedriver --version %O %A %B
+[merge "mcMethodProperties"]
+	name = GitFileTree MergeDriver for Monticello
+	driver = git-filetree-mergedriver --methodProperties %O %A %B
+[merge "mcProperties"]
+	name = GitFileTree MergeDriver for Monticello
+	driver = git-filetree-mergedriver --properties %O %A %B
