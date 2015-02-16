@@ -10,14 +10,6 @@ setopt function_argzero
 function require() { for name ($*) autoload -Uz $name && $name; }
 function provide() { for name ($*) function $name() { return 0; }; }
 
-# locate / test for presence of a command
-# dereference symlinks to help find homebrew packages
-function find_command() {
-    local found
-    found=`which -ps $*` || return 1
-    echo ${found##* -> }
-}
-function has_command() { find_command $* >/dev/null; }
 
 fpath=($Z/lib $fpath)
 

@@ -6,6 +6,15 @@ export -TU CLASSPATH classpath
 path=(/usr/local/bin $path)
 manpath=('') # empty element falls back to system path
 
+# locate / test for presence of a command
+# dereference symlinks to help find homebrew packages
+function find_command() {
+    local found
+    found=`builtin which -ps $*` || return 1
+    echo ${found##* -> }
+}
+function has_command() { find_command $* >/dev/null 2>&1; }
+
 # homebrew
 local bp='/opt/homebrew' #`brew --prefix`
 if [ -d $bp ]; then
@@ -17,9 +26,7 @@ if [ -d $bp ]; then
 fi
 
 # byobu screen/tmux wrapper
-if command which -s byobu; then
-    export BYOBU_PREFIX="$bp"
-fi
+has_command byobu && export BYOBU_PREFIX="$bp"
 
 # standalone texlive, selected from ~/.texliveVersion
 function texlive_set_paths() {
@@ -51,23 +58,14 @@ fi
 unset hs
 
 # Ocaml, fully installed via opam
-which -p opam >/dev/null \
-    && [ -f "$HOME/.opam/opam-init/init.zsh" ] \
-    && . "$HOME/.opam/opam-init/init.zsh"
-
-# Ruby with either rbenv or rvm
-if command which -s rbenv; then
-    eval "$(rbenv init -)"
-elif [[ -s "$HOME/.rvm/scripts/rvm" ]]; then # fallback on rvm
-    . "$HOME/.rvm/scripts/rvm"
-    __rvm_project_rvmrc
+if has_command opam && [ -f "$HOME/.opam/opam-init/init.zsh" ]; then
+    . "$HOME/.opam/opam-init/init.zsh"
 fi
 
-# Python with pyenv
-if command which -s pyenv; then
-    eval "$(pyenv init -)"
-fi
+# Language runtime managers
+has_command rbenv && eval "$(rbenv init -)"
+has_command pyenv && eval "$(pyenv init -)"
+has_command jenv && eval "$(jenv init -)"
 
 # user-specific tools
 path=($HOME/bin $path)
-
