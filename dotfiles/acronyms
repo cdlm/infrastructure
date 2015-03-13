@@ -24,4 +24,5 @@ PUA	pick up artist
 SOLID	Single responsibility, Open/closed, Liskov, Interface segregation, Dependency inversion
 SRP	single responsibility principle
 TGIF	thank God it's Friday
+TIMTOWTDI	there is more than one way to do it
 TLC	tender loving care (loving/love and)
