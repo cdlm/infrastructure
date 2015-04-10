@@ -58,8 +58,9 @@ has_command trak && {
 }
 
 # jumping around in the file system…
-# with bookmarks
-source `jump-bin --zsh-integration` && {
+# with bookmark
+has_command jump-bin && {
+    source `jump-bin --zsh-integration`
     alias j='jump'
     alias ja='jump --add'
     alias jl='jump --list'
