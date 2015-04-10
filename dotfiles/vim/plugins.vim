@@ -70,7 +70,7 @@ Plug 'ntpeters/vim-better-whitespace'
 Plug 'reedes/vim-thematic', { 'on': 'Thematic' }
 Plug 'altercation/vim-colors-solarized'
 "" rainbow parentheses
-Plug 'amdt/vim-niji'
+Plug 'raymond-w-ko/vim-niji'
 "" more obvious active window
 Plug 'blueyed/vim-diminactive'
 Plug 'bling/vim-airline'
