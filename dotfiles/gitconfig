@@ -108,16 +108,23 @@
     tag          = blue
     remoteBranch = red
 
-[filter "media"] # https://github.com/alebedev/git-media
-    clean = git-media-clean %f
-    smudge = git-media-smudge %f
+# https://github.com/alebedev/git-media
+[filter "media"]
+    required = true
+    clean = git media clean %f
+    smudge = git media smudge %f
+[filter "hawser"]
+    required = true
+    clean = git hawser clean %f
+    smudge = git hawser smudge %f
 
 # Pharo merge driver for FileTree
 [merge "mcVersion"]
-	driver = git-filetree-mergedriver --version %O %A %B
+    name = GitFileTree MergeDriver for Monticello
+    driver = git-filetree-mergedriver --version %O %A %B
 [merge "mcMethodProperties"]
-	name = GitFileTree MergeDriver for Monticello
-	driver = git-filetree-mergedriver --methodProperties %O %A %B
+    name = GitFileTree MergeDriver for Monticello
+    driver = git-filetree-mergedriver --methodProperties %O %A %B
 [merge "mcProperties"]
-	name = GitFileTree MergeDriver for Monticello
-	driver = git-filetree-mergedriver --properties %O %A %B
+    name = GitFileTree MergeDriver for Monticello
+    driver = git-filetree-mergedriver --properties %O %A %B
