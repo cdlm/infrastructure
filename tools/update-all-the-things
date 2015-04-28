@@ -184,14 +184,14 @@ Updates.run nice: true do |g|
     cask.step %w(cask upgrade)
     cask.step %w(cask update)
   end
-  
+
   g.step %w(tlmgr update --self --all)
 
   g.step %w(gem update)
 
   g.seq do |brew|
     brew.step %w(brew update)
-    brew.step %w(brew upgrade)
+    brew.step %w(brew upgrade --all)
     brew.step %w(brew cleanup)
   end
 
