@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+HELP = "Usage: bibdoi -h | --help | <DOI>..."
+
+require 'docopt'
+require 'curb'
+
+begin
+  opts = Docopt.docopt(HELP)
+  opts['<DOI>'].each do |doi|
+    response = Curl::Easy.http_get("http://dx.doi.org/#{doi}") do |curl|
+      curl.follow_location = true
+      curl.headers['Accept'] = 'application/x-bibtex'
+    end
+
+    if response.response_code == 200
+      puts response.body
+    else
+      $stderr.puts "% #{doi} failed (HTTP #{response.response_code})"
+    end
+  end
+rescue Docopt::Exit => e
+  $stderr.puts e.message
+end
