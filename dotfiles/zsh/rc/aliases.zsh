@@ -100,6 +100,7 @@ alias lll='ls -la'
 alias mkdir='mkdir -p'
 alias tree='tree -CF'
 alias top='top -d -o cpu -s 2'
+alias htop='sudo htop' # homebrew advocates against setuid
 alias pwgen='pwgen -s 10 1'
 alias path='echo ${(F)path}'
 
