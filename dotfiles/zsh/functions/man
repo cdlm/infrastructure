@@ -1,5 +1,6 @@
 #! /usr/bin/env zsh
 #
+# LESS_TERMCAP_*:
 # ks  make the keypad send commands
 # ke  make the keypad send digits
 # vb  emit visual bell
@@ -11,6 +12,12 @@
 # us  start underline
 # ue  stop underline
 
+# following line noise courtesy zsh and http://unix.stackexchange.com/a/29748
+pages=("${(@f)$( \
+    command man -aW "$@" \
+        | sort | uniq \
+        | ( fzf --multi --extended --select-1 --color=16 --no-sort || cat ))}")
+
 env \
     LESS_TERMCAP_mb=$(printf "\e[0m") \
     LESS_TERMCAP_md=$(printf "\e[32m") \
@@ -19,4 +26,4 @@ env \
     LESS_TERMCAP_se=$(printf "\e[0m") \
     LESS_TERMCAP_us=$(printf "\e[36m") \
     LESS_TERMCAP_ue=$(printf "\e[0m") \
-    man "$@"
+    man ${pages}
