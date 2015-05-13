@@ -8,7 +8,7 @@ export EDITOR=emacs-edit
 
 export PAGER='less'
 export LESS='--ignore-case --RAW-CONTROL-CHARS'
-has_command pygmentize && export LESSOPEN="| pygmentize -g %s"
+# has_command pygmentize && export LESSOPEN="| pygmentize -g %s"
 
 alias ql="qlmanage -p"
 alias imageoptim="open -g -a ImageOptim"
