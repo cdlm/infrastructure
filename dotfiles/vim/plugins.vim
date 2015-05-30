@@ -69,6 +69,7 @@ Plug 'ntpeters/vim-better-whitespace'
 
 Plug 'reedes/vim-thematic', { 'on': 'Thematic' }
 Plug 'altercation/vim-colors-solarized'
+Plug 'NLKNguyen/papercolor-theme'
 "" rainbow parentheses
 Plug 'raymond-w-ko/vim-niji'
 "" more obvious active window
@@ -176,7 +177,9 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
 "" easy moving text around
 Plug 't9md/vim-textmanip'
-
+"" Vim to write prose
+Plug 'reedes/vim-pencil'
+Plug 'reedes/vim-wordy'
 
 
 """
