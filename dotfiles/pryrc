@@ -1,3 +1,4 @@
+# -*- ruby -*-
 # http://stackoverflow.com/questions/7798795/how-to-adjust-pry-colors
 
 # pry-debugger commands
@@ -12,7 +13,10 @@ if defined?(PryDebugger) || defined?(PryNav)
   Pry.commands.alias_command 'p', 'continue' # proceed
 end
 
-# taken from https://github.com/joelturnbull/pry-define-it/blob/master/.pryrc
+begin # rescue load errors, because requiring gems will fail in bundled projects
+
+  # taken from https://github.com/joelturnbull/pry-define-it/blob/master/.pryrc
+  # related to https://github.com/pry/pry-fix
 require 'active_support/inflector'
 
 Pry::Commands.create_command 'define-it',
@@ -64,4 +68,6 @@ Pry::Commands.create_command 'define-it',
   end
 end
 
+rescue LoadError
+end
 # vim: ft=ruby
