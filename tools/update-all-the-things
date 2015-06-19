@@ -181,6 +181,7 @@ Updates.run nice: true do |g|
   end
 
   g.seq directory: '~/.emacs.d' do |cask|
+    cask.step %w(test -f Cask)
     cask.step %w(cask upgrade)
     cask.step %w(cask update)
   end
