@@ -11,6 +11,7 @@ require 'English'
 class Update
   OPTION_DEFAULTS = {
     dry_run: false,
+    guard: ['true'],
     sudo: false,
     nice: false,
     directory: '~'
@@ -23,7 +24,13 @@ class Update
   def nice?()  @options[:nice]  end
   def sudo?()  @options[:sudo]  end
   def dry_run?()  @options[:dry_run]  end
-  def skip?()  dry_run?  end
+  def skip?()  dry_run? || !guard_ok? end
+
+  def guard_ok?
+    Dir.chdir(File.expand_path(@options[:directory])) do
+      system(*@options[:guard])
+    end
+  end
 
   def describe(indent)
     desc = @options[:description]
@@ -93,7 +100,7 @@ class Updates < Update
     @things << Updates.new(@options.merge(options), &block)
   end
 
-  # Define a sub-sequence of updates
+  # Define a sub-sequence of updates.
   #
   # @api public
   def seq(options = {}, &block)
@@ -180,8 +187,7 @@ Updates.run nice: true do |g|
     vim.step %w(vim +PlugUpdate  +qa)
   end
 
-  g.seq directory: '~/.emacs.d' do |cask|
-    cask.step %w(test -f Cask)
+  g.seq directory: '~/.emacs.d', guard: %w(test -f Cask) do |cask|
     cask.step %w(cask upgrade)
     cask.step %w(cask update)
   end
