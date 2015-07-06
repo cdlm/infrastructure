@@ -37,7 +37,8 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'tpope/vim-sensible'
 "" focus events within tmux
-Plug 'sjl/vitality.vim'
+" Plug 'sjl/vitality.vim'
+Plug 'wincent/terminus'
 " resize vertical splits to make the active one bigger
 " Plug 'justincampbell/vim-eighties'
 " Plug 'zhaocai/GoldenView.Vim'
