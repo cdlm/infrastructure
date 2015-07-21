@@ -120,6 +120,8 @@ alias rehash='hash -rf'
 alias fu='sudo $(fc -ln -1)'
 alias please=sudo
 
+has_command thefuck && alias fuck='eval $(thefuck $(fc -ln -1 | tail -n 1)); fc -R'
+
 # devel stuff
 alias g=git && compdef g=git
 function g/() { local dest=$(git root); cd ${dest:-.}; }
