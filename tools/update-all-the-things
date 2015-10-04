@@ -206,6 +206,6 @@ Updates.run nice: true do |g|
 
   g.seq do |opam|
     opam.step %w(opam update)
-    opam.step %w(opam upgrade)
+    opam.step %w(opam upgrade --yes)
   end
 end
