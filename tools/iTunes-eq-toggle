@@ -1,0 +1,11 @@
+#!/usr/bin/osascript
+
+on run argv
+    tell application "iTunes"
+        if count of argv is greater than 0 then
+            set EQ enabled to (first item of argv is "on")
+        else
+            set EQ enabled to not (EQ enabled)
+        end if
+    end tell
+end run
