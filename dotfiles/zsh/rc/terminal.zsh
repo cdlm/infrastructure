@@ -1,5 +1,6 @@
 export LC_ALL=en_US.UTF-8
 export LC_CTERM=en_US.UTF-8
+export TERMINFO_DIRS=~/.terminfo:/usr/share/terminfo
 
 export HISTSIZE=5000
 export HISTFILE=~/.zsh_history
