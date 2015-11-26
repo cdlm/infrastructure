@@ -202,7 +202,7 @@ Plug 'tpope/vim-haml'
 
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'groovy.vim'
-Plug 'wting/rust.vim'
+Plug 'rust-lang/rust.vim'
 
 " Plug 'git://vim-latex.git.sourceforge.net/gitroot/vim-latex/vim-latex'
 Plug 'LaTeX-Box-Team/LaTeX-Box'
