@@ -27,9 +27,13 @@ on run argv
 		set GraffleFile to POSIX file FileName as alias
 	end tell
 	tell application "#{OMNIGRAFFLE}"
+		set area type of current export settings to all graphics
+		set draws background of current export settings to false
+		set include border of current export settings to false
+
 		open GraffleFile
 		tell front document
-			save in POSIX file PDFFileName
+			save as "PDF" in POSIX file PDFFileName
 			if (alreadyOpen = false) then close
 		end tell
 	end tell
