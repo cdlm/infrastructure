@@ -1,80 +1,63 @@
 #!/usr/bin/env ruby
-# encoding: UTF-8
+# encoding: utf-8
 #
 # Usage: graffle2pdf in.graffle out.pdf
 
-OMNIGRAFFLE =  "OmniGraffle Professional 5"
+OMNIGRAFFLE = 'OmniGraffle Professional 5'
 
 MAKERULE = <<EOF
 
 .SUFFIXES: .graffle .pdf
 .graffle.pdf:
-	@echo Converting $< to PDF...
-	@graffle2pdf $< $@
+\t@echo Converting $< to PDF...
+\t@graffle2pdf $< $@
 EOF
 
 SCRIPT = <<EOF
 on run argv
-	-- Current working directory
-	set PWD to do shell script "pwd" -- the env var is system attribute "PWD" but it breaks with make -C subdir
-	-- Relative paths
-	set FileName to PWD & "/" & item 1 of argv
-	set PDFFileName to PWD & "/" & item 2 of argv
-	
-	set alreadyOpen to isOpen(FileName)
-	
-	tell application "Finder"
-		set GraffleFile to POSIX file FileName as alias
-	end tell
-	tell application "#{OMNIGRAFFLE}"
-		set area type of current export settings to all graphics
-		set draws background of current export settings to false
-		set include border of current export settings to false
+  -- Current working directory
+  -- the env var is system attribute "PWD" but it breaks with make -C subdir
+  set PWD to do shell script "pwd"
+  -- Relative paths
+  set FileName to PWD & "/" & item 1 of argv
+  set PDFFileName to PWD & "/" & item 2 of argv
 
-		open GraffleFile
-		tell front document
-			save as "PDF" in POSIX file PDFFileName
-			if (alreadyOpen = false) then close
-		end tell
-	end tell
-	--return PDFFileName
+  set alreadyOpen to isOpen(FileName)
+
+  tell application "Finder"
+    set GraffleFile to POSIX file FileName as alias
+  end tell
+
+  tell application "#{OMNIGRAFFLE}"
+    set area type of current export settings to all graphics
+    set draws background of current export settings to false
+    set include border of current export settings to false
+
+    open GraffleFile
+    tell front document
+      save as "PDF" in POSIX file PDFFileName
+      if (alreadyOpen = false) then close
+    end tell
+  end tell
 end run
 
 on isOpen(aDoc)
-	tell application "#{OMNIGRAFFLE}"
-		repeat with doc in documents
-			if («class ppth» of doc as string) = aDoc then return true
-		end repeat
-		return false
-	end tell
+  tell application "#{OMNIGRAFFLE}"
+    repeat with doc in documents
+      if («class ppth» of doc as string) = aDoc then return true
+    end repeat
+    return false
+  end tell
 end isOpen
 EOF
 
 case ARGV.size
-  when 0 then puts MAKERULE
-  when 2 then
-    # only convert if modification times make sense (for make/latexmk)
-    unless ARGV.all? {|f| File.exists? f } and File.ctime(ARGV.first) <= File.ctime(ARGV.last)
-      system 'osascript', '-e', SCRIPT, *ARGV
-    end
-  else raise ArgumentError
+when 0 then puts MAKERULE
+when 2 then
+  # only convert if modification times make sense (for make/latexmk)
+  unless ARGV.all? { |f| File.exist? f } \
+         && File.ctime(ARGV.first) <= File.ctime(ARGV.last)
+    system 'osascript', '-e', SCRIPT, *ARGV
+  end
+else fail ArgumentError
 end
-
-
-### Translation to appscript (todo):
-#
-# require 'rubygems'
-# require 'appscript'
-# 
-# include Appscript
-# 
-# begin
-#   omnigraffle = app("OmniGraffle Professional 5")
-# rescue
-#   omnigraffle = app("OmniGraffle")
-# ensure
-#   fail "OmniGraffle not found!" if omnigraffle.nil?
-# end
-# 
-# open = omnigraffle.documents.path.get
-# puts open
