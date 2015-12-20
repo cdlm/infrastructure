@@ -75,6 +75,7 @@
 
 [rebase]
     autosquash = true
+    autostash = true
 
 [pager]
     log  = diff-highlight
