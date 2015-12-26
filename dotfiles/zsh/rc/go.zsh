@@ -1,7 +1,9 @@
 # detect Go language installation
 
-if GOROOT=`find_command go`; then
-    export GOROOT=${GOROOT%%/bin/go}
-else
-    unset GOROOT
+if has_command go; then
+    export -TU GOPATH gopath
+    gopath+="$bp/opt/go/libexec"
+    for d in "$gopath"; do
+        [ -d "$d" ] && path+="$d"/bin
+    done
 fi
