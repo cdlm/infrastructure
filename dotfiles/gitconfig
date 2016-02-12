@@ -26,6 +26,7 @@
     branches  = branch --all --verbose --verbose
     remotes   = !"f () { local n; if [[ $1 = '-n' ]]; then n=$1; shift; fi; git remote show $n ${*:-`git remote | paste -sd ' ' -`}; }; f"
     trim-merged = !"f() { git branch --merged ${1:-HEAD} | grep -v '*' | xargs -n1 git branch -d; }; f"
+    subup     = !"f () { git submodule sync && git submodule update --init --recursive; }; f"
     svnci     = !"f () { git svn rebase && git svn dcommit; }; f"
     svnup     = svn rebase
     svnups    = !"f () { git stash && git svnup && git stash apply; }; f"
