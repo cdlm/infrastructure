@@ -3,7 +3,8 @@ if [[ -n $bp && -d $bp ]]; then
 fi
 fpath=($Z/completions $fpath)
 
-require compinit solarized
+require compinit bashcompinit solarized
+source $Z/completions/bash/*
 
 zstyle ':completion::complete:*' use-cache 1
 zstyle ':completion:*' completer _complete _prefix _files
