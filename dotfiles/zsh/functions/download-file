@@ -1,0 +1,27 @@
+#! /usr/bin/env zsh
+# autoload -Uz download-file
+
+if [[ $# -eq 0 || $# -gt 2 || $1 == '-h' || $1 == '--help' ]]; then
+    echo "Usage: $0 <url> [filename]"
+    return
+fi
+
+local cmd=()
+if which curl; then
+    cmd+=(curl --location)
+    if [[ -n "$2" ]]; then
+        cmd+=(--output "$2")
+    else
+        cmd+=(--remote-name)
+    fi
+elif which wget; then
+    cmd+=(wget)
+    if [[ -n "$2" ]]; then
+        cmd+=(-O "$2")
+    fi
+else
+    echo "Failed: Could find neither curl nor wget!"
+    return 1
+fi
+
+echo "$cmd" "$1"
