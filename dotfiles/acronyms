@@ -1,3 +1,4 @@
+# -*- tab-width: 8; -*-
 # vim: list noexpandtab tabstop=8
 #
 # testing for duplicates:
@@ -22,6 +23,7 @@ NNTR	no need to respond
 OCD	obsessive-compulsive disorder
 OCP	open/closed principle
 PUA	pick up artist
+RUD	rapid unscheduled disassembly
 SOLID	Single responsibility, Open/closed, Liskov, Interface segregation, Dependency inversion
 SRP	single responsibility principle
 TGIF	thank God it's Friday
