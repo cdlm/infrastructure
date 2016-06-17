@@ -1,4 +1,4 @@
-# -*- mode: gitconfig -*-
+# -*- mode: gitconfig; indent-tabs-mode: nil; -*-
 
 [user]
     name  = Damien Pollet
@@ -66,10 +66,11 @@
     submoduleSummary = true
 
 [diff]
-    renames        = true
-    tool           = opendiff
-    algorithm      = patience
-    mnemonicPrefix = true
+    renames             = true
+    tool                = opendiff
+    algorithm           = patience
+    mnemonicPrefix      = true
+    compactionHeuristic = true
 
 [merge]
     conflictStyle = diff3
@@ -79,13 +80,13 @@
     autostash = true
 
 [pager]
-    log  = diff-highlight
-    show = diff-highlight
-    diff = diff-highlight
+    log  = diff-so-fancy
+    show = diff-so-fancy
+    diff = diff-so-fancy #diff-highlight
 
 [color]
-    ui     = auto
-    parger = true
+    ui    = auto
+    pager = true
 
 [color "branch"]
     current = green reverse
@@ -113,12 +114,12 @@
 # https://github.com/alebedev/git-media
 [filter "media"]
     required = true
-    clean = git media clean %f
-    smudge = git media smudge %f
+    clean    = git media clean %f
+    smudge   = git media smudge %f
 [filter "hawser"]
     required = true
-    clean = git hawser clean %f
-    smudge = git hawser smudge %f
+    clean    = git hawser clean %f
+    smudge   = git hawser smudge %f
 
 # Pharo merge driver for FileTree
 [merge "mcVersion"]
