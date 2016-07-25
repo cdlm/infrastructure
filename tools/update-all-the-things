@@ -202,6 +202,8 @@ Updates.run nice: true do |g|
     brew.step %w(brew cleanup)
   end
 
+  g.step %w(rustup update)
+
   g.step %w(cabal update)
 
   g.seq do |opam|
