@@ -1,21 +1,28 @@
 #!/bin/bash
-set -o errexit
 
-DEFAULT_VM='/Applications/Developer/Pharo/Pharo.app/Contents/MacOS/Pharo'
+VM_SPUR="pharo-vm-spur32"
+VM_COG="pharo-vm-cog32"
+OPTIONS=
+VM="$VM_SPUR"
 
-function die() {
-    echo "$1" >&2
-    exit ${2:--1}
+get_image() {
+    local image=
+    while [ $# -gt 0 ]; do
+        if [ "${1: -6}" = ".image" ]; then
+            image="$1"
+        fi
+        shift
+    done
+    echo "$image"
 }
 
-VM="${PHARO_VM:-$DEFAULT_VM}"
-[[ -n "$VM" && -x "$VM" ]] || die 'No virtual machine found; set $PHAROVM.'
+IMAGE=$(get_image "$@")
 
-if [[ "$0" == *'-gui' ]]; then
-    HEADFUL=''
-else
-    HEADFUL='-headless'
+if [ -n "$IMAGE" ] && [ -f "$IMAGE" ]; then
+    if [ "$(head -c 2 "$IMAGE")" = "$(printf "\x69\x19")" ]; then
+        VM="$VM_COG"
+        OPTIONS="--textenc UTF-8"
+    fi
 fi
 
-set -o noglob
-exec "$VM" $HEADFUL "$@"
+"$VM" $OPTIONS "$@"
