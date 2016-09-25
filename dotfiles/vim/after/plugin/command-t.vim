@@ -48,7 +48,7 @@ nnoremap <silent> <leader>gug :exec 'set wildignore='.base_wildignore<cr>:echo '
 nnoremap <silent> <leader>e  :call CD_Git_Root()<cr>\|:CommandT<cr>
 nnoremap <leader>TF :CommandTFlush<cr>
 
-augroup CommandTExtension
-    autocmd!
-    autocmd FocusGained,BufWritePost * CommandTFlush
-augroup END
+" augroup CommandTExtension
+"     autocmd!
+"     autocmd FocusGained,BufWritePost * CommandTFlush
+" augroup END

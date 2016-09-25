@@ -45,7 +45,7 @@ Plug 'wincent/terminus'
 "" spawn finder or terminal on current file: gof, got
 Plug 'justinmk/vim-gtfo'
 "" fuzzy finders
-Plug 'wincent/Command-T'
+" Plug 'wincent/Command-T' " native extension is a pain to update
 Plug 'junegunn/fzf', { 'on': 'FZF' }
 Plug 'Shougo/unite.vim'
 Plug 'h1mesuke/unite-outline'
