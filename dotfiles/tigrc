@@ -1,7 +1,7 @@
 set line-graphics = ascii
 set main-view = \
     author:full \
-    date:short,width=10 \
+    date:custom,width=10,format="%Y-%m-%d" \
     id:yes \
     commit-title:yes,graph,refs
 
