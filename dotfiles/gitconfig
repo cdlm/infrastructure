@@ -122,6 +122,9 @@
     smudge   = git hawser smudge %f
 
 # Pharo merge driver for FileTree
+[mergetool "mcmerge"]
+  cmd = git-filetree-mergedriver --mergetool $BASE $LOCAL $REMOTE $MERGED
+
 [merge "mcVersion"]
     name = GitFileTree MergeDriver for Monticello
     driver = git-filetree-mergedriver --version %O %A %B
