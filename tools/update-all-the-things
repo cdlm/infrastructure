@@ -198,7 +198,7 @@ Updates.run nice: true do |g|
 
   g.seq do |brew|
     brew.step %w(brew update)
-    brew.step %w(brew upgrade --all)
+    brew.step %w(brew upgrade)
     brew.step %w(brew cleanup)
   end
 
