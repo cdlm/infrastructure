@@ -58,6 +58,7 @@
 
 [push]
     default = current
+    followTags = true
 
 [fetch]
     recurseSubmodules = on-demand
