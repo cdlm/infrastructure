@@ -384,6 +384,8 @@ EXEC 32  # Unix
 .blg 30
 .out 30
 .fls 30
+.toc 30
+.lof 30
 
 .backup 30
 .fdb_latexmk 30
