@@ -1,6 +1,6 @@
 #!/bin/bash
 
-maildb="$HOME/Library/Mail/V2/MailData/Envelope Index"
+maildb="$HOME/Library/Mail/V5/MailData/Envelope Index"
 
 function mailDataSize() {
     ls -lah `dirname "$maildb"` | grep -E "`basename "$maildb"`$" | awk {'print $5'}
@@ -10,7 +10,7 @@ if [ -f "$maildb" ]; then
     osascript -e 'tell application "Mail" to quit'
     echo "Mail index before:" `mailDataSize`
 
-    sqlite3 ~/Library/Mail/V2/MailData/Envelope\ Index vacuum
+    sqlite3 "$maildb" vacuum
 
     echo "Mail index after: " `mailDataSize`
 else
